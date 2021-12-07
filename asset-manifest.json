@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/iti_bright_cards_%D1%812/static/css/main.4025e78a.chunk.css",
+    "main.js": "/iti_bright_cards_%D1%812/static/js/main.21cfc15e.chunk.js",
+    "main.js.map": "/iti_bright_cards_%D1%812/static/js/main.21cfc15e.chunk.js.map",
+    "runtime-main.js": "/iti_bright_cards_%D1%812/static/js/runtime-main.8cc5d45c.js",
+    "runtime-main.js.map": "/iti_bright_cards_%D1%812/static/js/runtime-main.8cc5d45c.js.map",
+    "static/js/2.640385e3.chunk.js": "/iti_bright_cards_%D1%812/static/js/2.640385e3.chunk.js",
+    "static/js/2.640385e3.chunk.js.map": "/iti_bright_cards_%D1%812/static/js/2.640385e3.chunk.js.map",
+    "static/js/3.04322538.chunk.js": "/iti_bright_cards_%D1%812/static/js/3.04322538.chunk.js",
+    "static/js/3.04322538.chunk.js.map": "/iti_bright_cards_%D1%812/static/js/3.04322538.chunk.js.map",
+    "index.html": "/iti_bright_cards_%D1%812/index.html",
+    "static/css/main.4025e78a.chunk.css.map": "/iti_bright_cards_%D1%812/static/css/main.4025e78a.chunk.css.map",
+    "static/js/2.640385e3.chunk.js.LICENSE.txt": "/iti_bright_cards_%D1%812/static/js/2.640385e3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8cc5d45c.js",
+    "static/js/2.640385e3.chunk.js",
+    "static/css/main.4025e78a.chunk.css",
+    "static/js/main.21cfc15e.chunk.js"
+  ]
+}
