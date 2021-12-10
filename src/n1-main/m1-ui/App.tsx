@@ -8,5 +8,4 @@ export const App = () => {
             <Main />
         </div>
     );
-    // start of briws branch
 }
