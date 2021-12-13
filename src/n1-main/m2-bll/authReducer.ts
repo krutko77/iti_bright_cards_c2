@@ -1,5 +1,6 @@
 import {API, AuthResponseType} from "./api/api";
 import {Dispatch} from "redux";
+import {setProfileAC, SetProfileType} from "./profileReducer";
 
 let initialState: InitialStateType = {
     isLoggedIn: false,
@@ -16,14 +17,10 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
 }
 
 //ActionsCreators
-export const setIsLoggedIn = (value: boolean) => {
+export const setIsLoggedInAC = (value: boolean) => {
     return ({type: 'LOGIN/SET-IS-LOGGED-IN', value} as const)
 }
-export const setProfile = (data: AuthResponseType) => {
-    const {avatar, email, name, publicCardPacksCount, _id} = data
-    return ({type: 'profile/SET-PROFILE', avatar, email, name, publicCardPacksCount, _id} as const)
-}
-export const setIsError = (error: string) => {
+export const setIsErrorAC = (error: string) => {
     return ({type: 'login/SET-IS-ERROR', error} as const)
 }
 
@@ -31,13 +28,14 @@ export const setIsError = (error: string) => {
 export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch<ActionsType>) => {
     API.login({email, password, rememberMe})
         .then(res => {
-                dispatch(setIsLoggedIn(true))
+                dispatch(setIsLoggedInAC(true))
+                dispatch(setProfileAC(res.data))
             }
         )
         .catch(e => {
                 e.response
-                    ? dispatch(setIsError(e.response.data.error))
-                    : dispatch(setIsError(e.message + ', more details in the console'));
+                    ? dispatch(setIsErrorAC(e.response.data.error))
+                    : dispatch(setIsErrorAC(e.message + ', more details in the console'));
             }
         )
 }
@@ -49,4 +47,7 @@ type InitialStateType = {
 }
 
 
-type ActionsType = ReturnType<typeof setIsLoggedIn> | ReturnType<typeof setIsError>
+type ActionsType =
+    | ReturnType<typeof setIsLoggedInAC>
+    | ReturnType<typeof setIsErrorAC>
+    | SetProfileType
