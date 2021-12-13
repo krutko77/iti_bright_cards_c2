@@ -24,8 +24,11 @@ export const Login = () => {
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(LoginTC(email, password, rememberMe));
-        setEmail('');
-        setPassword('');
+        if (error === '') {
+            setEmail('');
+            setPassword('');
+        }
+
     }
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
