@@ -48,16 +48,32 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean) =>
         )
 }
 export const InitializeTC = () => (dispatch: Dispatch) => {
-    API.me().then(res => {
-            dispatch(setIsLoggedInAC(true))
-            dispatch(setProfileAC(res.data))
-        }
-    ).catch(e => {
-            dispatch(setIsLoggedInAC(false))
-        }
-    ).finally(() => {
-        dispatch(setIsInitializeAC(true))
-    })
+    API.me()
+        .then(res => {
+                dispatch(setIsLoggedInAC(true))
+                dispatch(setProfileAC(res.data))
+            }
+        )
+        .catch(e => {
+                dispatch(setIsLoggedInAC(false))
+            }
+        )
+        .finally(() => {
+            dispatch(setIsInitializeAC(true))
+        })
+}
+export const LogoutTC = () => (dispatch: Dispatch) => {
+    API.logout()
+        .then(res => {
+                dispatch(setIsLoggedInAC(false))
+            }
+        )
+        .catch(e => {
+                e.response
+                    ? dispatch(setIsErrorAC(e.response.data.error))
+                    : dispatch(setIsErrorAC(e.message + ', more details in the console'));
+            }
+        )
 }
 
 // Types

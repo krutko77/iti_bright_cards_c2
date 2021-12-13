@@ -10,7 +10,6 @@ let initialState: AuthResponseType = {
 }
 
 export const profileReducer = (state = initialState, action: ActionsType): AuthResponseType => {
-    debugger
     switch (action.type) {
         case 'PROFILE/SET-PROFILE':
             return {...state, ...action.data}

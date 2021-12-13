@@ -11,8 +11,11 @@ export const API = {
         return instance.post<AuthResponseType>('auth/login', data);
     },
     me() {
-        return instance.post<AuthResponseType>('/auth/me',{})
+        return instance.post<AuthResponseType>('/auth/me', {})
     },
+    logout() {
+        return instance.delete('/auth/me')
+    }
 }
 
 export type LoginType = {
