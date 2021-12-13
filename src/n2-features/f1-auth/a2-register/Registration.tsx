@@ -14,7 +14,7 @@ export const Registration = () => {
     const status = useSelector<AppStoreType, RequestStatusType>(state => state.registration.status)
 
 
-    const testFoo = (email: string, password: string) => {
+    const createNewUserHandler = (email: string, password: string) => {
         dispatch(createNewUser(email, password))
     }
 
@@ -29,7 +29,7 @@ export const Registration = () => {
                 : <div>
                     <span style={{color: 'red'}}>{error && error}</span>
                     <span style={{color: 'green'}}>{message && message}</span>
-                    <RegistrationForm callBack={testFoo}/>
+                    <RegistrationForm callBack={createNewUserHandler}/>
                     <Link to="/login">
                         login
                     </Link>
