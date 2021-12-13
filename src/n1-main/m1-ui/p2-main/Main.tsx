@@ -21,8 +21,8 @@ export const Main = () => {
                 <Route path={'/passwordrecovery'} element={<PasswordRecovery/>}/>
                 <Route path={'/passwordnew'} element={<PasswordNew/>}/>
                 <Route path={'/tests'} element={<Examples/>}/>
-                <Route path="/" element={<Navigate replace to="/tests" />} />
-                <Route path="*" element={<Navigate replace to="/404" />} />
+                <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="*" element={<Navigate to="/404" />} />
             </Routes>
         </div>
     );

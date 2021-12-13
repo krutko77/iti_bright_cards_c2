@@ -1,0 +1,26 @@
+@import '../../../n1-main/m1-ui/common/components/styles/variables';
+
+.form {
+    margin: 100px 0;
+    display: flex;
+    justify-content: center;
+    div {
+        padding: 5px;
+        button {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    span {
+        text-align: center;
+        padding: 5px;
+    }
+}
+.border {
+    border: 4px solid $primaryColor;
+    border-radius: 10px;
+}
+.text {
+    text-align: center;
+    font-size: 30px;
+}
