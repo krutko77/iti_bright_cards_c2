@@ -87,10 +87,6 @@ export const RegistrationForm = (props: TitleFormPropsType) => {
                         <span>{formik.touched.password && formik.errors.password ? formik.errors.password : ''}</span>
                     </div>
                     <div>
-                        <SuperCheckbox onChange={showPasswordHandler}/>
-                        <span>show password</span>
-                    </div>
-                    <div>
                         <Field
                             id="checkPassword"
                             name="checkPassword"
@@ -108,6 +104,10 @@ export const RegistrationForm = (props: TitleFormPropsType) => {
                             disabled={!!formik.errors.email || !!formik.errors.password || !!formik.errors.checkPassword || !!error || status === 'loading'}
                         >registration
                         </button>
+                    </div>
+                    <div>
+                        <SuperCheckbox onChange={showPasswordHandler}/>
+                        <span>show password</span>
                     </div>
                     <div>
                         {error}
