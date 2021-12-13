@@ -1,4 +1,5 @@
 import {AuthResponseType} from "./api/api";
+import {setIsLoggedInAC} from "./authReducer";
 
 let initialState: AuthResponseType = {
     avatar: '',
@@ -18,9 +19,11 @@ export const profileReducer = (state = initialState, action: ActionsType): AuthR
     }
 }
 
+// ActionsCreators
 export const setProfileAC = (data: AuthResponseType) => {
     return ({type: 'PROFILE/SET-PROFILE', data} as const)
 }
 
+// Types
 export type SetProfileType = ReturnType<typeof setProfileAC>
 type ActionsType = SetProfileType

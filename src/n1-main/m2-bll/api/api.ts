@@ -9,7 +9,10 @@ const instance = axios.create({
 export const API = {
     login(data: LoginType) {
         return instance.post<AuthResponseType>('auth/login', data);
-    }
+    },
+    me() {
+        return instance.post<AuthResponseType>('/auth/me',{})
+    },
 }
 
 export type LoginType = {
