@@ -1,32 +1,88 @@
 @import './n1-main/m1-ui/common/components/styles/variables';
 
-* {
+// * {
+//    box-sizing: border-box;
+//    margin: 0;
+//    padding: 0;
+
+//    &::selection {
+//       color: white;
+//       background: $primaryColor;
+//    }
+// }
+
+// body {
+//    margin: 0;
+//    font-family: $textFontFamily;
+//    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier mono'
+// }
+
+// h1 {
+//    font-size: 25px;
+// }
+
+// h2 {
+//    font-size: 20px;
+// }
+
+// hr {
+//    border: 1px solid $primaryColor;
+//    margin-top: 5px;
+// }
+
+*,
+*::after,
+*::before {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
-  &::selection {
-    color: white;
-    background: $primaryColor;
-  }
-}
-
-body {
   margin: 0;
-  font-family: $textFontFamily;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@font-face {
+   font-family: "PoppinsBold";
+   src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+ }
 
-h1 {
-  font-size: 25px;
-}
-h2 {
-  font-size: 20px;
-}
-hr {
-  border: 1px solid $primaryColor;
-  margin-top: 5px;
-}
+ @font-face {
+   font-family: "PoppinsSemiBold";
+   src: url(./assets/fonts/Poppins/Poppins-SemiBold.ttf);
+ }
+
+ @font-face {
+   font-family: "SFProDisplayRegular";
+   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Regular.woff);
+ }
+
+ @font-face {
+   font-family: "SFProDisplayMedium";
+   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Medium.woff);
+ } 
+
+ @font-face {
+   font-family: "SFProDisplaySemiBold";
+   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Semibold.woff);
+ }
+
+ @font-face {
+   font-family: "SFProDisplayBold";
+   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Bold.woff);
+ }
+
+ body {
+   margin: 0;
+   color: #2f3035;
+   font-family: "PoppinsBold", sans-serif;
+   font-family: "PoppinsSemiBold", sans-serif;
+   font-family: "SFProDisplayRegular", sans-serif;
+   font-family: "SFProDisplayMedium", sans-serif;
+   font-family: "SFProDisplaySemiBold", sans-serif;
+   font-family: "SFProDisplayBold", sans-serif;
+ }
+
+ code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+ }
+
+ ul {
+   list-style: none;
+ }
