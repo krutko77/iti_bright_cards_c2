@@ -9,15 +9,15 @@ const initialState: InitialStateType = {
 
 export const registrationReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
-        case "SET-REGISTER-STATUS":
+        case "registrationReducer/SET-REGISTER-STATUS":
             return {
                 ...state, status: action.status
             }
-        case "SET-REGISTER-ERROR":
+        case "registrationReducer/SET-REGISTER-ERROR":
             return {
                 ...state, error: action.error
             }
-        case "SET-REGISTER-MESSAGE":
+        case "registrationReducer/SET-REGISTER-MESSAGE":
             return {
                 ...state, message: action.message
             }
@@ -27,11 +27,11 @@ export const registrationReducer = (state = initialState, action: ActionsType) =
 }
 
 export const setRegisterStatus = (status: RequestStatusType) =>
-    ({type: 'SET-REGISTER-STATUS', status} as const)
+    ({type: "registrationReducer/SET-REGISTER-STATUS", status} as const)
 export const setRegisterError = (error: string | null) =>
-    ({type: 'SET-REGISTER-ERROR', error} as const)
+    ({type: "registrationReducer/SET-REGISTER-ERROR", error} as const)
 export const setRegisterMessage = (message: string | null) =>
-    ({type: 'SET-REGISTER-MESSAGE', message} as const)
+    ({type: "registrationReducer/SET-REGISTER-MESSAGE", message} as const)
 
 
 export const createNewUser = (email: string, password: string) => (dispatch: Dispatch<ActionsType /*| SetAppErrorActionType | SetAppStatusActionType*/>) => {
