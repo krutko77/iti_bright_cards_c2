@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {useState} from 'react';
 import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
 import SuperCheckbox from "../../../n1-main/m1-ui/common/c3-SuperCheckbox/SuperCheckbox";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
@@ -7,53 +7,86 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useDispatch, useSelector} from "react-redux";
 import s from './Login.module.scss'
 import {LoginTC} from "../../../n1-main/m2-bll/authReducer";
+import {FormikProvider, useFormik} from "formik";
 
 export const Login = () => {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
-    const [rememberMe, setRememberMe] = useState<boolean>(false)
     const dispatch = useDispatch()
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
     const error = useSelector<AppStoreType, string | null>(state => state.auth.error)
 
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+            rememberMe: false
+        },
+        onSubmit: values => {
+            dispatch(LoginTC(values.email, values.password, values.rememberMe));
+            formik.resetForm()
+        },
+        validate: (values) => {
+            const errors: FormikErrorType = {};
+            if (!values.email) {
+                errors.email = 'Required';
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                errors.email = 'Invalid email address';
+            }
+            if (!values.password) {
+                errors.password = 'Required';
+            }
+            return errors
+        },
+    },);
+
     if (isLoggedIn) {
         return <Navigate to="/profile"/>
     }
 
-    const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        dispatch(LoginTC(email, password, rememberMe));
-        if (error === '') {
-            setEmail('');
-            setPassword('');
-        }
-
-    }
-    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.currentTarget.value)
-    }
-    const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.currentTarget.value)
-    }
-    const onChangeRemember = (e: ChangeEvent<HTMLInputElement>) => {
-        setRememberMe(e.currentTarget.checked)
-    }
-
     return (
         <div className={s.form}>
-            <form onSubmit={onSubmitHandler}>
-                <div className={s.border}>
-                    <div className={s.text}>Sign In</div>
-                    <div><SuperInputText value={email} onChange={onChangeEmail}/></div>
-                    <div><SuperInputText type={"password"} value={password} onChange={onChangePassword}/></div>
-                    {error ? <span>{error}</span> : null}
-                    <div><SuperCheckbox checked={rememberMe} onChange={onChangeRemember} className={s.checkbox}>Remember
-                        Me</SuperCheckbox></div>
-                    <div><SuperButton>Login</SuperButton></div>
-                    <NavLink to={'/passwordrecovery'}>Forgot password</NavLink>
-                </div>
+            <form onSubmit={formik.handleSubmit}>
+                <FormikProvider value={formik}>
+                    <div className={s.border}>
+                        <div className={s.text}>Sign In</div>
+                        <div><SuperInputText
+                            id="email"
+                            placeholder={'email'}
+                            {...formik.getFieldProps('email')}
+                        /></div>
+                        {formik.touched.email && formik.errors.email ? (
+                            <div>{formik.errors.email}</div>
+                        ) : null}
+
+                        <div><SuperInputText
+                            id="password"
+                            placeholder={'password'}
+                            type={'password'}
+                            {...formik.getFieldProps('password')}
+                        /></div>
+                        {formik.touched.password && formik.errors.password ? (
+                            <div>{formik.errors.password}</div>
+                        ) : null}
+
+                        {error ? <span>{error}</span> : null}
+                        <div><SuperCheckbox
+                            id="rememberMe"
+                            className={s.checkbox}
+                            {...formik.getFieldProps('rememberMe')}
+                        >
+                            Remember Me
+                        </SuperCheckbox></div>
+                        <SuperButton type={'submit'}>Login</SuperButton>
+                        <NavLink to={'/passwordrecovery'}>Forgot password</NavLink>
+                    </div>
+                </FormikProvider>
             </form>
         </div>
     );
+}
+
+type FormikErrorType = {
+    email?: string
+    password?: string
+    rememberMe?: boolean
 }
