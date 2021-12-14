@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
 import SuperCheckbox from "../../../n1-main/m1-ui/common/c3-SuperCheckbox/SuperCheckbox";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
@@ -13,7 +13,7 @@ export const Login = () => {
     const dispatch = useDispatch()
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
-    const error = useSelector<AppStoreType, string | null>(state => state.auth.error)
+    const errorFromServer = useSelector<AppStoreType, string | null>(state => state.auth.error)
 
     const formik = useFormik({
         initialValues: {
@@ -23,7 +23,6 @@ export const Login = () => {
         },
         onSubmit: values => {
             dispatch(LoginTC(values.email, values.password, values.rememberMe));
-            formik.resetForm()
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
@@ -46,7 +45,6 @@ export const Login = () => {
     return (
         <div className={s.form}>
             <form onSubmit={formik.handleSubmit}>
-                <FormikProvider value={formik}>
                     <div className={s.border}>
                         <div className={s.text}>Sign In</div>
                         <div><SuperInputText
@@ -55,9 +53,8 @@ export const Login = () => {
                             {...formik.getFieldProps('email')}
                         /></div>
                         {formik.touched.email && formik.errors.email ? (
-                            <div>{formik.errors.email}</div>
+                            <div className={s.error}>{formik.errors.email}</div>
                         ) : null}
-
                         <div><SuperInputText
                             id="password"
                             placeholder={'password'}
@@ -65,10 +62,9 @@ export const Login = () => {
                             {...formik.getFieldProps('password')}
                         /></div>
                         {formik.touched.password && formik.errors.password ? (
-                            <div>{formik.errors.password}</div>
+                            <div className={s.error}>{formik.errors.password}</div>
                         ) : null}
-
-                        {error ? <span>{error}</span> : null}
+                        {errorFromServer ? <span className={s.error}>{errorFromServer}</span> : null}
                         <div><SuperCheckbox
                             id="rememberMe"
                             className={s.checkbox}
@@ -79,11 +75,11 @@ export const Login = () => {
                         <SuperButton type={'submit'}>Login</SuperButton>
                         <NavLink to={'/passwordrecovery'}>Forgot password</NavLink>
                     </div>
-                </FormikProvider>
             </form>
         </div>
     );
 }
+
 
 type FormikErrorType = {
     email?: string

@@ -25,7 +25,7 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
 export const setIsLoggedInAC = (value: boolean) => {
     return ({type: 'LOGIN/SET-IS-LOGGED-IN', value} as const)
 }
-export const setIsErrorAC = (error: string) => {
+export const setIsErrorAC = (error: string | null) => {
     return ({type: 'LOGIN/SET-IS-ERROR', error} as const)
 }
 export const setIsInitializeAC = (isInitilize: boolean) => {
@@ -41,9 +41,7 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean) =>
             }
         )
         .catch(e => {
-                e.response
-                    ? dispatch(setIsErrorAC(e.response.data.error))
-                    : dispatch(setIsErrorAC(e.message + ', more details in the console'));
+                dispatch(setIsErrorAC(e.response.data.error))
             }
         )
 }
@@ -66,12 +64,11 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
     API.logout()
         .then(res => {
                 dispatch(setIsLoggedInAC(false))
+                dispatch(setIsErrorAC(null))
             }
         )
         .catch(e => {
-                e.response
-                    ? dispatch(setIsErrorAC(e.response.data.error))
-                    : dispatch(setIsErrorAC(e.message + ', more details in the console'));
+                dispatch(setIsErrorAC(e.response.data.error))
             }
         )
 }

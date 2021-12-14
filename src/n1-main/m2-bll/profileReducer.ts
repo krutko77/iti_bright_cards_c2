@@ -1,5 +1,4 @@
 import {AuthResponseType} from "./api/api";
-import {setIsLoggedInAC} from "./authReducer";
 
 let initialState: AuthResponseType = {
     avatar: '',
