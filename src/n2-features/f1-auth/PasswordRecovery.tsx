@@ -2,8 +2,11 @@ import {useFormik} from 'formik';
 import React from 'react';
 import SuperInputText from "../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
 import SuperButton from '../../n1-main/m1-ui/common/c2-SuperButton/SuperButton';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {sendPassRecoveryTC} from "../../n1-main/m2-bll/passwordRecoveryReducer";
+import s from "./a1-login/Login.module.scss";
+import {NavLink} from "react-router-dom";
+import {AppStoreType} from "../../n1-main/m2-bll/store";
 
 type FormikErrorType = {
     email: string
@@ -12,11 +15,14 @@ type FormikErrorType = {
 export const PasswordRecovery = () => {
 
     const dispatch = useDispatch();
+    const errorFromServer = useSelector<AppStoreType, string | null>(state => state.recovery.error)
 
     const formik = useFormik({
+
         initialValues: {
             email: '',
         },
+
         validate: (values) => {
             const errors: Partial<FormikErrorType> = {};
             if (!values.email) {
@@ -24,7 +30,9 @@ export const PasswordRecovery = () => {
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 errors.email = 'Invalid email address';
             }
+            return errors;
         },
+
         onSubmit: values => {
             // alert(JSON.stringify(values))
             formik.resetForm()
@@ -33,17 +41,23 @@ export const PasswordRecovery = () => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                <div>
-                    <div><input {...formik.getFieldProps('email')}/></div>
-                    {/*<div><SuperInputText {...formik.getFieldProps}/></div>*/}
-                    {/*<div><SuperButton type='submit'>Submin</SuperButton></div>*/}
-                    <div>
-                        <button type='submit'>Submit</button>
+        <div className={s.form}>
+            <form onSubmit={formik.handleSubmit}>
+                <div className={s.border}>
+                    <div className={s.text}>Forgot password?</div>
+                    <div><SuperInputText
+                        id="email"
+                        placeholder={'email'}
+                        {...formik.getFieldProps('email')}
+                    />
                     </div>
+                    {formik.touched.email && formik.errors.email ? (
+                        <div className={s.error}>{formik.errors.email}</div>) : null}
+                    {errorFromServer ? <span className={s.error}>{errorFromServer}</span> : null}
+                    <SuperButton type={'submit'}>Send instruction</SuperButton>
+                    <div style={{textAlign: 'center'}}><NavLink to={'/login'}>Try logging in</NavLink></div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     );
 }

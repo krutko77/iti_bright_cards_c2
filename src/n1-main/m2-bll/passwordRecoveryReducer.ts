@@ -3,11 +3,11 @@ import {RecoveryAPI} from "./api/api";
 
 const initialState: InitialStateType = {
     success: false,
-    error: ''
+    error: null
 }
 type InitialStateType = {
     success: boolean
-    error: string
+    error: null | string
 }
 
 type ActionType =
@@ -37,7 +37,6 @@ export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionT
         })
         .catch(e => {
             dispatch(setErrorAC(e.response.data.error))
-            alert(e.response.data.error)
         })
 }
 
