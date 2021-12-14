@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 const instance = axios.create({
     // baseURL: 'http://localhost:7542/2.0/',
@@ -17,6 +17,14 @@ export const API = {
         return instance.delete('/auth/me')
     }
 }
+export const registrationAPI = {
+    registerUser(email: string, password: string) {
+        return instance.post<{ title: string }, AxiosResponse<ResponseType>>('auth/register', {
+            email: email,
+            password: password
+        });
+    },
+}
 
 export type LoginType = {
     email: string,
@@ -29,4 +37,10 @@ export type AuthResponseType = {
     name: string
     publicCardPacksCount: number
     _id: string
+}
+export type ResponseType<D = {}> = {
+    resultCode: number
+    messages: Array<string>
+    fieldsErrors: Array<string>
+    data: D
 }

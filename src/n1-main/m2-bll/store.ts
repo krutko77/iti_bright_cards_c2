@@ -3,11 +3,13 @@ import {testReducer} from "./testReducer";
 import thunkMiddleware from "redux-thunk";
 import {authReducer} from "./authReducer";
 import {profileReducer} from "./profileReducer";
+import {registrationReducer} from "./registrationReducer";
 
 const reducers = combineReducers({
     testReducer: testReducer,
     auth: authReducer,
     profile: profileReducer,
+    registration: registrationReducer,
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
