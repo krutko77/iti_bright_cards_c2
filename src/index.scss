@@ -1,32 +1,98 @@
 @import './n1-main/m1-ui/common/components/styles/variables';
 
-* {
+// * {
+//    box-sizing: border-box;
+//    margin: 0;
+//    padding: 0;
+
+//    &::selection {
+//       color: white;
+//       background: $primaryColor;
+//    }
+// }
+
+// body {
+//    margin: 0;
+//    font-family: $textFontFamily;
+//    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier mono'
+// }
+
+// h1 {
+//    font-size: 25px;
+// }
+
+// h2 {
+//    font-size: 20px;
+// }
+
+// hr {
+//    border: 1px solid $primaryColor;
+//    margin-top: 5px;
+// }
+
+*,
+*::after,
+*::before {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
-  &::selection {
-    color: white;
-    background: $primaryColor;
-  }
-}
-
-body {
   margin: 0;
-  font-family: $textFontFamily;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+@font-face {
+   font-family: "PoppinsBold";
+   src: url(./assets/fonts/Poppins/Poppins-Bold.ttf);
+ }
+
+ @font-face {
+   font-family: "PoppinsSemiBold";
+   src: url(./assets/fonts/Poppins/Poppins-SemiBold.ttf);
+ }
+
+ @font-face {
+   font-family: "SFDisplayRegular";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Regular.ttf);
+ }
+
+ @font-face {
+   font-family: "SFDisplayMedium";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Medium.ttf);
+ } 
+
+ @font-face {
+   font-family: "SFDisplaySemiBold";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Semibold.ttf);
+ }
+
+ @font-face {
+   font-family: "SFDisplayBold";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Bold.ttf);
+ }
+
+ body {
+   margin: 0;
+   color: #2f3035;
+   font-family: "PoppinsBold", sans-serif;
+   font-family: "PoppinsSemiBold", sans-serif;
+   font-family: "SFProDisplayRegular", sans-serif;
+   font-family: "SFProDisplayMedium", sans-serif;
+   font-family: "SFProDisplaySemiBold", sans-serif;
+   font-family: "SFProDisplayBold", sans-serif;
+ }
+
+ code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ a {
+   text-decoration: none;
+   color: inherit;
 }
 
-h1 {
-  font-size: 25px;
-}
-h2 {
-  font-size: 20px;
-}
-hr {
-  border: 1px solid $primaryColor;
-  margin-top: 5px;
+button:active {
+   transform: translate(1px, 2px);
 }
