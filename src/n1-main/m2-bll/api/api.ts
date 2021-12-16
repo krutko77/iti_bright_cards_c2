@@ -33,7 +33,15 @@ export const RecoveryAPI = {
             message: `<div style="background-color: lime; padding: 15px">password recovery link: 
                             <a href='http://localhost:3000/#/passwordnew/$token$'>link</a></div>`
         })
+    },
+
+    newPass(password:string, token:string){
+        return instance.post<recoveryType>('/auth/set-new-password', {
+            password:password,
+            resetPasswordToken:token,
+        })
     }
+
 };
 
 export type LoginType = {
@@ -57,4 +65,5 @@ export type ResponseType<D = {}> = {
 export type recoveryType = {
     error: string
     success: boolean
+    info:string
 }
