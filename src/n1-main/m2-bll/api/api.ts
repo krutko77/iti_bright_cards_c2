@@ -31,7 +31,7 @@ export const RecoveryAPI = {
             email,
             from: "test-front-admin <ivanin.jay@gmail.com>",
             message: `<div style="background-color: lime; padding: 15px">password recovery link: 
-                            <a href='http://localhost:3000/tests/$token$'>link</a></div>`
+                            <a href='http://localhost:3000/#/passwordnew/$token$'>link</a></div>`
         })
     }
 };

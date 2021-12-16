@@ -17,12 +17,12 @@ export const Main = () => {
             <Header/>
             <Routes>
                 <Route path={'/login'} element={<Login/>}/>
-                 <Route path={'/registration'} element={<Registration/>}/>
+                <Route path={'/registration'} element={<Registration/>}/>
                 <Route path={'/loginform'} element={<LoginForm/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/404'} element={<Page404/>}/>
                 <Route path={'/passwordrecovery'} element={<PasswordRecovery/>}/>
-                <Route path={'/passwordnew'} element={<PasswordNew/>}/>
+                <Route path={'/passwordnew/:token'} element={<PasswordNew/>}/>
                 <Route path={'/tests/:token'} element={<Examples/>}/>
                 <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="*" element={<Navigate to="/404" />} />
