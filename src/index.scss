@@ -50,23 +50,23 @@
  }
 
  @font-face {
-   font-family: "SFProDisplayRegular";
-   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Regular.woff);
+   font-family: "SFDisplayRegular";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Regular.ttf);
  }
 
  @font-face {
-   font-family: "SFProDisplayMedium";
-   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Medium.woff);
+   font-family: "SFDisplayMedium";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Medium.ttf);
  } 
 
  @font-face {
-   font-family: "SFProDisplaySemiBold";
-   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Semibold.woff);
+   font-family: "SFDisplaySemiBold";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Semibold.ttf);
  }
 
  @font-face {
-   font-family: "SFProDisplayBold";
-   src: url(./assets/fonts/SFProDisplay/SFProDisplay-Bold.woff);
+   font-family: "SFDisplayBold";
+   src: url(./assets/fonts/SFUIDisplay/SFUIDisplay-Bold.ttf);
  }
 
  body {
@@ -87,3 +87,12 @@
  ul {
    list-style: none;
  }
+
+ a {
+   text-decoration: none;
+   color: inherit;
+}
+
+button:active {
+   transform: translate(1px, 2px);
+}

@@ -9,13 +9,16 @@ import {PasswordRecovery} from "../../../n2-features/f1-auth/PasswordRecovery";
 import {PasswordNew} from "../../../n2-features/f1-auth/PasswordNew";
 import {Examples} from "../../../n2-features/f0-test/Examples/Examples";
 
+import LoginForm from "../../../assets/components/common/login-form/LoginForm.jsx";
+
 export const Main = () => {
     return (
         <div>
             <Header/>
             <Routes>
                 <Route path={'/login'} element={<Login/>}/>
-                <Route path={'/registration'} element={<Registration/>}/>
+                {/* <Route path={'/registration'} element={<Registration/>}/> */}
+                <Route path={'/registration'} element={<LoginForm/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/404'} element={<Page404/>}/>
                 <Route path={'/passwordrecovery'} element={<PasswordRecovery/>}/>
