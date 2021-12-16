@@ -31,7 +31,7 @@ export const RecoveryAPI = {
             email,
             from: "test-front-admin <ivanin.jay@gmail.com>",
             message: `<div style="background-color: lime; padding: 15px">password recovery link: 
-                            <a href='http://localhost:3000/#/set-new-password/$token$'>link</a></div>`
+                            <a href='http://localhost:3000/tests/$token$'>link</a></div>`
         })
     }
 };
@@ -55,6 +55,6 @@ export type ResponseType<D = {}> = {
     data: D
 }
 export type recoveryType = {
-    error:string
-    success:boolean
+    error: string
+    success: boolean
 }

@@ -5,15 +5,6 @@ const initialState: InitialStateType = {
     success: false,
     error: null
 }
-type InitialStateType = {
-    success: boolean
-    error: null | string
-}
-
-type ActionType =
-    | ReturnType<typeof setSuccessAC>
-    | ReturnType<typeof setErrorAC>
-
 
 export const passwordRecoveryReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
@@ -40,10 +31,17 @@ export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionT
         })
 }
 
-
 export const setSuccessAC = (success: boolean) => ({type: 'recovery/SET-SUCCESS', success} as const)
 export const setErrorAC = (error: string) => ({type: 'recovery/SET-ERROR', error} as const)
 
+type InitialStateType = {
+    success: boolean
+    error: null | string
+}
+
+type ActionType =
+    | ReturnType<typeof setSuccessAC>
+    | ReturnType<typeof setErrorAC>
 
 
 

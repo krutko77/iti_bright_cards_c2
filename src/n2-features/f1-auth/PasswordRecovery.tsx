@@ -8,10 +8,6 @@ import s from "./a1-login/Login.module.scss";
 import {NavLink} from "react-router-dom";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
 
-type FormikErrorType = {
-    email: string
-}
-
 export const PasswordRecovery = () => {
 
     const dispatch = useDispatch();
@@ -41,6 +37,7 @@ export const PasswordRecovery = () => {
     })
 
     return (
+
         <div className={s.form}>
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.border}>
@@ -60,4 +57,8 @@ export const PasswordRecovery = () => {
             </form>
         </div>
     );
+}
+
+type FormikErrorType = {
+    email: string
 }
