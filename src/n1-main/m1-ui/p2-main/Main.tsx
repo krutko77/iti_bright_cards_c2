@@ -17,8 +17,8 @@ export const Main = () => {
             <Header/>
             <Routes>
                 <Route path={'/login'} element={<Login/>}/>
-                {/* <Route path={'/registration'} element={<Registration/>}/> */}
-                <Route path={'/registration'} element={<LoginForm/>}/>
+                 <Route path={'/registration'} element={<Registration/>}/>
+                <Route path={'/loginform'} element={<LoginForm/>}/>
                 <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/404'} element={<Page404/>}/>
                 <Route path={'/passwordrecovery'} element={<PasswordRecovery/>}/>
