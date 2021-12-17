@@ -32,6 +32,7 @@ input:focus {
    left: 0;      
 }
 
+.input input:valid+.placeholder,
 .input input:focus+.placeholder {
    transform: translateY(-150%);
    transition: 0.3s ease;
