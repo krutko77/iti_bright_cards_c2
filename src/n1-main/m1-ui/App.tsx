@@ -7,7 +7,7 @@ import {InitializeTC} from "../m2-bll/authReducer";
 
 export const App = () => {
     const dispatch = useDispatch()
-    const isInitialize = useSelector<AppStoreType, boolean>(state => state.auth.isInitilize)
+    const isInitialize = useSelector<AppStoreType, boolean>(state => state.app.isInitilize)
     useEffect(() => {
         dispatch(InitializeTC())
     }, [])

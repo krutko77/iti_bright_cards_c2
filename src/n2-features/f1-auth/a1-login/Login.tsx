@@ -7,7 +7,7 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useDispatch, useSelector} from "react-redux";
 import s from './Login.module.scss'
 import {LoginTC} from "../../../n1-main/m2-bll/authReducer";
-import {FormikProvider, useFormik} from "formik";
+import {useFormik} from "formik";
 
 export const Login = () => {
     const dispatch = useDispatch()
