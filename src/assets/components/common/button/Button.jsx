@@ -1,6 +1,6 @@
 import s from "./Button.module.scss";
 
-// в месте, где используется кнопка, пишем стилизацию кнопки
+// в месте, где используется кнопка, если нужно, стилизуем кнопку
 // const styleButton = {
 //    padding: "19px 61px",
 //    fontSize: "14px",
@@ -11,8 +11,10 @@ import s from "./Button.module.scss";
 
 function Button(props) {
    return (   
-      <button className={s.btn} style={props.style}>{props.label}</button>
+      <button className={s.btn} style={props.style} type="submit">{props.label}</button>
    );
 }
 
 export default Button;
+
+

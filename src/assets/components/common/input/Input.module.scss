@@ -1,0 +1,45 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables';
+
+.input {
+   font-size: 14px;
+   position: relative;
+}
+
+input:focus {
+   outline: none;
+}
+
+.input input {
+   border: none;
+   appearance: none;
+   background: $bgColor;
+   padding: 20px 0 13px;
+   width: 350px;
+   font-family: "SFDisplayMedium";
+   font-size: 16px;
+   line-height: 150%;
+   border-top: 20px solid transparent;
+   border-bottom: 2px solid #CECFDA;
+}
+
+.input .placeholder {
+   font-family: "SFDisplayMedium";
+   font-size: 13px;
+   line-height: 150%;
+   color: #CECFDA;
+   position: absolute;
+   top: 45px;
+   left: 0;      
+}
+
+.input input:focus+.placeholder {
+   transform: translateY(-150%);
+   transition: 0.3s ease;
+}
+
+.icon {
+   position: absolute;
+   top: 48px;
+   right: 16px;
+   cursor: pointer;
+}

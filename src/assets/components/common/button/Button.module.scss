@@ -1,10 +1,16 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables';
+
 .btn {
-   display: block;
-   color: white;
-   background-color: #1C62CD;
+   width: 266px;
+   height: 36px;
+   background-color: $buttonColor;
+   box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
    border: none;
-   border-radius: 3px;
-   font-family: "SFProDisplayRegular";
-   line-height: 120%;
+   border-radius: 30px;
    cursor: pointer;
+   font-family: "SFDisplayMedium";
+   font-size: 16px;
+   line-height: 120%;
+   color: #ECECF9;
+   margin-bottom: 31px;
 }
