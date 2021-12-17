@@ -2,8 +2,8 @@ import s from "./Input.module.scss";
 
 import icon from './../../../img/shape.svg';
 
-function Input(props) {
-   return (   
+export default function Input(props) {
+   return (
       <div className={s.input}>
          <input id={props.inputData.id} type={props.inputData.type} name={props.inputData.name} required />
          <label className={s.placeholder} htmlFor={props.inputData.for}>{props.inputData.label}</label>
@@ -12,4 +12,3 @@ function Input(props) {
    );
 }
 
-export default Input;

@@ -4,6 +4,7 @@ import Title from "./../common/title/Title.jsx";
 import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Input from "./../common/input/Input.jsx";
 import Button from "./../common/button/Button.jsx";
+import CheckboxLabel from "./../common/checkbox/CheckboxLabel.jsx";
 
 // данные для input email
 const inputData1 = {
@@ -29,7 +30,7 @@ const inputData2 = {
    }
 }
 
-function LoginForm() {
+export default function LoginForm() {
    return (
       <form action="">
          <div className={s.contentWrap}>
@@ -37,7 +38,10 @@ function LoginForm() {
             <Subtitle subtitle="Sign In" />
             <Input inputData={inputData1} />
             <Input inputData={inputData2} />
-            <NavLink className={s.linkForgotPass} to={'/'}>Forgot password</NavLink>
+            <div className={s.block}>
+               <CheckboxLabel label="Remember Me"/>
+               <NavLink className={s.linkForgotPass} to={'/'}>Forgot password</NavLink>
+            </div>
             <Button label="Login" />
             <span className={s.question}>Don’t have an account?</span>
             <NavLink className={s.linkSignUp} to={'/'}>Sign Up</NavLink>
@@ -46,4 +50,4 @@ function LoginForm() {
    );
 }
 
-export default LoginForm;
+

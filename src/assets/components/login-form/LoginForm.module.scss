@@ -9,14 +9,20 @@
    background-color: $bgColor;
 }
 
-.linkForgotPass {
+.block {
    align-self: flex-end;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   margin: 15px 20px 90px 0;
+}
+
+.linkForgotPass {
    font-family: "SFDisplayMedium";
    font-size: 14px;
    line-height: 120%;
-   color: #2D2E46;
-   padding-top: 48px;
-   margin-bottom: 92px;
+   color: #2D2E46;  
+   margin-top: 20px;   
 }
 
 .question {
