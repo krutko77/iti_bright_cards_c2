@@ -8,7 +8,6 @@ import SuperInputText from "../../n1-main/m1-ui/common/c1-SuperInputText/SuperIn
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {setNewPassTC} from "../../n1-main/m2-bll/passwordRecoveryReducer";
 
-
 export const PasswordNew = () => {
     const dispatch = useDispatch()
     const {token} = useParams<{ token: string }>();
@@ -29,7 +28,7 @@ export const PasswordNew = () => {
             if (!values.password) {
                 errors.password = 'Required';
             } else if (values.password.length < 7) {
-                errors.password = 'Must be 3 characters or more';
+                errors.password = 'Must be 7 characters or more';
             }
             return errors
         },

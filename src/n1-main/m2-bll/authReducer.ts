@@ -27,7 +27,6 @@ export const setIsErrorAC = (error: string | null) => {
     return ({type: 'AUTH/SET-IS-ERROR', error} as const)
 }
 
-
 // Thunks
 export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch<ActionsType>) => {
     authAPI.login({email, password, rememberMe})

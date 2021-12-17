@@ -1,8 +1,6 @@
 import {Dispatch} from "redux";
 import {RecoveryAPI} from "./api/api";
 
-
-
 const initialState: InitialStateType = {
     success: false,
     error: null,
@@ -23,8 +21,6 @@ export const passwordRecoveryReducer = (state = initialState, action: ActionType
     }
 }
 
-
-
 export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionType>) => {
     RecoveryAPI.recoveryPass(email)
         .then((res) => {
@@ -41,15 +37,14 @@ export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionT
 export const setNewPassTC = (password: string, token: string) => (dispatch: Dispatch<ActionType>) => {
     RecoveryAPI.newPass(password, token)
         .then((res) => {
-                dispatch(setNewPassAC(res.data.info))
-                alert('Пароль изменен')
+            dispatch(setNewPassAC(res.data.info))
+            alert('Пароль изменен')
 
         })
         .catch(e => {
             dispatch(setErrorAC(e.response.data.error))
         })
 }
-
 
 export const setSuccessAC = (success: boolean) => ({type: 'recovery/SET-SUCCESS', success} as const)
 export const setNewPassAC = (info: string) => ({type: 'recovery/SET-PASS', info} as const)
