@@ -1,5 +1,14 @@
-.App {
-    ;
+.main {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+
 }
 
-
+.content {
+   flex-grow: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(#E6D4DE, #9890C7);
+}

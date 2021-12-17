@@ -1,0 +1,35 @@
+@import './../../../n1-main/m1-ui/common/components/styles/variables';
+
+.contentWrap {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 25px 33px 30px;
+   border-radius: 8px;
+   background-color: $bgColor;
+}
+
+.linkForgotPass {
+   align-self: flex-end;
+   font-family: "SFDisplayMedium";
+   font-size: 14px;
+   line-height: 120%;
+   color: #2D2E46;
+   padding-top: 48px;
+   margin-bottom: 92px;
+}
+
+.question {
+   font-family: "SFDisplaySemiBold";
+   font-size: 14px;
+   line-height: 170%;
+   color: #9393A2;
+   margin-bottom: 11px;
+}
+
+.linkSignUp {
+   font-family: "SFDisplaySemiBold";
+   font-size: 16px;
+   line-height: 120%;
+   color: $buttonColor;
+}
