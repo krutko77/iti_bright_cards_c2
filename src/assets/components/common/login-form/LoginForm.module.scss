@@ -69,16 +69,17 @@ input:focus {
    overflow: hidden;
    white-space: nowrap;
    text-overflow: ellipsis;
-   transition:
-      top 0.3s ease,
-      color 0.3s ease,
-      font-size 0.3s ease;
+   // transition:
+   //    top 0.3s ease,
+   //    color 0.3s ease,
+   //    font-size 0.3s ease;
 }
 
 .customField input:focus+.placeholder {
    transform: translateY(-50%);
    // top: 10px;
    // font-size: 13px;
+   transition: 0.3s ease;
 }
 
 .icon {
