@@ -10,6 +10,8 @@ import {setNewPassTC} from "../../n1-main/m2-bll/passwordRecoveryReducer";
 
 export const PasswordNew = () => {
     const dispatch = useDispatch()
+    // todo: need to fix
+    // @ts-ignore
     const {token} = useParams<{ token: string }>();
 
     const errorFromServer = useSelector<AppStoreType, string | null>(state => state.recovery.error)
