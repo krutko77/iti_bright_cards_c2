@@ -1,7 +1,7 @@
 import {authAPI} from "./api/api";
 import {Dispatch} from "redux";
 import {setProfileAC, SetProfileType} from "./profileReducer";
-import {setIsInitializeAC} from "./appReducer";
+import {setAppLoading, setIsInitializeAC} from "./appReducer";
 
 let initialState: InitialStateType = {
     isLoggedIn: false,
@@ -30,6 +30,7 @@ export const setIsErrorAC = (error: string | null) => {
 
 // Thunks
 export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch<ActionsType>) => {
+    setAppLoading(true)
     authAPI.login({email, password, rememberMe})
         .then(res => {
                 dispatch(setIsLoggedInAC(true))
@@ -40,8 +41,12 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean) =>
                 dispatch(setIsErrorAC(e.response.data.error))
             }
         )
+        .finally(() => {
+            setAppLoading(false)
+        })
 }
 export const InitializeTC = () => (dispatch: Dispatch) => {
+    setAppLoading(true)
     authAPI.me()
         .then(res => {
                 dispatch(setIsLoggedInAC(true))
@@ -54,9 +59,11 @@ export const InitializeTC = () => (dispatch: Dispatch) => {
         )
         .finally(() => {
             dispatch(setIsInitializeAC(true))
+            setAppLoading(false)
         })
 }
 export const LogoutTC = () => (dispatch: Dispatch) => {
+    setAppLoading(true)
     authAPI.logout()
         .then(() => {
                 dispatch(setIsLoggedInAC(false))
@@ -67,6 +74,9 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
                 dispatch(setIsErrorAC(e.response.data.error))
             }
         )
+        .finally(() => {
+            setAppLoading(false)
+        })
 }
 
 // Types
@@ -78,4 +88,5 @@ type ActionsType =
     | ReturnType<typeof setIsLoggedInAC>
     | ReturnType<typeof setIsErrorAC>
     | SetProfileType
+    | ReturnType<typeof setAppLoading>
 
