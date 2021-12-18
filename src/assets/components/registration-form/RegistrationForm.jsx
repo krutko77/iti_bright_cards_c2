@@ -1,7 +1,7 @@
 import s from "./RegistrationForm.module.scss";
 import Title from "../common/title/Title.jsx";
 import Subtitle from "../common/subtitle/Subtitle.jsx";
-import Input from "../common/input/Input.jsx";
+import Input from "../common/input/Input.tsx";
 import Button from "../common/button/Button.jsx";
 
 // данные для input email

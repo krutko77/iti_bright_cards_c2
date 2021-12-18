@@ -2,7 +2,7 @@ import s from "./PasswordRecoveryForm.module.scss";
 import { NavLink } from "react-router-dom";
 import Title from "../common/title/Title.jsx";
 import Subtitle from "../common/subtitle/Subtitle.jsx";
-import Input from "../common/input/Input.jsx";
+import Input from "../common/input/Input.tsx";
 import Button from "../common/button/Button.jsx";
 
 

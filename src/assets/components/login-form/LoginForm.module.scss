@@ -31,3 +31,7 @@
 .linkSignUp {
    @include font(16px, 600, 120%, $btnColor)
 }
+
+.error {
+   color: red;
+}
