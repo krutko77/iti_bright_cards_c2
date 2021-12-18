@@ -11,7 +11,6 @@
    border-radius: 30px;
    cursor: pointer;
    @include font(16px, 500, 120%, $btnTextColor);
-   margin-bottom: 31px;
 
    &:hover {
       opacity: 0.9;

@@ -22,14 +22,15 @@ input:focus {
 }
 
 .input .placeholder {
-   @include font(13px, 400, 150%, #CECFDA);
+   @include font(16px, 500, 150%, #9393A2);
    position: absolute;
-   top: 45px;
+   top: 50px;
    left: 0;
 }
 
 .input input:valid+.placeholder,
 .input input:focus+.placeholder {
+   @include font(13px, 400, 150%, #9393A2);
    transform: translateY(-150%);
    transition: 0.3s ease;
 }

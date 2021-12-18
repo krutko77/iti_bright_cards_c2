@@ -11,6 +11,10 @@ import { PasswordNew } from "../../../n2-features/f1-auth/PasswordNew";
 import { Examples } from "../../../n2-features/f0-test/Examples/Examples";
 
 import LoginForm from "../../../assets/components/login-form/LoginForm.jsx";
+import RegistrationForm from "../../../assets/components/registration-form/RegistrationForm.jsx";
+import PasswordRecoveryForm from "../../../assets/components/password-recovery-form/PasswordRecoveryForm.jsx";
+import SendingInstructionsForm from "../../../assets/components/sending-instructions-form/SendingInstructionsForm.jsx";
+import PasswordNewForm from "../../../assets/components/password-new-form/PasswordNewForm.jsx";
 
 export const Main = () => {
    return (
