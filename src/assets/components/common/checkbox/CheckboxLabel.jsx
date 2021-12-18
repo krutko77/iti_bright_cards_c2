@@ -2,7 +2,7 @@
 import s from "./CheckboxLabel.module.scss";
 import Checkbox from '@mui/material/Checkbox';
 
-export default function CheckboxLabels(props) {
+export default function CheckboxLabel(props) {
    return (
       <div className={s.checkboxLabels}>
          <Checkbox />
