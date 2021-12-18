@@ -12,22 +12,8 @@
 
 .block {
    display: flex;
-   flex-direction: column;
-   align-items: flex-end;
-   margin: 15px 20px 80px 0;
-   align-self: flex-end;
+   justify-content: space-between;
+   width: 100%;
+   margin: 85px 0 30px;
 }
 
-.linkForgotPass {
-   @include font(14px, 400, 120%, #2D2E46);
-   margin-top: 20px;
-}
-
-.question {
-   @include font(14px, 600, 170%, #9393A2);
-   margin: 31px 0 11px;
-}
-
-.linkSignUp {
-   @include font(16px, 600, 120%, $btnColor)
-}

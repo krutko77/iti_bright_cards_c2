@@ -1,0 +1,8 @@
+ 
+ @mixin font($fontSize, $fontWeight, $lineHeight, $color) {
+   font-size: $fontSize;
+   font-weight: $fontWeight;
+   line-height: $lineHeight;
+   color: $color;
+   font-family: "SFDisplay", sans-serif;
+}
