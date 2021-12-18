@@ -35,7 +35,7 @@ const inputData2: inputDataType = {
     }
 }
 
-export default function LoginForm(props: PropsType) {
+export default function LoginForm() {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
     const errorFromServer = useSelector<AppStoreType, string | null>(state => state.auth.error)
@@ -97,15 +97,12 @@ export default function LoginForm(props: PropsType) {
                 </div>
                 <Button label="Login" type={'submit'}/>
                 <span className={s.question}>Don’t have an account?</span>
-                <NavLink className={s.linkSignUp} to={'/'}>Sign Up</NavLink>
+                <NavLink className={s.linkSignUp} to={'/registration'}>Sign Up</NavLink>
             </div>
         </form>
     );
 }
 
-type PropsType = {
-    onSubmit: (e?: (React.FormEvent<HTMLFormElement> | undefined)) => void
-}
 export type inputDataType = {
     id?: string
     type?: string
