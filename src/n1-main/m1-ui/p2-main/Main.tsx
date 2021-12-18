@@ -10,7 +10,7 @@ import { PasswordRecovery } from "../../../n2-features/f1-auth/PasswordRecovery"
 import { PasswordNew } from "../../../n2-features/f1-auth/PasswordNew";
 import { Examples } from "../../../n2-features/f0-test/Examples/Examples";
 
-import LoginForm from "../../../assets/components/login-form/LoginForm.jsx";
+import LoginForm from "../../../assets/components/login-form/LoginForm.js";
 
 export const Main = () => {
    return (
