@@ -31,19 +31,24 @@ export const RecoveryAPI = {
             email,
             from: "test-front-admin <ivanin.jay@gmail.com>",
             message: `<div style="background-color: lime; padding: 15px">password recovery link: 
-                            <a href='https://brightwiths.github.io/iti_bright_cards_c2/#/passwordnew/$token$'>link</a></div>`
-                            /*<a href='http://localhost:3000/#/passwordnew/$token$'>link</a></div>`*/
+                            <a href='http://localhost:3000/#/passwordnew/$token$'>link</a></div>`
         })
     },
 
-    newPass(password:string, token:string){
+    newPass(password: string, token: string) {
         return instance.post<recoveryType>('/auth/set-new-password', {
-            password:password,
-            resetPasswordToken:token,
+            password: password,
+            resetPasswordToken: token,
         })
     }
-
 };
+
+export const cardsAPI = {
+    registerUser() {
+        return instance.get<cardPacksType[]>('/GET /cards/pack')
+    },
+}
+
 
 export type LoginType = {
     email: string,
@@ -66,5 +71,7 @@ export type ResponseType<D = {}> = {
 export type recoveryType = {
     error: string
     success: boolean
-    info:string
+    info: string
 }
+
+export type cardPacksType = []

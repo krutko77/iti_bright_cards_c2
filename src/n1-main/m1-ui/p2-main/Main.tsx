@@ -13,6 +13,8 @@ import SendingInstructionsForm from "../../../assets/components/sending-instruct
 import PasswordNewForm from "../../../assets/components/password-new-form/PasswordNewForm.jsx";
 import LoginForm from "../../../assets/components/login-form/LoginForm";
 import RegistrationForm from "../../../assets/components/registration-form/RegistrationForm";
+import {Packs} from '../../../n2-features/f3-packs/Packs';
+import {Cards} from '../../../n2-features/f4-cards/Cards';
 
 export const Main = () => {
    return (
@@ -29,6 +31,8 @@ export const Main = () => {
                <Route path={'/tests/:token'} element={<Examples />} />
                <Route path="/" element={<Navigate to="/login" />} />
                <Route path="*" element={<Navigate to="/404" />} />
+               <Route path={'/packs'} element={<Packs/>}/>
+               <Route path={'/cards'} element={<Cards/>}/>
             </Routes>
          </div>
       </div>
