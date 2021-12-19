@@ -13,6 +13,7 @@ import SendingInstructionsForm from "../../../assets/components/sending-instruct
 import PasswordNewForm from "../../../assets/components/password-new-form/PasswordNewForm.jsx";
 import LoginForm from "../../../assets/components/login-form/LoginForm";
 import RegistrationForm from "../../../assets/components/registration-form/RegistrationForm";
+import ProfileForm from "../../../assets/components/profile-form/ProfileForm.jsx"
 import {Packs} from '../../../n2-features/f3-packs/Packs';
 import {Cards} from '../../../n2-features/f4-cards/Cards';
 

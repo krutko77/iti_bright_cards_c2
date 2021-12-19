@@ -10,17 +10,22 @@
    background-color: $bgColor;
 }
 
+.img {
+   position: relative;
+   margin-bottom: 20px;
+}
+
+.icon {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   cursor: pointer;
+}
+
 .block {
    display: flex;
    justify-content: space-between;
    width: 100%;
-   margin: 85px 0 30px;
+   margin:105px 0 30px;
 }
 
-.error {
-   color: red;
-}
-
-.link {
-   @include font(16px, 600, 120%, $btnColor)
-}
