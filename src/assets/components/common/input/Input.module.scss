@@ -30,7 +30,7 @@ input:focus {
 
 .input input:valid+.placeholder,
 .input input:focus+.placeholder {
-   @include font(13px, 400, 150%, #9393A2);
+   font-size: 13px;
    transform: translateY(-150%);
    transition: 0.3s ease;
 }

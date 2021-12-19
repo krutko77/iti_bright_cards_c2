@@ -1,0 +1,58 @@
+@import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
+.packsList {
+   border-radius: 8px;
+   display: grid;
+   grid-template-columns: 243px 765px;
+   grid-template-areas:
+      "s m";
+}
+
+.sidebar {
+   padding: 33px 24px 33px;
+   grid-area: s;
+   background-color: #ECECF9;
+   border-radius: 8px 0 0 8px;
+}
+
+.label {
+   display: inline-block;
+   @include font(16px, 600, 120%, $textColor);
+}
+
+.btnBlock {
+   display: flex;
+   margin: 20px 0 45px;
+}
+
+.main {
+   grid-area: m;
+   padding: 24px 48px;
+   background-color: #FEFEFF;
+   border-radius: 0 8px 8px 0;
+
+}
+
+.searchBlock {
+   display: flex;
+   justify-content: space-between;
+}
+
+
+// .text {
+//    display: inline-block;
+//    align-self: flex-start;
+//    width: 340px;
+//    margin: 30px 0 90px;
+//    @include font(16px, 400, 150%, #9393A2);
+// }
+
+// .question {
+//    @include font(16px, 400, 120%, #9393A2);
+//    margin: 31px 0 11px;
+// }
+
+// .link {
+//    @include font(16px, 600, 120%, $btnColor)
+// }

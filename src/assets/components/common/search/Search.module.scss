@@ -1,0 +1,35 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
+.search {
+   margin-bottom: 80px;
+   &::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("../../../../assets/img/search-icon.svg");      
+   }
+}
+
+.inputSearch {
+   height: 36px;
+   width: 461px;
+   padding-left: 40px;
+   background-color: #ECECF9;
+   opacity: 0.5;
+   border: 1px solid #635D80;
+   border-radius: 2px;
+   @include font(16px, 400, 150%, $textColor);
+}
+
+input::placeholder {
+   @include font(14px, 400, 170%, #9393A2);
+}
+
+// input,
+// input::placeholder {
+//    @include font(16px, 400, 150%, $textColor);
+// }
