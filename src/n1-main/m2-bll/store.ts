@@ -6,7 +6,7 @@ import {profileReducer} from "./profileReducer";
 import {registrationReducer} from "./registrationReducer";
 import {passwordRecoveryReducer} from "./passwordRecoveryReducer";
 import {appReducer} from "./appReducer";
-import {packReducer} from "./packReducer";
+import {packsReducer} from "./packsReducer";
 import {cardsReducer} from "./cardsReducer";
 
 const reducers = combineReducers({
@@ -16,7 +16,7 @@ const reducers = combineReducers({
     registration: registrationReducer,
     recovery: passwordRecoveryReducer,
     app: appReducer,
-    packs: packReducer,
+    packs: packsReducer,
     cards: cardsReducer,
 })
 

@@ -4,7 +4,7 @@ const initialState: InitialStateType = {
     getPacksAC: []
 }
 
-export const packReducer = (state = initialState, action: ActionType) => {
+export const packsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'pack/GET-CARD-PACKS':
             return {...state, cardPack: action.cardPacks}

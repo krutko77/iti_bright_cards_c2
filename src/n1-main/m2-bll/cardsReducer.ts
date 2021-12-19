@@ -4,7 +4,7 @@ const initialState: InitialStateType = {
     getPacksAC: []
 }
 
-export const cardReducer = (state = initialState, action: ActionType) => {
+export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'pack/GET-CARDS':
             return {...state, cards: action.cards}
@@ -13,7 +13,7 @@ export const cardReducer = (state = initialState, action: ActionType) => {
     }
 }
 
-export const getCardsAC = (cards: cardsType) => ({type: "pack/GET-CARDS", cards} as const)
+export const getCardsAC = (cards: any) => ({type: "pack/GET-CARDS", cards} as const)
 
 type InitialStateType = {
     getPacksAC: Array<{}>

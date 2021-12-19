@@ -3,7 +3,7 @@ import {CardsType} from "../f4-cards/Cards";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
 
 export const Packs = () => {
-    const packs = useSelector<AppStoreType, Array<CardsType>>(state => state.packs)
+    // const packs = useSelector<AppStoreType, Array<CardsType>>(state => state.packs)
     const dispatch = useDispatch();
 
     return (
