@@ -1,11 +1,11 @@
 import React from 'react'
 import s from "./LoginForm.module.scss";
 import {Navigate, NavLink} from "react-router-dom";
-import Title from "./../common/title/Title.jsx";
-import Subtitle from "./../common/subtitle/Subtitle.jsx";
-import Button from "./../common/button/Button.jsx";
-import CheckboxLabel from "./../common/checkbox/CheckboxLabel.jsx";
-import {Input} from "../common/input/Input";
+import Title from "../../../assets/components/common/title/Title.jsx";
+import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
+import Button from "../../../assets/components/common/button/Button.jsx";
+import CheckboxLabel from "../../../assets/components/common/checkbox/CheckboxLabel.jsx";
+import {Input} from "../../../assets/components/common/input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useFormik} from "formik";
