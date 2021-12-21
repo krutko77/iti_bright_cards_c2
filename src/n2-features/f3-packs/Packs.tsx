@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {getPacksTC, packsStateType, packType} from "../../n1-main/m2-bll/packsReducer";
+import {addPacksTC, getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -33,16 +33,23 @@ export const Packs = () => {
     //     return {name, cardsCount, updated};
     // }
 
+        const addPacksHandler = ()=>{
+        dispatch(addPacksTC())
+    }
+
     return (
+
         <TableContainer component={Paper}>
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Cards Count</TableCell>
-                        <TableCell align="right">Updated</TableCell>
-                        <TableCell align="right">url</TableCell>
-                        <TableCell align="right">add</TableCell>
+                        <TableCell align="center">Cards Count</TableCell>
+                        <TableCell align="center">Updated</TableCell>
+                        <TableCell align="center">url</TableCell>
+                        <TableCell align='center' ><button onClick={addPacksHandler}>add</button></TableCell>
+
+
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -52,11 +59,12 @@ export const Packs = () => {
                             sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                             <TableCell component="th" scope="row">{mp.name}
                             </TableCell>
-                            <TableCell align="right">{mp.cardsCount}</TableCell>
-                            <TableCell align="right">{mp.updated}</TableCell>
-                            <TableCell align="right">
-                                <NavLink to={'/cards' + '/' + mp._id}>cards</NavLink>
-                            </TableCell>
+                            <TableCell align="center">{mp.cardsCount}</TableCell>
+                            <TableCell align="center">{mp.updated}</TableCell>
+                            <TableCell align="center"></TableCell>
+                            <TableCell align='center'><button>del</button></TableCell>
+                            <TableCell align='center'><button>update</button></TableCell>
+                            <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

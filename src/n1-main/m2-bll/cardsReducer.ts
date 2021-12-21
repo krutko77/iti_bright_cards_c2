@@ -1,9 +1,7 @@
 import {Dispatch} from "redux";
 import {cardsAPI} from "./api/api";
-import {AppStoreType} from "./store";
 
 export const initialState:cardType[] = []
-
 
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
@@ -24,6 +22,15 @@ export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
             }
         })
 }
+
+export const addCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
+    cardsAPI.addCards(id)
+        .then((res) => {
+                dispatch<any>(getCardsTC(id))
+        })
+}
+
+
 
 type ActionType = ReturnType<typeof getCardsAC>
 
