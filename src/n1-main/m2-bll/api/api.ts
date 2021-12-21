@@ -51,8 +51,8 @@ export const packsAPI = {
     }
 }
 export const cardsAPI = {
-    getCards(pack_id: string) {
-        return instance.get<getCardType>(`/cards/card/?cardsPack_id=${pack_id}`)
+    getCards(id: string) {
+        return instance.get<getCardType>(`/cards/card?cardsPack_id=${id}`)
     },
 }
 

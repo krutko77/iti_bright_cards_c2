@@ -14,13 +14,18 @@ import {useParams} from "react-router-dom";
 
 export const Cards = () => {
 
+    let id =  useParams()
+    console.log('params: ', id)
+
+
     const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
     const dispatch = useDispatch();
-    const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
+
+
 
     useEffect(() => {
-        dispatch(getCardsTC(pack_id))
-    }, [dispatch])
+        dispatch(getCardsTC(id))
+    }, [dispatch,id])
 
     return (
         <TableContainer component={Paper}>

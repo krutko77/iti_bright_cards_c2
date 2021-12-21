@@ -51,8 +51,9 @@ export const Packs = () => {
                             </TableCell>
                             <TableCell align="right">{mp.cardsCount}</TableCell>
                             <TableCell align="right">{mp.updated}</TableCell>
-                            <TableCell align="right"><NavLink to={'/cards' + '/' + pack_id}>cards</NavLink></TableCell>
-
+                            <TableCell align="right">
+                                <NavLink to={'/cards' + '/' + mp._id}>cards</NavLink>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
