@@ -1,9 +1,9 @@
 const initialState: InitialStateType = {
-    cardPacksTotalCount: 100,
+    cardPacksTotalCount: 10,
     pageCount: 10,
     page: 1,
-    max: 4,
-    min: 0,
+    max: 200,
+    min: 1,
 }
 
 export const findAndPaginationReducer = (state = initialState, action: ActionType): InitialStateType => {

@@ -29,7 +29,7 @@ export const Main = () => {
                <Route path={'/404'} element={<Page404 />} />
                <Route path={'/passwordrecovery'} element={<PasswordRecovery />} />
                <Route path={'/passwordnew/:token'} element={<PasswordNew />} />
-               <Route path={'/tests/:token'} element={<Examples />} />
+               <Route path={'/tests'} element={<Examples />} />
                <Route path="/" element={<Navigate to="/login" />} />
                <Route path="*" element={<Navigate to="/404" />} />
                <Route path={'/packs'} element={<Packs/>}/>
