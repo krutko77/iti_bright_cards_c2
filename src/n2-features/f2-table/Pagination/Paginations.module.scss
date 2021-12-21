@@ -1,21 +1,27 @@
+@import '../../../n1-main/m1-ui/common/components/styles/variables';
+
 .pagination {
     display: flex;
     padding: 10px;
     justify-content: center;
-
 }
 
 .select {
     font-weight: bold;
+    border: 1px solid $textColor;
 }
 
 .item {
     height: 30px;
     width: 30px;
     margin: 10px;
-    background-color: #f5f2d0;
+    background-color: $primaryColor;
     text-align: center;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
 }
 
 .btn {
