@@ -47,7 +47,7 @@ export const RecoveryAPI = {
 
 export const packsAPI = {
     getPacks() {
-        return instance.get<getPacksType>(`/cards/pack`)
+        return instance.get<getPacksType>(`/cards/pack?` + "pageCount=100")
     }
 }
 export const cardsAPI = {

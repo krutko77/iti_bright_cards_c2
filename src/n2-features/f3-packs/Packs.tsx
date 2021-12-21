@@ -45,7 +45,7 @@ export const Packs = () => {
                 <TableBody>
                     {cardPacks.map((mp) => (
                         <TableRow
-                            key={mp.name}
+                            key={mp._id}
                             sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                             <TableCell component="th" scope="row">{mp.name}
                             </TableCell>
