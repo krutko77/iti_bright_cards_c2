@@ -40,9 +40,12 @@ export const Pagination = () => {
 
             {pages
                 .filter(p => p ? p >= leftNumber && p <= rightNumber : '')
-                .map(p => {
-                    return <div key={p} className={`${s.item} ${page === p ? s.select : s.item}`}
-                                onClick={() => {currentPageHandler(p)}}>{p}</div>
+                .map(q => {
+                    return <div
+                                key={q}
+                                className={`${s.item} ${page === q ? s.select : s.item}`}
+                                onClick={() => {currentPageHandler(q)}}>{q}
+                           </div>
                 })}
             {portionCount > portion &&
               <SuperButton className={s.btn}  onClick={() => {
