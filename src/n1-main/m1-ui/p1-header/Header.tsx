@@ -22,6 +22,8 @@ export const Header = () => {
                         <NavLink className={s.item} to={'/temptable'}>TestTable</NavLink>
                         <NavLink className={s.item} to={'/profile'}>Profile</NavLink>
                         <a className={s.link} onClick={onLogout}>Log out</a>
+                        <NavLink className={s.item} to={'/packs'}>Packs</NavLink>
+                        <NavLink className={s.item} to={'/cards'}>Cards</NavLink>
                     </>
                     : <>
                         <NavLink className={s.item} to={'/login'}>Login</NavLink>

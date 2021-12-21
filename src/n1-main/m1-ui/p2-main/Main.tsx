@@ -35,6 +35,7 @@ export const Main = () => {
                <Route path="*" element={<Navigate to="/404" />} />
                <Route path={'/packs'} element={<Packs/>}/>
                <Route path={'/temptable'} element={<TempTable/>}/>
+               <Route path={'/cards/:id'} element={<Cards/>}/>
                <Route />
             </Routes>
          </div>

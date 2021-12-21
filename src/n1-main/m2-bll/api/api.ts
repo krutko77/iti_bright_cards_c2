@@ -1,4 +1,6 @@
 import axios, {AxiosResponse} from "axios";
+import {packType} from "../packsReducer";
+import {cardType} from "../cardsReducer";
 
 const instance = axios.create({
     // baseURL: 'http://localhost:7542/2.0/',
@@ -43,12 +45,16 @@ export const RecoveryAPI = {
     }
 };
 
+export const packsAPI = {
+    getPacks() {
+        return instance.get<getPacksType>(`/cards/pack`)
+    }
+}
 export const cardsAPI = {
-    registerUser() {
-        return instance.get<cardPacksType[]>('/GET /cards/pack')
+    getCards(id: string) {
+        return instance.get<getCardType>(`/cards/card?cardsPack_id=${id}`)
     },
 }
-
 
 export type LoginType = {
     email: string,
@@ -74,4 +80,9 @@ export type recoveryType = {
     info: string
 }
 
-export type cardPacksType = []
+export type getPacksType = {
+    cardPacks: packType[]
+}
+export type getCardType = {
+    cards: cardType[]
+}
