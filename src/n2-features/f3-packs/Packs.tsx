@@ -13,8 +13,8 @@ import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 
 export const Packs = () => {
-    const {cardPacks}= useSelector<AppStoreType,packsStateType>(state => state.packs)
-    const pack_id= useSelector<AppStoreType,string>(state => state.packs.pack_id)
+    const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
+    const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
 
     const dispatch = useDispatch()
 
@@ -51,7 +51,7 @@ export const Packs = () => {
                             </TableCell>
                             <TableCell align="right">{mp.cardsCount}</TableCell>
                             <TableCell align="right">{mp.updated}</TableCell>
-                            <TableCell align="right"><NavLink to={'/cards/' + pack_id}>cards</NavLink></TableCell>
+                            <TableCell align="right"><NavLink to={'/cards' + '/' + pack_id}>cards</NavLink></TableCell>
 
                         </TableRow>
                     ))}

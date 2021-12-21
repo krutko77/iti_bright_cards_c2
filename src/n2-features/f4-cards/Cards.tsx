@@ -16,10 +16,10 @@ export const Cards = () => {
 
     const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
     const dispatch = useDispatch();
-    const {id} = useParams<'id'>()
+    const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
 
     useEffect(() => {
-        dispatch(getCardsTC(id))
+        dispatch(getCardsTC(pack_id))
     }, [dispatch])
 
     return (

@@ -15,8 +15,8 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
 
 export const getCardsAC = (cards: cardType[]) => ({type: "cards/GET-CARDS", cards} as const)
 
-export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
-    cardsAPI.getCards(id)
+export const getCardsTC = (pack_id:any) => (dispatch: Dispatch<ActionType>) => {
+    cardsAPI.getCards(pack_id)
         .then((res) => {
             if (res.data.cards) {
                 dispatch(getCardsAC(res.data.cards))
@@ -42,6 +42,3 @@ export type cardType = {
     updated: string
 }
 
-export type cardsStateType = {
-    cards: cardType[];
-}
