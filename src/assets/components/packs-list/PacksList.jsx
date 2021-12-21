@@ -1,9 +1,11 @@
 import s from "./PacksList.module.scss";
-import Subtitle from "../common/subtitle/Subtitle.jsx";
-import Button from "../common/button/Button.jsx";
-import Search from "../common/search/Search.jsx";
-import Table from "../table/Table.jsx";
-import UsePagination from "../common/pagination/UsePagination.jsx";
+import Subtitle from "./../common/subtitle/Subtitle.jsx";
+import Button from "./../common/button/Button.jsx";
+import Search from "./../common/search/Search.jsx";
+import Table from "./../table/Table.jsx";
+import PaginationRounded from "./pagination/PaginationRounded.jsx";
+import Select from "./Select.jsx";
+
 
 // стилизация синей кнопоки
 const styleButton = {
@@ -28,13 +30,13 @@ const tableData = {
       td2: "4",
       td3: "18.03.2021",
       td4: "Ivan Ivanov"
-   },  
+   },
    dataRow3: {
       td1: "Pack Name",
       td2: "4",
       td3: "18.03.2021",
       td4: "Ivan Ivanov"
-   },  
+   },
    dataRow4: {
       td1: "Pack Name",
       td2: "4",
@@ -58,7 +60,7 @@ const tableData = {
       td2: "4",
       td3: "18.03.2021",
       td4: "Ivan Ivanov"
-   }, 
+   },
    dataRow8: {
       td1: "Pack Name",
       td2: "4",
@@ -74,7 +76,7 @@ export default function PacksList() {
             <span className={s.label}>Show packs cards</span>
             <div className={s.btnBlock}>
                <button className={`${s.btn} ${s.active}`}>My</button>
-               <button className={s.btn}>All</button>              
+               <button className={s.btn}>All</button>
             </div>
             <span className={s.label}>Number of cards</span>
          </aside>
@@ -86,8 +88,17 @@ export default function PacksList() {
                <Search />
                <Button label="Add new pack" style={styleButton} />
             </div>
-            <Table tableData={tableData}/>
-            <UsePagination />
+            <Table tableData={tableData} />
+            <div className={s.bottomBlock}>
+               <PaginationRounded />
+               <div className={s.selectBlock}>
+                  <span className={s.label1}>Show</span>
+                  <div className={s.selectWrap}>
+                     <Select />
+                  </div>
+                  <span className={s.label2}>Cards per Page</span>
+               </div>
+            </div>
          </main>
       </div>
    );
