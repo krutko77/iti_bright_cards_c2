@@ -8,7 +8,7 @@ export const initialState:cardType[] = []
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'cards/GET-CARDS':
-            return {...state, cards: action.cards}
+            return [...action.cards]
         default:
             return state
     }

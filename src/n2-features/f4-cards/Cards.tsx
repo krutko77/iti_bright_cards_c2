@@ -14,18 +14,14 @@ import {useParams} from "react-router-dom";
 
 export const Cards = () => {
 
-    let id =  useParams()
-    console.log('params: ', id)
-
+    let {id} = useParams()
 
     const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
         dispatch(getCardsTC(id))
-    }, [dispatch,id])
+    }, [dispatch, id])
 
     return (
         <TableContainer component={Paper}>
@@ -41,17 +37,17 @@ export const Cards = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {cards.map((cards) => (
+                    {cards.map((card: cardType) => (
                         <TableRow
-                            key={cards.cardsPack_id}
+                            key={card.cardsPack_id}
                             sx={{'&:last-child td, &:last-child th': {border: 0}}}
                         >
                             <TableCell component="th" scope="row">
-                                {cards.question}
+                                {card.question}
                             </TableCell>
-                            <TableCell align="right">{cards.answer}</TableCell>
-                            <TableCell align="right">{cards.grade}</TableCell>
-                            <TableCell align="right">{cards.updated}</TableCell>
+                            <TableCell align="right">{card.answer}</TableCell>
+                            <TableCell align="right">{card.grade}</TableCell>
+                            <TableCell align="right">{card.updated}</TableCell>
 
                         </TableRow>
                     ))}
