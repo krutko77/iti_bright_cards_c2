@@ -9,7 +9,7 @@ export const Input: React.FC<PropsType> = ({inputData,...restProps}) => {
       <div className={s.input}>
          <input id={inputData.id} type={inputData.type} name={inputData.name} required {...restProps}/>
          <label className={s.placeholder} htmlFor={inputData.for}>{inputData.label}</label>
-         <img className={s.icon} src={icon} alt="image" style={inputData.style} />
+         <img className={s.icon} src={icon} alt="icon" style={inputData.style} />
       </div>
    );
 }
