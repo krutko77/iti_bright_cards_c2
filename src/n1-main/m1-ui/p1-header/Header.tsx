@@ -19,7 +19,6 @@ export const Header = () => {
             <div className={s.links}>
                 {isLoggedIn
                     ? <>
-                        <NavLink className={s.item} to={'/temptable'}>TestTable</NavLink>
                         <NavLink className={s.item} to={'/profile'}>Profile</NavLink>
                         <a className={s.link} onClick={onLogout}>Log out</a>
                         <NavLink className={s.item} to={'/packs'}>Packs</NavLink>

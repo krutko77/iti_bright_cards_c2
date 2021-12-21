@@ -16,7 +16,6 @@ import PacksList from '../../../assets/components/packs-list/PacksList';
 import {Packs} from '../../../n2-features/f3-packs/Packs';
 import {Cards} from '../../../n2-features/f4-cards/Cards';
 import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
-import {TempTable} from "../../../n2-features/f2-table/TempTable/TempTable";
 
 export const Main = () => {
    return (
@@ -34,7 +33,6 @@ export const Main = () => {
                <Route path="/" element={<Navigate to="/login" />} />
                <Route path="*" element={<Navigate to="/404" />} />
                <Route path={'/packs'} element={<Packs/>}/>
-               <Route path={'/temptable'} element={<TempTable/>}/>
                <Route path={'/cards/:id'} element={<Cards/>}/>
                <Route />
             </Routes>

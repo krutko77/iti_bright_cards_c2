@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {packsAPI} from "./api/api";
+import {AppStoreType} from "./store";
 
 export const initialState:packsStateType = {
     cardPacks:[],
@@ -20,8 +21,13 @@ export const packsReducer = (state= initialState, action: ActionType):packsState
 export const getPacksAC = (cardPacks: packType[]) => ({type: "pack/GET-CARD-PACKS", cardPacks} as const)
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
 
-export const getPacksTC = () => (dispatch: Dispatch<ActionType>) => {
-    packsAPI.getPacks()
+export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
+    const page = getState().findAndPagination.page
+    const pageCount = getState().findAndPagination.pageCount.toString()
+    const min = getState().findAndPagination.min
+    const max = getState().findAndPagination.max
+
+    packsAPI.getPacks(pageCount, page, min, max)
         .then((res) => {
             if (res.data.cardPacks) {
                 dispatch(getPacksAC(res.data.cardPacks))

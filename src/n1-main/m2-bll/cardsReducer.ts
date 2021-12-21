@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {cardsAPI} from "./api/api";
+import {AppStoreType} from "./store";
 
 export const initialState:cardType[] = []
 

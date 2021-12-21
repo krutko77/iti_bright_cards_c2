@@ -8,7 +8,7 @@ export const Pagination = () => {
     const dispatch = useDispatch()
 
 
-    const portionSize = 10; // порция которая видна в пагинации
+    const portionSize = 5; // порция которая видна в пагинации
 
     // кол-во элементов на одной стр
     let pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.pageCount)
@@ -34,7 +34,7 @@ export const Pagination = () => {
 
 
     return (
-        <div>
+        <div className={s.pagination}>
             {portionNumber > 1 &&
               <button onClick={() => {
                   setPortionNumber(portionNumber - 1)

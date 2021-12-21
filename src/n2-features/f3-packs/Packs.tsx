@@ -11,16 +11,19 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
+import {Pagination} from "../f2-table/Pagination/Pagination";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
+    const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.pageCount).toString()
+    const page = useSelector<AppStoreType, number>(state => state.findAndPagination.page)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacksTC())
-    }, [dispatch])
+    }, [dispatch, pageCount, page])
 
     // function createData(
     //     name: string,
@@ -58,6 +61,7 @@ export const Packs = () => {
                     ))}
                 </TableBody>
             </Table>
+            <Pagination/>
         </TableContainer>
     );
 }
