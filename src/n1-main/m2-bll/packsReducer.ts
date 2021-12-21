@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
+import {setCardPacksTotalCountAC, setCardPacksTotalCountType} from "./findAndPaginationReducer";
 
 export const initialState:packsStateType = {
     cardPacks:[],
@@ -31,6 +32,7 @@ export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () =>
         .then((res) => {
             if (res.data.cardPacks) {
                 dispatch(getPacksAC(res.data.cardPacks))
+                dispatch(setCardPacksTotalCountAC(res.data.cardPacksTotalCount))
             }
         })
 }
@@ -58,4 +60,5 @@ export type packsStateType = {
 type ActionType =
     | ReturnType<typeof getPacksAC>
     | ReturnType<typeof getUserIdAC>
+    | setCardPacksTotalCountType
 

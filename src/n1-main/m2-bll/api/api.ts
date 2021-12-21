@@ -83,6 +83,11 @@ export type recoveryType = {
 
 export type getPacksType = {
     cardPacks: packType[]
+    cardPacksTotalCount: number // количество колод
+    maxCardsCount: number
+    minCardsCount: number
+    page: number // выбранная страница
+    pageCount: number // количество элементов на странице
 }
 export type getCardType = {
     cards: cardType[]

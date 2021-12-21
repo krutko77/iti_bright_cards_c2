@@ -1,6 +1,6 @@
 const initialState: InitialStateType = {
-    cardPacksTotalCount: 10,
-    pageCount: 5,
+    cardPacksTotalCount: 100,
+    pageCount: 10,
     page: 1,
     max: 4,
     min: 0,
@@ -29,7 +29,7 @@ type InitialStateType = {
     max: number
 }
 
-export const setTotalCountAC = (cardPacksTotalCount: number) =>
+export const setCardPacksTotalCountAC = (cardPacksTotalCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-TOTAL-COUNT', cardPacksTotalCount,} as const)
 export const setPageCountAC = (pageCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-PAGE-COUNT', pageCount,} as const)
@@ -38,8 +38,10 @@ export const setCurrentPageAC = (page: number) =>
 export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and max cardsPacks
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)
 
+export type setCardPacksTotalCountType = ReturnType<typeof setCardPacksTotalCountAC>
+
 type ActionType =
-    | ReturnType<typeof setTotalCountAC>
+    | setCardPacksTotalCountType
     | ReturnType<typeof setPageCountAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setCardsPacksCountAC>

@@ -24,12 +24,14 @@ export const Pagination = () => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    const portionSize = 5; // portion that is seeing in pagination
+    const portionSize = 10; // portion that is seeing in pagination
     const portionCount = Math.ceil(pagesCount / portionSize) // count of portions per portionSize pages
 
     const [portion, setPortion] = useState(1)
     const leftNumber = (portion - 1) * portionSize + 1
     const rightNumber = portion * portionSize
+    const correctValue = pages.filter((p) => p ? p >= leftNumber && p <= rightNumber : '')
+
 
     return (
         <div className={s.pagination}>
@@ -38,8 +40,7 @@ export const Pagination = () => {
                   setPortion(portion - 1)
               }}>&lt;</SuperButton>}
 
-            {pages
-                .filter(p => p ? p >= leftNumber && p <= rightNumber : '')
+            {correctValue
                 .map(q => {
                     return <div
                                 key={q}
