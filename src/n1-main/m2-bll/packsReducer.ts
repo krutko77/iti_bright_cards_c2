@@ -2,21 +2,21 @@ import {Dispatch} from "redux";
 import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
 import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
-import {AxiosResponse} from "axios";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
 
 export const initialState: packsStateType = {
     cardPacks: [],
     pack_id: '',
 }
 
-export const packsReducer = (state= initialState, action: ActionType) => {
+export const packsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'pack/GET-CARD-PACKS':
             return {...state, cardPacks: action.cardPacks}
         case 'pack/GET-USER-ID':
             return {...state, pack_id: action.pack_id}
         case "pack/ADD-CARD-PACKS":
-            return {...state,name:action.name}
+            return {...state, name: action.name}
         default:
             return state
     }
@@ -26,7 +26,7 @@ export const getPacksAC = (cardPacks: packType[]) => ({type: "pack/GET-CARD-PACK
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
 export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name} as const)
 
-export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
+export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cardPacks.page
     const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
     const min = getState().findAndPagination.cardPacks.min
@@ -43,14 +43,16 @@ export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () =>
         })
 }
 
-export const addPacksTC = ()=>(dispatch:Dispatch)=>{
+
+export const addPacksTC = (): ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
     packsAPI.addPacks(false)
-    .then((res)=>{
-        dispatch(addPacksAC("New Pack333"))
-        dispatch<any>(getPacksTC())
-    })
+        .then((res) => {
+            dispatch(addPacksAC("New Pack333"))
+            dispatch(getPacksTC())
+        })
 }
 
+type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>
 
 export type packType = {
     _id: string

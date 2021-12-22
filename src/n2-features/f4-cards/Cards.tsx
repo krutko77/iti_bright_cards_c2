@@ -24,11 +24,12 @@ export const Cards = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (id)
         dispatch(getCardsTC(id))
     }, [dispatch, id, pageCount, page])
 
     const addCardHandler = ()=>{
-        dispatch(addCardsTC(id))
+        if (id) dispatch(addCardsTC(id))
     }
 
     return (
