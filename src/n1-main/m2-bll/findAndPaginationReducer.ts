@@ -6,6 +6,7 @@ const initialState: InitialStateType = {
         max: 200, // this is for range
         min: 0, // this is for range
         packName: '', // this is for search
+        sortPacks: null,
     },
     cards: {
         totalCount: 10,
@@ -27,6 +28,9 @@ export const findAndPaginationReducer = (state = initialState, action: ActionTyp
             return {...state, cardPacks: {...state.cardPacks, max: action.max, min: action.min}}
         case "FIND-AND-PAGINATION/SET-SEARCH-PACK-NAME":
             return {...state, cardPacks: {...state.cardPacks, packName: action.packName}}
+        case "FIND-AND-PAGINATION/SET-SORT-PACKS":
+            return {...state, cardPacks: {...state.cardPacks, sortPacks: action.sortPacks}}
+
         // for Cards
         case "FIND-AND-PAGINATION/SET-CARDS-TOTAL-COUNT":
             return {...state, cards: {...state.cards, totalCount: action.cardsTotalCount}}
@@ -47,6 +51,7 @@ type InitialStateType = {
         min: number
         max: number
         packName: string
+        sortPacks: SortPackType
     }
     cards: {
         totalCount: number
@@ -66,6 +71,8 @@ export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and ma
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)
 export const setSearchPackNameAC = (packName: string) =>
     ({type: 'FIND-AND-PAGINATION/SET-SEARCH-PACK-NAME', packName} as const)
+export const setSortPacksAC = (sortPacks: SortPackType) =>
+    ({type: 'FIND-AND-PAGINATION/SET-SORT-PACKS', sortPacks} as const)
 
 //AC for Cards:
 export const setCardsTotalCountAC = (cardsTotalCount: number) =>
@@ -78,7 +85,6 @@ export const setCarsCurrentPageAC = (page: number) =>
 export type SetCardPacksTotalCountType = ReturnType<typeof setCardPacksTotalCountAC>
 export type SetCardsTotalCountType = ReturnType<typeof setCardsTotalCountAC>
 
-
 type ActionType =
     | SetCardPacksTotalCountType
     | ReturnType<typeof setCardPacksPageCountAC>
@@ -88,3 +94,6 @@ type ActionType =
     | ReturnType<typeof setCardsPageCountAC>
     | ReturnType<typeof setCarsCurrentPageAC>
     | ReturnType<typeof setSearchPackNameAC>
+    | ReturnType<typeof setSortPacksAC>
+
+export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated' | null

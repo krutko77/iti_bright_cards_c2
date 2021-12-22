@@ -28,8 +28,9 @@ export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () =>
     const min = getState().findAndPagination.cardPacks.min
     const max = getState().findAndPagination.cardPacks.max
     const packName = getState().findAndPagination.cardPacks.packName
+    const sortPacks = getState().findAndPagination.cardPacks.sortPacks
 
-    packsAPI.getPacks(pageCount, page, min, max, packName)
+    packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
         .then((res) => {
             if (res.data.cardPacks) {
                 dispatch(getPacksAC(res.data.cardPacks))

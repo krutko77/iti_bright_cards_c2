@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 import {packType} from "../packsReducer";
 import {cardType} from "../cardsReducer";
+import {SortPackType} from "../findAndPaginationReducer";
 
 const instance = axios.create({
     // baseURL: 'http://localhost:7542/2.0/',
@@ -46,9 +47,9 @@ export const RecoveryAPI = {
 };
 
 export const packsAPI = {
-    getPacks(pageCount: string, page: number, min: number, max: number, packName: string) {
+    getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
         return instance.get<getPacksType>(`/cards/pack`, {params: {
-            pageCount, page, min, max, packName}})
+            pageCount, page, min, max, packName, sortPacks}})
     }
 }
 export const cardsAPI = {
