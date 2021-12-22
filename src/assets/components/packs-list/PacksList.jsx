@@ -4,7 +4,8 @@ import Button from "./../common/button/Button.jsx";
 import Search from "./../common/search/Search.jsx";
 import Table from "./../table/Table.jsx";
 import PaginationRounded from "./pagination/PaginationRounded.jsx";
-import Select from "./Select.jsx";
+import Select from "./select/Select.jsx";
+import UseSlider from "./../packs-list/use-slider/UseSlider.jsx";
 
 
 // стилизация синей кнопоки
@@ -78,7 +79,8 @@ export default function PacksList() {
                <button className={`${s.btn} ${s.active}`}>My</button>
                <button className={s.btn}>All</button>
             </div>
-            <span className={s.label}>Number of cards</span>
+            <span className={`${s.label} ${s.labelSlider}`}>Number of cards</span>
+            <UseSlider />
          </aside>
          <main className={s.main}>
             <div className={s.title}>
