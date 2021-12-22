@@ -11,17 +11,21 @@ import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
+import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
 
 export const Cards = () => {
 
     let {id} = useParams()
 
     const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
+    const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
+    const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCardsTC(id))
-    }, [dispatch, id])
+    }, [dispatch, id, pageCount, page])
 
     return (
         <TableContainer component={Paper}>
@@ -53,6 +57,7 @@ export const Cards = () => {
                     ))}
                 </TableBody>
             </Table>
+            <PaginationCardsContainer />
         </TableContainer>
     );
 }

@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
-import {setCardPacksTotalCountAC, setCardPacksTotalCountType} from "./findAndPaginationReducer";
+import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
 
 export const initialState:packsStateType = {
     cardPacks:[],
@@ -23,10 +23,10 @@ export const getPacksAC = (cardPacks: packType[]) => ({type: "pack/GET-CARD-PACK
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
 
 export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
-    const page = getState().findAndPagination.page
-    const pageCount = getState().findAndPagination.pageCount.toString()
-    const min = getState().findAndPagination.min
-    const max = getState().findAndPagination.max
+    const page = getState().findAndPagination.cardPacks.page
+    const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
+    const min = getState().findAndPagination.cardPacks.min
+    const max = getState().findAndPagination.cardPacks.max
 
     packsAPI.getPacks(pageCount, page, min, max)
         .then((res) => {
@@ -60,5 +60,5 @@ export type packsStateType = {
 type ActionType =
     | ReturnType<typeof getPacksAC>
     | ReturnType<typeof getUserIdAC>
-    | setCardPacksTotalCountType
+    | SetCardPacksTotalCountType
 
