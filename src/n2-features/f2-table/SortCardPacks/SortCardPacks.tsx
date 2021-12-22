@@ -9,10 +9,10 @@ export const SortCardPacks: React.FC<PropsType> = (props) => {
     const dispatch = useDispatch()
 
     const upperSortHandler = () => {
-        setSortPacksAC(props.upperSort)
+        dispatch(setSortPacksAC(props.upperSort))
     }
     const lowerSortHandler = () => {
-        setSortPacksAC(props.lowerCount)
+        dispatch(setSortPacksAC(props.lowerCount))
 
     }
 

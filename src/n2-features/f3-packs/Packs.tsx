@@ -13,18 +13,21 @@ import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
 import {Search} from "../f2-table/Search/Search";
+import {SortCardPacks} from "../f2-table/SortCardPacks/SortCardPacks";
+import s from './Pack.module.scss'
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
+    const sortPacks = useSelector<AppStoreType, string | null>(state => state.findAndPagination.cardPacks.sortPacks)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getPacksTC())
-    }, [dispatch, pageCount, page])
+    }, [dispatch, pageCount, page, sortPacks])
 
     // function createData(
     //     name: string,
@@ -39,17 +42,23 @@ export const Packs = () => {
     }
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer className={s.table} component={Paper}>
             <PaginationPacksContainer/>
             <Search/>
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="center">Cards Count</TableCell>
-                        <TableCell align="center">Updated</TableCell>
+                        <TableCell>
+                            Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/>
+                        </TableCell>
+                        <TableCell align="center">
+                            Cards Count<SortCardPacks upperSort={'0cardsCount'} lowerCount={'1cardsCount'}/>
+                        </TableCell>
+                        <TableCell align="center">
+                            Updated<SortCardPacks upperSort={'0updated'} lowerCount={'1updated'}/>
+                        </TableCell>
                         <TableCell align="center">url</TableCell>
-                        <TableCell align='center' ><button onClick={addPacksHandler}>add</button></TableCell>
+                        <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>
 
 
                     </TableRow>
