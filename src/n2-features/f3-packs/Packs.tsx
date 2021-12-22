@@ -49,13 +49,13 @@ export const Packs = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/>
+                            <div className={s.cell}>Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/></div>
                         </TableCell>
                         <TableCell align="center">
-                            Cards Count<SortCardPacks upperSort={'0cardsCount'} lowerCount={'1cardsCount'}/>
+                            <div className={s.cell}>Cards Count<SortCardPacks upperSort={'0cardsCount'} lowerCount={'1cardsCount'}/></div>
                         </TableCell>
                         <TableCell align="center">
-                            Updated<SortCardPacks upperSort={'0updated'} lowerCount={'1updated'}/>
+                            <div className={s.cell}>Updated<SortCardPacks upperSort={'0updated'} lowerCount={'1updated'}/></div>
                         </TableCell>
                         <TableCell align="center">url</TableCell>
                         <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>
