@@ -3,10 +3,10 @@ const initialState: InitialStateType = {
         totalCount: 10, // this is for pagination
         pageCount: 10, // this is for pagination
         page: 1, // this is for pagination
-        max: 200, // this is for range
-        min: 0, // this is for range
+        max: 200, // this is for range slider
+        min: 0, // this is for range slider
         packName: '', // this is for search
-        sortPacks: null,
+        sortPacks: null, // this is for sorting
     },
     cards: {
         totalCount: 10,
@@ -67,8 +67,10 @@ export const setCardPacksPageCountAC = (pageCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARD-PACKS-PAGE-COUNT', pageCount,} as const)
 export const setCardPacksCurrentPageAC = (page: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARD-PACKS-CURRENT-PAGE', page} as const)
-export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and max cardsPacks
-    ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)
+/*export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and max cardsPacks
+    ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)*/
+export const setCardsPacksCountAC = (numbers: Array<number> ) =>  // min and max cardsPacks
+    ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min: numbers[0], max: numbers[1],} as const)
 export const setSearchPackNameAC = (packName: string) =>
     ({type: 'FIND-AND-PAGINATION/SET-SEARCH-PACK-NAME', packName} as const)
 export const setSortPacksAC = (sortPacks: SortPackType) =>

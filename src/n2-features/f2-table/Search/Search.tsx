@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {setSearchPackNameAC} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {getPacksTC} from "../../../n1-main/m2-bll/packsReducer";
+import {RangeSlider} from "./RangeSlider/RangeSlider";
 
 export const Search = () => {
     const dispatch = useDispatch()
@@ -24,9 +25,11 @@ export const Search = () => {
             <SuperInputText
                 value={value}
                 onChange={setValueHandler}
-                placeholder={'Find Cards Pack'}
+                placeholder={'enter card pack name'}
+                className={s.input}
             />
-            <SuperButton onClick={findHandler}>Find Cards Pack</SuperButton>
+            <RangeSlider />
+            <SuperButton onClick={findHandler} className={s.btn}>Find Card Packs</SuperButton>
         </div>
     )
 }
