@@ -1,10 +1,11 @@
 const initialState: InitialStateType = {
     cardPacks: {
-        totalCount: 10,
-        pageCount: 10,
-        page: 1,
-        max: 200,
-        min: 0,
+        totalCount: 10, // this is for pagination
+        pageCount: 10, // this is for pagination
+        page: 1, // this is for pagination
+        max: 200, // this is for range
+        min: 0, // this is for range
+        packName: '', // this is for search
     },
     cards: {
         totalCount: 10,
@@ -24,6 +25,8 @@ export const findAndPaginationReducer = (state = initialState, action: ActionTyp
             return {...state, cardPacks: {...state.cardPacks, totalCount: action.cardPacksTotalCount}}
         case "FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT":
             return {...state, cardPacks: {...state.cardPacks, max: action.max, min: action.min}}
+        case "FIND-AND-PAGINATION/SET-SEARCH-PACK-NAME":
+            return {...state, cardPacks: {...state.cardPacks, packName: action.packName}}
         // for Cards
         case "FIND-AND-PAGINATION/SET-CARDS-TOTAL-COUNT":
             return {...state, cards: {...state.cards, totalCount: action.cardsTotalCount}}
@@ -43,6 +46,7 @@ type InitialStateType = {
         page: number
         min: number
         max: number
+        packName: string
     }
     cards: {
         totalCount: number
@@ -60,6 +64,8 @@ export const setCardPacksCurrentPageAC = (page: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARD-PACKS-CURRENT-PAGE', page} as const)
 export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and max cardsPacks
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)
+export const setSearchPackNameAC = (packName: string) =>
+    ({type: 'FIND-AND-PAGINATION/SET-SEARCH-PACK-NAME', packName} as const)
 
 //AC for Cards:
 export const setCardsTotalCountAC = (cardsTotalCount: number) =>
@@ -81,3 +87,4 @@ type ActionType =
     | SetCardsTotalCountType
     | ReturnType<typeof setCardsPageCountAC>
     | ReturnType<typeof setCarsCurrentPageAC>
+    | ReturnType<typeof setSearchPackNameAC>

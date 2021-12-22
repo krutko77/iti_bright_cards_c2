@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {getPacksTC, packsStateType, packType} from "../../n1-main/m2-bll/packsReducer";
+import {getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
+import {useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,10 +10,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
-import {Pagination} from "../f2-table/Pagination/Pagination";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
+import {Search} from "../f2-table/Search/Search";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -36,6 +36,8 @@ export const Packs = () => {
 
     return (
         <TableContainer component={Paper}>
+            <PaginationPacksContainer/>
+            <Search/>
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -62,7 +64,6 @@ export const Packs = () => {
                     ))}
                 </TableBody>
             </Table>
-            <PaginationPacksContainer/>
         </TableContainer>
     );
 }

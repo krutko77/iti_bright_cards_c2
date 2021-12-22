@@ -3,9 +3,9 @@ import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
 import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
 
-export const initialState:packsStateType = {
-    cardPacks:[],
-    pack_id:''
+export const initialState: packsStateType = {
+    cardPacks: [],
+    pack_id: '',
 }
 
 export const packsReducer = (state= initialState, action: ActionType):packsStateType => {
@@ -27,8 +27,9 @@ export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () =>
     const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
     const min = getState().findAndPagination.cardPacks.min
     const max = getState().findAndPagination.cardPacks.max
+    const packName = getState().findAndPagination.cardPacks.packName
 
-    packsAPI.getPacks(pageCount, page, min, max)
+    packsAPI.getPacks(pageCount, page, min, max, packName)
         .then((res) => {
             if (res.data.cardPacks) {
                 dispatch(getPacksAC(res.data.cardPacks))
@@ -53,8 +54,8 @@ export type packType = {
 }
 
 export type packsStateType = {
-    cardPacks: packType[];
-    pack_id: string;
+    cardPacks: packType[]
+    pack_id: string
 }
 
 type ActionType =

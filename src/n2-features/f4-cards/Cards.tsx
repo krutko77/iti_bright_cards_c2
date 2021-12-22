@@ -29,6 +29,7 @@ export const Cards = () => {
 
     return (
         <TableContainer component={Paper}>
+            <PaginationCardsContainer />
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -57,7 +58,6 @@ export const Cards = () => {
                     ))}
                 </TableBody>
             </Table>
-            <PaginationCardsContainer />
         </TableContainer>
     );
 }
