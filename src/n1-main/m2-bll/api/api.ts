@@ -50,6 +50,14 @@ export const packsAPI = {
     getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
         return instance.get<getPacksType>(`/cards/pack`, {params: {
             pageCount, page, min, max, packName, sortPacks}})
+    },
+    addPacks(isPrivate:boolean) {
+        return instance.post<getPacksType>(`/cards/pack`, {
+            cardsPack: {
+                name: "new Pack333",
+                private: isPrivate
+            }
+        })
     }
 }
 export const cardsAPI = {
@@ -58,6 +66,17 @@ export const cardsAPI = {
                 cardsPack_id: id, pageCount, page
             }})
     },
+    addCards(cardsPack_id:string){
+        return instance.post<getCardType>(`/cards/card`, {
+            card:{
+                cardsPack_id,
+                question: "no question",
+                answer: "no answer",
+                grade: Math.random()*5,
+                shots: 0,
+            }
+        })
+    }
 }
 
 export type LoginType = {

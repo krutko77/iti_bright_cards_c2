@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
-import {cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
+import {addCardsTC, cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
 
@@ -27,6 +27,10 @@ export const Cards = () => {
         dispatch(getCardsTC(id))
     }, [dispatch, id, pageCount, page])
 
+    const addCardHandler = ()=>{
+        dispatch(addCardsTC(id))
+    }
+
     return (
         <TableContainer component={Paper}>
             <PaginationCardsContainer />
@@ -34,11 +38,11 @@ export const Cards = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>Question</TableCell>
-                        <TableCell align="right">answer</TableCell>
-                        <TableCell align="right">Grade</TableCell>
-                        <TableCell align="right">updated</TableCell>
-                        <TableCell align="right">url</TableCell>
-                        <TableCell align="right">add</TableCell>
+                        <TableCell align="center">answer</TableCell>
+                        <TableCell align="center">Grade</TableCell>
+                        <TableCell align="center">updated</TableCell>
+                        <TableCell align="center">url</TableCell>
+                        <TableCell align="center"><button onClick={addCardHandler}>add</button></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -50,9 +54,9 @@ export const Cards = () => {
                             <TableCell component="th" scope="row">
                                 {card.question}
                             </TableCell>
-                            <TableCell align="right">{card.answer}</TableCell>
-                            <TableCell align="right">{card.grade}</TableCell>
-                            <TableCell align="right">{card.updated}</TableCell>
+                            <TableCell align="center">{card.answer}</TableCell>
+                            <TableCell align="center">{card.grade}</TableCell>
+                            <TableCell align="center">{card.updated}</TableCell>
 
                         </TableRow>
                     ))}

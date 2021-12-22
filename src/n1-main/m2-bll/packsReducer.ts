@@ -2,18 +2,21 @@ import {Dispatch} from "redux";
 import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
 import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
+import {AxiosResponse} from "axios";
 
 export const initialState: packsStateType = {
     cardPacks: [],
     pack_id: '',
 }
 
-export const packsReducer = (state= initialState, action: ActionType):packsStateType => {
+export const packsReducer = (state= initialState, action: ActionType) => {
     switch (action.type) {
         case 'pack/GET-CARD-PACKS':
             return {...state, cardPacks: action.cardPacks}
         case 'pack/GET-USER-ID':
             return {...state, pack_id: action.pack_id}
+        case "pack/ADD-CARD-PACKS":
+            return {...state,name:action.name}
         default:
             return state
     }
@@ -21,6 +24,7 @@ export const packsReducer = (state= initialState, action: ActionType):packsState
 
 export const getPacksAC = (cardPacks: packType[]) => ({type: "pack/GET-CARD-PACKS", cardPacks} as const)
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
+export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name} as const)
 
 export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cardPacks.page
@@ -38,6 +42,15 @@ export const getPacksTC = () => (dispatch: Dispatch<ActionType>, getState: () =>
             }
         })
 }
+
+export const addPacksTC = ()=>(dispatch:Dispatch)=>{
+    packsAPI.addPacks(false)
+    .then((res)=>{
+        dispatch(addPacksAC("New Pack333"))
+        dispatch<any>(getPacksTC())
+    })
+}
+
 
 export type packType = {
     _id: string
@@ -63,4 +76,4 @@ type ActionType =
     | ReturnType<typeof getPacksAC>
     | ReturnType<typeof getUserIdAC>
     | SetCardPacksTotalCountType
-
+    | ReturnType<typeof addPacksAC>

@@ -5,7 +5,6 @@ import {setCardsTotalCountAC, SetCardsTotalCountType} from "./findAndPaginationR
 
 export const initialState:cardType[] = []
 
-
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'cards/GET-CARDS':
@@ -28,6 +27,12 @@ export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>, getState:
                 dispatch(getCardsAC(res.data.cards))
                 dispatch(setCardsTotalCountAC(res.data.cardsTotalCount))
             }
+        })
+}
+export const addCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
+    cardsAPI.addCards(id)
+        .then((res) => {
+            dispatch<any>(getCardsTC(id))
         })
 }
 
