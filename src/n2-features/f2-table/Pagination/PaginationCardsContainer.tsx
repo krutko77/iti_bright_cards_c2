@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
-import {setCardsPageCountAC, setCarsCurrentPageAC} from "../../../n1-main/m2-bll/findAndPaginationReducer";
+import {setCardsPageCountAC, setCardsCurrentPageAC} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {Pagination} from "./Pagination";
 
 export const PaginationCardsContainer = () => {
@@ -15,7 +15,7 @@ export const PaginationCardsContainer = () => {
     let page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
 
     const currentPageHandler = (page: number) => {
-        dispatch(setCarsCurrentPageAC(page))
+        dispatch(setCardsCurrentPageAC(page))
     }
 
     const arr = ['5', '10', '20', '50', '100'] // for SuperSelect

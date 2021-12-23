@@ -19,6 +19,11 @@ export const Pagination: React.FC<PropsType> = (props) => {
     const leftNumber = (portion - 1) * portionSize + 1
     const rightNumber = portion * portionSize
 
+    const onLastPageClick = () => {
+        props.currentPageHandler(pagesCount)
+        setPortion(portionCount)
+    }
+
     return (
         <div className={s.pagination}>
             <SuperSelect
@@ -46,7 +51,7 @@ export const Pagination: React.FC<PropsType> = (props) => {
                     </div>
                 })}
                 <div className={s.points}>...</div>
-                <div className={`${s.item} ${s.lastPaginationPage}`}>{pagesCount}</div>
+                <div className={`${s.item} ${s.lastPaginationPage}`} onClick={onLastPageClick}>{pagesCount}</div>
 
             {portionCount > portion &&
               <SuperButton className={s.btn} onClick={() => {
