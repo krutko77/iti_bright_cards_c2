@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {getPacksTC, packsStateType, addPacksTC} from "../../n1-main/m2-bll/packsReducer";
+import {addPacksTC, getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
+import {useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,20 +10,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
-import {Search} from "../f2-table/Search/SearchMain/Search";
-import {SortCardPacks} from "../f2-table/Sort/SortCardPacks/SortCardPacks";
+import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
 import s from './Pack.module.scss'
 import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
-    const sortPacks = useSelector<AppStoreType, string | null>(state => state.findAndPagination.cardPacks.sortPacks)
+    const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
 
     const dispatch = useDispatch()
 
@@ -50,15 +50,17 @@ export const Packs = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <div className={s.cell}>Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/></div>
+                            <div className={s.cell}>Name<SortCardPacksContainer upperSort={'0name'}
+                                                                                lowerCount={'1name'}/></div>
                         </TableCell>
                         <TableCell align="center" className={s.cell}>
-                            <div className={s.cell}>Cards Count<SortCardPacks upperSort={'0cardsCount'}
-                                                                              lowerCount={'1cardsCount'}/></div>
+                            <div className={s.cell}>Cards Count<SortCardPacksContainer upperSort={'0cardsCount'}
+                                                                                       lowerCount={'1cardsCount'}/>
+                            </div>
                         </TableCell>
                         <TableCell align="center">
-                            <div className={s.cell}>Updated<SortCardPacks upperSort={'0updated'}
-                                                                          lowerCount={'1updated'}/></div>
+                            <div className={s.cell}>Updated<SortCardPacksContainer upperSort={'0updated'}
+                                                                                   lowerCount={'1updated'}/></div>
                         </TableCell>
                         <TableCell align="center">url</TableCell>
                         <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>
