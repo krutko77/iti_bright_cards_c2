@@ -3,7 +3,7 @@ import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "./../common/button/Button.jsx";
 import Search from "./../common/search/Search.jsx";
 import Table from "./../table/Table.jsx";
-import PaginationRounded from "./pagination/PaginationRounded.jsx";
+import UsePagination from "./pagination/UsePagination.jsx";
 import Select from "./select/Select.jsx";
 import UseSlider from "./../packs-list/use-slider/UseSlider.jsx";
 
@@ -92,7 +92,7 @@ export default function PacksList() {
             </div>
             <Table tableData={tableData} />
             <div className={s.bottomBlock}>
-               <PaginationRounded />
+               <UsePagination />
                <div className={s.selectBlock}>
                   <span className={s.label1}>Show</span>
                   <div className={s.selectWrap}>

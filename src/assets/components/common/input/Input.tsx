@@ -20,7 +20,7 @@ export const Input: React.FC<PropsType> = ({inputData, value, onChange, ...restP
              onChange={onChangeCallback}
          />
          <label className={s.placeholder} htmlFor={inputData.for}>{inputData.label}</label>
-         <img className={s.icon} src={icon} alt="image" style={inputData.style} />
+         <img className={s.icon} src={icon} alt="icon" style={inputData.style} />
       </div>
    );
 }

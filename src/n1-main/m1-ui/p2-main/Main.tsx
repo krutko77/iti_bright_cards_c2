@@ -13,6 +13,7 @@ import PasswordNewForm from "../../../assets/components/password-new-form/Passwo
 import LoginForm from "../../../n2-features/f1-auth/a1-login/LoginForm";
 import RegistrationForm from "../../../n2-features/f1-auth/a2-register/RegistrationForm";
 import PacksList from '../../../assets/components/packs-list/PacksList';
+import UsePacksList from '../../../assets/components/packs-list/UsePacksList.jsx';
 import {Packs} from '../../../n2-features/f3-packs/Packs';
 import {Cards} from '../../../n2-features/f4-cards/Cards';
 import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
