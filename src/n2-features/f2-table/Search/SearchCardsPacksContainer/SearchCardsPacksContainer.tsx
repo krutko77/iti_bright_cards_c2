@@ -22,7 +22,7 @@ export const SearchCardsPacksContainer = () => {
         inputPlaceholder={'Enter Cards Pack name'}
         setInputValueHandler={setInputValueHandler}
         buttonFindHandler={buttonFindHandler}
-        buttonText={'Find question'}
+        buttonText={'Find Cards Packs'}
         showRange={true}
     />
 }
