@@ -36,6 +36,7 @@ export const findAndPaginationReducer = (state = initialState, action: ActionTyp
         case 'FIND-AND-PAGINATION/SET-CARDS-CURRENT-PAGE':
         case 'FIND-AND-PAGINATION/SET-SEARCH-QUESTION':
         case "FIND-AND-PAGINATION/SET-SELECTED-CARD-ID":
+        case "FIND-AND-PAGINATION/SET-SORT-CARDS":
             return {...state, cards: {...state.cards, ...action.payload}}
         default:
             return state
@@ -87,6 +88,8 @@ export const setSearchQuestionAC = (questionText: string) =>
     ({type: 'FIND-AND-PAGINATION/SET-SEARCH-QUESTION', payload: {questionText}} as const)
 export const setSelectedCardIdAC = (selectedCardId: string) =>
     ({type: 'FIND-AND-PAGINATION/SET-SELECTED-CARD-ID', payload: {selectedCardId}} as const)
+export const setSortCardsAC = (sortCards: SortCardsType) =>
+    ({type: 'FIND-AND-PAGINATION/SET-SORT-CARDS', payload: {sortCards}} as const)
 
 export type SetCardPacksTotalCountType = ReturnType<typeof setCardPacksTotalCountAC>
 export type SetCardsTotalCountType = ReturnType<typeof setCardsTotalCountAC>
@@ -104,6 +107,7 @@ type ActionType =
     | ReturnType<typeof setSortPacksAC>
     | ReturnType<typeof setSearchQuestionAC>
     | SetSelectedCardIdType
+    | ReturnType<typeof setSortCardsAC>
 
 export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated' | null
 export type SortCardsType = '0answer' | '1answer' | '0question' | '1question' | '0grade' | '1grade' | '0updated' | '1updated' | null

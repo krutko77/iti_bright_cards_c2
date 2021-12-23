@@ -13,7 +13,7 @@ import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
 import {Search} from "../f2-table/Search/SearchMain/Search";
-import {SortCardPacks} from "../f2-table/SortCardPacks/SortCardPacks";
+import {SortCardPacks} from "../f2-table/Sort/SortCardPacks/SortCardPacks";
 import s from './Pack.module.scss'
 import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 
@@ -53,10 +53,12 @@ export const Packs = () => {
                             <div className={s.cell}>Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/></div>
                         </TableCell>
                         <TableCell align="center" className={s.cell}>
-                            <div className={s.cell}>Cards Count<SortCardPacks upperSort={'0cardsCount'} lowerCount={'1cardsCount'}/></div>
+                            <div className={s.cell}>Cards Count<SortCardPacks upperSort={'0cardsCount'}
+                                                                              lowerCount={'1cardsCount'}/></div>
                         </TableCell>
                         <TableCell align="center">
-                            <div className={s.cell}>Updated<SortCardPacks upperSort={'0updated'} lowerCount={'1updated'}/></div>
+                            <div className={s.cell}>Updated<SortCardPacks upperSort={'0updated'}
+                                                                          lowerCount={'1updated'}/></div>
                         </TableCell>
                         <TableCell align="center">url</TableCell>
                         <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>

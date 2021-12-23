@@ -26,8 +26,9 @@ export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>, getState:
     const page = getState().findAndPagination.cards.page
     const pageCount = getState().findAndPagination.cards.pageCount.toString()
     const cardQuestion = getState().findAndPagination.cards.questionText
+    const sortCards = getState().findAndPagination.cards.sortCards
 
-    cardsAPI.getCards(id, pageCount, page, cardQuestion)
+    cardsAPI.getCards(id, pageCount, page, cardQuestion, sortCards)
         .then((res) => {
             if (res.data.cards) {
                 dispatch(getCardsAC(res.data.cards))
