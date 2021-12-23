@@ -15,6 +15,7 @@ import LoginForm from "../../../assets/components/login-form/LoginForm";
 import RegistrationForm from "../../../assets/components/registration-form/RegistrationForm";
 import ProfileForm from "../../../assets/components/profile-form/ProfileForm.jsx"
 import PacksList from '../../../assets/components/packs-list/PacksList';
+import UsePacksList from '../../../assets/components/packs-list/UsePacksList.jsx';
 import {Packs} from '../../../n2-features/f3-packs/Packs';
 import {Cards} from '../../../n2-features/f4-cards/Cards';
 
@@ -25,7 +26,7 @@ export const Main = () => {
          <div className='content'>
             <Routes>
                <Route path={'/registration'} element={<RegistrationForm />} />
-               <Route path={'/login'} element={<PacksList/>} />
+               <Route path={'/login'} element={<LoginForm/>} />
                <Route path={'/profile'} element={<Profile />} />
                <Route path={'/404'} element={<Page404 />} />
                <Route path={'/passwordrecovery'} element={<PasswordRecovery />} />

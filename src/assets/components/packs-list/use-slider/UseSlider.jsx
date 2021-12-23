@@ -75,7 +75,7 @@ function ValueLabelComponent(props) {
  }
  
  export default function RangeSlider() {
-   const [value, setValue] = React.useState([14, 80]);
+   const [value, setValue] = React.useState([4, 112]);
  
    const handleChange = (event, newValue) => {
      setValue(newValue);
@@ -85,6 +85,7 @@ function ValueLabelComponent(props) {
      <Box sx={{ width: 195 }}>
        <UseSlider
          // marks={marks}
+         max={150}
          getAriaLabel={() => 'Number of cards'}
          value={value}
          onChange={handleChange}
