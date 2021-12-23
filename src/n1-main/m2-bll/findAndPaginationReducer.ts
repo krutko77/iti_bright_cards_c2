@@ -1,17 +1,19 @@
 const initialState: InitialStateType = {
     cardPacks: {
-        totalCount: 10, // this is for pagination
-        pageCount: 10, // this is for pagination
-        page: 1, // this is for pagination
-        max: 200, // this is for range slider
-        min: 0, // this is for range slider
-        packName: '', // this is for search
-        sortPacks: null, // this is for sorting
+        totalCount: 10, // for pagination
+        pageCount: 10, // for pagination
+        page: 1, // for pagination
+        max: 200, // for range slider
+        min: 0, // for range slider
+        packName: '', // for search
+        sortPacks: null, // for sorting
     },
     cards: {
         totalCount: 10,
         pageCount: 10,
         page: 1,
+        selectedCardId: '',
+        questionText: ''
     }
 }
 
@@ -38,6 +40,10 @@ export const findAndPaginationReducer = (state = initialState, action: ActionTyp
             return {...state, cards: {...state.cards, pageCount: action.pageCount}}
         case 'FIND-AND-PAGINATION/SET-CARDS-CURRENT-PAGE':
             return {...state, cards: {...state.cards, page: action.page}}
+        case 'FIND-AND-PAGINATION/SET-SEARCH-QUESTION':
+            return {...state, cards: {...state.cards, questionText: action.questionText}}
+        case "FIND-AND-PAGINATION/SET-SELECTED-CARD-ID":
+            return {...state, cards: {...state.cards, selectedCardId: action.selectedCardId}}
         default:
             return state
     }
@@ -57,6 +63,8 @@ type InitialStateType = {
         totalCount: number
         pageCount: number
         page: number
+        selectedCardId: string
+        questionText: string
     }
 }
 
@@ -67,8 +75,6 @@ export const setCardPacksPageCountAC = (pageCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARD-PACKS-PAGE-COUNT', pageCount,} as const)
 export const setCardPacksCurrentPageAC = (page: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARD-PACKS-CURRENT-PAGE', page} as const)
-/*export const setCardsPacksCountAC = (min: number,max: number ) =>  // min and max cardsPacks
-    ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min, max,} as const)*/
 export const setCardsPacksCountAC = (numbers: Array<number> ) =>  // min and max cardsPacks
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PACKS-COUNT', min: numbers[0], max: numbers[1],} as const)
 export const setSearchPackNameAC = (packName: string) =>
@@ -83,9 +89,14 @@ export const setCardsPageCountAC = (pageCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PAGE-COUNT', pageCount,} as const)
 export const setCarsCurrentPageAC = (page: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-CURRENT-PAGE', page} as const)
+export const setSearchQuestionAC = (questionText: string) =>
+    ({type: 'FIND-AND-PAGINATION/SET-SEARCH-QUESTION', questionText} as const)
+export const setSelectedCardIdAC = (selectedCardId: string) =>
+    ({type: 'FIND-AND-PAGINATION/SET-SELECTED-CARD-ID', selectedCardId} as const)
 
 export type SetCardPacksTotalCountType = ReturnType<typeof setCardPacksTotalCountAC>
 export type SetCardsTotalCountType = ReturnType<typeof setCardsTotalCountAC>
+export type SetSelectedCardIdType = ReturnType<typeof setSelectedCardIdAC>
 
 type ActionType =
     | SetCardPacksTotalCountType
@@ -97,5 +108,7 @@ type ActionType =
     | ReturnType<typeof setCarsCurrentPageAC>
     | ReturnType<typeof setSearchPackNameAC>
     | ReturnType<typeof setSortPacksAC>
+    | ReturnType<typeof setSearchQuestionAC>
+    | SetSelectedCardIdType
 
 export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated' | null

@@ -12,6 +12,8 @@ import {useEffect} from "react";
 import {addCardsTC, cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
+import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
 
 export const Cards = () => {
 
@@ -34,6 +36,7 @@ export const Cards = () => {
     return (
         <TableContainer component={Paper}>
             <PaginationCardsContainer />
+            <SearchCardsContainer />
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>

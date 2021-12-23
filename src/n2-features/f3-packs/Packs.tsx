@@ -12,9 +12,10 @@ import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
-import {Search} from "../f2-table/Search/Search";
+import {Search} from "../f2-table/Search/SearchMain/Search";
 import {SortCardPacks} from "../f2-table/SortCardPacks/SortCardPacks";
 import s from './Pack.module.scss'
+import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -44,14 +45,14 @@ export const Packs = () => {
     return (
         <TableContainer className={s.table} component={Paper}>
             <PaginationPacksContainer/>
-            <Search/>
+            <SearchCardsPacksContainer />
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>
                             <div className={s.cell}>Name<SortCardPacks upperSort={'0name'} lowerCount={'1name'}/></div>
                         </TableCell>
-                        <TableCell align="center">
+                        <TableCell align="center" className={s.cell}>
                             <div className={s.cell}>Cards Count<SortCardPacks upperSort={'0cardsCount'} lowerCount={'1cardsCount'}/></div>
                         </TableCell>
                         <TableCell align="center">
@@ -59,8 +60,6 @@ export const Packs = () => {
                         </TableCell>
                         <TableCell align="center">url</TableCell>
                         <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>
-
-
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -83,3 +82,5 @@ export const Packs = () => {
         </TableContainer>
     );
 }
+
+// todo: cards link is not user friendly. Maybe good idea to do it more visible or "click on card pack show it".

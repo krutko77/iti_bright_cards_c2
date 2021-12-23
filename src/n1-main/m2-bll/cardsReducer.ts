@@ -1,7 +1,12 @@
 import {Dispatch} from "redux";
 import {cardsAPI} from "./api/api";
 import {AppStoreType} from "./store";
-import {setCardsTotalCountAC, SetCardsTotalCountType} from "./findAndPaginationReducer";
+import {
+    setCardsTotalCountAC,
+    SetCardsTotalCountType,
+    setSelectedCardIdAC,
+    SetSelectedCardIdType
+} from "./findAndPaginationReducer";
 
 export const initialState:cardType[] = []
 
@@ -20,12 +25,14 @@ export const getCardsAC = (cards: cardType[]) => ({type: "cards/GET-CARDS", card
 export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cards.page
     const pageCount = getState().findAndPagination.cards.pageCount.toString()
+    const cardQuestion = getState().findAndPagination.cards.questionText
 
-    cardsAPI.getCards(id, pageCount, page)
+    cardsAPI.getCards(id, pageCount, page, cardQuestion)
         .then((res) => {
             if (res.data.cards) {
                 dispatch(getCardsAC(res.data.cards))
                 dispatch(setCardsTotalCountAC(res.data.cardsTotalCount))
+                dispatch(setSelectedCardIdAC(id))
             }
         })
 }
@@ -36,7 +43,7 @@ export const addCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
         })
 }
 
-type ActionType = ReturnType<typeof getCardsAC> | SetCardsTotalCountType
+type ActionType = ReturnType<typeof getCardsAC> | SetCardsTotalCountType | SetSelectedCardIdType
 
 export type cardType = {
     _id: string
