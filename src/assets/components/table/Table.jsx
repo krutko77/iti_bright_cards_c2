@@ -1,5 +1,5 @@
 import s from "./Table.module.scss";
-import TableRowFirstOption from './table-row/TableRowFirstOption.jsx';
+import TableRow from './table-row/TableRow.jsx';
 import icon from "./../../img/arrow-icon.svg";
 
 
@@ -16,17 +16,17 @@ export default function Table(props) {
                   <th>{props.tableData.title5}</th>
                </tr>
             </thead>
-            <tbody >
-               <TableRowFirstOption cellData={props.tableData.dataRow1} />
-               <TableRowFirstOption cellData={props.tableData.dataRow2} />
-               <TableRowFirstOption cellData={props.tableData.dataRow3} />
-               <TableRowFirstOption cellData={props.tableData.dataRow4} />
-               <TableRowFirstOption cellData={props.tableData.dataRow5} />
-               <TableRowFirstOption cellData={props.tableData.dataRow6} />
-               <TableRowFirstOption cellData={props.tableData.dataRow7} />
-               <TableRowFirstOption cellData={props.tableData.dataRow8} />
-               {/* <TableRowFirstOption cellData={props.tableData.dataRow7} />
-               <TableRowFirstOption cellData={props.tableData.dataRow8} /> */}
+            <tbody>
+               <TableRow cellData={props.tableData.dataRow1} />
+               <TableRow cellData={props.tableData.dataRow2} />
+               <TableRow cellData={props.tableData.dataRow3} />
+               <TableRow cellData={props.tableData.dataRow4} />
+               <TableRow cellData={props.tableData.dataRow5} />
+               <TableRow cellData={props.tableData.dataRow6} />
+               <TableRow cellData={props.tableData.dataRow7} />
+               <TableRow cellData={props.tableData.dataRow8} />
+               {/* <TableRow cellData={props.tableData.dataRow7} />
+               <TableRow cellData={props.tableData.dataRow8} /> */}
             </tbody>
          </table>
       </div>

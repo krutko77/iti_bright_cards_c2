@@ -1,4 +1,4 @@
-import s from "./TableRowFirstOption.module.scss";
+import s from "./TableRow.module.scss";
 import CellCommon from "../cell-common/CellCommon.jsx";
 import TableButton from "../table-button/TableButton.jsx";
 
