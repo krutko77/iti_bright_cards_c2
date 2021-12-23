@@ -7,6 +7,7 @@ import {
     setSelectedCardIdAC,
     SetSelectedCardIdType
 } from "./findAndPaginationReducer";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
 
 export const initialState:cardType[] = []
 
@@ -21,8 +22,7 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
 
 export const getCardsAC = (cards: cardType[]) => ({type: "cards/GET-CARDS", cards} as const)
 
-// todo: need to fix any
-export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
+export const getCardsTC = (id:string):ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cards.page
     const pageCount = getState().findAndPagination.cards.pageCount.toString()
     const cardQuestion = getState().findAndPagination.cards.questionText
@@ -37,14 +37,15 @@ export const getCardsTC = (id:any) => (dispatch: Dispatch<ActionType>, getState:
             }
         })
 }
-export const addCardsTC = (id:any) => (dispatch: Dispatch<ActionType>) => {
+export const addCardsTC = (id:string):ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
     cardsAPI.addCards(id)
         .then((res) => {
-            dispatch<any>(getCardsTC(id))
+            dispatch(getCardsTC(id))
         })
 }
 
 type ActionType = ReturnType<typeof getCardsAC> | SetCardsTotalCountType | SetSelectedCardIdType
+type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>
 
 export type cardType = {
     _id: string

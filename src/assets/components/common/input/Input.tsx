@@ -9,6 +9,12 @@ export const Input: React.FC<PropsType> = ({inputData, value, onChange, ...restP
         onChange // если есть пропс onChange
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
     }
+
+    const changeTypeHandler = ()=>{
+       inputData.type === 'password'? inputData.type = '' : inputData.type = 'password'
+    }
+
+
    return (
       <div className={s.input}>
          <input
@@ -20,7 +26,7 @@ export const Input: React.FC<PropsType> = ({inputData, value, onChange, ...restP
              onChange={onChangeCallback}
          />
          <label className={s.placeholder} htmlFor={inputData.for}>{inputData.label}</label>
-         <img className={s.icon} src={icon} alt="icon" style={inputData.style} />
+         <img onClick={changeTypeHandler} className={s.icon} src={icon} alt="image" style={inputData.style} />
       </div>
    );
 }
