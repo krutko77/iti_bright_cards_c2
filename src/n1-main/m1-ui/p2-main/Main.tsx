@@ -1,18 +1,18 @@
 import React from 'react';
 import "./../App.css"
-import { Header } from "../p1-header/Header";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { Page404 } from "../../../n2-features/f1-auth/Page404";
-import { Examples } from "../../../n2-features/f0-test/Examples/Examples";
+import {Header} from "../p1-header/Header";
+import {Navigate, Route, Routes} from "react-router-dom";
+import {Page404} from "../../../n2-features/f1-auth/Page404";
+import {Examples} from "../../../n2-features/f0-test/Examples/Examples";
 import LoginForm from "../../../n2-features/f1-auth/a1-login/LoginForm";
 import RegistrationForm from "../../../n2-features/f1-auth/a2-register/RegistrationForm";
-import PacksList from '../../../assets/components/packs-list/PacksList';
-import UsePacksList from '../../../assets/components/packs-list/UsePacksList.jsx';
 import {Packs} from '../../../n2-features/f3-packs/Packs';
 import {Cards} from '../../../n2-features/f4-cards/Cards';
 import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
 import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordRecoveryForm";
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
+import Table from "../../../assets/components/table/Table";
+import PacksList from "../../../assets/components/packs-list/PacksList";
 
 export const Main = () => {
    return (
@@ -31,6 +31,7 @@ export const Main = () => {
                <Route path="*" element={<Navigate to="/404" />} />
                <Route path={'/packs'} element={<Packs/>}/>
                <Route path={'/cards/:id'} element={<Cards/>}/>
+               <Route path={'/packsdesigned'} element={<PacksList/>}/>
                <Route />
             </Routes>
          </div>
