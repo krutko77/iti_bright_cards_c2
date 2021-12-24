@@ -11,8 +11,7 @@ import {Cards} from '../../../n2-features/f4-cards/Cards';
 import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
 import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordRecoveryForm";
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
-import Table from "../../../assets/components/table/Table";
-import PacksList from "../../../assets/components/packs-list/PacksList";
+import PacksList from "../../../assets/components/packs-list/UsePacksList";
 
 export const Main = () => {
    return (
