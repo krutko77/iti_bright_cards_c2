@@ -66,12 +66,12 @@ export const cardsAPI = {
                 cardsPack_id: id, pageCount, page, cardQuestion, sortCards
             }})
     },
-    addCards(cardsPack_id:string){
+    addCards(cardsPack_id: string, question: string, answer: string){
         return instance.post<getCardType>(`/cards/card`, {
             card:{
                 cardsPack_id,
-                question: "no question",
-                answer: "no answer",
+                question,
+                answer,
                 grade: Math.random()*5,
                 shots: 0,
             }

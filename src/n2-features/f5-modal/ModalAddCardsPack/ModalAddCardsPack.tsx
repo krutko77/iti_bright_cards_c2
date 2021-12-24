@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {closeAllModalsAC} from "../../../n1-main/m2-bll/modal-reducer";
+import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {Modal} from "../Modal/Modal";
 import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";

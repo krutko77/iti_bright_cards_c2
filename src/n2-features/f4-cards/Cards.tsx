@@ -14,9 +14,10 @@ import {useParams} from "react-router-dom";
 import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
 import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
 import s from './Cards.module.scss'
-import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
 import {SortCardsContainer} from "../f2-table/Sort/SortCardsContainer/SortCardsContainer";
 import {SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import {showModalAddCardAC} from "../../n1-main/m2-bll/modalReducer";
+import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 
 export const Cards = () => {
 
@@ -31,62 +32,71 @@ export const Cards = () => {
 
     useEffect(() => {
         if (id)
-        dispatch(getCardsTC(id))
+            dispatch(getCardsTC(id))
     }, [dispatch, id, pageCount, page, sortCards])
 
-    const addCardHandler = ()=>{
-        if (id) dispatch(addCardsTC(id))
+    const addCardHandler = (question: string, answer: string) => {
+        if (id) dispatch(addCardsTC(id, question, answer))
+    }
+
+    const showAddCardModalHandler = () => {
+        dispatch(showModalAddCardAC())
     }
 
     return (
-        <TableContainer component={Paper}>
-            <PaginationCardsContainer />
-            <SearchCardsContainer />
-            <Table sx={{minWidth: 650}} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            <div className={s.cell}>Question<SortCardsContainer upperSort={'0question'}
-                                                                                lowerCount={'1question'}/>
-                            </div>
-                        </TableCell>
-                        <TableCell align="center">
-                            <div className={s.cell}>answer<SortCardsContainer upperSort={'0answer'}
-                                                                              lowerCount={'1answer'}/>
-                            </div>
-                        </TableCell>
-                        <TableCell align="center">
-                            <div className={s.cell}>Grade<SortCardsContainer upperSort={'0grade'}
-                                                                             lowerCount={'1grade'}/>
-                            </div>
-                        </TableCell>
-                        <TableCell align="center">
-                            <div className={s.cell}>updated<SortCardsContainer upperSort={'0updated'}
-                                                                             lowerCount={'1updated'}/>
-                            </div>
-                        </TableCell>
-                        <TableCell align="center">url</TableCell>
-                        <TableCell align="center"><button onClick={addCardHandler}>add</button></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {cards.map((card: cardType) => (
-                        <TableRow
-                            key={card.cardsPack_id}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-                            <TableCell component="th" scope="row">
-                                {card.question}
+        <>
+            <ModalAddCard addCard={addCardHandler}/>
+            <TableContainer component={Paper}>
+                <PaginationCardsContainer/>
+                <SearchCardsContainer/>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                <div className={s.cell}>Question<SortCardsContainer upperSort={'0question'}
+                                                                                    lowerCount={'1question'}/>
+                                </div>
                             </TableCell>
-                            <TableCell align="center">{card.answer}</TableCell>
-                            <TableCell align="center">{card.grade}</TableCell>
-                            <TableCell align="center">{card.updated}</TableCell>
-
+                            <TableCell align="center">
+                                <div className={s.cell}>answer<SortCardsContainer upperSort={'0answer'}
+                                                                                  lowerCount={'1answer'}/>
+                                </div>
+                            </TableCell>
+                            <TableCell align="center">
+                                <div className={s.cell}>Grade<SortCardsContainer upperSort={'0grade'}
+                                                                                 lowerCount={'1grade'}/>
+                                </div>
+                            </TableCell>
+                            <TableCell align="center">
+                                <div className={s.cell}>updated<SortCardsContainer upperSort={'0updated'}
+                                                                                   lowerCount={'1updated'}/>
+                                </div>
+                            </TableCell>
+                            <TableCell align="center">url</TableCell>
+                            <TableCell align="center">
+                                <button onClick={showAddCardModalHandler}>add</button>
+                            </TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {cards.map((card: cardType) => (
+                            <TableRow
+                                key={card.cardsPack_id}
+                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {card.question}
+                                </TableCell>
+                                <TableCell align="center">{card.answer}</TableCell>
+                                <TableCell align="center">{card.grade}</TableCell>
+                                <TableCell align="center">{card.updated}</TableCell>
+
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }
 

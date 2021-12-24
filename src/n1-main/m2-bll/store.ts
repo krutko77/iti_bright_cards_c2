@@ -9,7 +9,7 @@ import {appReducer} from "./appReducer";
 import {packsReducer} from "./packsReducer";
 import {cardsReducer} from "./cardsReducer";
 import {findAndPaginationReducer} from "./findAndPaginationReducer";
-import {modalReducer} from "./modal-reducer";
+import {modalReducer} from "./modalReducer";
 
 const reducers = combineReducers({
     testReducer: testReducer,

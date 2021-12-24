@@ -16,7 +16,7 @@ import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/So
 import s from './Pack.module.scss'
 import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import {showModalAddCardsPackAC} from "../../n1-main/m2-bll/modal-reducer";
+import {showModalAddCardsPackAC} from "../../n1-main/m2-bll/modalReducer";
 import {ModalAddCardsPack} from "../f5-modal/ModalAddCardsPack/ModalAddCardsPack";
 
 export const Packs = () => {

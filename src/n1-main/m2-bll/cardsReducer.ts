@@ -9,7 +9,7 @@ import {
 } from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 
-export const initialState:cardType[] = []
+export const initialState: cardType[] = []
 
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
@@ -22,7 +22,7 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
 
 export const getCardsAC = (cards: cardType[]) => ({type: "cards/GET-CARDS", cards} as const)
 
-export const getCardsTC = (id:string):ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
+export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cards.page
     const pageCount = getState().findAndPagination.cards.pageCount.toString()
     const cardQuestion = getState().findAndPagination.cards.questionText
@@ -37,8 +37,9 @@ export const getCardsTC = (id:string):ThunkType => (dispatch: Dispatch<ActionTyp
             }
         })
 }
-export const addCardsTC = (id:string):ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
-    cardsAPI.addCards(id)
+export const addCardsTC = (id: string, question: string, answer: string): ThunkType =>
+    (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    cardsAPI.addCards(id, question, answer)
         .then((res) => {
             dispatch(getCardsTC(id))
         })

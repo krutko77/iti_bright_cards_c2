@@ -1,4 +1,4 @@
-import {closeAllModalsAC} from "../../../n1-main/m2-bll/modal-reducer";
+import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {Modal} from "../Modal/Modal";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import React from "react";
