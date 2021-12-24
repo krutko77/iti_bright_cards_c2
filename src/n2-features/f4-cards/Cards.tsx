@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
 import * as React from 'react';
+import {useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,12 +9,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useEffect} from "react";
 import {addCardsTC, cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
-import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
+import s from './Cards.module.scss'
+import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
+import {SortCardsContainer} from "../f2-table/Sort/SortCardsContainer/SortCardsContainer";
+import {SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
 
 export const Cards = () => {
 
@@ -22,13 +25,14 @@ export const Cards = () => {
     const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
+    const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (id)
         dispatch(getCardsTC(id))
-    }, [dispatch, id, pageCount, page])
+    }, [dispatch, id, pageCount, page, sortCards])
 
     const addCardHandler = ()=>{
         if (id) dispatch(addCardsTC(id))
@@ -41,10 +45,26 @@ export const Cards = () => {
             <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Question</TableCell>
-                        <TableCell align="center">answer</TableCell>
-                        <TableCell align="center">Grade</TableCell>
-                        <TableCell align="center">updated</TableCell>
+                        <TableCell>
+                            <div className={s.cell}>Question<SortCardsContainer upperSort={'0question'}
+                                                                                lowerCount={'1question'}/>
+                            </div>
+                        </TableCell>
+                        <TableCell align="center">
+                            <div className={s.cell}>answer<SortCardsContainer upperSort={'0answer'}
+                                                                              lowerCount={'1answer'}/>
+                            </div>
+                        </TableCell>
+                        <TableCell align="center">
+                            <div className={s.cell}>Grade<SortCardsContainer upperSort={'0grade'}
+                                                                             lowerCount={'1grade'}/>
+                            </div>
+                        </TableCell>
+                        <TableCell align="center">
+                            <div className={s.cell}>updated<SortCardsContainer upperSort={'0updated'}
+                                                                             lowerCount={'1updated'}/>
+                            </div>
+                        </TableCell>
                         <TableCell align="center">url</TableCell>
                         <TableCell align="center"><button onClick={addCardHandler}>add</button></TableCell>
                     </TableRow>

@@ -82,7 +82,7 @@ export const setCardsTotalCountAC = (totalCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-TOTAL-COUNT', payload: {totalCount}} as const)
 export const setCardsPageCountAC = (pageCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-PAGE-COUNT', payload: {pageCount}} as const)
-export const setCarsCurrentPageAC = (page: number) =>
+export const setCardsCurrentPageAC = (page: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-CURRENT-PAGE', payload: {page}} as const)
 export const setSearchQuestionAC = (questionText: string) =>
     ({type: 'FIND-AND-PAGINATION/SET-SEARCH-QUESTION', payload: {questionText}} as const)
@@ -102,7 +102,7 @@ type ActionType =
     | ReturnType<typeof setCardsPacksCountAC>
     | SetCardsTotalCountType
     | ReturnType<typeof setCardsPageCountAC>
-    | ReturnType<typeof setCarsCurrentPageAC>
+    | ReturnType<typeof setCardsCurrentPageAC>
     | ReturnType<typeof setSearchPackNameAC>
     | ReturnType<typeof setSortPacksAC>
     | ReturnType<typeof setSearchQuestionAC>

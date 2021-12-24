@@ -1,10 +1,9 @@
-import * as React from 'react';
-import s from './SortCardPacks.module.scss'
-import SuperButton from "../../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
+import React from 'react';
 import {useDispatch} from "react-redux";
 import {setSortPacksAC, SortPackType} from "../../../../n1-main/m2-bll/findAndPaginationReducer";
+import {Sort} from "../SortMain/Sort";
 
-export const SortCardPacks: React.FC<PropsType> = (props) => {
+export const SortCardPacksContainer: React.FC<PropsType> = (props) => {
 
     const dispatch = useDispatch()
 
@@ -16,10 +15,7 @@ export const SortCardPacks: React.FC<PropsType> = (props) => {
 
     }
 
-    return <div className={s.container}>
-        <SuperButton className={s.btn} onClick={upperSortHandler}>^</SuperButton>
-        <SuperButton className={s.btn} onClick={lowerSortHandler}>v</SuperButton>
-    </div>
+    return <Sort upperSortHandler={upperSortHandler} lowerSortHandler={lowerSortHandler}/>
 }
 
 type PropsType = {
