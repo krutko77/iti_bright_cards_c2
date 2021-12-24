@@ -44,10 +44,10 @@ export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getS
 }
 
 
-export const addPacksTC = (): ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
-    packsAPI.addPacks(false)
+export const addPacksTC = (cardPackName: string): ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    packsAPI.addPacks(false, cardPackName)
         .then((res) => {
-            dispatch(addPacksAC("New Pack333"))
+            dispatch(addPacksAC(cardPackName))
             dispatch(getPacksTC())
         })
 }

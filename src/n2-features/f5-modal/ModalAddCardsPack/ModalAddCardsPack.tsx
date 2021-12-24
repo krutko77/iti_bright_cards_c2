@@ -5,19 +5,20 @@ import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/Supe
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
+import {addPacksTC} from "../../../n1-main/m2-bll/packsReducer";
 
 export const ModalAddCardsPack = () => {
     const dispatch = useDispatch()
     const [cardPackNameInModal, setCardPackNameInModal] = useState('')
 
-    // const modalAddCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalAddCardsPackShowHide)
+    const modalAddCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalAddCardsPackShowHide)
 
     const addCardPackInModalButtonHandler = () => {
-        // dispatch(addCardsPackTC(cardPackNameInModal))
+        dispatch(addPacksTC(cardPackNameInModal))
         dispatch(closeAllModalsAC())
     }
 
-    return <Modal modalShowHide={false}>
+    return <Modal modalShowHide={modalAddCardPackShowHide}>
         Enter Card Pack name.
         <div>
             <SuperInputText value={cardPackNameInModal}

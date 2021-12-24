@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {addPacksTC, getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
+import {getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
 import {useEffect} from 'react';
 import Table from '@mui/material/Table';
@@ -16,6 +16,8 @@ import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/So
 import s from './Pack.module.scss'
 import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import {showModalAddCardsPackAC} from "../../n1-main/m2-bll/modal-reducer";
+import {ModalAddCardsPack} from "../f5-modal/ModalAddCardsPack/ModalAddCardsPack";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -38,52 +40,61 @@ export const Packs = () => {
     //     return {name, cardsCount, updated};
     // }
 
-        const addPacksHandler = ()=>{
-        dispatch(addPacksTC())
+    const addPacksHandler = () => {
+        dispatch(showModalAddCardsPackAC())
     }
 
     return (
-        <TableContainer className={s.table} component={Paper}>
-            <PaginationPacksContainer/>
-            <SearchCardsPacksContainer />
-            <Table sx={{minWidth: 650}} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            <div className={s.cell}>Name<SortCardPacksContainer upperSort={'0name'}
-                                                                                lowerCount={'1name'}/></div>
-                        </TableCell>
-                        <TableCell align="center" className={s.cell}>
-                            <div className={s.cell}>Cards Count<SortCardPacksContainer upperSort={'0cardsCount'}
-                                                                                       lowerCount={'1cardsCount'}/>
-                            </div>
-                        </TableCell>
-                        <TableCell align="center">
-                            <div className={s.cell}>Updated<SortCardPacksContainer upperSort={'0updated'}
-                                                                                   lowerCount={'1updated'}/></div>
-                        </TableCell>
-                        <TableCell align="center">url</TableCell>
-                        <TableCell align='center'><button onClick={addPacksHandler}>add</button></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {cardPacks.map((mp) => (
-                        <TableRow
-                            key={mp._id}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}>
-                            <TableCell component="th" scope="row">{mp.name}
+        <>
+            <ModalAddCardsPack />
+            <TableContainer className={s.table} component={Paper}>
+                <PaginationPacksContainer/>
+                <SearchCardsPacksContainer/>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                <div className={s.cell}>Name<SortCardPacksContainer upperSort={'0name'}
+                                                                                    lowerCount={'1name'}/></div>
                             </TableCell>
-                            <TableCell align="center">{mp.cardsCount}</TableCell>
-                            <TableCell align="center">{mp.updated}</TableCell>
-                            <TableCell align="center"></TableCell>
-                            <TableCell align='center'><button>del</button></TableCell>
-                            <TableCell align='center'><button>update</button></TableCell>
-                            <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
+                            <TableCell align="center" className={s.cell}>
+                                <div className={s.cell}>Cards Count<SortCardPacksContainer upperSort={'0cardsCount'}
+                                                                                           lowerCount={'1cardsCount'}/>
+                                </div>
+                            </TableCell>
+                            <TableCell align="center">
+                                <div className={s.cell}>Updated<SortCardPacksContainer upperSort={'0updated'}
+                                                                                       lowerCount={'1updated'}/></div>
+                            </TableCell>
+                            <TableCell align="center">url</TableCell>
+                            <TableCell align='center'>
+                                <button onClick={addPacksHandler}>add</button>
+                            </TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {cardPacks.map((mp) => (
+                            <TableRow
+                                key={mp._id}
+                                sx={{'&:last-child td, &:last-child th': {border: 0}}}>
+                                <TableCell component="th" scope="row">{mp.name}
+                                </TableCell>
+                                <TableCell align="center">{mp.cardsCount}</TableCell>
+                                <TableCell align="center">{mp.updated}</TableCell>
+                                <TableCell align="center"></TableCell>
+                                <TableCell align='center'>
+                                    <button>del</button>
+                                </TableCell>
+                                <TableCell align='center'>
+                                    <button>update</button>
+                                </TableCell>
+                                <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }
 

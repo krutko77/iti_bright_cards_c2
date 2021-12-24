@@ -17,7 +17,7 @@ export const Modal: React.FC<ModalPropsType> = (props) => {
         dispatch(closeAllModalsAC())
     }
 
-    return <div className={s.modalBackground}>
+    return <div className={s.modalBackground}> /*todo: close here doesn`t to works correctly*/
         <div className={s.modalWindow}>
             <div className={s.modalContent}>
                 {props.children}

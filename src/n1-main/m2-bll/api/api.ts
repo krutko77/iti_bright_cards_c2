@@ -51,10 +51,10 @@ export const packsAPI = {
         return instance.get<getPacksType>(`/cards/pack`, {params: {
             pageCount, page, min, max, packName, sortPacks}})
     },
-    addPacks(isPrivate:boolean) {
+    addPacks(isPrivate:boolean, name: string) {
         return instance.post<getPacksType>(`/cards/pack`, {
             cardsPack: {
-                name: "new Pack333",
+                name,
                 private: isPrivate
             }
         })

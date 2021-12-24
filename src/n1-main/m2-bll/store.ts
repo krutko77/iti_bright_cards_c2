@@ -9,6 +9,7 @@ import {appReducer} from "./appReducer";
 import {packsReducer} from "./packsReducer";
 import {cardsReducer} from "./cardsReducer";
 import {findAndPaginationReducer} from "./findAndPaginationReducer";
+import {modalReducer} from "./modal-reducer";
 
 const reducers = combineReducers({
     testReducer: testReducer,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
     packs: packsReducer,
     cards: cardsReducer,
     findAndPagination: findAndPaginationReducer,
+    modal: modalReducer,
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
