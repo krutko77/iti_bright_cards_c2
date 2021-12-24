@@ -18,7 +18,7 @@ export default function UsePagination() {
    });
 
    return (
-      <div className={s.navWrap}>
+      <div className={s.UsePagination}>
          <nav >
             <List >
                {items.map(({ page, type, selected, ...item }, index) => {
@@ -48,21 +48,23 @@ export default function UsePagination() {
                         </button>
                      );
                   }
+                  //  else {
+                  //    children = (
+                  //      <button type="button" {...item}>
+                  //         style={{
+                  //             background: "red"
+                  //                }}
+                  //        {type}
+                  //      </button>
+                  //    );
+                  //  }  
                   else {
-                     children = (
-                        <button type="button"
-                           style={{
-                              // width: "14px",
-                              // height: "14px",
-                              // // backgroundColor: "red",
-                              // backgroundImage: '(url"../../../img/search-icon.svg")'
-                           }}                           
-                           {...item}>
-                           {}
-                        </button>
-
-                     );
-                  }
+            children = (
+              <button type="button" {...item}>
+                {type}
+              </button>
+            );
+          }                
 
                   return <li
                      style={{
