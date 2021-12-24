@@ -5,7 +5,7 @@ import icon from "./../../img/arrow-icon.svg";
 
 export default function Table(props) {
    return (
-      <div className={s.scrollTable}>
+      <div className={s.tableWrap}>
          <table>
             <thead >
                <tr>

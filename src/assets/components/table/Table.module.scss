@@ -1,7 +1,10 @@
 @import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
 @import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
 
-.scrollTable {
+.tableWrap {
+   max-height: 440px;
+   overflow-y: auto;
+   overflow-x: hidden;
    margin-bottom: 24px;
    @include font(13px, 400, 120%, #000000);
    box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15)
@@ -42,7 +45,7 @@ tbody tr:nth-child(even) {
    background: #F5F4FA;
 }
 
-.scrollTable {
+.tableWrap {
    max-height: 440px;
    overflow-y: auto;
    overflow-x: hidden;

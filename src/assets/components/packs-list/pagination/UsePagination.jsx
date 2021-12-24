@@ -18,7 +18,7 @@ export default function UsePagination() {
    });
 
    return (
-      <div className={s.navWrap}>
+      <div className={s.UsePagination}>
          <nav >
             <List >
                {items.map(({ page, type, selected, ...item }, index) => {
