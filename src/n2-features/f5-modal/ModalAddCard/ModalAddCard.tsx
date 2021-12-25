@@ -15,10 +15,10 @@ export const ModalAddCard:React.FC<PropsType> = (props) => {
 
     const buttonHandler = () => {
         props.addCard(question, answer)
-        dispatch(closeAllModalsAC()) // todo: (maybe) move it to promise.then of addCardTC
+        dispatch(closeAllModalsAC())
     }
 
-    return <Modal modalShowHide={modalAddCardShowHide}>
+    return <Modal modalShowHide={modalAddCardShowHide} version={"Briws"}>
         <div>Enter Card question:</div>
         <textarea className={sInput.input} value={question} onChange={(e) => {setQuestion(e.target.value)}} />
         <div>Enter Card answer:</div>
@@ -30,6 +30,3 @@ export const ModalAddCard:React.FC<PropsType> = (props) => {
 type PropsType = {
     addCard: (question: string, answer: string) => void
 }
-
-
-// todo: Separate textarea to common component

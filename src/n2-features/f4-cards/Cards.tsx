@@ -25,6 +25,7 @@ import {
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 import {ModalDelCard} from "../f5-modal/ModalDelCard/ModalDelCard";
 import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
+import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 
 export const Cards = () => {
 

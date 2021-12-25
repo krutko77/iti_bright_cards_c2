@@ -20,7 +20,7 @@ export const ModalDelCardsPack = () => {
 
     }
 
-    return <Modal modalShowHide={modalDelCardPackShowHide}>
+    return <Modal modalShowHide={modalDelCardPackShowHide} version={"Briws"}>
         Are you sure you want to delete the Card Pack?
         <div>
             <SuperButton onClick={() => modalYesDelCardPackHandler(clickedCardPackId)}>Yes</SuperButton>

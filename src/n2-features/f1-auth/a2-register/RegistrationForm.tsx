@@ -1,7 +1,6 @@
 import s from "./RegistrationForm.module.scss";
 import Title from "../../../assets/components/common/title/Title.jsx";
 import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import Button from "../../../assets/components/common/button/Button.jsx";
 import { Input } from "../../../assets/components/common/input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStoreType } from "../../../n1-main/m2-bll/store";
@@ -10,6 +9,7 @@ import {Navigate, NavLink} from "react-router-dom";
 import React, { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import Button from "../../../assets/components/common/button/Button";
 
 // данные для input email
 const inputData1 = {

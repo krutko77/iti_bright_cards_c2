@@ -19,7 +19,7 @@ export const ModalDelCard = () => {
         dispatch(closeAllModalsAC())
     }
 
-    return <Modal modalShowHide={modalDelCardShowHide}>
+    return <Modal modalShowHide={modalDelCardShowHide} version={"Briws"}>
         Are you sure you want to delete the Card?
         <div>
             <SuperButton onClick={modalYesDelCardPackHandler}>Yes</SuperButton>

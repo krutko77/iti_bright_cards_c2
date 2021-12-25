@@ -1,6 +1,5 @@
 import s from "./ProfileForm.module.scss";
 import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import Button from "../../../assets/components/common/button/Button.jsx";
 import { Input } from "../../../assets/components/common/input/Input";
 
 import img from "../../../assets/img/photo-profile.png";
@@ -10,6 +9,7 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
 import React from "react";
+import Button from "../../../assets/components/common/button/Button";
 
 // данные для input nickname
 const inputData1 = {

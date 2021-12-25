@@ -4,10 +4,14 @@ import s from "./Input.module.scss";
 import icon from './../../../img/shape.svg';
 import {inputDataType} from "../../../../n2-features/f1-auth/a1-login/LoginForm";
 
-export const Input: React.FC<PropsType> = ({inputData, value, onChange, ...restProps}) => {
+export const Input: React.FC<PropsType> = (
+    {inputData, value, onChange, onChangeText, ...restProps}
+) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
+
+        onChangeText && onChangeText(e.currentTarget.value)
     }
 
     const changeTypeHandler = ()=>{
@@ -37,6 +41,7 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type PropsType = DefaultInputPropsType & {
     inputData: inputDataType
     value?: string | number
+    onChangeText?: (value: string) => void
 }
 
 

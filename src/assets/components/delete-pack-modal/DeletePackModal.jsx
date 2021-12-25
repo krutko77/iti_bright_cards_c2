@@ -1,6 +1,6 @@
 import s from "./DeletePackModal.module.scss";
-import ModalTitleBlock from "./../common/modal-title-block/ModalTitleBlock.jsx";
-import ModalButtonBlock from "./../common/modal-button-block/ModalButtonBlock.jsx";
+import ModalTitleBlock from "../common/modal-title-block/ModalTitleBlock.tsx";
+import ModalButtonBlock from "../common/modal-button-block/ModalButtonBlock.tsx";
 
 
 

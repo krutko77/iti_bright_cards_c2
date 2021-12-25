@@ -2,13 +2,13 @@ import s from "./PasswordRecoveryForm.module.scss";
 import {NavLink} from "react-router-dom";
 import Title from "../../../assets/components/common/title/Title.jsx";
 import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import Button from "../../../assets/components/common/button/Button.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useFormik} from "formik";
 import {sendPassRecoveryTC} from "../../../n1-main/m2-bll/passwordRecoveryReducer";
 import React from "react";
 import {Input} from "../../../assets/components/common/input/Input";
+import Button from "../../../assets/components/common/button/Button";
 
 // данные для input email
 const inputData1:inputDataType = {

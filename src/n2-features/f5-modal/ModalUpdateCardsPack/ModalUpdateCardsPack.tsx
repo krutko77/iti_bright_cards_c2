@@ -32,7 +32,7 @@ export const ModalUpdateCardsPack = () => {
         dispatch(closeAllModalsAC())
     }
 
-    return <Modal modalShowHide={modalUpdateCardsPackShowHide}>
+    return <Modal modalShowHide={modalUpdateCardsPackShowHide} version={"Briws"}>
         Enter new Cards Pack name.
         <div>
             <SuperInputText value={cardsPackName}

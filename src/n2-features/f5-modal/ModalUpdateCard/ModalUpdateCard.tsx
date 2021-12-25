@@ -37,7 +37,7 @@ export const ModalUpdateCard = () => {
         alert(`I will update card with id:\n${clickedCardId}\nNew question: ${question}\nNew answer: ${answer}`)
     }
 
-    return <Modal modalShowHide={modalUpdateCardShowHide}>
+    return <Modal modalShowHide={modalUpdateCardShowHide} version={"Briws"}>
         <div>Enter new Card question:</div>
         <SuperInputText value={question} onChangeText={setQuestion}/>
         <div>Enter new Card answer:</div>

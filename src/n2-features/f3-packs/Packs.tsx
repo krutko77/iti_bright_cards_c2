@@ -19,11 +19,12 @@ import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
 import {
     setClickedCardPackId,
     showModalAddCardsPackAC,
-    showModalDelCardsPackAC, showModalUpdateCardsPackAC
+    showModalDelCardsPackAC,
+    showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
-import {ModalAddCardsPack} from "../f5-modal/ModalAddCardsPack/ModalAddCardsPack";
 import {ModalDelCardsPack} from "../f5-modal/ModalDelCardsPack/ModalDelCardsPack";
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
+import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -62,9 +63,10 @@ export const Packs = () => {
 
     return (
         <>
-            <ModalAddCardsPack />
-            <ModalDelCardsPack />
-            <ModalUpdateCardsPack />
+            <NewPackModal/>
+            {/*<ModalAddCardsPack />*/}
+            <ModalDelCardsPack/>
+            <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
                 <SearchCardsPacksContainer/>

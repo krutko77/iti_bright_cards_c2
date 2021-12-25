@@ -1,6 +1,6 @@
 import s from "./PacksList.module.scss";
 import Subtitle from "./../common/subtitle/Subtitle.jsx";
-import Button from "./../common/button/Button.jsx";
+import Button from "../common/button/Button.tsx";
 import Search from "./../common/search/Search.jsx";
 import Table from "./../table/Table.jsx";
 import UsePagination from "./pagination/UsePagination.jsx";
