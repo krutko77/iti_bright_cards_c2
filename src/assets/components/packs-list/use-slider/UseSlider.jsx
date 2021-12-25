@@ -21,21 +21,6 @@ function ValueLabelComponent(props) {
    value: PropTypes.number.isRequired,
  };
  
-//  const marks = [
-//    {
-//      value: 0,
-//    },
-//    {
-//      value: 4,
-//    },
-//    {
-//      value: 112,
-//    },
-//    {
-//      value: 140,
-//    },
-//  ];
- 
 
  const UseSlider = styled(Slider)({
    color: '#21268F',
@@ -83,13 +68,12 @@ function ValueLabelComponent(props) {
  
    return (
      <Box sx={{ width: 195 }}>
-       <UseSlider
-         // marks={marks}
+       <UseSlider         
          max={150}
          getAriaLabel={() => 'Number of cards'}
          value={value}
          onChange={handleChange}
-         valueLabelDisplay="auto"
+         valueLabelDisplay="on"
          getAriaValueText={valuetext}
        />
      </Box>
