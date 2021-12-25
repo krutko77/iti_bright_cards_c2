@@ -1,0 +1,52 @@
+@import '../../../n1-main/m1-ui/common/components/styles/variables';
+
+.pagination {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    //border: 1px solid red;
+
+    .select {
+        font-weight: bold;
+        border: 1px solid $textColor;
+    }
+
+    .item {
+        //height: 30px;
+        width: 30px;
+        margin: 10px;
+        background-color: $primaryColor;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+    }
+
+    .btn {
+        width: 50px;
+        height: 30px;
+        margin: 10px;
+
+    }
+
+    .points {
+        display: flex;
+        align-items: flex-end;
+        height: 30px;
+    }
+
+    .lastPaginationPage {
+        background-color: $bgSecondColor;
+        border: 2px solid $primaryColor;
+        //cursor: auto;
+    }
+
+    .superSelect {
+        align-self: center;
+        width: 50px;
+        border-radius: 3px;
+    }
+}
+

@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    //justify-content: space-around;
+    width: 30%;
+    margin-left: 5px;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+}
+.btn {
+    width: 20px;
+    height: 23px;
+}
+.elem{
+    margin: 10px;
+}

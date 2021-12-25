@@ -1,4 +1,7 @@
 import axios, {AxiosResponse} from "axios";
+import {packType} from "../packsReducer";
+import {cardType} from "../cardsReducer";
+import {SortCardsType, SortPackType} from "../findAndPaginationReducer";
 
 const instance = axios.create({
     // baseURL: 'http://localhost:7542/2.0/',
@@ -43,12 +46,38 @@ export const RecoveryAPI = {
     }
 };
 
-export const cardsAPI = {
-    registerUser() {
-        return instance.get<cardPacksType[]>('/GET /cards/pack')
+export const packsAPI = {
+    getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
+        return instance.get<getPacksType>(`/cards/pack`, {params: {
+            pageCount, page, min, max, packName, sortPacks}})
     },
+    addPacks(isPrivate:boolean) {
+        return instance.post<getPacksType>(`/cards/pack`, {
+            cardsPack: {
+                name: "new Pack333",
+                private: isPrivate
+            }
+        })
+    }
 }
-
+export const cardsAPI = {
+    getCards(id: string, pageCount: string, page: number, cardQuestion: string, sortCards: SortCardsType) {
+        return instance.get<getCardType>(`/cards/card`, {params: {
+                cardsPack_id: id, pageCount, page, cardQuestion, sortCards
+            }})
+    },
+    addCards(cardsPack_id:string){
+        return instance.post<getCardType>(`/cards/card`, {
+            card:{
+                cardsPack_id,
+                question: "no question",
+                answer: "no answer",
+                grade: Math.random()*5,
+                shots: 0,
+            }
+        })
+    }
+}
 
 export type LoginType = {
     email: string,
@@ -74,4 +103,15 @@ export type recoveryType = {
     info: string
 }
 
-export type cardPacksType = []
+export type getPacksType = {
+    cardPacks: packType[]
+    cardPacksTotalCount: number // количество колод
+    maxCardsCount: number
+    minCardsCount: number
+    page: number // выбранная страница
+    pageCount: number // количество элементов на странице
+}
+export type getCardType = {
+    cards: cardType[]
+    cardsTotalCount: number
+}

@@ -22,3 +22,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// todo: I noticed this error: Encountered two children with the same key, `617ff51fd7b1030004090a1f`

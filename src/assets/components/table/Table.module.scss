@@ -10,54 +10,53 @@
    box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15)
 }
 
-table {
-   table-layout: fixed;
-   width: 100%;
-   border: none;
-   border-collapse: collapse;
-}
+.tableWrap {
+   max-height: 440px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   margin-bottom: 24px;
 
-thead th:nth-child(1) {
-   width: 185px;
-}
+   table {
+      table-layout: fixed;
+      width: 100%;
+      border: none;
+      border-collapse: collapse;
+   }
 
-thead th:nth-child(2) {
-   width: 77px;
-}
+   thead th:nth-child(1) {
+      width: 185px;
+   }
 
-thead th:nth-child(3) {
-   width: 135px;
-}
+   thead th:nth-child(2) {
+      width: 77px;
+   }
 
-thead th:nth-child(4) {
-   width: 112px;
-}
+   thead th:nth-child(3) {
+      width: 135px;
+   }
 
-thead th:nth-child(5) {
-   width: 160px;
-}
+   thead th:nth-child(4) {
+      width: 112px;
+   }
 
-th {
-   background-color: #ECECF9;
-}
+   th {
+      height: 48px;
+      padding-right: 10px;
+      text-align: left;
+   }
 
-tbody tr:nth-child(even) {
-   background: #F5F4FA;
-}
+   tbody tr:nth-child(even) {
+      background: #F5F4FA;
+   }
 
-th {
-   height: 48px;
-   padding-right: 10px;
-   text-align: left;
-}
+   td {
+      height: 48px;
+      padding-right: 10px;
+   }
 
-td {
-   height: 48px;
-   padding-right: 10px;
-}
-
-th:first-child {
-   padding-left: 24px;
+   th:first-child {
+      padding-left: 24px;
+   }
 }
 
 .btn {
