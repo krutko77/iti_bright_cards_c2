@@ -12,10 +12,12 @@ import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
 import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordRecoveryForm";
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
 import PacksList from "../../../assets/components/packs-list/UsePacksList";
+import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
 
 export const Main = () => {
    return (
       <div className='main'>
+         <ModalUp />
          <Header />
          <div className='content'>
             <Routes>
