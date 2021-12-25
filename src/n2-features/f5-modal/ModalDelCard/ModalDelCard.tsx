@@ -8,11 +8,12 @@ import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 export const ModalDelCard = () => {
 
     const dispatch = useDispatch()
-    // const modalDelCardShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardShowHide)
+    const modalDelCardShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardShowHide)
     // const activeCardId = useSelector<AppStoreType, string>(state => state.modal.activeCardId)
 
     const modalYesDelCardPackHandler = () => {
         dispatch(closeAllModalsAC())
+        alert('in progress')
         // dispatch(deleteCardTC(activeCardId))
     }
     const modalNoDelCardPackHandler = () => {
@@ -20,7 +21,7 @@ export const ModalDelCard = () => {
 
     }
 
-    return <Modal modalShowHide={false}>
+    return <Modal modalShowHide={modalDelCardShowHide}>
         Are you sure you want to delete the Card?
         <div>
             <SuperButton onClick={modalYesDelCardPackHandler}>Yes</SuperButton>

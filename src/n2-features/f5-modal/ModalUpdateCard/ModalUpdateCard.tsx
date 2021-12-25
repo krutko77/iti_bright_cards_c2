@@ -12,8 +12,8 @@ export const ModalUpdateCard = () => {
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
 
-    /*const modalUpdateCardShowHide = useSelector<AppStoreType, boolean>(state =>
-        state.modal.modalUpdateCardShowHide)*/
+    const modalUpdateCardShowHide = useSelector<AppStoreType, boolean>(state =>
+        state.modal.modalUpdateCardShowHide)
     // const activeCardId = useSelector<AppStoreType, string>(state => state.modal.activeCardId)
     // const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards.cards)
 
@@ -35,7 +35,7 @@ export const ModalUpdateCard = () => {
         // dispatch(updateCardTC(activeCardId, question, answer))
     }
 
-    return <Modal modalShowHide={false}>
+    return <Modal modalShowHide={modalUpdateCardShowHide}>
         <div>Enter new Card question:</div>
         <SuperInputText value={question} onChangeText={setQuestion}/>
         <div>Enter new Card answer:</div>

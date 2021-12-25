@@ -16,8 +16,9 @@ import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/Seach
 import s from './Cards.module.scss'
 import {SortCardsContainer} from "../f2-table/Sort/SortCardsContainer/SortCardsContainer";
 import {SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import {showModalAddCardAC} from "../../n1-main/m2-bll/modalReducer";
+import {showModalAddCardAC, showModalDelCardAC} from "../../n1-main/m2-bll/modalReducer";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
+import {ModalDelCard} from "../f5-modal/ModalDelCard/ModalDelCard";
 
 export const Cards = () => {
 
@@ -43,9 +44,14 @@ export const Cards = () => {
         dispatch(showModalAddCardAC())
     }
 
+    const showDelCardModalHandler = (id: string) => {
+        dispatch(showModalDelCardAC())
+    }
+
     return (
         <>
             <ModalAddCard addCard={addCardHandler}/>
+            <ModalDelCard />
             <TableContainer component={Paper}>
                 <PaginationCardsContainer/>
                 <SearchCardsContainer/>
@@ -90,6 +96,12 @@ export const Cards = () => {
                                 <TableCell align="center">{card.answer}</TableCell>
                                 <TableCell align="center">{card.grade}</TableCell>
                                 <TableCell align="center">{card.updated}</TableCell>
+                                <TableCell align='center'>
+                                    <button onClick={() => {showDelCardModalHandler(card._id)}}>del</button>
+                                </TableCell>
+                                <TableCell align='center'>
+                                    <button>update</button>
+                                </TableCell>
 
                             </TableRow>
                         ))}

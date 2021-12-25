@@ -20,10 +20,9 @@ export const modalReducer = (state = initialState, action: ActionType): InitialS
         case 'MODAL/SHOW-MODAL-DEL-CARDS-PACK':
         case "MODAL/SET-CLICKED-CARDS-PACK":
         case "MODAL/SHOW-MODAL-UPDATE-CARDS-PACK":
+        case "MODAL/SHOW-MODAL-DEL-CARD":
             return {...state, ...action.payload}
 
-        case "MODAL/SHOW-MODAL-DEL-CARD":
-            return {...state, modalDelCardShowHide: true}
         case "MODAL/SHOW-MODAL-UPDATE-CARD":
             return {...state, modalUpdateCardShowHide: true}
 
@@ -44,9 +43,10 @@ export const setClickedCardPackId = (clickedCardsPackId: string) =>
     ({type: 'MODAL/SET-CLICKED-CARDS-PACK', payload: {clickedCardsPackId}} as const)
 export const showModalUpdateCardsPackAC = () =>
     ({type: 'MODAL/SHOW-MODAL-UPDATE-CARDS-PACK', payload: {modalUpdateCardsPackShowHide: true}} as const)
-
 export const showModalDelCardAC = () =>
-    ({type: 'MODAL/SHOW-MODAL-DEL-CARD'} as const)
+    ({type: 'MODAL/SHOW-MODAL-DEL-CARD', payload: {modalDelCardShowHide: true}} as const)
+
+
 export const showModalUpdateCardAC = () =>
     ({type: 'MODAL/SHOW-MODAL-UPDATE-CARD'} as const)
 
