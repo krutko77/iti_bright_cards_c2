@@ -23,7 +23,9 @@ const styleButton2 = {
 export default function DeletePackModal() {
    return (
       <div className={s.deletePackModal}>
-         <ModalTitleBlock title="Delete Pack" />
+         <div className={s.titleBlock}>
+            <ModalTitleBlock title="Delete Pack" />
+         </div>
          <div className={s.content}>
             <p className={s.text}>Do you really want to remove <strong>Pack Name - Name Pack?</strong> All cards will be excluded from this course.</p>
             <ModalButtonBlock label1="Cancel" style1={styleButton1} label2="Delete" style2={styleButton2} />

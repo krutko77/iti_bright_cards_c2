@@ -22,7 +22,7 @@ export const Main = () => {
          <div className='content'>
             <Routes>
                <Route path={'/registration'} element={<RegistrationForm />} />
-               <Route path={'/login'} element={<NewPackModal/>} />
+               <Route path={'/login'} element={<DeletePackModal/>} />
                <Route path={'/profile'} element={<ProfileForm />} />
                <Route path={'/404'} element={<Page404 />} />
                <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>} />
