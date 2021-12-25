@@ -1,0 +1,17 @@
+@import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
+.deletePackModal {
+   background-color: #F9F9FE;
+   border-radius: 2px;
+}
+
+.content {
+   padding: 0 24px 24px;
+}
+
+.text {
+   width: 343px;
+   @include font(14px, 400, 150%, #000000);
+   margin-bottom: 29px;
+}

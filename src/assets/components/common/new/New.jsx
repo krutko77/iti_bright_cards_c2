@@ -1,9 +1,12 @@
-import s from "./Button.module.scss";
+import s from "./.module.scss";
 
 
-export default function Button(props) {
+export default function () {
    return (
-      <button className={s.btn} style={props.style}>{props.label}</button>
-   );
+      <div className={}>
+
+      </div>
+   )
 }
+
 
