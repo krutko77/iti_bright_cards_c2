@@ -25,6 +25,7 @@ import {
 import {ModalDelCardsPack} from "../f5-modal/ModalDelCardsPack/ModalDelCardsPack";
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
+import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -64,8 +65,8 @@ export const Packs = () => {
     return (
         <>
             <NewPackModal/>
-            {/*<ModalAddCardsPack />*/}
             <ModalDelCardsPack/>
+            {/*<DeletePackModal />*/}
             <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>

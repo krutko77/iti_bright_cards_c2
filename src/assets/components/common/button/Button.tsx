@@ -11,16 +11,16 @@ import {StyleType} from "../../../../types/types";
 // style={styleButton}
 
 export default function Button(props: PropsType) {
-   return (
-      <button className={s.btn} style={props.style} type="submit" onClick={props.onClick}>{props.label}</button>
-   );
+    return (
+        <button className={s.btn} style={props.style} type="submit" onClick={props.onClick}>{props.label}</button>
+    );
 }
 
 type PropsType = {
-   style?: StyleType
-   type?: string
-   label?: string
-   onClick?: () => void
+    style?: StyleType
+    type?: string
+    label?: string
+    onClick?: () => void
 }
 
 
