@@ -19,10 +19,11 @@ import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
 import {
     setClickedCardPackId,
     showModalAddCardsPackAC,
-    showModalDelCardsPackAC
+    showModalDelCardsPackAC, showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
 import {ModalAddCardsPack} from "../f5-modal/ModalAddCardsPack/ModalAddCardsPack";
 import {ModalDelCardsPack} from "../f5-modal/ModalDelCardsPack/ModalDelCardsPack";
+import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -49,23 +50,21 @@ export const Packs = () => {
         dispatch(showModalAddCardsPackAC())
     }
 
-    const delPackHandler = (id: string) => {
-
-    }
-
-    const updatePackHandler = (id: string) => {
-        alert(`I will update card pack with id:\n${id}`)
-    }
-
     const showModalDelPackHandler = (id: string) => {
         dispatch(setClickedCardPackId(id))
         dispatch(showModalDelCardsPackAC())
+    }
+
+    const showModalUpdatePackHandler = (id: string) => {
+        dispatch(setClickedCardPackId(id))
+        dispatch(showModalUpdateCardsPackAC())
     }
 
     return (
         <>
             <ModalAddCardsPack />
             <ModalDelCardsPack />
+            <ModalUpdateCardsPack />
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
                 <SearchCardsPacksContainer/>
@@ -105,7 +104,7 @@ export const Packs = () => {
                                     <button onClick={() => showModalDelPackHandler(mp._id)}>del</button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <button onClick={() => updatePackHandler(mp._id)}>update</button>
+                                    <button onClick={() => showModalUpdatePackHandler(mp._id)}>update</button>
                                 </TableCell>
                                 <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                             </TableRow>
