@@ -17,9 +17,9 @@ export const Modal: React.FC<ModalPropsType> = (props) => {
         dispatch(closeAllModalsAC())
     }
 
-    return <div className={s.modalBackground}>
-        <div className={s.modalWindow}>
-            <div className={s.modalContent}>
+    return <div className={s.modalBackground} onClick={onCloseHandler}>
+        <div className={s.modalWindow} onClick={e => e.stopPropagation()}>
+            <div className={s.modalContent} >
                 {props.children}
             </div>
             <div className={s.close} onClick={onCloseHandler}>X</div>
