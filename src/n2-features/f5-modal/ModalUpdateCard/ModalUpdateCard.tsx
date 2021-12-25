@@ -5,6 +5,7 @@ import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/Supe
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
+import {cardType} from "../../../n1-main/m2-bll/cardsReducer";
 
 export const ModalUpdateCard = () => {
     const dispatch = useDispatch()
@@ -14,16 +15,17 @@ export const ModalUpdateCard = () => {
 
     const modalUpdateCardShowHide = useSelector<AppStoreType, boolean>(state =>
         state.modal.modalUpdateCardShowHide)
-    // const activeCardId = useSelector<AppStoreType, string>(state => state.modal.activeCardId)
-    // const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards.cards)
+    const clickedCardId = useSelector<AppStoreType, string>(state => state.modal.clickedCardId)
+    const cards = useSelector<AppStoreType, Array<cardType>>(state => state.cards)
 
-    // const card = cards.find(e => e._id === activeCardId)
+    const card = cards.find(e => e._id === clickedCardId)
+
     let oldCardQuestion = ''
     let oldCardAnswer = ''
-    /*if (card) {
+    if (card) {
         oldCardQuestion = card.question
         oldCardAnswer = card.answer
-    }*/
+    }
 
     useEffect(() => {
         setQuestion(oldCardQuestion)
@@ -32,7 +34,7 @@ export const ModalUpdateCard = () => {
 
     const buttonHandler = () => {
         dispatch(closeAllModalsAC())
-        // dispatch(updateCardTC(activeCardId, question, answer))
+        alert(`I will update card with id:\n${clickedCardId}\nNew question: ${question}\nNew answer: ${answer}`)
     }
 
     return <Modal modalShowHide={modalUpdateCardShowHide}>
