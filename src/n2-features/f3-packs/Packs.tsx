@@ -22,7 +22,6 @@ import {
     showModalDelCardsPackAC,
     showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
-import {ModalDelCardsPack} from "../f5-modal/ModalDelCardsPack/ModalDelCardsPack";
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
@@ -65,8 +64,8 @@ export const Packs = () => {
     return (
         <>
             <NewPackModal/>
-            <ModalDelCardsPack/>
-            {/*<DeletePackModal />*/}
+            {/*<ModalDelCardsPack/>*/}
+            <DeletePackModal />
             <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
