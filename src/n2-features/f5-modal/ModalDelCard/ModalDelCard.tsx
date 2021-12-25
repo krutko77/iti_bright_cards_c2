@@ -9,16 +9,14 @@ export const ModalDelCard = () => {
 
     const dispatch = useDispatch()
     const modalDelCardShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardShowHide)
-    // const activeCardId = useSelector<AppStoreType, string>(state => state.modal.activeCardId)
+    const clickedCardId = useSelector<AppStoreType, string>(state => state.modal.clickedCardId)
 
     const modalYesDelCardPackHandler = () => {
+        alert(`I will delete card with id:\n${clickedCardId}`)
         dispatch(closeAllModalsAC())
-        alert('in progress')
-        // dispatch(deleteCardTC(activeCardId))
     }
     const modalNoDelCardPackHandler = () => {
         dispatch(closeAllModalsAC())
-
     }
 
     return <Modal modalShowHide={modalDelCardShowHide}>

@@ -6,6 +6,7 @@ const initialState: InitialStateType = {
     modalAddCardShowHide: false,
     modalUpdateCardShowHide: false,
     clickedCardsPackId: '',
+    clickedCardId: '' 
 }
 
 export const modalReducer = (state = initialState, action: ActionType): InitialStateType => {
@@ -21,7 +22,9 @@ export const modalReducer = (state = initialState, action: ActionType): InitialS
         case "MODAL/SET-CLICKED-CARDS-PACK":
         case "MODAL/SHOW-MODAL-UPDATE-CARDS-PACK":
         case "MODAL/SHOW-MODAL-DEL-CARD":
+        case "MODAL/SET-CLICKED-CARD":
             return {...state, ...action.payload}
+
 
         case "MODAL/SHOW-MODAL-UPDATE-CARD":
             return {...state, modalUpdateCardShowHide: true}
@@ -45,6 +48,8 @@ export const showModalUpdateCardsPackAC = () =>
     ({type: 'MODAL/SHOW-MODAL-UPDATE-CARDS-PACK', payload: {modalUpdateCardsPackShowHide: true}} as const)
 export const showModalDelCardAC = () =>
     ({type: 'MODAL/SHOW-MODAL-DEL-CARD', payload: {modalDelCardShowHide: true}} as const)
+export const setClickedCardId = (clickedCardId: string) =>
+    ({type: 'MODAL/SET-CLICKED-CARD', payload: {clickedCardId}} as const)
 
 
 export const showModalUpdateCardAC = () =>
@@ -58,6 +63,7 @@ type InitialStateType = {
     modalAddCardShowHide: boolean
     modalUpdateCardShowHide: boolean
     clickedCardsPackId: string
+    clickedCardId: string
 }
 
 type ActionType =
@@ -69,3 +75,4 @@ type ActionType =
     | ReturnType<typeof showModalAddCardAC>
     | ReturnType<typeof showModalUpdateCardAC>
     | ReturnType<typeof setClickedCardPackId>
+    | ReturnType<typeof setClickedCardId>
