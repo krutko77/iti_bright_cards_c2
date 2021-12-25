@@ -5,6 +5,7 @@ const initialState: InitialStateType = {
     modalDelCardShowHide: false,
     modalAddCardShowHide: false,
     modalUpdateCardShowHide: false,
+    clickedCardsPackId: '',
 }
 
 export const modalReducer = (state = initialState, action: ActionType): InitialStateType => {
@@ -16,18 +17,17 @@ export const modalReducer = (state = initialState, action: ActionType): InitialS
             }
         case "MODAL/SHOW-MODAL-ADD-CARDS-PACK":
         case "MODAL/SHOW-MODAL-ADD-CARD":
+        case 'MODAL/SHOW-MODAL-DEL-CARDS-PACK':
+        case "MODAL/SET-CLICKED-CARDS-PACK":
             return {...state, ...action.payload}
 
-        case 'MODAL/SHOW-MODAL-DEL-CARDS-PACK':
-            return {...state, modalDelCardsPackShowHide: true}
         case "MODAL/SHOW-MODAL-UPDATE-CARDS-PACK":
             return {...state, modalUpdateCardsPackShowHide: true}
         case "MODAL/SHOW-MODAL-DEL-CARD":
             return {...state, modalDelCardShowHide: true}
-
-
         case "MODAL/SHOW-MODAL-UPDATE-CARD":
             return {...state, modalUpdateCardShowHide: true}
+
         default:
             return state
     }
@@ -36,15 +36,18 @@ export const modalReducer = (state = initialState, action: ActionType): InitialS
 export const closeAllModalsAC = () =>
     ({type: 'MODAL/CLOSE-ALL-MODALS'} as const)
 export const showModalDelCardsPackAC = () =>
-    ({type: 'MODAL/SHOW-MODAL-DEL-CARDS-PACK'} as const)
+    ({type: 'MODAL/SHOW-MODAL-DEL-CARDS-PACK', payload: {modalDelCardsPackShowHide: true}} as const)
 export const showModalAddCardsPackAC = () =>
     ({type: 'MODAL/SHOW-MODAL-ADD-CARDS-PACK', payload: {modalAddCardsPackShowHide: true}} as const)
+export const showModalAddCardAC = () =>
+    ({type: 'MODAL/SHOW-MODAL-ADD-CARD', payload: {modalAddCardShowHide: true}} as const)
+export const setClickedCardPackId = (clickedCardsPackId: string) =>
+    ({type: 'MODAL/SET-CLICKED-CARDS-PACK', payload: {clickedCardsPackId}} as const)
+
 export const showModalUpdateCardsPackAC = () =>
     ({type: 'MODAL/SHOW-MODAL-UPDATE-CARDS-PACK'} as const)
 export const showModalDelCardAC = () =>
     ({type: 'MODAL/SHOW-MODAL-DEL-CARD'} as const)
-export const showModalAddCardAC = () =>
-    ({type: 'MODAL/SHOW-MODAL-ADD-CARD', payload: {modalAddCardShowHide: true}} as const)
 export const showModalUpdateCardAC = () =>
     ({type: 'MODAL/SHOW-MODAL-UPDATE-CARD'} as const)
 
@@ -55,6 +58,7 @@ type InitialStateType = {
     modalDelCardShowHide: boolean
     modalAddCardShowHide: boolean
     modalUpdateCardShowHide: boolean
+    clickedCardsPackId: string
 }
 
 type ActionType =
@@ -65,3 +69,4 @@ type ActionType =
     | ReturnType<typeof showModalDelCardAC>
     | ReturnType<typeof showModalAddCardAC>
     | ReturnType<typeof showModalUpdateCardAC>
+    | ReturnType<typeof setClickedCardPackId>

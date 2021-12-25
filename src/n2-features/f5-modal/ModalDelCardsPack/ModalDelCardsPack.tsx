@@ -8,22 +8,22 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 export const ModalDelCardsPack = () => {
     const dispatch = useDispatch()
 
-    // const activeCardPackId = useSelector<AppStoreType, string>(state => state.modal.activeCardPackId)
-    // const modalDelCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardsPackShowHide)
+    const modalDelCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardsPackShowHide)
+    const clickedCardPackId = useSelector<AppStoreType, string>(state => state.modal.clickedCardsPackId)
 
-    const modalYesDelCardPackHandler = () => {
-        // dispatch(deleteCardsPackTC(activeCardPackId))
+    const modalYesDelCardPackHandler = (id: string) => {
         dispatch(closeAllModalsAC())
+        alert(`I will delete card pack with id:\n${id}`)
     }
     const modalNoDelCardPackHandler = () => {
         dispatch(closeAllModalsAC())
 
     }
 
-    return <Modal modalShowHide={false}>
+    return <Modal modalShowHide={modalDelCardPackShowHide}>
         Are you sure you want to delete the Card Pack?
         <div>
-            <SuperButton onClick={modalYesDelCardPackHandler}>Yes</SuperButton>
+            <SuperButton onClick={() => modalYesDelCardPackHandler(clickedCardPackId)}>Yes</SuperButton>
             <SuperButton onClick={modalNoDelCardPackHandler}>No</SuperButton>
         </div>
     </Modal>

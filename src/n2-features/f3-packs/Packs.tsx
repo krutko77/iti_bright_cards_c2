@@ -16,8 +16,13 @@ import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/So
 import s from './Pack.module.scss'
 import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import {showModalAddCardsPackAC} from "../../n1-main/m2-bll/modalReducer";
+import {
+    setClickedCardPackId,
+    showModalAddCardsPackAC,
+    showModalDelCardsPackAC
+} from "../../n1-main/m2-bll/modalReducer";
 import {ModalAddCardsPack} from "../f5-modal/ModalAddCardsPack/ModalAddCardsPack";
+import {ModalDelCardsPack} from "../f5-modal/ModalDelCardsPack/ModalDelCardsPack";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -44,9 +49,23 @@ export const Packs = () => {
         dispatch(showModalAddCardsPackAC())
     }
 
+    const delPackHandler = (id: string) => {
+
+    }
+
+    const updatePackHandler = (id: string) => {
+        alert(`I will update card pack with id:\n${id}`)
+    }
+
+    const showModalDelPackHandler = (id: string) => {
+        dispatch(setClickedCardPackId(id))
+        dispatch(showModalDelCardsPackAC())
+    }
+
     return (
         <>
             <ModalAddCardsPack />
+            <ModalDelCardsPack />
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
                 <SearchCardsPacksContainer/>
@@ -83,10 +102,10 @@ export const Packs = () => {
                                 <TableCell align="center">{mp.updated}</TableCell>
                                 <TableCell align="center"></TableCell>
                                 <TableCell align='center'>
-                                    <button>del</button>
+                                    <button onClick={() => showModalDelPackHandler(mp._id)}>del</button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <button>update</button>
+                                    <button onClick={() => updatePackHandler(mp._id)}>update</button>
                                 </TableCell>
                                 <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                             </TableRow>
