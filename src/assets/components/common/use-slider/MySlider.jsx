@@ -6,6 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PropTypes from 'prop-types';
 
 
+
 function ValueLabelComponent(props) {
    const { children, value } = props;
  
@@ -22,7 +23,7 @@ function ValueLabelComponent(props) {
  };
  
 
- const UseSlider = styled(Slider)({
+ const MySlider = styled(Slider)({
    color: '#21268F',
    height: 5,
    '& .MuiSlider-track': {
@@ -67,8 +68,9 @@ function ValueLabelComponent(props) {
    };
  
    return (
+
      <Box sx={{ width: 195 }}>
-       <UseSlider         
+       <MySlider         
          max={150}
          getAriaLabel={() => 'Number of cards'}
          value={value}

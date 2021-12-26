@@ -65,7 +65,8 @@ export default function NewPackModal() {
                     <ModalButtonBlock
                         label1="Cancel"
                         style1={styleButton1}
-                        label2="Save" style2={styleButton2}
+                        label2="Save" 
+                        style2={styleButton2}
                         callback1={onCloseHandler}
                         callback2={addCardPackInModalButtonHandler}
                     />
