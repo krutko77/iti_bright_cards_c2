@@ -29,9 +29,7 @@ export const Learn = () => {
     const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
     const cardsPack = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
 
-    // trying to fix login crash error
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
-    // const isInitialized = useSelector<AppStoreType, boolean>(state => state.app.isInitilize)
 
     const [isFirstRun, setIsFirstRun] = useState<boolean>(true)
     const [card, setCard] = useState<CardType>({
@@ -69,14 +67,11 @@ export const Learn = () => {
                         setIsFirstRun(false);
                     }
                     if (cards.length > 0) {
+                        debugger
                         setCard(getCard(cards))
                     }
                 })
-
-
         }
-
-
     },[packid, isLoggedIn])
 
     let getNextCard = () => {
@@ -87,10 +82,6 @@ export const Learn = () => {
     const sandGradeHandler = (grade: number) => {
         alert(`I will sent to server grade: ${grade} for cardId: ${card._id}`)
     }
-
-    /* if (!isLoggedIn) {
-         return <Navigate to="/login"/>
-     }*/
 
     return <div className={s.learn}>
         {selectedCardPack &&
