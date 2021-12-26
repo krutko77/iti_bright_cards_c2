@@ -28,19 +28,16 @@ const getCard = (cards: Array<CardType>) => {
 
 export const Learn = () => {
     const cardsPacksFromLS = localStorage.getItem('cardsPacks')
-    // here to put from LS
+
+    // get CardPacks from LS
     let cardsPacksFromLSParsed = []
     if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
 
-
-    let {packid} = useParams() // first I get parkId from address
+    let {packid} = useParams()
 
     const dispatch: Function = useDispatch();
     const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards) // take cards
 
-    // const cardPacks = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
-    // this is packs list from previos screen: But did not work!
-    const lastCardsPacksOnScreen = useSelector<AppStoreType, Array<PackType>>(state => state.learn.lastCardsPacksOnScreen)
     const [lastCardsPacksOnScreenTrue, setLastCardsPacksOnScreenTrue] = useState<Array<PackType>>([])
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
@@ -69,13 +66,8 @@ export const Learn = () => {
     const [isAnswerHidden, setIsAnswerHidden] = useState(true)
     const [selectedCardPackTrue, setSelectedCardPackTrue] = useState<PackType>()
 
-
-    // if (cardsPack.length) selectedCardPack = cardsPack.find(e => e._id === packid)
-
     let selectedCardPack
-    selectedCardPack = cardsPacksFromLSParsed.find((e: any) => e._id === packid)
-
-    // let findPleasePlease;
+    selectedCardPack = cardsPacksFromLSParsed.find((e: CardType) => e._id === packid)
 
     useEffect(() => {
         if (isLoggedIn && packid) {

@@ -10,7 +10,6 @@ import {packsReducer} from "./packsReducer";
 import {cardsReducer} from "./cardsReducer";
 import {findAndPaginationReducer} from "./findAndPaginationReducer";
 import {modalReducer} from "./modalReducer";
-import {learnReducer} from "./learnReducer";
 
 const reducers = combineReducers({
     testReducer: testReducer,
@@ -23,7 +22,6 @@ const reducers = combineReducers({
     cards: cardsReducer,
     findAndPagination: findAndPaginationReducer,
     modal: modalReducer,
-    learn: learnReducer,
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware))

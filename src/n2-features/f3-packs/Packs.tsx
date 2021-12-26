@@ -10,7 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {Navigate, NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
 import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
 import s from './Pack.module.scss'
@@ -25,8 +25,6 @@ import {
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
-import {InitializeTC} from "../../n1-main/m2-bll/authReducer";
-import {setLastCardsPacksOnScreen} from "../../n1-main/m2-bll/learnReducer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -69,8 +67,6 @@ export const Packs = () => {
     }, [])*/
 
     const startLearnHandler = (packId: string) => {
-        dispatch(setLastCardsPacksOnScreen(cardPacks))
-        // here need to put to LS
         localStorage.setItem('cardsPacks', JSON.stringify(cardPacks))
 
         navigate(`/learn/${packId}`, { replace: true })
