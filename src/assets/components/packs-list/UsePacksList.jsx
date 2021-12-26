@@ -3,7 +3,7 @@ import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "../common/button/Button.tsx";
 import Search from "./../common/search/Search.jsx";
 import Table from "./../table/Table.jsx";
-import UseSlider from "./../packs-list/use-slider/UseSlider.jsx";
+import UseSlider from "../common/use-slider/UseSlider.jsx";
 import BottomBlock from "./../common/bottom-block/BottomBlock";
 
 
@@ -77,8 +77,7 @@ export default function PacksList() {
             <div className={s.btnBlock}>
                <button className={`${s.btn} ${s.active}`}>My</button>
                <button className={s.btn}>All</button>
-            </div>
-            <span className={`${s.label} ${s.labelSlider}`}>Number of cards</span>
+            </div>            
             <UseSlider />
          </aside>
          <main className={s.main}>

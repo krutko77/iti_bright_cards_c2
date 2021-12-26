@@ -1,6 +1,6 @@
 import s from "./BottomBlock.module.scss";
-import UsePagination from "./../../packs-list/pagination/UsePagination.jsx";
-import Select from "./../../packs-list/select/Select.jsx";
+import UsePagination from "../pagination/UsePagination.jsx";
+import Select from "../select/Select.jsx";
 
 
 export default function BottomBlock () {
