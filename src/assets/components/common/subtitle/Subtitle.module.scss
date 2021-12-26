@@ -1,5 +1,8 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
 .subtitle {
-   font-family: "Poppins", sans-serif;
+   font-family: $titleFontFamily;
    font-weight: 600;
    line-height: 150%;
    font-size: 22px;

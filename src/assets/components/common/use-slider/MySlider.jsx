@@ -61,7 +61,7 @@ function ValueLabelComponent(props) {
  }
  
  export default function RangeSlider() {
-   const [value, setValue] = React.useState([4, 112]);
+   const [value, setValue] = React.useState([15, 112]);
  
    const handleChange = (event, newValue) => {
      setValue(newValue);

@@ -18,7 +18,7 @@
 
 .inputSearch {
    height: 36px;
-   width: 461px;
+   width: 100%;
    padding-left: 40px;
    background-color: #ECECF9;
    opacity: 0.5;
@@ -30,3 +30,4 @@
 input::placeholder {
    @include font(14px, 400, 170%, $textColor);
 }
+

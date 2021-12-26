@@ -1,19 +1,24 @@
-import s from "./PacksList.module.scss";
-import Subtitle from "./../common/subtitle/Subtitle.jsx";
-import Button from "../common/button/Button.tsx";
-import Search from "./../common/search/Search.jsx";
-import Table from "./../table/Table.jsx";
+import s from "./MyPacksList.module.scss";
+import ProfileBlock from "../common/profile-block/ProfileBlock.jsx";
+import Subtitle from "../common/subtitle/Subtitle.jsx";
+import Search from "../common/search/Search.jsx";
+import Table from "../table/Table.jsx";
 import UseSlider from "../common/use-slider/UseSlider.jsx";
-import BottomBlock from "./../common/bottom-block/BottomBlock";
+import BottomBlock from "../common/bottom-block/BottomBlock";
 
-
-// стилизация синей кнопоки
-const styleButton = {
-   width: "184px",
-   marginLeft: "24px"
+// данные для ProfileBlock
+const ProfileData = {
+   name: "Petr Ivanov"
 }
 
-// данные для таблицы
+// стилизация кнопки в ProfileBlock 
+const styleButton = {
+   padding: "5px 8px",
+   border: "1px solid #9E9BB8",
+   backgroundColor: "transparent"
+}
+
+// / данные для таблицы
 const tableData = {
    title1: "Name",
    title2: "Cards",
@@ -70,26 +75,26 @@ const tableData = {
    }
 }
 
-export default function PacksList() {
+// стилизация search
+const styleSearch = {
+   width: "100%"
+}
+
+export default function MyPacksList() {
    return (
-      <div className={s.packsList}>
+      <div className={s.myPacksList}>
          <aside className={s.sidebar}>
-            <span className={s.label}>Show packs cards</span>
-            <div className={s.btnBlock}>
-               <button className={`${s.btn} ${s.active}`}>My</button>
-               <button className={s.btn}>All</button>
+            <div className={s.profileBlock}>
+               <ProfileBlock styleButton={styleButton} data={ProfileData} />
             </div>
-            <UseSlider />
+            <div className={s.useSlider}>
+               <UseSlider />
+            </div>
          </aside>
          <main className={s.main}>
-            <div className={s.title}>
-               <Subtitle subtitle="Packs list" />
-            </div>
-            <div className={s.searchBlock}>
-               <div className={s.search}>
-                  <Search />
-               </div>
-               <Button label="Add new pack" style={styleButton} />
+            <Subtitle subtitle="My packs list" />
+            <div className={s.search}>
+               <Search style={styleSearch} />
             </div>
             <Table tableData={tableData} />
             <BottomBlock />
@@ -97,5 +102,6 @@ export default function PacksList() {
       </div>
    );
 }
+
 
 
