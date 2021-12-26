@@ -33,6 +33,7 @@ export const Packs = () => {
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
 
+
     const dispatch = useDispatch()
 
     useEffect(() => {

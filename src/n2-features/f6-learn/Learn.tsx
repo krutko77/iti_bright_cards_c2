@@ -5,6 +5,7 @@ import {AppStoreType} from "../../n1-main/m2-bll/store";
 import {NavLink, useParams} from "react-router-dom";
 import s from './Learn.module.scss'
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
+import {getPacksTC, PackType} from "../../n1-main/m2-bll/packsReducer";
 
 const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
 
@@ -25,6 +26,7 @@ export const Learn = () => {
     let {packid} = useParams()
     const dispatch = useDispatch();
     const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
+    const cardsPack = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
 
     const [isFirstRun, setIsFirstRun] = useState<boolean>(true)
     const [card, setCard] = useState<CardType>({
@@ -49,12 +51,13 @@ export const Learn = () => {
     });
     const [isAnswerHidden, setIsAnswerHidden] = useState(true)
 
-    useEffect(() => {
-        console.log('LearnContainer useEffect');
+    let selectedCardPack
+    if (cardsPack.length) selectedCardPack = cardsPack.find(e => e._id === packid)
 
+    useEffect(() => {
         if (isFirstRun) {
             if (packid) {
-                // dispatch(setPageCountCardsAC(cardsCount))
+                dispatch(getPacksTC())
                 dispatch(getCardsTC(packid));
                 setIsFirstRun(false);
             }
@@ -63,36 +66,43 @@ export const Learn = () => {
             debugger
             setCard(getCard(cards))
         }
-
-    }, [dispatch, packid, cards, isFirstRun]);
+    }, [dispatch, packid, cards, isFirstRun, cardsPack]);
 
     let getNextCard = () => {
         setIsAnswerHidden(true)
         setCard(getCard(cards))
     }
 
-    const submitHandler = (grade: number) => {
-        alert('send grade to server')
+    const sandGradeHandler = (grade: number) => {
+        alert(`I will sent to server grade: ${grade} for cardId: ${card._id}`)
     }
 
     return <div className={s.learn}>
-        <h4>LearnPage</h4>
-        <div>{card.question}</div>
+        {selectedCardPack &&
+          <div className={s.status}>
+            <div>Selected cards pack: {selectedCardPack.name}</div>
+            <div>Cards count: {selectedCardPack.cardsCount}</div>
+          </div>
+        }
+
+        <div className={s.question}><b>Question:</b> {card.question}</div>
 
         <div>
-            {isAnswerHidden ? <SuperButton onClick={() => setIsAnswerHidden(false)}>Answer</SuperButton> :
-                <span>{card.answer}</span>}
+            {isAnswerHidden
+                ? <SuperButton onClick={() => setIsAnswerHidden(false)}>Answer</SuperButton>
+                : <div><b>Answer:</b> {card.answer}</div>}
         </div>
 
         {!isAnswerHidden &&
           <div className={s.grade}>
               {grades.map((g, i) => (
-                  <SuperButton key={i} className={s.gradeBtn} onClick={() => (submitHandler(i + 1))}>{g}</SuperButton>
+                  <SuperButton key={i} className={s.gradeBtn}
+                               onClick={() => (sandGradeHandler(i + 1))}>{g}</SuperButton>
               ))}
           </div>}
 
         <div className={s.btn}>
-            <NavLink to={`/table`}><SuperButton>Cancel</SuperButton></NavLink>
+            <NavLink to={`/packs`}><SuperButton>Cancel</SuperButton></NavLink>
             <SuperButton onClick={getNextCard}>Next</SuperButton>
         </div>
     </div>
