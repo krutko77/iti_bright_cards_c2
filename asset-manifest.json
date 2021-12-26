@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/iti_bright_cards_c2/static/css/main.8179ad14.chunk.css",
-    "main.js": "/iti_bright_cards_c2/static/js/main.5bb7c744.chunk.js",
-    "main.js.map": "/iti_bright_cards_c2/static/js/main.5bb7c744.chunk.js.map",
-    "runtime-main.js": "/iti_bright_cards_c2/static/js/runtime-main.299d66eb.js",
-    "runtime-main.js.map": "/iti_bright_cards_c2/static/js/runtime-main.299d66eb.js.map",
-    "static/js/2.5007a974.chunk.js": "/iti_bright_cards_c2/static/js/2.5007a974.chunk.js",
-    "static/js/2.5007a974.chunk.js.map": "/iti_bright_cards_c2/static/js/2.5007a974.chunk.js.map",
-    "static/js/3.d3fe3287.chunk.js": "/iti_bright_cards_c2/static/js/3.d3fe3287.chunk.js",
-    "static/js/3.d3fe3287.chunk.js.map": "/iti_bright_cards_c2/static/js/3.d3fe3287.chunk.js.map",
+    "main.css": "/iti_bright_cards_c2/static/css/main.0bbc5ef8.chunk.css",
+    "main.js": "/iti_bright_cards_c2/static/js/main.1e57295d.chunk.js",
+    "main.js.map": "/iti_bright_cards_c2/static/js/main.1e57295d.chunk.js.map",
+    "runtime-main.js": "/iti_bright_cards_c2/static/js/runtime-main.fc777dca.js",
+    "runtime-main.js.map": "/iti_bright_cards_c2/static/js/runtime-main.fc777dca.js.map",
+    "static/js/2.bfacb766.chunk.js": "/iti_bright_cards_c2/static/js/2.bfacb766.chunk.js",
+    "static/js/2.bfacb766.chunk.js.map": "/iti_bright_cards_c2/static/js/2.bfacb766.chunk.js.map",
+    "static/js/3.d0a40039.chunk.js": "/iti_bright_cards_c2/static/js/3.d0a40039.chunk.js",
+    "static/js/3.d0a40039.chunk.js.map": "/iti_bright_cards_c2/static/js/3.d0a40039.chunk.js.map",
     "index.html": "/iti_bright_cards_c2/index.html",
-    "static/css/main.8179ad14.chunk.css.map": "/iti_bright_cards_c2/static/css/main.8179ad14.chunk.css.map",
-    "static/js/2.5007a974.chunk.js.LICENSE.txt": "/iti_bright_cards_c2/static/js/2.5007a974.chunk.js.LICENSE.txt",
+    "static/css/main.0bbc5ef8.chunk.css.map": "/iti_bright_cards_c2/static/css/main.0bbc5ef8.chunk.css.map",
+    "static/js/2.bfacb766.chunk.js.LICENSE.txt": "/iti_bright_cards_c2/static/js/2.bfacb766.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/iti_bright_cards_c2/static/media/SFUIDisplay-Semibold.cb4925c9.ttf",
     "static/media/arrow-icon.f30a3c93.svg": "/iti_bright_cards_c2/static/media/arrow-icon.f30a3c93.svg",
+    "static/media/close-icon.bd72ece5.svg": "/iti_bright_cards_c2/static/media/close-icon.bd72ece5.svg",
     "static/media/UsePagination.module.scss": "/iti_bright_cards_c2/static/media/prev-icon.7b290f52.svg",
     "static/media/photo-icon.c128641c.svg": "/iti_bright_cards_c2/static/media/photo-icon.c128641c.svg",
     "static/media/photo-profile.ae88cd5b.png": "/iti_bright_cards_c2/static/media/photo-profile.ae88cd5b.png",
@@ -21,9 +22,9 @@
     "static/media/shape.109a1739.svg": "/iti_bright_cards_c2/static/media/shape.109a1739.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.299d66eb.js",
-    "static/js/2.5007a974.chunk.js",
-    "static/css/main.8179ad14.chunk.css",
-    "static/js/main.5bb7c744.chunk.js"
+    "static/js/runtime-main.fc777dca.js",
+    "static/js/2.bfacb766.chunk.js",
+    "static/css/main.0bbc5ef8.chunk.css",
+    "static/js/main.1e57295d.chunk.js"
   ]
 }
