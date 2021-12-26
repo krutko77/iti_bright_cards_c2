@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {CardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {NavLink, useParams} from "react-router-dom";
+import {Navigate, NavLink, useParams} from "react-router-dom";
 import s from './Learn.module.scss'
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {getPacksTC, PackType} from "../../n1-main/m2-bll/packsReducer";
+import {CircularProgress} from "@mui/material";
 
 const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
 
@@ -24,9 +25,13 @@ const getCard = (cards: Array<CardType>) => {
 
 export const Learn = () => {
     let {packid} = useParams()
-    const dispatch = useDispatch();
+    const dispatch: Function = useDispatch();
     const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
     const cardsPack = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
+
+    // trying to fix login crash error
+    const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
+    // const isInitialized = useSelector<AppStoreType, boolean>(state => state.app.isInitilize)
 
     const [isFirstRun, setIsFirstRun] = useState<boolean>(true)
     const [card, setCard] = useState<CardType>({
@@ -54,19 +59,25 @@ export const Learn = () => {
     let selectedCardPack
     if (cardsPack.length) selectedCardPack = cardsPack.find(e => e._id === packid)
 
+
     useEffect(() => {
-        if (isFirstRun) {
-            if (packid) {
-                dispatch(getPacksTC())
-                dispatch(getCardsTC(packid));
-                setIsFirstRun(false);
-            }
+        if (isLoggedIn && packid) {
+            dispatch(getPacksTC())
+                .then(() => {
+                    if (isFirstRun) {
+                        dispatch(getCardsTC(packid!))
+                        setIsFirstRun(false);
+                    }
+                    if (cards.length > 0) {
+                        setCard(getCard(cards))
+                    }
+                })
+
+
         }
-        if (cards.length > 0) {
-            debugger
-            setCard(getCard(cards))
-        }
-    }, [dispatch, packid, cards, isFirstRun, cardsPack]);
+
+
+    },[packid, isLoggedIn])
 
     let getNextCard = () => {
         setIsAnswerHidden(true)
@@ -76,6 +87,10 @@ export const Learn = () => {
     const sandGradeHandler = (grade: number) => {
         alert(`I will sent to server grade: ${grade} for cardId: ${card._id}`)
     }
+
+    /* if (!isLoggedIn) {
+         return <Navigate to="/login"/>
+     }*/
 
     return <div className={s.learn}>
         {selectedCardPack &&

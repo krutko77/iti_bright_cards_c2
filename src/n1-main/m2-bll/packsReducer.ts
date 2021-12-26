@@ -34,7 +34,7 @@ export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getS
     const packName = getState().findAndPagination.cardPacks.packName
     const sortPacks = getState().findAndPagination.cardPacks.sortPacks
 
-    packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
+    return packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
         .then((res) => {
             if (res.data.cardPacks) {
                 dispatch(getPacksAC(res.data.cardPacks))

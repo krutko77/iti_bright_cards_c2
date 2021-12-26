@@ -58,7 +58,7 @@ export const InitializeTC = () => (dispatch: Dispatch) => {
         )
         .finally(() => {
             dispatch(setIsInitializeAC(true))
-            setAppLoading(false)
+            // setAppLoading(false)
         })
 }
 export const LogoutTC = () => (dispatch: Dispatch) => {

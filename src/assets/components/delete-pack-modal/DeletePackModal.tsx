@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
-import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
 import {PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация кнопок

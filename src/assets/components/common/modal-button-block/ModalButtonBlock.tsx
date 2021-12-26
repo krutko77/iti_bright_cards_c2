@@ -4,7 +4,6 @@ import Button from "../button/Button";
 
 
 export default function ModalButtonBlock (props: PropsType) {
-    debugger
    return (
       <div className={s.modalButtonBlock}>
             <Button label={props.label1} style={props.style1} onClick={props.callback1}/>

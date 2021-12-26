@@ -5,6 +5,7 @@ let initialState: InitialStateType = {
     error:null,
     message:null,
     loading:false,
+    status: 'idle',
 }
 
 export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -38,12 +39,14 @@ export const setAppLoading = (loading: boolean) => {
     return ({type: 'APP/SET-LOADING', loading} as const)
 }
 
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 // Types
 type InitialStateType = {
     isInitilize: boolean
     error: null | string
     message: null | string
     loading: boolean
+    status: RequestStatusType
 }
 
 type ActionsType =

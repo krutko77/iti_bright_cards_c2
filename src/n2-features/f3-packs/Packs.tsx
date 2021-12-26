@@ -25,6 +25,7 @@ import {
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
+import {InitializeTC} from "../../n1-main/m2-bll/authReducer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -32,7 +33,6 @@ export const Packs = () => {
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
-
 
     const dispatch = useDispatch()
 
@@ -61,6 +61,10 @@ export const Packs = () => {
         dispatch(setClickedCardPackId(id))
         dispatch(showModalUpdateCardsPackAC())
     }
+
+    /*useEffect(() => {
+        dispatch(InitializeTC())
+    }, [])*/
 
     return (
         <>
