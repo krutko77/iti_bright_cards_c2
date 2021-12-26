@@ -10,7 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink, useNavigate} from "react-router-dom";
 import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
 import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
 import s from './Pack.module.scss'
@@ -26,6 +26,7 @@ import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdate
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
 import {InitializeTC} from "../../n1-main/m2-bll/authReducer";
+import {setLastCardsPacksOnScreen} from "../../n1-main/m2-bll/learnReducer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -35,6 +36,7 @@ export const Packs = () => {
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
 
     const dispatch = useDispatch()
+    let navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getPacksTC())
@@ -66,10 +68,18 @@ export const Packs = () => {
         dispatch(InitializeTC())
     }, [])*/
 
+    const startLearnHandler = (packId: string) => {
+        dispatch(setLastCardsPacksOnScreen(cardPacks))
+        // here need to put to LS
+        localStorage.setItem('cardsPacks', JSON.stringify(cardPacks))
+
+        navigate(`/learn/${packId}`, { replace: true })
+    }
+
     return (
         <>
             <NewPackModal/>
-            <DeletePackModal />
+            <DeletePackModal/>
             <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
@@ -113,9 +123,9 @@ export const Packs = () => {
                                     <button onClick={() => showModalUpdatePackHandler(mp._id)}>update</button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <NavLink to={`/learn/${mp._id}`}>
-                                        <button disabled={!mp.cardsCount}>learn</button>
-                                    </NavLink>
+                                    <button disabled={!mp.cardsCount} onClick={
+                                        () => {startLearnHandler(mp._id)}
+                                    }>learn</button>
                                 </TableCell>
                                 <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                             </TableRow>

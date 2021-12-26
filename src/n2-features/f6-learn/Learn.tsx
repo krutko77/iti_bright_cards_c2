@@ -7,9 +7,12 @@ import s from './Learn.module.scss'
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {getPacksTC, PackType} from "../../n1-main/m2-bll/packsReducer";
 import {CircularProgress} from "@mui/material";
+import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
 
+// grades for ourselves
 const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
 
+// clever random by Ignat
 const getCard = (cards: Array<CardType>) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
     const rand = Math.random() * sum;
@@ -24,10 +27,21 @@ const getCard = (cards: Array<CardType>) => {
 }
 
 export const Learn = () => {
-    let {packid} = useParams()
+    const cardsPacksFromLS = localStorage.getItem('cardsPacks')
+    // here to put from LS
+    let cardsPacksFromLSParsed = []
+    if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
+
+
+    let {packid} = useParams() // first I get parkId from address
+
     const dispatch: Function = useDispatch();
-    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
-    const cardsPack = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
+    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards) // take cards
+
+    // const cardPacks = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
+    // this is packs list from previos screen: But did not work!
+    const lastCardsPacksOnScreen = useSelector<AppStoreType, Array<PackType>>(state => state.learn.lastCardsPacksOnScreen)
+    const [lastCardsPacksOnScreenTrue, setLastCardsPacksOnScreenTrue] = useState<Array<PackType>>([])
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
 
@@ -53,10 +67,15 @@ export const Learn = () => {
         _id: '',
     });
     const [isAnswerHidden, setIsAnswerHidden] = useState(true)
+    const [selectedCardPackTrue, setSelectedCardPackTrue] = useState<PackType>()
+
+
+    // if (cardsPack.length) selectedCardPack = cardsPack.find(e => e._id === packid)
 
     let selectedCardPack
-    if (cardsPack.length) selectedCardPack = cardsPack.find(e => e._id === packid)
+    selectedCardPack = cardsPacksFromLSParsed.find((e: any) => e._id === packid)
 
+    // let findPleasePlease;
 
     useEffect(() => {
         if (isLoggedIn && packid) {
@@ -65,14 +84,25 @@ export const Learn = () => {
                     if (isFirstRun) {
                         dispatch(getCardsTC(packid!))
                         setIsFirstRun(false);
+                        setCardsPageCountAC(100) // temp solution to see all cars. But need to change to correct.
                     }
                     if (cards.length > 0) {
-                        debugger
+                        // debugger
+                        console.log(cards)
                         setCard(getCard(cards))
                     }
                 })
+                /*.then(() => {
+                    findPleasePlease = cardPacks.find(e => e._id === packid)
+                    findPleasePlease && window.alert('found!')
+                })*/
         }
-    },[packid, isLoggedIn])
+    }, [isLoggedIn, packid, cards.length])
+
+    useEffect(() => {
+        setSelectedCardPackTrue(lastCardsPacksOnScreenTrue.find(e => e._id === packid))
+        // get from LS
+    },[])
 
     let getNextCard = () => {
         setIsAnswerHidden(true)
