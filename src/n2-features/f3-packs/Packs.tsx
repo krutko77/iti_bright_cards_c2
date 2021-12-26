@@ -28,7 +28,6 @@ import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePac
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
-    const pack_id = useSelector<AppStoreType, string>(state => state.packs.pack_id)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)

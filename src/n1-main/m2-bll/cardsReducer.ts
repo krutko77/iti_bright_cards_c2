@@ -24,10 +24,10 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
 export const getCardsAC = (cards: CardType[]) => ({type: "cards/GET-CARDS", cards} as const)
 
 export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
-    const page = getState().findAndPagination.cards.page
-    const pageCount = getState().findAndPagination.cards.pageCount.toString()
+    const {page, sortCards} = getState().findAndPagination.cards
     const cardQuestion = getState().findAndPagination.cards.questionText
-    const sortCards = getState().findAndPagination.cards.sortCards
+    const pageCount = getState().findAndPagination.cards.pageCount.toString()
+
     dispatch(setAppStatusAC('loading'))
     cardsAPI.getCards(id, pageCount, page, cardQuestion, sortCards)
         .then((res) => {
@@ -77,3 +77,4 @@ export type CardType = {
     _id: string
 }
 
+// todo: add catch
