@@ -9,7 +9,7 @@ import {
 } from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 
-export const initialState: cardType[] = []
+export const initialState: CardType[] = []
 
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
@@ -20,7 +20,7 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
     }
 }
 
-export const getCardsAC = (cards: cardType[]) => ({type: "cards/GET-CARDS", cards} as const)
+export const getCardsAC = (cards: CardType[]) => ({type: "cards/GET-CARDS", cards} as const)
 
 export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const page = getState().findAndPagination.cards.page
@@ -48,19 +48,24 @@ export const addCardsTC = (id: string, question: string, answer: string): ThunkT
 type ActionType = ReturnType<typeof getCardsAC> | SetCardsTotalCountType | SetSelectedCardIdType
 type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>
 
-export type cardType = {
-    _id: string
-    cardsPack_id: string
-    user_id: string
+export type CardType = {
     answer: string
-    question: string
-    grade: number
-    shots: number
+    answerImg: string
+    answerVideo: string
+    cardsPack_id: string
     comments: string
-    type: string
-    rating: number
-    more_id: string
     created: string
+    grade: number
+    more_id: string
+    question: string
+    questionImg: string
+    questionVideo: string
+    rating: number
+    shots: number
+    type: string
     updated: string
+    user_id: string
+    __v: number
+    _id: string
 }
 

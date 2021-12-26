@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {addCardsTC, cardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
+import {addCardsTC, CardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
 import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
@@ -31,7 +31,7 @@ export const Cards = () => {
 
     let {id} = useParams()
 
-    const cards = useSelector<AppStoreType, cardType[]>(state => state.cards)
+    const cards = useSelector<AppStoreType, CardType[]>(state => state.cards)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
@@ -99,7 +99,7 @@ export const Cards = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {cards.map((card: cardType) => (
+                        {cards.map((card: CardType) => (
                             <TableRow
                                 key={card.cardsPack_id}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}

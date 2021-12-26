@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from "axios";
-import {packType} from "../packsReducer";
-import {cardType} from "../cardsReducer";
+import {PackType} from "../packsReducer";
+import {CardType} from "../cardsReducer";
 import {SortCardsType, SortPackType} from "../findAndPaginationReducer";
 
 const instance = axios.create({
@@ -104,7 +104,7 @@ export type recoveryType = {
 }
 
 export type getPacksType = {
-    cardPacks: packType[]
+    cardPacks: PackType[]
     cardPacksTotalCount: number // количество колод
     maxCardsCount: number
     minCardsCount: number
@@ -112,6 +112,6 @@ export type getPacksType = {
     pageCount: number // количество элементов на странице
 }
 export type getCardType = {
-    cards: cardType[]
+    cards: CardType[]
     cardsTotalCount: number
 }

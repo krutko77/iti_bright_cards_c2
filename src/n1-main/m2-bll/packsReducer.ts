@@ -22,7 +22,7 @@ export const packsReducer = (state = initialState, action: ActionType) => {
     }
 }
 
-export const getPacksAC = (cardPacks: packType[]) => ({type: "pack/GET-CARD-PACKS", cardPacks} as const)
+export const getPacksAC = (cardPacks: PackType[]) => ({type: "pack/GET-CARD-PACKS", cardPacks} as const)
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
 export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name} as const)
 
@@ -54,7 +54,7 @@ export const addPacksTC = (cardPackName: string): ThunkType => (dispatch:ThunkDi
 
 type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>
 
-export type packType = {
+export type PackType = {
     _id: string
     user_id: string
     user_name: string
@@ -70,7 +70,7 @@ export type packType = {
 }
 
 export type packsStateType = {
-    cardPacks: packType[]
+    cardPacks: PackType[]
     pack_id: string
 }
 

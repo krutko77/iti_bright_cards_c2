@@ -5,8 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
-import {cardType} from "../../../n1-main/m2-bll/cardsReducer";
-import {packType} from "../../../n1-main/m2-bll/packsReducer";
+import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
+import {PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация кнопок
 const styleButton1 = {
@@ -28,7 +28,7 @@ export default function DeletePackModal() {
 
     const modalDelCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardsPackShowHide)
     const clickedCardPackId = useSelector<AppStoreType, string>(state => state.modal.clickedCardsPackId)
-    const cards = useSelector<AppStoreType, packType[]>(state => state.packs.cardPacks)
+    const cards = useSelector<AppStoreType, PackType[]>(state => state.packs.cardPacks)
     const pack = cards.find(e => e._id === clickedCardPackId)
 
     const modalYesDelCardPackHandler = (id: string) => {

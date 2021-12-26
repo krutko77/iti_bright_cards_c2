@@ -6,7 +6,7 @@ import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButto
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import s from './ModalUpdateCardsPack.module.scss'
-import {packType} from "../../../n1-main/m2-bll/packsReducer";
+import {PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 export const ModalUpdateCardsPack = () => {
     const dispatch = useDispatch()
@@ -17,7 +17,7 @@ export const ModalUpdateCardsPack = () => {
         state.modal.modalUpdateCardsPackShowHide)
     const clickedCardPackId = useSelector<AppStoreType, string>(state => state.modal.clickedCardsPackId)
 
-    const cardsPacks = useSelector<AppStoreType, Array<packType>>(state => state.packs.cardPacks)
+    const cardsPacks = useSelector<AppStoreType, Array<PackType>>(state => state.packs.cardPacks)
     const cardsPack = cardsPacks.find(e => e._id === clickedCardPackId)
     let oldCardsPackName = ''
     if (cardsPack) oldCardsPackName = cardsPack.name

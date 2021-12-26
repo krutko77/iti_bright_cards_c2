@@ -64,7 +64,6 @@ export const Packs = () => {
     return (
         <>
             <NewPackModal/>
-            {/*<ModalDelCardsPack/>*/}
             <DeletePackModal />
             <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
@@ -107,6 +106,11 @@ export const Packs = () => {
                                 </TableCell>
                                 <TableCell align='center'>
                                     <button onClick={() => showModalUpdatePackHandler(mp._id)}>update</button>
+                                </TableCell>
+                                <TableCell align='center'>
+                                    <NavLink to={`/learn/${mp._id}`}>
+                                        <button disabled={!mp.cardsCount}>learn</button>
+                                    </NavLink>
                                 </TableCell>
                                 <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                             </TableRow>

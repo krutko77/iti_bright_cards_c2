@@ -5,7 +5,7 @@ import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/Supe
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
-import {cardType} from "../../../n1-main/m2-bll/cardsReducer";
+import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
 
 export const ModalUpdateCard = () => {
     const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export const ModalUpdateCard = () => {
     const modalUpdateCardShowHide = useSelector<AppStoreType, boolean>(state =>
         state.modal.modalUpdateCardShowHide)
     const clickedCardId = useSelector<AppStoreType, string>(state => state.modal.clickedCardId)
-    const cards = useSelector<AppStoreType, Array<cardType>>(state => state.cards)
+    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
 
     const card = cards.find(e => e._id === clickedCardId)
 

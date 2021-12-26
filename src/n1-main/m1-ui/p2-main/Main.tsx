@@ -13,6 +13,7 @@ import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recov
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
 import PacksList from "../../../assets/components/packs-list/UsePacksList";
 import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
+import {Learn} from "../../../n2-features/f6-learn/Learn";
 
 export const Main = () => {
    return (
@@ -33,6 +34,7 @@ export const Main = () => {
                <Route path={'/packs'} element={<Packs/>}/>
                <Route path={'/cards/:id'} element={<Cards/>}/>
                <Route path={'/packsdesigned'} element={<PacksList/>}/>
+               <Route path={'/learn/:packid'} element={<Learn/>}/>
                <Route />
             </Routes>
          </div>
