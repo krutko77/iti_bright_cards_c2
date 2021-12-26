@@ -4,7 +4,6 @@ let initialState: InitialStateType = {
     isInitilize: false,
     error:null,
     message:null,
-    loading:false,
     status: 'idle',
 }
 
@@ -16,8 +15,8 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
             return {...state, error: action.error}
         case 'APP/SET-MESSAGE':
             return {...state, message: action.message}
-        case 'APP/SET-LOADING':
-            return {...state, loading: action.loading}
+        case 'APP/SET-STATUS':
+            return {...state, status: action.status}
         default:
             return {...state}
     }
@@ -34,10 +33,8 @@ export const setAppError = (error: string) => {
 export const setAppMessage = (message: string) => {
     return ({type: 'APP/SET-MESSAGE', message} as const)
 }
+export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 
-export const setAppLoading = (loading: boolean) => {
-    return ({type: 'APP/SET-LOADING', loading} as const)
-}
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 // Types
@@ -45,14 +42,15 @@ type InitialStateType = {
     isInitilize: boolean
     error: null | string
     message: null | string
-    loading: boolean
     status: RequestStatusType
 }
+
+export type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
 
 type ActionsType =
     | ReturnType<typeof setIsInitializeAC>
     | ReturnType<typeof setAppError>
     | ReturnType<typeof setAppMessage>
-    | ReturnType<typeof setAppLoading>
+    | SetAppStatusAT
 
 

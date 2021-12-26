@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {RecoveryAPI} from "./api/api";
+import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
 
 const initialState: InitialStateType = {
     success: false,
@@ -22,6 +23,7 @@ export const passwordRecoveryReducer = (state = initialState, action: ActionType
 }
 
 export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
     RecoveryAPI.recoveryPass(email)
         .then((res) => {
             if (res.data.success) {
@@ -32,9 +34,13 @@ export const sendPassRecoveryTC = (email: string) => (dispatch: Dispatch<ActionT
         .catch(e => {
             dispatch(setErrorAC(e.response.data.error))
         })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
 }
 
 export const setNewPassTC = (password: string, token: string) => (dispatch: Dispatch<ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
     RecoveryAPI.newPass(password, token)
         .then((res) => {
             dispatch(setNewPassAC(res.data.info))
@@ -43,6 +49,9 @@ export const setNewPassTC = (password: string, token: string) => (dispatch: Disp
         })
         .catch(e => {
             dispatch(setErrorAC(e.response.data.error))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 
@@ -62,6 +71,7 @@ type ActionType =
     | ReturnType<typeof setSuccessAC>
     | ReturnType<typeof setErrorAC>
     | ReturnType<typeof setNewPassAC>
+    | SetAppStatusAT
 
 
 

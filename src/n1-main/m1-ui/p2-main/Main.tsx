@@ -14,30 +14,37 @@ import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/P
 import PacksList from "../../../assets/components/packs-list/UsePacksList";
 import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
 import {Learn} from "../../../n2-features/f6-learn/Learn";
+import {LinearProgress} from "@mui/material";
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../m2-bll/store";
+import {RequestStatusType} from "../../m2-bll/appReducer";
 
 export const Main = () => {
-   return (
-      <div className='main'>
-         <ModalUp />
-         <Header />
-         <div className='content'>
-            <Routes>
-               <Route path={'/registration'} element={<RegistrationForm />} />
-               <Route path={'/login'} element={<LoginForm/>} />
-               <Route path={'/profile'} element={<ProfileForm />} />
-               <Route path={'/404'} element={<Page404 />} />
-               <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>} />
-               <Route path={'/passwordnew/:token'} element={<PasswordNewForm />} />
-               <Route path={'/tests'} element={<Examples />} />
-               <Route path="/" element={<Navigate to="/login" />} />
-               <Route path="*" element={<Navigate to="/404" />} />
-               <Route path={'/packs'} element={<Packs/>}/>
-               <Route path={'/cards/:id'} element={<Cards/>}/>
-               <Route path={'/packsdesigned'} element={<PacksList/>}/>
-               <Route path={'/learn/:packid'} element={<Learn/>}/>
-               <Route />
-            </Routes>
-         </div>
-      </div>
-   );
+    const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
+
+    return (
+        <div className='main'>
+            <ModalUp/>
+            <Header/>
+            {status === 'loading' && <LinearProgress/>}
+            <div className='content'>
+                <Routes>
+                    <Route path={'/registration'} element={<RegistrationForm/>}/>
+                    <Route path={'/login'} element={<LoginForm/>}/>
+                    <Route path={'/profile'} element={<ProfileForm/>}/>
+                    <Route path={'/404'} element={<Page404/>}/>
+                    <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>}/>
+                    <Route path={'/passwordnew/:token'} element={<PasswordNewForm/>}/>
+                    <Route path={'/tests'} element={<Examples/>}/>
+                    <Route path="/" element={<Navigate to="/login"/>}/>
+                    <Route path="*" element={<Navigate to="/404"/>}/>
+                    <Route path={'/packs'} element={<Packs/>}/>
+                    <Route path={'/cards/:id'} element={<Cards/>}/>
+                    <Route path={'/packsdesigned'} element={<PacksList/>}/>
+                    <Route path={'/learn/:packid'} element={<Learn/>}/>
+                    <Route/>
+                </Routes>
+            </div>
+        </div>
+    );
 }

@@ -3,6 +3,7 @@ import {packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
 import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
+import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
 
 export const initialState: packsStateType = {
     cardPacks: [],
@@ -33,7 +34,7 @@ export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getS
     const max = getState().findAndPagination.cardPacks.max
     const packName = getState().findAndPagination.cardPacks.packName
     const sortPacks = getState().findAndPagination.cardPacks.sortPacks
-
+    dispatch(setAppStatusAC('loading'))
     return packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
         .then((res) => {
             if (res.data.cardPacks) {
@@ -41,14 +42,21 @@ export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getS
                 dispatch(setCardPacksTotalCountAC(res.data.cardPacksTotalCount))
             }
         })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
 }
 
 
 export const addPacksTC = (cardPackName: string): ThunkType => (dispatch:ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
     packsAPI.addPacks(false, cardPackName)
         .then((res) => {
             dispatch(addPacksAC(cardPackName))
             dispatch(getPacksTC())
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 
@@ -79,3 +87,4 @@ type ActionType =
     | ReturnType<typeof getUserIdAC>
     | SetCardPacksTotalCountType
     | ReturnType<typeof addPacksAC>
+    | SetAppStatusAT

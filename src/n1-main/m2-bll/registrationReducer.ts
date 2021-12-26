@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {registrationAPI} from "./api/api";
+import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
 
 const initialState: InitialStateType = {
     status: 'idle',
@@ -36,6 +37,7 @@ export const setRegisterMessage = (message: string | null) =>
 
 export const createNewUser = (email: string, password: string) => (dispatch: Dispatch<ActionsType /*| SetAppErrorActionType | SetAppStatusActionType*/>) => {
     dispatch(setRegisterStatus('loading'))
+    dispatch(setAppStatusAC('loading'))
     registrationAPI.registerUser(email, password)
         .then(res => {
             dispatch(setRegisterMessage('success!'))
@@ -53,6 +55,9 @@ export const createNewUser = (email: string, password: string) => (dispatch: Dis
                 dispatch(setRegisterError(null))
             }, 2000)
         })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
 }
 
 
@@ -67,3 +72,4 @@ type ActionsType =
     | ReturnType<typeof setRegisterStatus>
     | ReturnType<typeof setRegisterError>
     | ReturnType<typeof setRegisterMessage>
+    | SetAppStatusAT

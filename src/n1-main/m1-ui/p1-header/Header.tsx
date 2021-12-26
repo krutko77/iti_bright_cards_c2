@@ -4,6 +4,7 @@ import s from './Header.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {LogoutTC} from "../../m2-bll/authReducer";
 import {AppStoreType} from "../../m2-bll/store";
+import {LinearProgress} from "@mui/material";
 
 export const Header = () => {
     const dispatch = useDispatch()
@@ -33,7 +34,6 @@ export const Header = () => {
                 {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
                 <NavLink className={s.item} to={'/tests'}>Tests</NavLink>
             </div>
-
         </div>
     );
 }

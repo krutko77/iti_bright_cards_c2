@@ -1,7 +1,7 @@
 import {authAPI} from "./api/api";
 import {Dispatch} from "redux";
 import {setProfileAC, SetProfileType} from "./profileReducer";
-import {setAppLoading, setIsInitializeAC} from "./appReducer";
+import {setAppStatusAC, SetAppStatusAT, setIsInitializeAC} from "./appReducer";
 
 let initialState: InitialStateType = {
     isLoggedIn: false,
@@ -29,7 +29,7 @@ export const setIsErrorAC = (error: string | null) => {
 
 // Thunks
 export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch<ActionsType>) => {
-    setAppLoading(true)
+    dispatch(setAppStatusAC('loading'))
     authAPI.login({email, password, rememberMe})
         .then(res => {
                 dispatch(setIsLoggedInAC(true))
@@ -41,11 +41,11 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean) =>
             }
         )
         .finally(() => {
-            setAppLoading(false)
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 export const InitializeTC = () => (dispatch: Dispatch) => {
-    setAppLoading(true)
+    dispatch(setAppStatusAC('loading'))
     authAPI.me()
         .then(res => {
                 dispatch(setIsLoggedInAC(true))
@@ -58,11 +58,11 @@ export const InitializeTC = () => (dispatch: Dispatch) => {
         )
         .finally(() => {
             dispatch(setIsInitializeAC(true))
-            // setAppLoading(false)
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 export const LogoutTC = () => (dispatch: Dispatch) => {
-    setAppLoading(true)
+    dispatch(setAppStatusAC('loading'))
     authAPI.logout()
         .then(() => {
                 dispatch(setIsLoggedInAC(false))
@@ -74,7 +74,7 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
             }
         )
         .finally(() => {
-            setAppLoading(false)
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 
@@ -87,5 +87,5 @@ type ActionsType =
     | ReturnType<typeof setIsLoggedInAC>
     | ReturnType<typeof setIsErrorAC>
     | SetProfileType
-    | ReturnType<typeof setAppLoading>
+    | SetAppStatusAT
 
