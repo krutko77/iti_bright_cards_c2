@@ -75,10 +75,6 @@ const tableData = {
    }
 }
 
-// стилизация search
-const styleSearch = {
-   width: "100%"
-}
 
 export default function MyPacksList() {
    return (
@@ -94,7 +90,7 @@ export default function MyPacksList() {
          <main className={s.main}>
             <Subtitle subtitle="My packs list" />
             <div className={s.search}>
-               <Search style={styleSearch} />
+               <Search />
             </div>
             <Table tableData={tableData} />
             <BottomBlock />
