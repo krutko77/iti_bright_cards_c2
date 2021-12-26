@@ -12,7 +12,7 @@ import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer
 // grades for ourselves
 const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
 
-// clever random by Ignat
+// clever random
 const getCard = (cards: Array<CardType>) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
     const rand = Math.random() * sum;
@@ -21,7 +21,6 @@ const getCard = (cards: Array<CardType>) => {
             return {sum: newSum, id: newSum < rand ? i : acc.id}
         }
         , {sum: 0, id: -1});
-    console.log('test: ', sum, rand, res)
 
     return cards[res.id + 1];
 }
@@ -29,16 +28,14 @@ const getCard = (cards: Array<CardType>) => {
 export const Learn = () => {
     const cardsPacksFromLS = localStorage.getItem('cardsPacks')
 
-    // get CardPacks from LS
+    // get CardPacks from LS to save it while F5
     let cardsPacksFromLSParsed = []
     if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
 
     let {packid} = useParams()
 
     const dispatch: Function = useDispatch();
-    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards) // take cards
-
-    const [lastCardsPacksOnScreenTrue, setLastCardsPacksOnScreenTrue] = useState<Array<PackType>>([])
+    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
 
@@ -64,37 +61,23 @@ export const Learn = () => {
         _id: '',
     });
     const [isAnswerHidden, setIsAnswerHidden] = useState(true)
-    const [selectedCardPackTrue, setSelectedCardPackTrue] = useState<PackType>()
 
-    let selectedCardPack
-    selectedCardPack = cardsPacksFromLSParsed.find((e: CardType) => e._id === packid)
+    let selectedCardPack: PackType
+    selectedCardPack = cardsPacksFromLSParsed.find((e: PackType) => e._id === packid)
 
     useEffect(() => {
         if (isLoggedIn && packid) {
-            dispatch(getPacksTC())
-                .then(() => {
-                    if (isFirstRun) {
-                        dispatch(getCardsTC(packid!))
-                        setIsFirstRun(false);
-                        setCardsPageCountAC(100) // temp solution to see all cars. But need to change to correct.
-                    }
-                    if (cards.length > 0) {
-                        // debugger
-                        console.log(cards)
-                        setCard(getCard(cards))
-                    }
-                })
-                /*.then(() => {
-                    findPleasePlease = cardPacks.find(e => e._id === packid)
-                    findPleasePlease && window.alert('found!')
-                })*/
+            if (isFirstRun) {
+                setIsFirstRun(false);
+                dispatch(setCardsPageCountAC(selectedCardPack.cardsCount)) // for playing with all cards in pack
+                dispatch(getCardsTC(packid!))
+            }
+            if (cards.length > 0) {
+                setCard(getCard(cards))
+            }
+
         }
     }, [isLoggedIn, packid, cards.length])
-
-    useEffect(() => {
-        setSelectedCardPackTrue(lastCardsPacksOnScreenTrue.find(e => e._id === packid))
-        // get from LS
-    },[])
 
     let getNextCard = () => {
         setIsAnswerHidden(true)
