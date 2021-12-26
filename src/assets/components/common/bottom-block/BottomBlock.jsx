@@ -3,7 +3,7 @@ import UsePagination from "../pagination/UsePagination.jsx";
 import Select from "../select/Select.jsx";
 
 
-export default function BottomBlock () {
+export default function BottomBlock() {
    return (
       <div className={s.bottomBlock}>
                <UsePagination />

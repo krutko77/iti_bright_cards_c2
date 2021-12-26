@@ -1,0 +1,32 @@
+@import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
+
+.cardsTable {
+   width: 1008px;
+   height: 636px;
+   background-color: #FEFEFF;
+   border-radius: 8px;
+   padding: 19px 24px 24px;
+}
+
+.searchBlock {
+   display: flex;
+   justify-content: space-between;   
+}
+
+.search {
+   flex-grow: 1;
+}
+
+.label {
+   display: inline-block;
+   @include font(16px, 400, 120%, #000000);
+   opacity: 0.5;
+   margin-top: 200px;
+}
+
+.content {
+   display: flex;
+   justify-content: center;
+}
