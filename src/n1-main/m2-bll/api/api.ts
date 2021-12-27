@@ -47,10 +47,11 @@ export const RecoveryAPI = {
 };
 
 export const packsAPI = {
-    getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
+    getPacks(user_id:string,pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
         return instance.get<getPacksType>(`/cards/pack`, {
             params: {
-              pageCount, page, min, max, packName, sortPacks
+            user_id: (user_id ? user_id : ''),
+            pageCount, page, min, max, packName, sortPacks
             }
         })
     },

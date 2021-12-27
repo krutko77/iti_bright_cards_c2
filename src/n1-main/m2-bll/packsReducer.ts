@@ -31,10 +31,10 @@ export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name}
 export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const {page, min, max, packName, sortPacks} = getState().findAndPagination.cardPacks
     const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
-
+    const user_id = getState().packs.packUser_id
 
     dispatch(setAppStatusAC('loading'))
-    return packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
+    return packsAPI.getPacks(user_id,pageCount, page, min, max, packName, sortPacks)
         .then((res) => {
             dispatch(getPacksAC(res.data.cardPacks))
             dispatch(setCardPacksTotalCountAC(res.data.cardPacksTotalCount))

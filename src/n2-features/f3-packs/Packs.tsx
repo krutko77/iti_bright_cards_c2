@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
+import {getPacksTC, getUserIdAC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
-import {ChangeEvent, useEffect} from 'react';
+import {ChangeEvent, useEffect, useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -32,21 +32,18 @@ export const Packs = () => {
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
+    const packUserId = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
+
+    const [myPacks, setMyPacks] = useState<boolean>(!!packUserId)
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
 
+
     useEffect(() => {
         dispatch(getPacksTC())
     }, [dispatch, pageCount, page, sortPacks])
-
-    // function createData(
-    //     name: string,
-    //     cardsCount: number,
-    //     updated: string,
-    // ) {
-    //     return {name, cardsCount, updated};
-    // }
 
     const addPacksHandler = () => {
         dispatch(showModalAddCardsPackAC())
@@ -69,18 +66,14 @@ export const Packs = () => {
     const startLearnHandler = (packId: string) => {
         localStorage.setItem('cardsPacks', JSON.stringify(cardPacks)) // this go to LS, to save it on F5 Learn.
 
-        navigate(`/learn/${packId}`, { replace: true })
+        navigate(`/learn/${packId}`, {replace: true})
     }
 
-    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
-        let isMyPackOn = e.currentTarget.checked
-        console.log(isMyPackOn)
-        if (isMyPackOn) {
-            dispatch(getPacksTC())
-        }
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(getUserIdAC(myPacks ? '' : user_id))
+        dispatch(getPacksTC())
+        setMyPacks(e.target.checked)
     }
-
-
 
     return (
         <>
@@ -132,8 +125,11 @@ export const Packs = () => {
                                 </TableCell>
                                 <TableCell align='center'>
                                     <button disabled={!mp.cardsCount} onClick={
-                                        () => {startLearnHandler(mp._id)}
-                                    }>learn</button>
+                                        () => {
+                                            startLearnHandler(mp._id)
+                                        }
+                                    }>learn
+                                    </button>
                                 </TableCell>
                                 <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
                             </TableRow>
