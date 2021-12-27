@@ -6,7 +6,7 @@ import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButto
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import s from './ModalUpdateCardsPack.module.scss'
-import {PackType} from "../../../n1-main/m2-bll/packsReducer";
+import {PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
 
 export const ModalUpdateCardsPack = () => {
     const dispatch = useDispatch()
@@ -28,7 +28,8 @@ export const ModalUpdateCardsPack = () => {
 
 
     const buttonHandler = (id: string) => {
-        alert(`I will update card pack with id and new name:\n${id}\n${cardsPackName}`)
+        dispatch(updatePacksTC(id,cardsPackName))
+        // alert(`I will update card pack with id and new name:\n${id}\n${cardsPackName}`)
         dispatch(closeAllModalsAC())
     }
 

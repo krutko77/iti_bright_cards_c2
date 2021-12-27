@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {cardsAPI} from "./api/api";
+import {cardsAPI, packsAPI} from "./api/api";
 import {AppStoreType} from "./store";
 import {
     setCardsTotalCountAC,
@@ -9,6 +9,7 @@ import {
 } from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
+import {getPacksTC} from "./packsReducer";
 
 export const initialState: CardType[] = []
 
@@ -52,6 +53,27 @@ export const addCardsTC = (id: string, question: string, answer: string): ThunkT
                 dispatch(setAppStatusAC('succeeded'))
             })
     }
+
+export const delCardTC = (id: string,packId:string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
+    cardsAPI.delCard(id)
+        .then(() => {
+            dispatch(getCardsTC(packId))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
+export const updateCardTC = (id: string,packId:string, question: string,answer:string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
+    cardsAPI.updateCard(id, question,answer)
+        .then(() => {
+            dispatch(getCardsTC(packId))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
 
 type ActionType = ReturnType<typeof getCardsAC> | SetCardsTotalCountType | SetSelectedCardIdType | SetAppStatusAT
 type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>

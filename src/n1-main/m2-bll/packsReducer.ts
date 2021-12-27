@@ -27,6 +27,7 @@ export const getPacksAC = (cardPacks: PackType[]) => ({type: "pack/GET-CARD-PACK
 export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
 export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name} as const)
 
+
 export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const {page, min, max, packName, sortPacks} = getState().findAndPagination.cardPacks
     const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
@@ -47,6 +48,28 @@ export const addPacksTC = (cardPackName: string): ThunkType => (dispatch: ThunkD
     packsAPI.addPacks(false, cardPackName)
         .then((res) => {
             dispatch(addPacksAC(cardPackName))
+            dispatch(getPacksTC())
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
+
+
+export const delPacksTC = (id: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
+    packsAPI.delPacks(id)
+        .then(() => {
+            dispatch(getPacksTC())
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
+export const updatePacksTC = (id: string, name: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+    dispatch(setAppStatusAC('loading'))
+    packsAPI.updatePacks(id, name)
+        .then(() => {
             dispatch(getPacksTC())
         })
         .finally(() => {
@@ -82,5 +105,6 @@ type ActionType =
     | SetCardPacksTotalCountType
     | ReturnType<typeof addPacksAC>
     | SetAppStatusAT
+
 
 //todo: add catch. For example if no internet.

@@ -17,10 +17,10 @@ import s from './Cards.module.scss'
 import {SortCardsContainer} from "../f2-table/Sort/SortCardsContainer/SortCardsContainer";
 import {SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
 import {
-    setClickedCardId,
+    setClickedCardId, setClickedCardPackId,
     showModalAddCardAC,
-    showModalDelCardAC,
-    showModalUpdateCardAC
+    showModalDelCardAC, showModalDelCardsPackAC,
+    showModalUpdateCardAC, showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 import {ModalDelCard} from "../f5-modal/ModalDelCard/ModalDelCard";
@@ -95,6 +95,7 @@ export const Cards = () => {
                             <TableCell align="center">
                                 <button onClick={showAddCardModalHandler}>add</button>
                             </TableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>

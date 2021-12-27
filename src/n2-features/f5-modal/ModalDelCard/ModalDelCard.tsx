@@ -4,15 +4,20 @@ import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButto
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
+import {delCardTC} from "../../../n1-main/m2-bll/cardsReducer";
+import {useParams} from "react-router-dom";
 
 export const ModalDelCard = () => {
+
+    let {id} = useParams()
 
     const dispatch = useDispatch()
     const modalDelCardShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardShowHide)
     const clickedCardId = useSelector<AppStoreType, string>(state => state.modal.clickedCardId)
 
     const modalYesDelCardPackHandler = () => {
-        alert(`I will delete card with id:\n${clickedCardId}`)
+        if (id)
+        dispatch(delCardTC(clickedCardId,id))
         dispatch(closeAllModalsAC())
     }
     const modalNoDelCardPackHandler = () => {

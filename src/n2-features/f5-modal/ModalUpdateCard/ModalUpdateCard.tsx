@@ -5,10 +5,13 @@ import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/Supe
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
-import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
+import {CardType, updateCardTC} from "../../../n1-main/m2-bll/cardsReducer";
+import {useParams} from "react-router-dom";
 
 export const ModalUpdateCard = () => {
     const dispatch = useDispatch()
+
+    let {id} = useParams()
 
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
@@ -34,7 +37,8 @@ export const ModalUpdateCard = () => {
 
     const buttonHandler = () => {
         dispatch(closeAllModalsAC())
-        alert(`I will update card with id:\n${clickedCardId}\nNew question: ${question}\nNew answer: ${answer}`)
+        if (id)
+        dispatch(updateCardTC(clickedCardId,id,question,answer))
     }
 
     return <Modal modalShowHide={modalUpdateCardShowHide} version={"Briws"}>

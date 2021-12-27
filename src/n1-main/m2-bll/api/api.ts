@@ -48,35 +48,66 @@ export const RecoveryAPI = {
 
 export const packsAPI = {
     getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
-        return instance.get<getPacksType>(`/cards/pack`, {params: {
-            pageCount, page, min, max, packName, sortPacks}})
+        return instance.get<getPacksType>(`/cards/pack`, {
+            params: {
+                pageCount, page, min, max, packName, sortPacks
+            }
+        })
     },
-    addPacks(isPrivate:boolean, name: string) {
+    addPacks(isPrivate: boolean, name: string) {
         return instance.post<getPacksType>(`/cards/pack`, {
             cardsPack: {
                 name,
                 private: isPrivate
             }
         })
-    }
+    },
+    delPacks(id: string) {
+        return instance.delete<getPacksType>(`/cards/pack?id=${id}`)
+    },
+    updatePacks(id: string, name: string) {
+        return instance.put<getPacksType>(`/cards/pack`, {
+                cardsPack: {
+                    _id:id,
+                    name:name
+                }
+            }
+        )
+    },
 }
+
 export const cardsAPI = {
     getCards(id: string, pageCount: string, page: number, cardQuestion: string, sortCards: SortCardsType) {
-        return instance.get<getCardType>(`/cards/card`, {params: {
+        return instance.get<getCardType>(`/cards/card`, {
+            params: {
                 cardsPack_id: id, pageCount, page, cardQuestion, sortCards
-            }})
+            }
+        })
     },
-    addCards(cardsPack_id: string, question: string, answer: string){
+    addCards(cardsPack_id: string, question: string, answer: string) {
         return instance.post<getCardType>(`/cards/card`, {
-            card:{
+            card: {
                 cardsPack_id,
                 question,
                 answer,
-                grade: Math.random()*5,
+                grade: Math.random() * 5,
                 shots: 0,
             }
         })
-    }
+    },
+    delCard(id: string) {
+        return instance.delete<getCardType>(`/cards/card?id=${id}`)
+    },
+    updateCard(id: string, question: string,answer:string) {
+        return instance.put<getCardType>(`/cards/card`, {
+                card: {
+                    _id:id,
+                    question:question,
+                    answer:answer
+                }
+            }
+        )
+    },
 }
 
 export type LoginType = {

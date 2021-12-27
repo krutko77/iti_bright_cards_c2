@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
-import {PackType} from "../../../n1-main/m2-bll/packsReducer";
+import {delPacksTC, PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация кнопок
 const styleButton1 = {
@@ -32,7 +32,8 @@ export default function DeletePackModal() {
 
     const modalYesDelCardPackHandler = (id: string) => {
         dispatch(closeAllModalsAC())
-        alert(`I will delete card pack with id:\n${id}`)
+        dispatch(delPacksTC(id))
+        alert(pack && pack.name + " Removed ")
     }
 
     const onCloseHandler = () => {
