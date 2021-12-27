@@ -50,7 +50,7 @@ export const packsAPI = {
     getPacks(pageCount: string, page: number, min: number, max: number, packName: string, sortPacks: SortPackType) {
         return instance.get<getPacksType>(`/cards/pack`, {
             params: {
-                pageCount, page, min, max, packName, sortPacks
+              pageCount, page, min, max, packName, sortPacks
             }
         })
     },
@@ -68,8 +68,8 @@ export const packsAPI = {
     updatePacks(id: string, name: string) {
         return instance.put<getPacksType>(`/cards/pack`, {
                 cardsPack: {
-                    _id:id,
-                    name:name
+                    _id: id,
+                    name: name
                 }
             }
         )
@@ -98,13 +98,20 @@ export const cardsAPI = {
     delCard(id: string) {
         return instance.delete<getCardType>(`/cards/card?id=${id}`)
     },
-    updateCard(id: string, question: string,answer:string) {
+    updateCard(id: string, question: string, answer: string) {
         return instance.put<getCardType>(`/cards/card`, {
                 card: {
-                    _id:id,
-                    question:question,
-                    answer:answer
+                    _id: id,
+                    question: question,
+                    answer: answer
                 }
+            }
+        )
+    },
+    updateGrade(grade: number, card_id: string) {
+        return instance.put<getCardType>(`/cards/grade`, {
+                grade: grade,
+                card_id: card_id
             }
         )
     },
@@ -135,6 +142,7 @@ export type recoveryType = {
 }
 
 export type getPacksType = {
+    user_id?:string
     cardPacks: PackType[]
     cardPacksTotalCount: number // количество колод
     maxCardsCount: number

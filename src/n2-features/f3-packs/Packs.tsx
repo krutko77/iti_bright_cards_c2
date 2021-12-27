@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
 import {getPacksTC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
 import * as React from 'react';
-import {useEffect} from 'react';
+import {ChangeEvent, useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,6 +25,7 @@ import {
 import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
+import {Checkbox} from "@mui/material";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -71,6 +72,16 @@ export const Packs = () => {
         navigate(`/learn/${packId}`, { replace: true })
     }
 
+    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+        let isMyPackOn = e.currentTarget.checked
+        console.log(isMyPackOn)
+        if (isMyPackOn) {
+            dispatch(getPacksTC())
+        }
+    }
+
+
+
     return (
         <>
             <NewPackModal/>
@@ -94,7 +105,9 @@ export const Packs = () => {
                             <TableCell align="center">
                                 <div className={s.cell}>Updated<SortCardPacksContainer upperSort={'0updated'}
                                                                                        lowerCount={'1updated'}/></div>
+
                             </TableCell>
+                            <TableCell align="center">My Packs <Checkbox onChange={onChangeHandler}/></TableCell>
                             <TableCell align="center">url</TableCell>
                             <TableCell align='center'>
                                 <button onClick={addPacksHandler}>add</button>

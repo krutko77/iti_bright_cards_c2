@@ -7,7 +7,7 @@ import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
 
 export const initialState: packsStateType = {
     cardPacks: [],
-    pack_id: '',
+    packUser_id: '',
 }
 
 export const packsReducer = (state = initialState, action: ActionType) => {
@@ -15,7 +15,7 @@ export const packsReducer = (state = initialState, action: ActionType) => {
         case 'pack/GET-CARD-PACKS':
             return {...state, cardPacks: action.cardPacks}
         case 'pack/GET-USER-ID':
-            return {...state, pack_id: action.pack_id}
+            return {...state, packUser_id: action.packUser_id}
         case "pack/ADD-CARD-PACKS":
             return {...state, name: action.name}
         default:
@@ -24,13 +24,14 @@ export const packsReducer = (state = initialState, action: ActionType) => {
 }
 
 export const getPacksAC = (cardPacks: PackType[]) => ({type: "pack/GET-CARD-PACKS", cardPacks} as const)
-export const getUserIdAC = (pack_id: string) => ({type: "pack/GET-USER-ID", pack_id} as const)
+export const getUserIdAC = (packUser_id: string) => ({type: "pack/GET-USER-ID", packUser_id} as const)
 export const addPacksAC = (name: string) => ({type: "pack/ADD-CARD-PACKS", name} as const)
 
 
 export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const {page, min, max, packName, sortPacks} = getState().findAndPagination.cardPacks
     const pageCount = getState().findAndPagination.cardPacks.pageCount.toString()
+
 
     dispatch(setAppStatusAC('loading'))
     return packsAPI.getPacks(pageCount, page, min, max, packName, sortPacks)
@@ -56,20 +57,20 @@ export const addPacksTC = (cardPackName: string): ThunkType => (dispatch: ThunkD
 }
 
 
-export const delPacksTC = (id: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+export const delPacksTC = (id:string)=>(dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>)=>{
     dispatch(setAppStatusAC('loading'))
     packsAPI.delPacks(id)
-        .then(() => {
+        .then(()=>{
             dispatch(getPacksTC())
         })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
-export const updatePacksTC = (id: string, name: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
+export const updatePacksTC = (id:string,name:string)=>(dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>)=>{
     dispatch(setAppStatusAC('loading'))
-    packsAPI.updatePacks(id, name)
-        .then(() => {
+    packsAPI.updatePacks(id,name)
+        .then(()=>{
             dispatch(getPacksTC())
         })
         .finally(() => {
@@ -96,7 +97,7 @@ export type PackType = {
 
 export type packsStateType = {
     cardPacks: PackType[]
-    pack_id: string
+    packUser_id: string
 }
 
 type ActionType =

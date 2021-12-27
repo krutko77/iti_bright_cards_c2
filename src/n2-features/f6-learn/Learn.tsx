@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {CardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
+import {CardType, getCardsTC, updateGradeTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
 import {Navigate, NavLink, useParams} from "react-router-dom";
@@ -85,7 +85,8 @@ export const Learn = () => {
     }
 
     const sandGradeHandler = (grade: number) => {
-        alert(`I will sent to server grade: ${grade} for cardId: ${card._id}`)
+        dispatch(updateGradeTC(grade,card._id))
+        alert(`Grade: ${grade} for cardId: ${card._id} added` )
     }
 
     return <div className={s.learn}>
