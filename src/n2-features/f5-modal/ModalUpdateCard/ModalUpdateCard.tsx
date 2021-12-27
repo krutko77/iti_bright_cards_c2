@@ -19,7 +19,7 @@ export const ModalUpdateCard = () => {
     const modalUpdateCardShowHide = useSelector<AppStoreType, boolean>(state =>
         state.modal.modalUpdateCardShowHide)
     const clickedCardId = useSelector<AppStoreType, string>(state => state.modal.clickedCardId)
-    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
+    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards.cards)
 
     const card = cards.find(e => e._id === clickedCardId)
 

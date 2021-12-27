@@ -30,7 +30,7 @@ export const Cards = () => {
 
     let {id} = useParams()
 
-    const cards = useSelector<AppStoreType, CardType[]>(state => state.cards)
+    const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)

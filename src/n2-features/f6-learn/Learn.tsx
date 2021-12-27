@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {CardType, getCardsTC, updateGradeTC} from "../../n1-main/m2-bll/cardsReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {Navigate, NavLink, useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import s from './Learn.module.scss'
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
-import {getPacksTC, PackType} from "../../n1-main/m2-bll/packsReducer";
-import {CircularProgress} from "@mui/material";
+import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
 
 // grades for ourselves
@@ -14,6 +13,7 @@ const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'c
 
 // clever random
 const getCard = (cards: Array<CardType>) => {
+    debugger
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
     const rand = Math.random() * sum;
     const res = cards.reduce((acc: { sum: number, id: number }, card, i) => {
@@ -26,16 +26,16 @@ const getCard = (cards: Array<CardType>) => {
 }
 
 export const Learn = () => {
-    const cardsPacksFromLS = localStorage.getItem('cardsPacks')
+    const cardsPacksFromLS = localStorage.getItem('cardsPacks')  // get CardPacks from LS to save it while F5
 
-    // get CardPacks from LS to save it while F5
     let cardsPacksFromLSParsed = []
     if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
 
     let {packid} = useParams()
 
     const dispatch: Function = useDispatch();
-    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards)
+
+    const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards.cards)
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
 

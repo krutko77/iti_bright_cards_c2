@@ -10,16 +10,20 @@ import {
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
 
-export const initialState: CardType[] = []
+export const initialState: InitialStateType = {
+    cards: [],
+    grade: 1
+}
+
+
 
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'cards/GET-CARDS':
-            return [...action.cards]
+            return {...state, cards: action.cards}
         case 'cards/UPDATE-GRADE':
-            return {
-                ...state, grade: action.grade
-            }
+            return {...state, grade: action.grade}
+
         default:
             return state
     }
@@ -37,6 +41,7 @@ export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionT
     cardsAPI.getCards(id, pageCount, page, cardQuestion, sortCards)
         .then((res) => {
             if (res.data.cards) {
+                debugger
                 dispatch(getCardsAC(res.data.cards))
                 dispatch(setCardsTotalCountAC(res.data.cardsTotalCount))
                 dispatch(setSelectedCardIdAC(id))
@@ -82,7 +87,11 @@ export const updateGradeTC = (grade: number, card_id: string) => (dispatch: Thun
     dispatch(setAppStatusAC('loading'))
     cardsAPI.updateGrade(grade, card_id)
         .then(() => {
+            debugger
             dispatch(updateGradeAC(grade))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 
@@ -116,4 +125,10 @@ export type CardType = {
     _id: string
 }
 
+type InitialStateType = {
+    cards: Array<CardType>
+    grade: number
+}
+
 // todo: add catch
+
