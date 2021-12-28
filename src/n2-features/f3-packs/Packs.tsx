@@ -23,7 +23,7 @@ import {
     showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
-import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
+import DeletePackModal from "../f5-modal/ModalDelPack/DeletePackModal";
 import {Checkbox} from "@mui/material";
 import UpdatePackModal from "../../assets/components/update-pack-modal/UpdatePackModal";
 

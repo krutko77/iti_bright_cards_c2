@@ -1,21 +1,21 @@
 import s from "./DeletePackModal.module.scss";
-import ModalTitleBlock from "../common/modal-title-block/ModalTitleBlock";
-import ModalButtonBlock from "../common/modal-button-block/ModalButtonBlock";
+import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
+import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
+import {Modal} from "../Modal/Modal";
 import {delPacksTC, PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация кнопок
-const styleButton1 = {
+export const styleDPButton1 = {
     width: "127px",
     backgroundColor: "#D7D8EF",
     color: "#454AA2",
     boxShadow: "none"
 }
 
-const styleButton2 = {
+export const styleDPButton2 = {
     width: "127px",
     backgroundColor: "#F1453D",
     color: "#ECECF9",
@@ -47,13 +47,13 @@ export default function DeletePackModal() {
                     <ModalTitleBlock title="Delete Pack" onClose={onCloseHandler}/>
                 </div>
                 <div className={s.content}>
-                    <p className={s.text}>Do you really want to remove <strong>{pack && pack.name}?</strong> All cards
+                    <p className={s.text}>Do you really want to remove pack <strong>{pack && pack.name}?</strong> All cards
                         will be excluded from this course.</p>
                     <ModalButtonBlock
                         label1="Cancel"
-                        style1={styleButton1}
+                        style1={styleDPButton1}
                         label2="Delete"
-                        style2={styleButton2}
+                        style2={styleDPButton2}
                         callback1={onCloseHandler}
                         callback2={() => modalYesDelCardPackHandler(clickedCardPackId)}
                     />
