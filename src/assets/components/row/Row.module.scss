@@ -1,0 +1,17 @@
+@import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
+@import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
+
+
+.row {
+   width: 1008px;
+   height: 636px;
+   background-color: #FEFEFF;
+   border-radius: 8px;
+   padding: 19px 24px 24px;
+}
+
+.search {
+   margin-bottom: 24px;  
+}
+
+

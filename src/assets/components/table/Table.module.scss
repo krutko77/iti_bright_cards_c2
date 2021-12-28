@@ -7,70 +7,21 @@
    overflow-x: hidden;
    margin-bottom: 24px;
    @include font(13px, 400, 120%, #000000);
-   box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15)
+   box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15);
+   position: relative;
 }
 
-.tableWrap {
-   max-height: 440px;
-   overflow-y: auto;
-   overflow-x: hidden;
-   margin-bottom: 24px;
-
-   table {
-      table-layout: fixed;
-      width: 100%;
-      border: none;
-      border-collapse: collapse;
-   }
-
-   thead th:nth-child(1) {
-      width: 185px;
-   }
-
-   thead th:nth-child(2) {
-      width: 77px;
-   }
-
-   thead th:nth-child(3) {
-      width: 135px;
-   }
-
-   thead th:nth-child(4) {
-      width: 112px;
-   }
-
-   th {
-      height: 48px;
-      padding-right: 10px;
-      text-align: left;
-   }
-
-   thead tr {
-      background-color: #ECECF9;
-   }
+.table {
+   table-layout: fixed;
+   width: 100%;
+   border: none;
+   border-collapse: collapse;   
 
    tbody tr:nth-child(even) {
       background: #F5F4FA;
    }
-
-   td {
-      height: 48px;
-      padding-right: 10px;
-   }
-
-   th:first-child {
-      padding-left: 24px;
-   }
 }
 
-.btn {
-   background-color: transparent;
-   border: none;
-   padding: 3px;
-   cursor: pointer;
-}
-
-// при нажатии на стрелку в графе "Last Updated"
-.active {
-   transform: rotate(180deg);
+.thead .tr {
+   background-color: #ECECF9;
 }

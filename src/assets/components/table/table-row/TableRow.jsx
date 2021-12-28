@@ -1,10 +1,11 @@
 import s from "./TableRow.module.scss";
 import CellCommon from "../cell-common/CellCommon.jsx";
 import TableButton from "../table-button/TableButton.jsx";
+import RatingCell from "./../rating-cell/RatingCell.jsx";
 
 
 // стилизация кнопки
-const styleButton = {
+const buttonStyle = {
    backgroundColor: "#F1453D",
    color: "#FFFFFF",
    fontWeight: 500
@@ -13,16 +14,17 @@ const styleButton = {
 
 export default function TableRow(props) {
    return (
-      <tr>
-         <td style={props.style}><CellCommon cellData={props.cellData.td1} /></td>
-         <td style={props.style}><CellCommon cellData={props.cellData.td2} /></td>
-         <td style={props.style}><CellCommon cellData={props.cellData.td3} /></td>
-         <td style={props.style}><CellCommon cellData={props.cellData.td4} /></td>
-         <td style={props.style}>
+      <tr className={s.tr}>         
+         <CellCommon cellData={props.cellData.td1} />
+         <CellCommon cellData={props.cellData.td2} />
+         <CellCommon cellData={props.cellData.td3} />
+         {/* <CellCommon cellData={props.cellData.td4} /> */}
+         <RatingCell cellData={props.cellData.rating}/>
+         <td className={s.td}>
             <div className={s.btnBlock}>
-               <TableButton label="Delete" style={styleButton}/>
+               <TableButton label="Delete" style={buttonStyle}/>
                <TableButton label="Edit" />
-               <TableButton label="Learn" />
+               {/* <TableButton label="Learn" /> */}
             </div>
          </td>
       </tr>

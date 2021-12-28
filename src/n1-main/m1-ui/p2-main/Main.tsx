@@ -18,6 +18,9 @@ import {LinearProgress} from "@mui/material";
 import {useSelector} from "react-redux";
 import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
+import MyPacksList from "../../../assets/components/my-packs-list/MyPacksList.jsx";
+import CardsTable from "./../../../assets/components/cards-table/CardsTable.jsx";
+import Row from "./../../../assets/components/row/Row.jsx";
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
