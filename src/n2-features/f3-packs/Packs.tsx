@@ -142,5 +142,3 @@ export const Packs = () => {
         </>
     );
 }
-
-// todo: cards link is not user friendly. Maybe good idea to do it more visible or "click on card pack show it".

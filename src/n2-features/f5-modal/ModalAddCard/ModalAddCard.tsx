@@ -9,13 +9,23 @@ import ModalTitleBlock from "../../../assets/components/common/modal-title-block
 import {styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
 import s from '../ModalAddPack/NewPackModal.module.scss'
 
-// данные для инпута
-const inputNCData = {
+// data for inputs
+export const inputNCData1 = {
     id: "text",
     type: "text",
     name: "text",
     for: "text",
-    label: "Name pack",
+    label: "Name question",
+    style: {
+        display: "none"
+    }
+}
+export const inputNCData2 = {
+    id: "text",
+    type: "text",
+    name: "text",
+    for: "text",
+    label: "Name answer",
     style: {
         display: "none"
     }
@@ -41,15 +51,15 @@ export const ModalAddCard: React.FC<PropsType> = (props) => {
         <Modal modalShowHide={modalAddCardShowHide} version={'Pavel'}>
             <div className={s.newPackModal}>
                 <div className={s.titleBlock}>
-                    <ModalTitleBlock title="Add new pack" onClose={onCloseHandler}/>
+                    <ModalTitleBlock title="Add new card" onClose={onCloseHandler}/>
                 </div>
                 <div className={s.content}>
                     <div className={s.input}>
-                        <Input inputData={inputNCData}
+                        <Input inputData={inputNCData1}
                                value={question}
                                onChangeText={setQuestion}
                         />
-                        <Input inputData={inputNCData}
+                        <Input inputData={inputNCData2}
                                value={answer}
                                onChangeText={setAnswer}
                         />

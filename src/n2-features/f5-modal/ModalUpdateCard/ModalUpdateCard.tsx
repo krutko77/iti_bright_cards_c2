@@ -7,6 +7,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {CardType, updateCardTC} from "../../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
+import s from "../ModalAddPack/NewPackModal.module.scss";
+import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
+import {Input} from "../../../assets/components/common/input/Input";
+import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
+import {styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
+import {inputNCData1, inputNCData2} from "../ModalAddCard/ModalAddCard";
 
 export const ModalUpdateCard = () => {
     const dispatch = useDispatch()
@@ -41,11 +47,35 @@ export const ModalUpdateCard = () => {
         dispatch(updateCardTC(clickedCardId,id,question,answer))
     }
 
-    return <Modal modalShowHide={modalUpdateCardShowHide} version={"Briws"}>
-        <div>Enter new Card question:</div>
-        <SuperInputText value={question} onChangeText={setQuestion}/>
-        <div>Enter new Card answer:</div>
-        <SuperInputText value={answer} onChangeText={setAnswer}/>
-        <SuperButton onClick={buttonHandler}>Change Card</SuperButton>
+    const onCloseHandler = () => {
+        dispatch(closeAllModalsAC())
+    }
+
+    return <Modal modalShowHide={modalUpdateCardShowHide} version={'Pavel'}>
+        <div className={s.newPackModal}>
+            <div className={s.titleBlock}>
+                <ModalTitleBlock title="Update card" onClose={onCloseHandler}/>
+            </div>
+            <div className={s.content}>
+                <div className={s.input}>
+                    <Input inputData={inputNCData1}
+                           value={question}
+                           onChangeText={setQuestion}
+                    />
+                    <Input inputData={inputNCData2}
+                           value={answer}
+                           onChangeText={setAnswer}
+                    />
+                </div>
+                <ModalButtonBlock
+                    label1="Cancel"
+                    style1={styleNPButton1}
+                    label2="Update"
+                    style2={styleNPButton2}
+                    callback1={onCloseHandler}
+                    callback2={buttonHandler}
+                />
+            </div>
+        </div>
     </Modal>
 }

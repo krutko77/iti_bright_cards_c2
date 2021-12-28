@@ -22,9 +22,33 @@ import {
     showModalDelCardAC,
     showModalUpdateCardAC
 } from "../../n1-main/m2-bll/modalReducer";
-import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
 import DeleteCardModal from "../f5-modal/ModalDelCard/DeleteCardModal";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
+import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
+
+// data for inputs
+const inputNPData1 = {
+    id: "text",
+    type: "text",
+    name: "text",
+    for: "text",
+    label: "New question",
+    style: {
+        display: "none"
+    }
+}
+
+// data for inputs
+const inputNPData2 = {
+    id: "text",
+    type: "text",
+    name: "text",
+    for: "text",
+    label: "Name answer",
+    style: {
+        display: "none"
+    }
+}
 
 export const Cards = () => {
 
@@ -62,9 +86,9 @@ export const Cards = () => {
 
     return (
         <>
+            <ModalUpdateCard />
             <DeleteCardModal />
             <ModalAddCard addCard={addCardHandler}/>
-            <ModalUpdateCard />
             <TableContainer component={Paper}>
                 <PaginationCardsContainer/>
                 <SearchCardsContainer/>
