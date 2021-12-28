@@ -2,7 +2,7 @@ import s from "./MyPacksList.module.scss";
 import ProfileBlock from "../common/profile-block/ProfileBlock.jsx";
 import Subtitle from "../common/subtitle/Subtitle.jsx";
 import Search from "../common/search/Search.jsx";
-import Table from "../table/Table.jsx";
+import Table from "../table/Table";
 import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "../common/bottom-block/BottomBlock";
 

@@ -11,7 +11,7 @@ import s from "./TableButton.module.scss";
 
 export default function TableButton(props) {
    return (
-      <button className={s.btn} style={props.style}>{props.label}</button>
+      <button onClick={props.callback} className={s.btn} style={props.style}>{props.label}</button>
    );
 }
 
