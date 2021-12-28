@@ -3,14 +3,33 @@ import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "../common/button/Button.tsx";
 import Search from "./../common/search/Search.jsx";
 import Table from "./../table/Table.jsx";
-import UseSlider from "../common/use-slider/UseSlider.jsx";
+import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "./../common/bottom-block/BottomBlock";
 
 
 // стилизация синей кнопоки
-const styleButton = {
+const buttonStyle = {
    width: "184px",
    marginLeft: "24px"
+}
+
+// стилизация ширины столбцов таблицы
+const tableStyle = {
+   th1: {
+     width: "185px",
+  },
+  th2: {
+     width: "77px",
+  },
+  th3: {
+     width: "135px",
+  },
+  th4: {
+     width: "112px",
+  },
+  th5: {
+     width: "160px",
+  }
 }
 
 // данные для таблицы
@@ -89,9 +108,9 @@ export default function PacksList() {
                <div className={s.search}>
                   <Search />
                </div>
-               <Button label="Add new pack" style={styleButton} />
+               <Button label="Add new pack" style={buttonStyle} />
             </div>
-            <Table tableData={tableData} />
+            <Table tableData={tableData} style={tableStyle} />
             <BottomBlock />
          </main>
       </div>

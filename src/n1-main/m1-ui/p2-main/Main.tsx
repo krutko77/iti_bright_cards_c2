@@ -15,8 +15,9 @@ import PacksList from "../../../assets/components/packs-list/UsePacksList";
 import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
 import {Learn} from "../../../n2-features/f6-learn/Learn";
 
-import MyPacksList from '../../../assets/components/my-packs-list/MyPacksList';
-import CardsTable from './../../../assets/components/cards-table/CardsTable.jsx';
+import MyPacksList from "../../../assets/components/my-packs-list/MyPacksList.jsx";
+import CardsTable from "./../../../assets/components/cards-table/CardsTable.jsx";
+import Row from "./../../../assets/components/row/Row.jsx";
 
 
 
@@ -28,7 +29,7 @@ export const Main = () => {
          <div className='content'>
             <Routes>
                <Route path={'/registration'} element={<RegistrationForm />} />
-               <Route path={'/login'} element={<MyPacksList/>} />
+               <Route path={'/login'} element={<Row/>} />
                <Route path={'/profile'} element={<ProfileForm />} />
                <Route path={'/404'} element={<Page404 />} />
                <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>} />

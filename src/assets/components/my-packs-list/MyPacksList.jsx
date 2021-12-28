@@ -3,7 +3,7 @@ import ProfileBlock from "../common/profile-block/ProfileBlock.jsx";
 import Subtitle from "../common/subtitle/Subtitle.jsx";
 import Search from "../common/search/Search.jsx";
 import Table from "../table/Table.jsx";
-import UseSlider from "../common/use-slider/UseSlider.jsx";
+import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "../common/bottom-block/BottomBlock";
 
 // данные для ProfileBlock
@@ -16,6 +16,25 @@ const styleButton = {
    padding: "5px 8px",
    border: "1px solid #9E9BB8",
    backgroundColor: "transparent"
+}
+
+// стилизация ширины столбцов таблицы
+const tableStyle = {
+   th1: {
+     width: "185px",
+  },
+  th2: {
+     width: "77px",
+  },
+  th3: {
+     width: "135px",
+  },
+  th4: {
+     width: "112px",
+  },
+  th5: {
+     width: "160px",
+  }
 }
 
 // / данные для таблицы
@@ -92,7 +111,7 @@ export default function MyPacksList() {
             <div className={s.search}>
                <Search />
             </div>
-            <Table tableData={tableData} />
+            <Table tableData={tableData} style={tableStyle} />
             <BottomBlock />
          </main>
       </div>

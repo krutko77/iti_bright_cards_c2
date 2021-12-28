@@ -1,12 +1,9 @@
 import s from "./CellCommon.module.scss";
 
 
-function CellCommon(props) {
+export default function CellCommon(props) {
    return (
-      <div className={s.text}>
-         <span>{props.cellData}</span>
-      </div>
-   );     
+      <td className={s.td}>{props.cellData}</td>        
+    );
 }
 
-export default CellCommon;

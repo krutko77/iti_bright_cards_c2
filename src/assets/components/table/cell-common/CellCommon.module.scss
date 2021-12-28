@@ -1,4 +1,12 @@
-// .text {
-//    max-width: 170px;
-//    line-height: 150%;
-// }
+
+.td:first-child {
+   padding-left: 24px;
+}
+
+.td {
+   height: 48px;
+   padding-right: 10px;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
