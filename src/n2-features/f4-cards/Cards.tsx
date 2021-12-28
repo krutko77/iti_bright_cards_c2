@@ -22,9 +22,9 @@ import {
     showModalDelCardAC,
     showModalUpdateCardAC
 } from "../../n1-main/m2-bll/modalReducer";
-import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
 import DeleteCardModal from "../f5-modal/ModalDelCard/DeleteCardModal";
+import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 
 export const Cards = () => {
 

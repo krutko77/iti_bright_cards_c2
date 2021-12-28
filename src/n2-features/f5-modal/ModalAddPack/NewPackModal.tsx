@@ -1,14 +1,14 @@
-import s from "./NewPackModal.module.scss";
+import s from "../ModalAddPack/NewPackModal.module.scss";
 import {Input} from "../../../assets/components/common/input/Input";
-import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
+import {Modal} from "../Modal/Modal";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {addPacksTC} from "../../../n1-main/m2-bll/packsReducer";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import ModalButtonBlock from "../common/modal-button-block/ModalButtonBlock";
+import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import {StyleType} from "../../../types/types";
-import ModalTitleBlock from "../common/modal-title-block/ModalTitleBlock";
+import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
 
 // стилизация кнопок
 export const styleNPButton1: StyleType = {

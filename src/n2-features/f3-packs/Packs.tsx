@@ -22,10 +22,10 @@ import {
     showModalDelCardsPackAC,
     showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
-import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
+import NewPackModal from "../f5-modal/ModalAddPack/NewPackModal";
 import DeletePackModal from "../f5-modal/ModalDelPack/DeletePackModal";
 import {Checkbox} from "@mui/material";
-import UpdatePackModal from "../../assets/components/update-pack-modal/UpdatePackModal";
+import UpdatePackModal from "../f5-modal/ModalUpdatePack/UpdatePackModal";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
 export const Packs = () => {

@@ -1,14 +1,14 @@
-import ModalTitleBlock from "../common/modal-title-block/ModalTitleBlock";
-import ModalButtonBlock from "../common/modal-button-block/ModalButtonBlock";
+import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
+import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import {Modal} from "../../../n2-features/f5-modal/Modal/Modal";
-import {delPacksTC, PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
-import s from '../new-pack-modal/NewPackModal.module.scss'
-import {inputNPData, styleNPButton1, styleNPButton2} from "../new-pack-modal/NewPackModal";
+import {Modal} from "../Modal/Modal";
+import {PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
+import s from '../ModalAddPack/NewPackModal.module.scss'
+import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
 import {useEffect, useState} from "react";
-import {Input} from "../common/input/Input";
+import {Input} from "../../../assets/components/common/input/Input";
 
 
 export default function UpdatePackModal() {
