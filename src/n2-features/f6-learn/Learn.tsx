@@ -7,13 +7,13 @@ import s from './Learn.module.scss'
 import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
 // grades for ourselves
 const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
 
 // clever random
 const getCard = (cards: Array<CardType>) => {
-    debugger
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
     const rand = Math.random() * sum;
     const res = cards.reduce((acc: { sum: number, id: number }, card, i) => {
@@ -38,6 +38,7 @@ export const Learn = () => {
     const cards = useSelector<AppStoreType, Array<CardType>>(state => state.cards.cards)
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
     const [isFirstRun, setIsFirstRun] = useState<boolean>(true)
     const [card, setCard] = useState<CardType>({
@@ -85,8 +86,11 @@ export const Learn = () => {
     }
 
     const sandGradeHandler = (grade: number) => {
-        dispatch(updateGradeTC(grade,card._id))
-        alert(`Grade: ${grade} for cardId: ${card._id} added` )
+        dispatch(updateGradeTC(grade, card._id))
+            .then(() => {
+                // alert(`Grade: ${grade} for cardId: ${card._id} added` )
+                getNextCard()
+            })
     }
 
     return <div className={s.learn}>
@@ -101,7 +105,8 @@ export const Learn = () => {
 
         <div>
             {isAnswerHidden
-                ? <SuperButton onClick={() => setIsAnswerHidden(false)}>Answer</SuperButton>
+                ? <SuperButton onClick={() => setIsAnswerHidden(false)}
+                               disabled={appStatus === "loading"}>Answer</SuperButton>
                 : <div><b>Answer:</b> {card.answer}</div>}
         </div>
 
@@ -109,13 +114,14 @@ export const Learn = () => {
           <div className={s.grade}>
               {grades.map((g, i) => (
                   <SuperButton key={i} className={s.gradeBtn}
-                               onClick={() => (sandGradeHandler(i + 1))}>{g}</SuperButton>
+                               onClick={() => (sandGradeHandler(i + 1))}
+                               disabled={appStatus === "loading"}>{g}</SuperButton>
               ))}
           </div>}
 
         <div className={s.btn}>
-            <NavLink to={`/packs`}><SuperButton>Cancel</SuperButton></NavLink>
-            <SuperButton onClick={getNextCard}>Next</SuperButton>
+            <NavLink to={`/packs`}><SuperButton disabled={appStatus === "loading"}>Cancel</SuperButton></NavLink>
+            <SuperButton onClick={getNextCard} disabled={appStatus === "loading"}>Next</SuperButton>
         </div>
     </div>
 }

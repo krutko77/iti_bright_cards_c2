@@ -3,8 +3,12 @@ import SuperInputText from "../../../../n1-main/m1-ui/common/c1-SuperInputText/S
 import s from './Search.module.scss'
 import SuperButton from "../../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {RangeSlider} from "../RangeSlider/RangeSlider";
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../../../n1-main/m2-bll/store";
+import {RequestStatusType} from "../../../../n1-main/m2-bll/appReducer";
 
 export const Search = (props: PropsType) => {
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
     return (
         <div className={s.search}>
@@ -15,7 +19,8 @@ export const Search = (props: PropsType) => {
                 className={s.input}
             />
             {props.showRange && <RangeSlider/>}
-            <SuperButton onClick={props.buttonFindHandler} className={s.btn}>{props.buttonText}</SuperButton>
+            <SuperButton onClick={props.buttonFindHandler} className={s.btn}
+                         disabled={appStatus === "loading"}>{props.buttonText}</SuperButton>
         </div>
     )
 }

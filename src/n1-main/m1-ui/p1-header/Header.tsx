@@ -32,7 +32,7 @@ export const Header = () => {
                 <NavLink className={s.item} to={'/packs'}>Packs</NavLink>
                 <NavLink className={`${s.item} ${s.notDone}`} to={'/packsdesigned'}>PacksDesigned</NavLink>
                 {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
-                <NavLink className={s.item} to={'/tests'}>Tests</NavLink>
+                {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
             </div>
         </div>
     );

@@ -16,7 +16,6 @@ export const initialState: InitialStateType = {
 }
 
 
-
 export const cardsReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case 'cards/GET-CARDS':
@@ -41,7 +40,6 @@ export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionT
     cardsAPI.getCards(id, pageCount, page, cardQuestion, sortCards)
         .then((res) => {
             if (res.data.cards) {
-                debugger
                 dispatch(getCardsAC(res.data.cards))
                 dispatch(setCardsTotalCountAC(res.data.cardsTotalCount))
                 dispatch(setSelectedCardIdAC(id))
@@ -85,9 +83,8 @@ export const updateCardTC = (id: string, packId: string, question: string, answe
 }
 export const updateGradeTC = (grade: number, card_id: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
     dispatch(setAppStatusAC('loading'))
-    cardsAPI.updateGrade(grade, card_id)
+    return cardsAPI.updateGrade(grade, card_id)
         .then(() => {
-            debugger
             dispatch(updateGradeAC(grade))
         })
         .finally(() => {

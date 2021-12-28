@@ -16,10 +16,8 @@
 
     &:disabled {
         cursor: auto;
-        background-color: #939597;
-        color: #eeffff;
+        color: #939597;
         &:hover {
-            background: #939597;
             box-shadow: 0 5px 15px rgb(0 0 0 / 15%);
         }
     }
