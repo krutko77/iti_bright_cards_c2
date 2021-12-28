@@ -11,19 +11,19 @@ import {StyleType} from "../../../types/types";
 import ModalTitleBlock from "../common/modal-title-block/ModalTitleBlock";
 
 // стилизация кнопок
-const styleButton1: StyleType = {
+export const styleNPButton1: StyleType = {
     width: "127px",
     backgroundColor: "#D7D8EF",
     color: "#454AA2",
     boxShadow: "none"
 }
 
-const styleButton2: StyleType = {
+export const styleNPButton2: StyleType = {
     width: "127px"
 }
 
 // данные для инпута
-const inputData = {
+export const inputNPData = {
     id: "text",
     type: "text",
     name: "text",
@@ -57,16 +57,16 @@ export default function NewPackModal() {
                 </div>
                 <div className={s.content}>
                     <div className={s.input}>
-                        <Input inputData={inputData}
+                        <Input inputData={inputNPData}
                                value={cardPackNameInModal}
                                onChangeText={setCardPackNameInModal}
                         />
                     </div>
                     <ModalButtonBlock
                         label1="Cancel"
-                        style1={styleButton1}
+                        style1={styleNPButton1}
                         label2="Save" 
-                        style2={styleButton2}
+                        style2={styleNPButton2}
                         callback1={onCloseHandler}
                         callback2={addCardPackInModalButtonHandler}
                     />

@@ -22,10 +22,10 @@ import {
     showModalDelCardsPackAC,
     showModalUpdateCardsPackAC
 } from "../../n1-main/m2-bll/modalReducer";
-import {ModalUpdateCardsPack} from "../f5-modal/ModalUpdateCardsPack/ModalUpdateCardsPack";
 import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../../assets/components/delete-pack-modal/DeletePackModal";
 import {Checkbox} from "@mui/material";
+import UpdatePackModal from "../../assets/components/update-pack-modal/UpdatePackModal";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -77,9 +77,9 @@ export const Packs = () => {
 
     return (
         <>
+            <UpdatePackModal />
             <NewPackModal/>
             <DeletePackModal/>
-            <ModalUpdateCardsPack/>
             <TableContainer className={s.table} component={Paper}>
                 <PaginationPacksContainer/>
                 <SearchCardsPacksContainer/>
