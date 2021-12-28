@@ -26,6 +26,7 @@ import NewPackModal from "../../assets/components/new-pack-modal/NewPackModal";
 import DeletePackModal from "../f5-modal/ModalDelPack/DeletePackModal";
 import {Checkbox} from "@mui/material";
 import UpdatePackModal from "../../assets/components/update-pack-modal/UpdatePackModal";
+import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
 export const Packs = () => {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
@@ -34,6 +35,7 @@ export const Packs = () => {
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
     const packUserId = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
     const [myPacks, setMyPacks] = useState<boolean>(!!packUserId)
 
@@ -103,7 +105,7 @@ export const Packs = () => {
                             <TableCell align="center">My Packs <Checkbox onChange={onChangeHandler}/></TableCell>
                             <TableCell align="center">url</TableCell>
                             <TableCell align='center'>
-                                <button onClick={addPacksHandler}>add</button>
+                                <button onClick={addPacksHandler} disabled={appStatus === "loading"}>add</button>
                             </TableCell>
                         </TableRow>
                     </TableHead>
