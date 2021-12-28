@@ -9,12 +9,15 @@ import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import {StyleType} from "../../../types/types";
 import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
+import {customColor} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+
+
 
 // стилизация кнопок
 export const styleNPButton1: StyleType = {
     width: "127px",
     backgroundColor: "#D7D8EF",
-    color: "#454AA2",
+    color: customColor,
     boxShadow: "none"
 }
 
