@@ -79,7 +79,7 @@ export const Packs = () => {
 
     return (
         <>
-            <UpdatePackModal />
+            <UpdatePackModal/>
             <NewPackModal/>
             <DeletePackModal/>
             <TableContainer className={s.table} component={Paper}>
@@ -120,13 +120,17 @@ export const Packs = () => {
                                 <TableCell align="center">{mp.updated}</TableCell>
                                 <TableCell align="center"></TableCell>
                                 <TableCell align='center'>
-                                    <button onClick={() => showModalDelPackHandler(mp._id)}>del</button>
+                                    <button onClick={() => showModalDelPackHandler(mp._id)}
+                                            disabled={appStatus === "loading" || !(user_id === mp.user_id)}>del
+                                    </button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <button onClick={() => showModalUpdatePackHandler(mp._id)}>update</button>
+                                    <button onClick={() => showModalUpdatePackHandler(mp._id)}
+                                            disabled={appStatus === "loading" || !(user_id === mp.user_id)}>update
+                                    </button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <button disabled={!mp.cardsCount} onClick={
+                                    <button disabled={!mp.cardsCount || appStatus === "loading"} onClick={
                                         () => {
                                             startLearnHandler(mp._id)
                                         }

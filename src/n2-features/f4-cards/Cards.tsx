@@ -25,6 +25,7 @@ import {
 import DeleteCardModal from "../f5-modal/ModalDelCard/DeleteCardModal";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
+import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
 // data for inputs
 const inputNPData1 = {
@@ -58,6 +59,8 @@ export const Cards = () => {
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     const dispatch = useDispatch();
 
@@ -86,8 +89,8 @@ export const Cards = () => {
 
     return (
         <>
-            <ModalUpdateCard />
-            <DeleteCardModal />
+            <ModalUpdateCard/>
+            <DeleteCardModal/>
             <ModalAddCard addCard={addCardHandler}/>
             <TableContainer component={Paper}>
                 <PaginationCardsContainer/>
@@ -117,7 +120,8 @@ export const Cards = () => {
                             </TableCell>
                             <TableCell align="center">url</TableCell>
                             <TableCell align="center">
-                                <button onClick={showAddCardModalHandler}>add</button>
+                                <button onClick={showAddCardModalHandler} disabled={appStatus === "loading"}>add
+                                </button>
                             </TableCell>
 
                         </TableRow>
@@ -135,10 +139,16 @@ export const Cards = () => {
                                 <TableCell align="center">{card.grade}</TableCell>
                                 <TableCell align="center">{card.updated}</TableCell>
                                 <TableCell align='center'>
-                                    <button onClick={() => {showDelCardModalHandler(card._id)}}>del</button>
+                                    <button onClick={() => {
+                                        showDelCardModalHandler(card._id)
+                                    }} disabled={appStatus === "loading" || user_id !== card.user_id}>del
+                                    </button>
                                 </TableCell>
                                 <TableCell align='center'>
-                                    <button onClick={() => {showUpdateCardModalHandler(card._id)}}>update</button>
+                                    <button onClick={() => {
+                                        showUpdateCardModalHandler(card._id)
+                                    }} disabled={appStatus === "loading" || user_id !== card.user_id}>update
+                                    </button>
                                 </TableCell>
 
                             </TableRow>
