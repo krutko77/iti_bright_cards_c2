@@ -23,7 +23,7 @@ export default function LearnQuestion() {
          <span className={s.text}><strong>Question</strong>: “How "This" works in JavaScript?”</span>
          <div className={s.buttonBlock}>
             <Button label="Cancel" style={buttonStyle1} />
-            <Button label="Register" style={buttonStyle2} />
+            <Button label="Show answer" style={buttonStyle2} />
          </div>
 
       </div>

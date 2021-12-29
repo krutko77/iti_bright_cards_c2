@@ -44,7 +44,7 @@ export default function LearnQuestionAnswer() {
          </div>        
          <div className={s.buttonBlock}>
             <Button label="Cancel" style={buttonStyle1} />
-            <Button label="Register" style={buttonStyle2} />
+            <Button label="Next" style={buttonStyle2} />
          </div>
       </div>
    )
