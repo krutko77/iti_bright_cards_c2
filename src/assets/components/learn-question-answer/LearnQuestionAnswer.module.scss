@@ -1,0 +1,47 @@
+@import '../../../n1-main/m1-ui/common/components/styles/variables';
+@import '../../../n1-main/m1-ui/common/components/styles/mixins';
+
+.contentWrap {
+   width: 413px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 36px 30px 60px;
+   border-radius: 8px;
+   background-color: $bgColor;
+}
+
+.title {
+   margin-bottom: 18px;
+}
+
+.textTop,
+.textBottom {
+   align-self: flex-start;
+   @include font(16px, 400, 150%, $textColor);   
+}
+
+.textBottom {
+   margin: 12px 0 48px;
+}
+
+.label {
+   align-self: flex-start;
+   @include font(16px, 600, 150%, $textColor); 
+   margin-bottom: 10px;
+}
+
+.topButtonBlock {
+   width: 200px;
+   align-self: flex-start;
+   padding-left: 10px;
+   margin-bottom: 50px;
+}
+
+.buttonBlock {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;     
+}
+
+

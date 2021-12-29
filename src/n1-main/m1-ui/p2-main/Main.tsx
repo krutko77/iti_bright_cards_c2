@@ -21,6 +21,8 @@ import {RequestStatusType} from "../../m2-bll/appReducer";
 import MyPacksList from "../../../assets/components/my-packs-list/MyPacksList.jsx";
 import CardsTable from "./../../../assets/components/cards-table/CardsTable.jsx";
 import Row from "./../../../assets/components/row/Row.jsx";
+import LearnQuestion from "./../../../assets/components/learn-question/LearnQuestion.jsx";
+import LearnQuestionAnswer from "./../../../assets/components/learn-question-answer/LearnQuestionAnswer.jsx";
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
