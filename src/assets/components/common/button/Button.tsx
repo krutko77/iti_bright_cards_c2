@@ -12,7 +12,8 @@ import {StyleType} from "../../../../types/types";
 
 export default function Button(props: PropsType) {
     return (
-        <button className={s.btn} style={props.style} type="submit" onClick={props.onClick}>{props.label}</button>
+        <button className={s.btn} style={props.style} type="submit" onClick={props.onClick}
+                disabled={props.disabled}>{props.label}</button>
     );
 }
 
@@ -21,6 +22,7 @@ type PropsType = {
     type?: string
     label?: string
     onClick?: () => void
+    disabled?: boolean
 }
 
 

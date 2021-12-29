@@ -1,6 +1,6 @@
 import s from "./TableRow.module.scss";
 import CellCommon from "../cell-common/CellCommon.jsx";
-import TableButton from "../table-button/TableButton.jsx";
+import TableButton from "../table-button/TableButton.tsx";
 import RatingCell from "./../rating-cell/RatingCell.jsx";
 
 

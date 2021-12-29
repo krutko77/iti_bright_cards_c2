@@ -42,7 +42,6 @@ export const Packs = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
 
-
     useEffect(() => {
         dispatch(getPacksTC())
     }, [dispatch, pageCount, page, sortPacks])

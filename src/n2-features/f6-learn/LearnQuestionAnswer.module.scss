@@ -1,5 +1,5 @@
-@import '../../../n1-main/m1-ui/common/components/styles/variables';
-@import '../../../n1-main/m1-ui/common/components/styles/mixins';
+@import '../../n1-main/m1-ui/common/components/styles/variables';
+@import '../../n1-main/m1-ui/common/components/styles/mixins';
 
 .contentWrap {
    width: 413px;
@@ -9,6 +9,10 @@
    padding: 36px 30px 60px;
    border-radius: 8px;
    background-color: $bgColor;
+
+   .answerBlock {
+      align-self: flex-start;
+   }
 }
 
 .title {
@@ -18,7 +22,12 @@
 .textTop,
 .textBottom {
    align-self: flex-start;
+
    @include font(16px, 400, 150%, $textColor);   
+}
+
+.textTop {
+   padding-bottom: 5px;
 }
 
 .textBottom {
@@ -39,6 +48,7 @@
 }
 
 .buttonBlock {
+   padding-top: 10px;
    display: flex;
    justify-content: space-between;
    width: 100%;     

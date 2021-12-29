@@ -1,5 +1,5 @@
 import s from "./ProfileBlock.module.scss";
-import TableButton from "./../../table/table-button/TableButton.jsx";
+import TableButton from "../../table/table-button/TableButton.tsx";
 
 import img from "./../../../img/photo-profile.png";
 

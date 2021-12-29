@@ -13,16 +13,11 @@ import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recov
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
 import PacksList from "../../../assets/components/packs-list/UsePacksList";
 import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
-import {Learn} from "../../../n2-features/f6-learn/Learn";
 import {LinearProgress} from "@mui/material";
 import {useSelector} from "react-redux";
 import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
-import MyPacksList from "../../../assets/components/my-packs-list/MyPacksList.jsx";
-import CardsTable from "./../../../assets/components/cards-table/CardsTable.jsx";
-import Row from "./../../../assets/components/row/Row.jsx";
-import LearnQuestion from "./../../../assets/components/learn-question/LearnQuestion.jsx";
-import LearnQuestionAnswer from "./../../../assets/components/learn-question-answer/LearnQuestionAnswer.jsx";
+import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnswer";
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
@@ -46,7 +41,7 @@ export const Main = () => {
                     <Route path={'/packs'} element={<Packs/>}/>
                     <Route path={'/cards/:id'} element={<Cards/>}/>
                     <Route path={'/packsdesigned'} element={<PacksList/>}/>
-                    <Route path={'/learn/:packid'} element={<Learn/>}/>
+                    <Route path={'/learn/:packid'} element={<LearnQuestionAnswer/>}/>
                     <Route/>
                 </Routes>
             </div>

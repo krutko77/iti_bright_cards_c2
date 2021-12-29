@@ -1,16 +1,43 @@
-import React, {useEffect, useState} from 'react'
+import s from "./LearnQuestionAnswer.module.scss";
+import Subtitle from "../../assets/components/common/subtitle/Subtitle.jsx";
+import TableButton from "../../assets/components/table/table-button/TableButton";
+import Button from "../../assets/components/common/button/Button";
 import {CardType, getCardsTC, updateGradeTC} from "../../n1-main/m2-bll/cardsReducer";
+import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {NavLink, useParams} from "react-router-dom";
-import s from './Learn.module.scss'
-import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
+import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
+import React, {useEffect, useState} from "react";
 import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
+import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
+
+// стилизация кнопок
+const buttonStyle1 = {
+    backgroundColor: "#D7D8EF",
+    color: "#21268F",
+    width: "124px",
+    boxShadow: "none",
+
+}
+
+const buttonStyle2 = {
+    width: "187px"
+}
+
+const tableButtonStyle = {
+    '.active': {
+        border: "2px solid #21268F"
+    },
+    textAligne: "center",
+    fontWeight: "400",
+    fontSize: "16px",
+    width: "150px",
+    marginBottom: "12px"
+}
 
 // grades for ourselves
-const grades = ['wrong', 'did not know', 'forgot', 'thought for a long time', 'correct'];
+const grades = ['Wrong', 'Did not know', 'Forgot', 'A lot of thought', 'Knew the answer'];
 
 // clever random
 const getCard = (cards: Array<CardType>) => {
@@ -25,7 +52,7 @@ const getCard = (cards: Array<CardType>) => {
     return cards[res.id + 1];
 }
 
-export const Learn = () => {
+export default function LearnQuestionAnswer() {
     const cardsPacksFromLS = localStorage.getItem('cardsPacks')  // get CardPacks from LS to save it while F5
 
     let cardsPacksFromLSParsed = []
@@ -93,35 +120,40 @@ export const Learn = () => {
             })
     }
 
-    return <div className={s.learn}>
-        {selectedCardPack &&
-          <div className={s.status}>
-            <div>Selected cards pack: {selectedCardPack.name}</div>
-            <div>Cards count: {selectedCardPack.cardsCount}</div>
-          </div>
-        }
+    return (
+        <div className={s.contentWrap}>
+            <div className={s.title}>
+                <Subtitle subtitle={`Learn “${selectedCardPack && selectedCardPack.name}”`}/>
+            </div>
+            <span className={s.textTop}><strong>Question</strong>: {`“${card.question}”`}</span>
 
-        <div className={s.question}><b>Question:</b> {card.question}</div>
-
-        <div>
             {isAnswerHidden
-                ? <SuperButton onClick={() => setIsAnswerHidden(false)}
-                               disabled={appStatus === "loading"}>Answer</SuperButton>
-                : <div><b>Answer:</b> {card.answer}</div>}
-        </div>
+                ? <Button onClick={() => setIsAnswerHidden(false)}
+                          disabled={appStatus === "loading"} label={'Answer'}/>
+                : <div className={s.answerBlock}>
+                    <span className={s.textBottom}><strong>Answer</strong>: {`“${card.answer}”`}</span>
+                    <div className={s.label}>Rate yourself:</div>
+                    <div className={s.topButtonBlock}>
+                        {grades.map((g, i) => (
+                            <TableButton key={i}
+                                         style={tableButtonStyle}
+                                         label={g}
+                                         onClick={() => (sandGradeHandler(i + 1))}
+                                         disabled={appStatus === "loading"}/>
 
-        {!isAnswerHidden &&
-          <div className={s.grade}>
-              {grades.map((g, i) => (
-                  <SuperButton key={i} className={s.gradeBtn}
-                               onClick={() => (sandGradeHandler(i + 1))}
-                               disabled={appStatus === "loading"}>{g}</SuperButton>
-              ))}
-          </div>}
-
-        <div className={s.btn}>
-            <NavLink to={`/packs`}><SuperButton disabled={appStatus === "loading"}>Cancel</SuperButton></NavLink>
-            <SuperButton onClick={getNextCard} disabled={appStatus === "loading"}>Next</SuperButton>
+                        ))}
+                    </div>
+                </div>
+            }
+            <div className={s.buttonBlock}>
+                <NavLink to={`/packs`}><Button disabled={appStatus === "loading"} label="Cancel" style={buttonStyle1}/></NavLink>
+                <Button disabled={appStatus === "loading"} label="Next" style={buttonStyle2} onClick={getNextCard}/>
+            </div>
         </div>
-    </div>
+    )
 }
+
+// todo: speak about disabled style of Cancel Button.
+
+
+
