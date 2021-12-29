@@ -26,7 +26,7 @@ export default function DeletePackModal() {
     return (
         <CommonBackground modalShowHide={modalDelCardPackShowHide}>
             <CommonDel
-                title={'Delete Packkkk'}
+                title={'Delete Pack'}
                 text={`Do you really want to remove pack <Strong>${pack && pack.name}</strong>? All cards
                         will be excluded from this course.`}
                 closeHandler={onCloseHandler}
