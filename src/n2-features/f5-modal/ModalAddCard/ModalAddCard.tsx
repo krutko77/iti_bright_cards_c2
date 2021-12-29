@@ -1,13 +1,9 @@
-import {Input} from "../../../assets/components/common/input/Input";
 import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useState} from "react";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
-import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
-import {styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
-import s from '../CommonAddUpdate/NewPackModal.module.scss'
+import {styleNPButton1, styleNPButton2} from "../ModalAddPack/ModalAddPack";
 import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 
 // data for inputs

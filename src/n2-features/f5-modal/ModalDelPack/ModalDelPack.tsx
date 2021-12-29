@@ -5,7 +5,7 @@ import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {delPacksTC, PackType} from "../../../n1-main/m2-bll/packsReducer";
 import {CommonDel} from "../CommonDel/CommonDel";
 
-export default function DeletePackModal() {
+export default function ModalDelPack() {
     const dispatch = useDispatch()
 
     const modalDelCardPackShowHide = useSelector<AppStoreType, boolean>(state => state.modal.modalDelCardsPackShowHide)
@@ -16,7 +16,7 @@ export default function DeletePackModal() {
     const modalYesDelCardPackHandler = (id: string) => {
         dispatch(closeAllModalsAC())
         dispatch(delPacksTC(id))
-        alert(pack && pack.name + " Removed ")
+        // alert(pack && pack.name + " Removed ")
     }
 
     const onCloseHandler = () => {

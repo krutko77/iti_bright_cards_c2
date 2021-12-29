@@ -32,7 +32,7 @@ export const inputNPData = {
     }
 }
 
-export default function NewPackModal() {
+export default function ModalAddPack() {
     const dispatch = useDispatch()
     const [cardPackNameInModal, setCardPackNameInModal] = useState('')
 

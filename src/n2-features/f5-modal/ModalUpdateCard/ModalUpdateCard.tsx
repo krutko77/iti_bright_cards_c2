@@ -5,11 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {CardType, updateCardTC} from "../../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
-import s from "../CommonAddUpdate/NewPackModal.module.scss";
+import s from "../CommonAddUpdate/CommonAddUpdate.module.scss";
 import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
 import {Input} from "../../../assets/components/common/input/Input";
 import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
-import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
+import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/ModalAddPack";
 import {inputNCData1, inputNCData2} from "../ModalAddCard/ModalAddCard";
 import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 

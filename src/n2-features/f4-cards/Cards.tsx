@@ -22,7 +22,7 @@ import {
     showModalDelCardAC,
     showModalUpdateCardAC
 } from "../../n1-main/m2-bll/modalReducer";
-import DeleteCardModal from "../f5-modal/ModalDelCard/DeleteCardModal";
+import ModalDelCard from "../f5-modal/ModalDelCard/ModalDelCard";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
 import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
@@ -90,7 +90,7 @@ export const Cards = () => {
     return (
         <>
             <ModalUpdateCard/>
-            <DeleteCardModal/>
+            <ModalDelCard/>
             <ModalAddCard addCard={addCardHandler}/>
             <TableContainer component={Paper}>
                 <PaginationCardsContainer/>

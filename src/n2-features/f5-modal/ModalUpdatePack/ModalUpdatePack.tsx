@@ -3,12 +3,12 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
-import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
+import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/ModalAddPack";
 import {useEffect, useState} from "react";
 import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 
 
-export default function UpdatePackModal() {
+export default function ModalUpdatePack() {
     const dispatch = useDispatch()
 
     const [cardsPackName, setCardPackName] = useState('')

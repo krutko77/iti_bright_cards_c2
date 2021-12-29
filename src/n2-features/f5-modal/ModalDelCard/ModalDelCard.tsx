@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 import {CardType, delCardTC} from "../../../n1-main/m2-bll/cardsReducer";
 import {CommonDel} from "../CommonDel/CommonDel";
 
-export default function DeleteCardModal() {
+export default function ModalDelCard() {
     let {id} = useParams()
 
     const dispatch = useDispatch()

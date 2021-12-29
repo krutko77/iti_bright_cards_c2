@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./NewPackModal.module.scss";
+import s from "./CommonAddUpdate.module.scss";
 import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
 import {Input} from "../../../assets/components/common/input/Input";
 import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
