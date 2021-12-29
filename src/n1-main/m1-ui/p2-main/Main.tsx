@@ -18,6 +18,8 @@ import {Learn} from "../../../n2-features/f6-learn/Learn";
 import MyPacksList from "../../../assets/components/my-packs-list/MyPacksList.jsx";
 import CardsTable from "./../../../assets/components/cards-table/CardsTable.jsx";
 import Row from "./../../../assets/components/row/Row.jsx";
+import LearnQuestion from "./../../../assets/components/learn-question/LearnQuestion.jsx";
+import LearnQuestionAnswer from "./../../../assets/components/learn-question-answer/LearnQuestionAnswer.jsx";
 
 
 
@@ -29,7 +31,7 @@ export const Main = () => {
          <div className='content'>
             <Routes>
                <Route path={'/registration'} element={<RegistrationForm />} />
-               <Route path={'/login'} element={<Row/>} />
+               <Route path={'/login'} element={<LearnQuestionAnswer/>} />
                <Route path={'/profile'} element={<ProfileForm />} />
                <Route path={'/404'} element={<Page404 />} />
                <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>} />

@@ -1,4 +1,3 @@
-import s from "./UseRating.module.scss";
 import { Rating } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
