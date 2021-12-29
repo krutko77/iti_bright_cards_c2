@@ -3,7 +3,7 @@ import ModalButtonBlock from "../../../assets/components/common/modal-button-blo
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import {Modal} from "../Modal/Modal";
+import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
 import s from '../ModalAddPack/NewPackModal.module.scss'
 import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
@@ -40,7 +40,7 @@ export default function UpdatePackModal() {
     }
 
     return (
-        <Modal modalShowHide={modalUpdateCardsPackShowHide} version={'Pavel'}>
+        <CommonBackground modalShowHide={modalUpdateCardsPackShowHide}>
             <div className={s.newPackModal}>
                 <div className={s.titleBlock}>
                     <ModalTitleBlock title="Add new pack" onClose={onCloseHandler}/>
@@ -62,7 +62,7 @@ export default function UpdatePackModal() {
                     />
                 </div>
             </div>
-        </Modal>
+        </CommonBackground>
     )
 }
 

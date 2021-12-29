@@ -1,5 +1,5 @@
 import {Input} from "../../../assets/components/common/input/Input";
-import {Modal} from "../Modal/Modal";
+import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useState} from "react";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
@@ -48,7 +48,7 @@ export const ModalAddCard: React.FC<PropsType> = (props) => {
     }
 
     return (
-        <Modal modalShowHide={modalAddCardShowHide} version={'Pavel'}>
+        <CommonBackground modalShowHide={modalAddCardShowHide}>
             <div className={s.newPackModal}>
                 <div className={s.titleBlock}>
                     <ModalTitleBlock title="Add new card" onClose={onCloseHandler}/>
@@ -74,7 +74,7 @@ export const ModalAddCard: React.FC<PropsType> = (props) => {
                     />
                 </div>
             </div>
-        </Modal>
+        </CommonBackground>
     )
 }
 

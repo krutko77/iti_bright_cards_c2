@@ -1,6 +1,6 @@
 import s from "../ModalAddPack/NewPackModal.module.scss";
 import {Input} from "../../../assets/components/common/input/Input";
-import {Modal} from "../Modal/Modal";
+import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
@@ -53,7 +53,7 @@ export default function NewPackModal() {
     }
 
     return (
-        <Modal modalShowHide={modalAddCardPackShowHide} version={'Pavel'}>
+        <CommonBackground modalShowHide={modalAddCardPackShowHide}>
             <div className={s.newPackModal}>
                 <div className={s.titleBlock}>
                     <ModalTitleBlock title="Add new pack" onClose={onCloseHandler}/>
@@ -75,7 +75,7 @@ export default function NewPackModal() {
                     />
                 </div>
             </div>
-        </Modal>
+        </CommonBackground>
     )
 }
 
