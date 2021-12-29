@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
-import {Modal} from "../Modal/Modal";
+import {CommonBackground} from "../CommonBackground/CommonBackground";
 import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
@@ -51,7 +51,7 @@ export const ModalUpdateCard = () => {
         dispatch(closeAllModalsAC())
     }
 
-    return <Modal modalShowHide={modalUpdateCardShowHide} version={'Pavel'}>
+    return <CommonBackground modalShowHide={modalUpdateCardShowHide}>
         <div className={s.newPackModal}>
             <div className={s.titleBlock}>
                 <ModalTitleBlock title="Update card" onClose={onCloseHandler}/>
@@ -77,5 +77,5 @@ export const ModalUpdateCard = () => {
                 />
             </div>
         </div>
-    </Modal>
+    </CommonBackground>
 }
