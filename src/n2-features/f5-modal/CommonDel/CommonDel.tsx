@@ -40,7 +40,7 @@ export const CommonDel: React.FC<PropsType> = (props) => {
 
 type PropsType = {
     title: string
-    text: any
+    text: string
     closeHandler: () => void
     delHandler: () => void
 }

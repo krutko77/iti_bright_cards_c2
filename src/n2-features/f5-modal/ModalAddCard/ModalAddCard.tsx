@@ -7,7 +7,8 @@ import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
 import {styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
-import s from '../ModalAddPack/NewPackModal.module.scss'
+import s from '../CommonAddUpdate/NewPackModal.module.scss'
+import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 
 // data for inputs
 export const inputNCData1 = {
@@ -49,31 +50,18 @@ export const ModalAddCard: React.FC<PropsType> = (props) => {
 
     return (
         <CommonBackground modalShowHide={modalAddCardShowHide}>
-            <div className={s.newPackModal}>
-                <div className={s.titleBlock}>
-                    <ModalTitleBlock title="Add new card" onClose={onCloseHandler}/>
-                </div>
-                <div className={s.content}>
-                    <div className={s.input}>
-                        <Input inputData={inputNCData1}
-                               value={question}
-                               onChangeText={setQuestion}
-                        />
-                        <Input inputData={inputNCData2}
-                               value={answer}
-                               onChangeText={setAnswer}
-                        />
-                    </div>
-                    <ModalButtonBlock
-                        label1="Cancel"
-                        style1={styleNPButton1}
-                        label2="Add"
-                        style2={styleNPButton2}
-                        callback1={onCloseHandler}
-                        callback2={buttonHandler}
-                    />
-                </div>
-            </div>
+            <CommonAddUpdate
+                title={"Add new carddd"}
+                closeHandler={onCloseHandler}
+                yesButtonText={'Add'}
+                yesButtonHandler={buttonHandler}
+                inputs={[
+                    {inputData: inputNCData1, value: question, onChangeText: setQuestion},
+                    {inputData: inputNCData2, value: answer, onChangeText: setAnswer}
+                ]}
+                style1={styleNPButton1}
+                style2={styleNPButton2}
+            />
         </CommonBackground>
     )
 }

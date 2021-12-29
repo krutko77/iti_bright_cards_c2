@@ -1,14 +1,11 @@
-import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
-import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {CommonBackground} from "../CommonBackground/CommonBackground";
 import {PackType, updatePacksTC} from "../../../n1-main/m2-bll/packsReducer";
-import s from '../ModalAddPack/NewPackModal.module.scss'
 import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
 import {useEffect, useState} from "react";
-import {Input} from "../../../assets/components/common/input/Input";
+import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 
 
 export default function UpdatePackModal() {
@@ -41,27 +38,17 @@ export default function UpdatePackModal() {
 
     return (
         <CommonBackground modalShowHide={modalUpdateCardsPackShowHide}>
-            <div className={s.newPackModal}>
-                <div className={s.titleBlock}>
-                    <ModalTitleBlock title="Add new pack" onClose={onCloseHandler}/>
-                </div>
-                <div className={s.content}>
-                    <div className={s.input}>
-                        <Input inputData={inputNPData}
-                               value={cardsPackName}
-                               onChangeText={setCardPackName}
-                        />
-                    </div>
-                    <ModalButtonBlock
-                        label1="Cancel"
-                        style1={styleNPButton1}
-                        label2="Save"
-                        style2={styleNPButton2}
-                        callback1={onCloseHandler}
-                        callback2={() => {buttonHandler(clickedCardPackId)}}
-                    />
-                </div>
-            </div>
+            <CommonAddUpdate
+                title={'Update Cards pack'}
+                closeHandler={onCloseHandler}
+                yesButtonText={'Save'}
+                yesButtonHandler={() => {buttonHandler(clickedCardPackId)}}
+                inputs={[
+                    {inputData: inputNPData, value: cardsPackName, onChangeText: setCardPackName},
+                ]}
+                style1={styleNPButton1}
+                style2={styleNPButton2}
+            />
         </CommonBackground>
     )
 }

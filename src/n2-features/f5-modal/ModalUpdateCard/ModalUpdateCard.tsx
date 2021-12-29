@@ -1,18 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {CommonBackground} from "../CommonBackground/CommonBackground";
-import SuperInputText from "../../../n1-main/m1-ui/common/c1-SuperInputText/SuperInputText";
-import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {CardType, updateCardTC} from "../../../n1-main/m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
-import s from "../ModalAddPack/NewPackModal.module.scss";
+import s from "../CommonAddUpdate/NewPackModal.module.scss";
 import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
 import {Input} from "../../../assets/components/common/input/Input";
 import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
-import {styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
+import {inputNPData, styleNPButton1, styleNPButton2} from "../ModalAddPack/NewPackModal";
 import {inputNCData1, inputNCData2} from "../ModalAddCard/ModalAddCard";
+import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
 
 export const ModalUpdateCard = () => {
     const dispatch = useDispatch()
@@ -52,30 +51,17 @@ export const ModalUpdateCard = () => {
     }
 
     return <CommonBackground modalShowHide={modalUpdateCardShowHide}>
-        <div className={s.newPackModal}>
-            <div className={s.titleBlock}>
-                <ModalTitleBlock title="Update card" onClose={onCloseHandler}/>
-            </div>
-            <div className={s.content}>
-                <div className={s.input}>
-                    <Input inputData={inputNCData1}
-                           value={question}
-                           onChangeText={setQuestion}
-                    />
-                    <Input inputData={inputNCData2}
-                           value={answer}
-                           onChangeText={setAnswer}
-                    />
-                </div>
-                <ModalButtonBlock
-                    label1="Cancel"
-                    style1={styleNPButton1}
-                    label2="Update"
-                    style2={styleNPButton2}
-                    callback1={onCloseHandler}
-                    callback2={buttonHandler}
-                />
-            </div>
-        </div>
+        <CommonAddUpdate
+            title={'Update card'}
+            closeHandler={onCloseHandler}
+            yesButtonText={'Update'}
+            yesButtonHandler={buttonHandler}
+            inputs={[
+                {inputData: inputNCData1, value: question, onChangeText: setQuestion},
+                {inputData: inputNCData2, value: answer, onChangeText: setAnswer},
+            ]}
+            style1={styleNPButton1}
+            style2={styleNPButton2}
+        />
     </CommonBackground>
 }
