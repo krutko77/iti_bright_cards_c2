@@ -1,10 +1,13 @@
 import React from 'react';
-import FileInput from "./FileInput";
+// import FileInput from "./FileInput";
 
 const FileInputContainer: React.FC = () => {
 
     return (
-        <FileInput/>
+        <div>
+
+        </div>
+        // <FileInput/>
     );
 };
 
