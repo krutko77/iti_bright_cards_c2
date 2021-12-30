@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/iti_bright_cards_c2/static/css/main.3c0a6b9e.chunk.css",
-    "main.js": "/iti_bright_cards_c2/static/js/main.2fa75b22.chunk.js",
-    "main.js.map": "/iti_bright_cards_c2/static/js/main.2fa75b22.chunk.js.map",
+    "main.css": "/iti_bright_cards_c2/static/css/main.7218d694.chunk.css",
+    "main.js": "/iti_bright_cards_c2/static/js/main.e7b37839.chunk.js",
+    "main.js.map": "/iti_bright_cards_c2/static/js/main.e7b37839.chunk.js.map",
     "runtime-main.js": "/iti_bright_cards_c2/static/js/runtime-main.f13ae91d.js",
     "runtime-main.js.map": "/iti_bright_cards_c2/static/js/runtime-main.f13ae91d.js.map",
     "static/js/2.7f06a293.chunk.js": "/iti_bright_cards_c2/static/js/2.7f06a293.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.341d99b4.chunk.js": "/iti_bright_cards_c2/static/js/3.341d99b4.chunk.js",
     "static/js/3.341d99b4.chunk.js.map": "/iti_bright_cards_c2/static/js/3.341d99b4.chunk.js.map",
     "index.html": "/iti_bright_cards_c2/index.html",
-    "static/css/main.3c0a6b9e.chunk.css.map": "/iti_bright_cards_c2/static/css/main.3c0a6b9e.chunk.css.map",
+    "static/css/main.7218d694.chunk.css.map": "/iti_bright_cards_c2/static/css/main.7218d694.chunk.css.map",
     "static/js/2.7f06a293.chunk.js.LICENSE.txt": "/iti_bright_cards_c2/static/js/2.7f06a293.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/iti_bright_cards_c2/static/media/SFUIDisplay-Semibold.cb4925c9.ttf",
     "static/media/arrow-icon.f30a3c93.svg": "/iti_bright_cards_c2/static/media/arrow-icon.f30a3c93.svg",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.f13ae91d.js",
     "static/js/2.7f06a293.chunk.js",
-    "static/css/main.3c0a6b9e.chunk.css",
-    "static/js/main.2fa75b22.chunk.js"
+    "static/css/main.7218d694.chunk.css",
+    "static/js/main.e7b37839.chunk.js"
   ]
 }
