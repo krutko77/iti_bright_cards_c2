@@ -13,7 +13,7 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {RequestStatusType} from "../../../n1-main/m2-bll/appReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
-import NewPackModal from "../../../n2-features/f5-modal/ModalAddPack/NewPackModal";
+import NewPackModal from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 import * as React from "react";
 
 

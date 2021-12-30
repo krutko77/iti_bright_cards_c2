@@ -7,9 +7,9 @@ import {
     showModalDelCardsPackAC,
     showModalUpdateCardsPackAC
 } from "../../../../n1-main/m2-bll/modalReducer";
-import UpdatePackModal from "../../../../n2-features/f5-modal/ModalUpdatePack/UpdatePackModal";
-import NewPackModal from "../../../../n2-features/f5-modal/ModalAddPack/NewPackModal";
-import DeletePackModal from "../../../../n2-features/f5-modal/ModalDelPack/DeletePackModal";
+import UpdatePackModal from "../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
+import NewPackModal from "../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
+import DeletePackModal from "../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
@@ -61,9 +61,9 @@ export default function TableRow(props:PropsType) {
          {/*<RatingCell cellData={props.cellData.rating}/>*/}
          <td className={s.td}>
             <div className={s.btnBlock}>
-               <TableButton callback={() => showModalDelPackHandler(props.cellData._id)} label="Delete" style={buttonStyle}/>
-               <TableButton callback={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit" />
-                <TableButton callback={() => startLearnHandler(props.cellData._id)} label="Learn" />
+               <TableButton onClick={() => showModalDelPackHandler(props.cellData._id)} label="Delete" style={buttonStyle}/>
+               <TableButton onClick={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit" />
+                <TableButton onClick={() => startLearnHandler(props.cellData._id)} label="Learn" />
             </div>
          </td>
       </tr>

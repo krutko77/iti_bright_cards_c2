@@ -20,7 +20,8 @@ type PropsType = {
     label: string
     onClick: () => void
     disabled?: boolean
-    style: CSSProperties | undefined
+    style?: CSSProperties | undefined
+    // callback?: () => void
 }
 
 
