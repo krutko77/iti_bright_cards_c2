@@ -14,6 +14,9 @@ import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 
 // стилизация кнопок
 const buttonStyle1 = {
+    ':disabled': {
+        color: '#939597',
+    }, // this is not working
     backgroundColor: "#D7D8EF",
     color: "#21268F",
     width: "124px",
@@ -128,8 +131,8 @@ export default function LearnQuestionAnswer() {
             <span className={s.textTop}><strong>Question</strong>: {`“${card.question}”`}</span>
 
             {isAnswerHidden
-                ? <Button onClick={() => setIsAnswerHidden(false)}
-                          disabled={appStatus === "loading"} label={'Answer'}/>
+                ? <div className={s.btn}><Button onClick={() => setIsAnswerHidden(false)}
+                               disabled={appStatus === "loading"} label={'Answer'}/></div>
                 : <div className={s.answerBlock}>
                     <span className={s.textBottom}><strong>Answer</strong>: {`“${card.answer}”`}</span>
                     <div className={s.label}>Rate yourself:</div>
@@ -146,7 +149,9 @@ export default function LearnQuestionAnswer() {
                 </div>
             }
             <div className={s.buttonBlock}>
-                <NavLink to={`/packs`}><Button disabled={appStatus === "loading"} label="Cancel" style={buttonStyle1}/></NavLink>
+                <NavLink to={`/packs`}>
+                    <Button disabled={appStatus === "loading"} label="Cancel" style={buttonStyle1}/>
+                </NavLink>
                 <Button disabled={appStatus === "loading"} label="Next" style={buttonStyle2} onClick={getNextCard}/>
             </div>
         </div>
