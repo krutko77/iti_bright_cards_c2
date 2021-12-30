@@ -101,7 +101,7 @@ export const Packs = () => {
                                                                                        lowerCount={'1updated'}/></div>
 
                             </TableCell>
-                            <TableCell align="center">My Packs <Checkbox onChange={onChangeHandler}/></TableCell>
+                            <TableCell align="center">My Packs <Checkbox onChange={onChangeHandler} checked={myPacks}/></TableCell>
                             <TableCell align="center">url</TableCell>
                             <TableCell align='center'>
                                 <button onClick={addPacksHandler} disabled={appStatus === "loading"}>add</button>

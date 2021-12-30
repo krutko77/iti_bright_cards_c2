@@ -2,7 +2,7 @@ import s from "./PacksList.module.scss";
 import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "../common/button/Button.tsx";
 import Search from "./../common/search/Search.jsx";
-import Table from "./../table/Table.jsx";
+import Table from "../table/Table";
 import PaginationRounded from "../common/pagination/PaginationRounded.jsx";
 import Select from "../common/select/Select.jsx";
 import UseSlider from "../common/use-slider/MySlider.jsx";

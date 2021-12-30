@@ -24,7 +24,11 @@ const reducers = combineReducers({
     modal: modalReducer,
 })
 
-export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
+// @ts-ignore
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// export const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
+export const store = createStore(reducers,applyMiddleware(thunkMiddleware))
 
 export type AppStoreType = ReturnType<typeof reducers>
 
