@@ -10,34 +10,34 @@ import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 import React, {useEffect, useState} from "react";
 import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import SuperButton from "../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 
 // стилизация кнопок
-const buttonStyle1 = {
-    ':disabled': {
-        color: '#939597',
-    }, // this is not working
-    backgroundColor: "#D7D8EF",
-    color: "#21268F",
-    width: "124px",
-    boxShadow: "none",
-
+const tableButtonStyle1 = {
+   '.active': {
+       border: "2px solid #21268F"
+   },
+   textAligne: "center",
+   fontWeight: "400",
+   fontSize: "16px",
+   width: "150px",
+   marginBottom: "12px"
 }
 
-const buttonStyle2 = {
+const tableButtonStyle2 = {
+   //  ':disabled': {
+   //      color: '#939597',
+   //  }, // this is not working
+    width: "124px",
+    height: "36px",
+    borderRadius: "18px",
+    fontWeight: "500",
+    fontSize: "16px"
+}
+
+const buttonStyle = {
     width: "187px"
 }
 
-const tableButtonStyle = {
-    '.active': {
-        border: "2px solid #21268F"
-    },
-    textAligne: "center",
-    fontWeight: "400",
-    fontSize: "16px",
-    width: "150px",
-    marginBottom: "12px"
-}
 
 // grades for ourselves
 const grades = ['Wrong', 'Did not know', 'Forgot', 'A lot of thought', 'Knew the answer'];
@@ -130,7 +130,7 @@ export default function LearnQuestionAnswer() {
             </div>
             <span className={s.textTop}><strong>Question</strong>: {`“${card.question}”`}</span>
 
-            {isAnswerHidden
+            {false
                 ? <div className={s.btn}><Button onClick={() => setIsAnswerHidden(false)}
                                disabled={appStatus === "loading"} label={'Answer'}/></div>
                 : <div className={s.answerBlock}>
@@ -139,7 +139,7 @@ export default function LearnQuestionAnswer() {
                     <div className={s.topButtonBlock}>
                         {grades.map((g, i) => (
                             <TableButton key={i}
-                                         style={tableButtonStyle}
+                                         style={tableButtonStyle1}
                                          label={g}
                                          onClick={() => (sandGradeHandler(i + 1))}
                                          disabled={appStatus === "loading"}/>
@@ -150,9 +150,9 @@ export default function LearnQuestionAnswer() {
             }
             <div className={s.buttonBlock}>
                 <NavLink to={`/packs`}>
-                    <Button disabled={appStatus === "loading"} label="Cancel" style={buttonStyle1}/>
+                    <TableButton onClick = {() => {}} disabled={appStatus === "loading"} label="Cancel" style={tableButtonStyle2}/>
                 </NavLink>
-                <Button disabled={appStatus === "loading"} label="Next" style={buttonStyle2} onClick={getNextCard}/>
+                <Button disabled={appStatus === "loading"} label="Next" style={buttonStyle} onClick={getNextCard}/>
             </div>
         </div>
     )

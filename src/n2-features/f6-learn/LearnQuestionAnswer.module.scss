@@ -21,17 +21,18 @@
 
 .textTop,
 .textBottom {
+   display: inline-block;
    align-self: flex-start;
 
    @include font(16px, 400, 150%, $textColor);   
 }
 
 .textTop {
-   padding-bottom: 20px;
+   margin-bottom: 12px;
 }
 
 .textBottom {
-   margin: 12px 0 48px;
+   margin-bottom: 48px;
 }
 
 .label {
@@ -55,6 +56,6 @@
 }
 
 .btn {
-   margin-bottom: 20px;
+   margin-bottom: 40px;
 }
 
