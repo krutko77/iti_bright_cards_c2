@@ -130,7 +130,7 @@ export default function LearnQuestionAnswer() {
             </div>
             <span className={s.textTop}><strong>Question</strong>: {`“${card.question}”`}</span>
 
-            {false
+            {isAnswerHidden
                 ? <div className={s.btn}><Button onClick={() => setIsAnswerHidden(false)}
                                disabled={appStatus === "loading"} label={'Answer'}/></div>
                 : <div className={s.answerBlock}>
