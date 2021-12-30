@@ -13,8 +13,8 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {RequestStatusType} from "../../../n1-main/m2-bll/appReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
-import NewPackModal from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 import * as React from "react";
+import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 
 
 // стилизация синей кнопки
@@ -83,7 +83,7 @@ export default function PacksList() {
 
     return (
         <>
-            <NewPackModal/>
+            <ModalAddPack/>
             <div className={s.packsList}>
                 <aside className={s.sidebar}>
                     <span className={s.label}>Show packs cards</span>
