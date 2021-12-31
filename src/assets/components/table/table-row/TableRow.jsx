@@ -2,12 +2,13 @@ import s from "./TableRow.module.scss";
 import CellCommon from "../cell-common/CellCommon.jsx";
 import TableButton from "../table-button/TableButton.tsx";
 import RatingCell from "./../rating-cell/RatingCell.jsx";
-
+import { buttonColorThree } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables.ts";
+import { buttonFontColorThree } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables.ts";
 
 // стилизация кнопки
 const buttonStyle = {
-   backgroundColor: "#F1453D",
-   color: "#FFFFFF",
+   backgroundColor: buttonColorThree,
+   color: buttonFontColorThree,
    fontWeight: 500
 }
 
