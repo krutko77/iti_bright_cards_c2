@@ -157,8 +157,3 @@ export default function LearnQuestionAnswer() {
         </div>
     )
 }
-
-// todo: speak about disabled style of Cancel Button.
-
-
-

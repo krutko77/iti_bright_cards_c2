@@ -1,5 +1,3 @@
-// todo: add Loader here
-
 let initialState: InitialStateType = {
     isInitilize: false,
     error:null,
