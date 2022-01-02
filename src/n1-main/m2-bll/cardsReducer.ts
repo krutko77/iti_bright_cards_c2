@@ -21,7 +21,10 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
         case 'cards/GET-CARDS':
             return {...state, cards: action.cards}
         case 'cards/UPDATE-GRADE':
-            return {...state, grade: action.grade}
+            return {
+                ...state,
+                cards: state.cards.map(card => card.cardsPack_id === action.id ? {...card, grade: action.grade} : card)
+            }
 
         default:
             return state
@@ -29,7 +32,7 @@ export const cardsReducer = (state = initialState, action: ActionType) => {
 }
 
 export const getCardsAC = (cards: CardType[]) => ({type: "cards/GET-CARDS", cards} as const)
-export const updateGradeAC = (grade: number) => ({type: "cards/UPDATE-GRADE", grade} as const)
+export const updateGradeAC = (grade: number, id: string) => ({type: "cards/UPDATE-GRADE", grade, id} as const)
 
 export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionType>, getState: () => AppStoreType) => {
     const {page, sortCards} = getState().findAndPagination.cards
@@ -85,7 +88,7 @@ export const updateGradeTC = (grade: number, card_id: string) => (dispatch: Thun
     dispatch(setAppStatusAC('loading'))
     return cardsAPI.updateGrade(grade, card_id)
         .then(() => {
-            dispatch(updateGradeAC(grade))
+            dispatch(updateGradeAC(grade,card_id))
         })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))

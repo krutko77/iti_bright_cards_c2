@@ -56,8 +56,7 @@ export default function PacksList() {
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
-    const packUserId = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
-    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
+
 
 
     const dispatch = useDispatch()
@@ -79,7 +78,6 @@ export default function PacksList() {
         dispatch(getUserIdAC(''))
         dispatch(getPacksTC())
     }
-
 
     return (
         <>
