@@ -1,3 +1,4 @@
+@import '../../n1-main/m1-ui/common/components/styles/variables';
 
 .main {
    height: 100vh;
@@ -10,5 +11,5 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background: linear-gradient(#E6D4DE, #9890C7);
+   background: $bgColorMain;
 }

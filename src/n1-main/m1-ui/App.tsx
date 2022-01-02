@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import {Main} from "./p2-main/Main";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../m2-bll/store";

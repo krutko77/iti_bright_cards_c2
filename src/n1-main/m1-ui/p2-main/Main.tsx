@@ -1,5 +1,5 @@
 import React from 'react';
-import "./../App.css"
+import "../App.scss"
 import {Header} from "../p1-header/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Page404} from "../../../n2-features/f1-auth/Page404";
