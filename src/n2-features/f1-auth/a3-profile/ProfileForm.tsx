@@ -8,10 +8,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
-import React, {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, useRef, useState} from "react";
 import Button from "../../../assets/components/common/button/Button";
-import {InitializeTC, setIsLoggedInAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
-import {setProfileAC} from "../../../n1-main/m2-bll/profileReducer";
+import {UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
 
 // данные для input nickname
 const inputData1 = {
@@ -75,8 +74,6 @@ export default function ProfileForm() {
         avatar
     } = useSelector<AppStoreType, AuthResponseType>(state => state.profile)
 
-    const [file64, setFile64] = useState<string | ArrayBuffer | null>(); // no need maybe
-    const [fileURL, setFileURL] = useState<string>(avatar);
     const [isEditMode, setIsEditMode] = useState(false)
 
     const inRef = useRef<HTMLInputElement>(null);
@@ -150,11 +147,7 @@ export default function ProfileForm() {
                         : <div className={`${s.block} ${s.onEditMode}`}>
                             <Button label="Edit" style={styleButton2} onClick={goToEditModeHandler}/>
                         </div>
-
-
                     }
-
-
                 </div>
             </div>
         </>
