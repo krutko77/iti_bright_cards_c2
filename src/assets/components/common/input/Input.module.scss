@@ -13,16 +13,16 @@ input:focus {
 .input input {
    border: none;
    appearance: none;
-   background: $bgColor;
+   background: transparent;
    padding: 20px 0 5px;
    width: 350px;
    @include font(16px, 400, 150%, $textColor);
    border-top: 20px solid transparent;
-   border-bottom: 2px solid #CECFDA;
+   border-bottom: 2px solid $inputBorderBottomColor;
 }
 
 .input .placeholder {
-   @include font(16px, 500, 150%, #9393A2);
+   @include font(16px, 500, 150%, $inputLabelColorFont);
    position: absolute;
    top: 40px;
    left: 0;

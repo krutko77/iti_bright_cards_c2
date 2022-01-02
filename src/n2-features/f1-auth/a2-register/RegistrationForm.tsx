@@ -5,11 +5,13 @@ import { Input } from "../../../assets/components/common/input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStoreType } from "../../../n1-main/m2-bll/store";
 import { createNewUser, RequestStatusType } from "../../../n1-main/m2-bll/registrationReducer";
-import {Navigate, NavLink} from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import React, { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../../assets/components/common/button/Button";
+import { buttonColorTwo } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { buttonFontColorTwo } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
 // данные для input email
 const inputData1 = {
@@ -49,8 +51,8 @@ const inputData3 = {
 
 // стилизация кнопок
 const styleButton1 = {
-   backgroundColor: "#D7D8EF",
-   color: "#21268F",
+   backgroundColor: buttonColorTwo,
+   color: buttonFontColorTwo,
    width: "124px",
    boxShadow: "none"
 }

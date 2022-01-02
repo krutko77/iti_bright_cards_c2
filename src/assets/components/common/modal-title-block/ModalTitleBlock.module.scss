@@ -1,9 +1,11 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables.scss';
+
 .modalTitleBlock {
    display: flex;
    justify-content: space-between;
    align-items: center;
    padding: 15px 24px;
-   border-bottom: 1px solid #EDF0F6;   
+   border-bottom: 1px solid $lineColorLight;   
 }
 
 .title {

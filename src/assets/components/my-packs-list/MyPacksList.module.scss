@@ -1,5 +1,4 @@
 @import './../../../n1-main/m1-ui/common/components/styles/variables.scss';
-@import './../../../n1-main/m1-ui/common/components/styles/mixins.scss';
 
 .myPacksList {
    border-radius: 8px;
@@ -11,7 +10,7 @@
 
 .sidebar {
    grid-area: s;
-   background-color: #ECECF9;
+   background-color: $bgColorSidebar;
    border-radius: 8px 0 0 8px;
 }
 
@@ -26,10 +25,10 @@
 .main {
    grid-area: m;
    padding: 24px 48px;
-   background-color: #FEFEFF;
+   background-color: $bgColorCard;
    border-radius: 0 8px 8px 0;
 }
 
 .search {
-  margin-bottom: 24px;
+   margin-bottom: 24px;
 }

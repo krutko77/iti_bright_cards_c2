@@ -8,7 +8,7 @@
    align-items: center;
    padding: 36px 30px 60px;
    border-radius: 8px;
-   background-color: $bgColor;
+   background-color: $bgColorCard;
 
    .answerBlock {
       align-self: flex-start;
@@ -56,6 +56,6 @@
 }
 
 .btn {
-   margin-bottom: 40px;
+   margin: 20px 0 40px;
 }
 

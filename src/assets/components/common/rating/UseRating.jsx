@@ -1,6 +1,8 @@
 import { Rating } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
+import { iconRatingColor } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { emptyIconRatingColor } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
 const StyledRating = styled(Rating)({
    '& .MuiRating-icon ': {
@@ -16,8 +18,8 @@ export default function UseRating(props) {
          readOnly       
          precision={0.5}
          defaultValue={props.data}
-         icon={<StarIcon style={{ color: "#21268F" }} fontSize="13px" />}
-         emptyIcon={<StarIcon style={{ color: "#D7D8EF" }} fontSize="13px" />}
+         icon={<StarIcon style={{ color: iconRatingColor }} fontSize="13px" />}
+         emptyIcon={<StarIcon style={{ color: emptyIconRatingColor }} fontSize="13px" />}
       />
    )
 }

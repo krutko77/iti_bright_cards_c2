@@ -5,7 +5,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   background-color: #D9D9F1;
+   background-color: $bgColorProfileBlock;
    border-radius: 8px 0 8px 8px;
    padding: 24px 10px 12px
 }
@@ -23,8 +23,7 @@
 }
 
 .professionLabel {
-   @include font(14px, 400, 120%, $textColor);
-   opacity: 0.5;
+   @include font(14px, 400, 120%, $textColorLight);
    margin-bottom: 8px;
 }
 
