@@ -4,13 +4,14 @@ import {Input} from "../../../assets/components/common/input/Input";
 
 import img from "../../../assets/img/photo-profile.png";
 import icon from "../../../assets/img/photo-icon.svg";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
-import React, {ChangeEvent, useRef, useState} from "react";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import Button from "../../../assets/components/common/button/Button";
-import {boolean} from "yup";
+import {InitializeTC, setIsLoggedInAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
+import {setProfileAC} from "../../../n1-main/m2-bll/profileReducer";
 
 // данные для input nickname
 const inputData1 = {
@@ -62,7 +63,11 @@ const styleButton2 = {
 }
 
 export default function ProfileForm() {
+    const dispatch = useDispatch()
+
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
+    const avatarFromState = useSelector<AppStoreType, string>(state => state.auth.avatar)
+
     const {
         name,
         email,
@@ -70,35 +75,25 @@ export default function ProfileForm() {
         avatar
     } = useSelector<AppStoreType, AuthResponseType>(state => state.profile)
 
-    const [file, setFile] = useState<File>();
-    const [file64, setFile64] = useState<string | ArrayBuffer | null>();
+    const [file64, setFile64] = useState<string | ArrayBuffer | null>(); // no need maybe
     const [fileURL, setFileURL] = useState<string>(avatar);
-    const [fileData, setFileData] = useState<FormData>();
     const [isEditMode, setIsEditMode] = useState(false)
 
     const inRef = useRef<HTMLInputElement>(null);
 
     const upload = (e: ChangeEvent<HTMLInputElement>) => {
-
-        const reader = new FileReader();
-        // const formData = new FormData(); // for send to back
+        let reader = new FileReader();
 
         const newFile = e.target.files && e.target.files[0];
-        debugger
 
-        if (newFile) {
-            setFile(newFile);
-            setFileURL(window.URL.createObjectURL(newFile));
-            // formData.append('myFile', newFile, newFile.name);
-            // setFileData(formData);
+        reader.readAsDataURL(newFile as Blob);
 
-            setFile64(reader.result);
-            debugger
-            reader.readAsDataURL(newFile);
-            // debugger
-
-            console.log(file64)
+        reader.onload = () => {
+            dispatch(UpdateProfileTC(reader.result as string))
+        };
+        reader.onerror = (error) => {
         }
+
     }
 
     const goToEditModeHandler = () => {
@@ -130,7 +125,7 @@ export default function ProfileForm() {
                 <div className={s.contentWrap}>
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
-                        <img src={isEditMode ? fileURL : avatar} alt="img" className={s.picture}/>
+                        <img src={avatarFromState ? avatarFromState : avatar} alt="img" className={s.picture}/>
                         {
                             isEditMode
                                 ?

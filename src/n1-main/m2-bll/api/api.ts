@@ -17,7 +17,11 @@ export const authAPI = {
         return instance.post<AuthResponseType>('/auth/me', {})
     },
     logout() {
-        return instance.delete('/auth/me')
+        return instance.delete('auth/me')
+    },
+    updateProfile(name: string, avatar: string) {
+        debugger
+        return instance.put('auth/me', {name, avatar})
     }
 }
 export const registrationAPI = {

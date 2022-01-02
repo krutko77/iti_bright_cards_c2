@@ -2,10 +2,12 @@ import {authAPI} from "./api/api";
 import {Dispatch} from "redux";
 import {setProfileAC, SetProfileType} from "./profileReducer";
 import {setAppStatusAC, SetAppStatusAT, setIsInitializeAC} from "./appReducer";
+import {AppStoreType} from "./store";
 
 let initialState: InitialStateType = {
     isLoggedIn: false,
     error: null,
+    avatar: '',
 }
 
 export const authReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -14,6 +16,8 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
             return {...state, isLoggedIn: action.value}
         case 'AUTH/SET-IS-ERROR':
             return {...state, error: action.error}
+        case "AUTH/PROFILE-UPDATE":
+            return {...state, avatar: action.avatar}
         default:
             return {...state}
     }
@@ -25,6 +29,9 @@ export const setIsLoggedInAC = (value: boolean) => {
 }
 export const setIsErrorAC = (error: string | null) => {
     return ({type: 'AUTH/SET-IS-ERROR', error} as const)
+}
+export const profileUpdateAC = (avatar: string) => {
+    return ({type: 'AUTH/PROFILE-UPDATE', avatar} as const)
 }
 
 // Thunks
@@ -77,15 +84,28 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
+export const UpdateProfileTC = (avatar: string) => (dispatch: Dispatch, getState: () => AppStoreType) => {
+    const name = getState().profile.name
+    dispatch(setAppStatusAC('loading'))
+    authAPI.updateProfile(name, avatar)
+        .then(() => {
+            dispatch(profileUpdateAC(avatar))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
 
 // Types
 type InitialStateType = {
     isLoggedIn: boolean
     error: string | null
+    avatar: string
 }
 type ActionsType =
     | ReturnType<typeof setIsLoggedInAC>
     | ReturnType<typeof setIsErrorAC>
     | SetProfileType
     | SetAppStatusAT
+    | ReturnType<typeof profileUpdateAC>
 
