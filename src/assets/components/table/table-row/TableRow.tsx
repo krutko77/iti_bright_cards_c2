@@ -44,13 +44,17 @@ export default function TableRow(props:PropsType) {
         navigate(`/learn/${packId}`, {replace: true})
     }
 
+    const editHandler = (packId: string)=>{
+        navigate(`/cards/${packId}`)
+    }
+
    return (
        <>
            <ModalUpdatePack/>
     <ModalAddPack/>
     <ModalDelPack/>
       <tr className={s.tr}>         
-         <CellCommon cellData={props.cellData.name} />
+         <CellCommon callback={()=>editHandler(props.cellData._id)} cellData={props.cellData.name} />
          <CellCommon cellData={props.cellData.cardsCount} />
          <CellCommon cellData={props.cellData.updated} />
           <CellCommon cellData={props.cellData.user_name} />

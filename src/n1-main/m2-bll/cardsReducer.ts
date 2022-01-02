@@ -95,7 +95,6 @@ export const updateGradeTC = (grade: number, card_id: string) => (dispatch: Thun
         })
 }
 
-
 type ActionType =
     | ReturnType<typeof getCardsAC>
     | SetCardsTotalCountType
