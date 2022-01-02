@@ -27,5 +27,5 @@
    text-align: center;
    width: 350px;
    margin: 21px 0 108px;
-   @include font(16px, 400, 150%, #2D2E46);
+   @include font(16px, 400, 150%, $textColor);
 }

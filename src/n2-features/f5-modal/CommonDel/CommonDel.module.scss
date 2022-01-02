@@ -16,6 +16,6 @@
 
 .text {
    width: 343px;
-   @include font(14px, 400, 150%, #000000);
+   @include font(14px, 400, 150%, $textColor);
    margin-bottom: 29px;
 }

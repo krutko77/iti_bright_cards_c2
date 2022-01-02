@@ -29,7 +29,7 @@ export const Main = () => {
             {status === 'loading' && <LinearProgress/>}
             <div className='content'>
                 <Routes>
-                    <Route path={'/registration'} element={<RegistrationForm/>}/>
+                    <Route path={'/registration'} element={<PacksList />}/>
                     <Route path={'/login'} element={<LearnQuestionAnswer/>}/>
                     <Route path={'/profile'} element={<ProfileForm/>}/>
                     <Route path={'/404'} element={<Page404/>}/>

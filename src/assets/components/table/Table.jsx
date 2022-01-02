@@ -19,13 +19,13 @@ export default function Table(props) {
             </thead>
             <tbody>
                <TableRow cellData={props.tableData.dataRow1} />
-               {/* <TableRow cellData={props.tableData.dataRow2} />
+               <TableRow cellData={props.tableData.dataRow2} />
                <TableRow cellData={props.tableData.dataRow3} />
                <TableRow cellData={props.tableData.dataRow4} />
                <TableRow cellData={props.tableData.dataRow5} />
                <TableRow cellData={props.tableData.dataRow6} />
                <TableRow cellData={props.tableData.dataRow7} />
-               <TableRow cellData={props.tableData.dataRow8} /> */}
+               <TableRow cellData={props.tableData.dataRow8} />
                {/* <TableRow cellData={props.tableData.dataRow7} />
                <TableRow cellData={props.tableData.dataRow8} /> */}
             </tbody>           

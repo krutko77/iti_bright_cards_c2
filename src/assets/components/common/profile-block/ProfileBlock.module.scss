@@ -23,8 +23,7 @@
 }
 
 .professionLabel {
-   @include font(14px, 400, 120%, $textColor);
-   opacity: 0.5;
+   @include font(14px, 400, 120%, $textColorLight);
    margin-bottom: 8px;
 }
 

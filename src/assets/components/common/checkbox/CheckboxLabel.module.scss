@@ -7,5 +7,5 @@
 }
 
 .label {
-   @include font(14px, 400, 120%, #2D2E46);
+   @include font(14px, 400, 120%, $textColor);
 }

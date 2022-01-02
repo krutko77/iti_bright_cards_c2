@@ -19,13 +19,13 @@ export default function TableRow(props) {
          <CellCommon cellData={props.cellData.td1} />
          <CellCommon cellData={props.cellData.td2} />
          <CellCommon cellData={props.cellData.td3} />
-         {/* <CellCommon cellData={props.cellData.td4} /> */}
-         <RatingCell cellData={props.cellData.rating}/>
+         <CellCommon cellData={props.cellData.td4} />
+         {/* <RatingCell cellData={props.cellData.rating}/> */}
          <td className={s.td}>
             <div className={s.btnBlock}>
                <TableButton label="Delete" style={buttonStyle}/>
                <TableButton label="Edit" />
-               {/* <TableButton label="Learn" /> */}
+               <TableButton label="Learn" />
             </div>
          </td>
       </tr>

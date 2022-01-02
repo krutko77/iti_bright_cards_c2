@@ -31,8 +31,8 @@
    width: 98px;
    height: 36px;
    border: none;
-   background-color: #FFFFFF;
-   @include font(14px, 400, 120%, #2D2E46);
+   background-color: $buttonColorFour;
+   @include font(14px, 400, 120%, $textColor);
    cursor: pointer;
 
    &:hover {
@@ -41,14 +41,14 @@
 }
 
 .active {
-   background-color: #9A91C8;
-   color: #FFFFFF;
+   background-color: $buttonColorFive;
+   color: $buttonFontColorThree;
 }
 
 .main {
    grid-area: m;
    padding: 24px 48px;
-   background-color: #FEFEFF;
+   background-color: $bgColorCard;
    border-radius: 0 8px 8px 0;
 }
 

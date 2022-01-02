@@ -19,17 +19,17 @@
 }
 
 .linkForgotPass {
-   @include font(14px, 400, 120%, #2D2E46);
+   @include font(14px, 400, 120%, $textColor);
    margin-top: 20px;
 }
 
 .question {
-   @include font(14px, 600, 170%, #9393A2);
+   @include font(14px, 600, 170%, $textColorLight);
    margin: 31px 0 11px;
 }
 
 .linkSignUp {
-   @include font(16px, 600, 120%, $buttonColorOne)
+   @include font(16px, 600, 120%, $linkColor)
 }
 
 .error {

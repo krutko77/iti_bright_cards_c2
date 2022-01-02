@@ -10,13 +10,15 @@ import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 import React, {useEffect, useState} from "react";
 import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import { buttonActiveColorBorder } from "./../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
 // стилизация кнопок
 const tableButtonStyle1 = {
    '.active': {
-       border: "2px solid #21268F"
+       borderWidth: "2px", 
+       borderStyle: "solid",
+       borderColor: buttonActiveColorBorder
    },
-   textAligne: "center",
    fontWeight: "400",
    fontSize: "16px",
    width: "150px",
@@ -24,9 +26,6 @@ const tableButtonStyle1 = {
 }
 
 const tableButtonStyle2 = {
-   //  ':disabled': {
-   //      color: '#939597',
-   //  }, // this is not working
     width: "124px",
     height: "36px",
     borderRadius: "18px",

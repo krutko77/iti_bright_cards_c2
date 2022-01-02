@@ -9,7 +9,7 @@
    border: none;
    border-radius: 2px;
    cursor: pointer;
-   @include font(12px, 600, 120%, $buttonColorOne);
+   @include font(12px, 600, 120%, $buttonFontColorTwo);
 
    &:hover {
       opacity: 0.8;
