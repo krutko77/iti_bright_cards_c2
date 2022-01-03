@@ -21,6 +21,7 @@ import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnsw
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     return (
         <div className='main'>
