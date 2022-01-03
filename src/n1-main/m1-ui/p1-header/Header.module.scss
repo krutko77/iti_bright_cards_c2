@@ -1,35 +1,47 @@
 @import '../common/components/styles/variables';
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
-    background-color: $bgColorCardHeader;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 15px 20px;
+   background-color: $bgColorHeader;
+}
 
-    .links {
-        margin-right: 20px;
-        margin-left: auto;
-    }
+.list {
+   display: flex;
+}
 
-    .link {
-        cursor: pointer;
-    }
+a {
+   font-family: $titleFontFamily;
+   color: $menuItemColor;
+   text-decoration: none;
+   font-weight: 600;
+   margin-right: 15px;
+   position: relative;
 
-    a {
-        color: #212529;
-        text-decoration: none;
-        font-weight: 600;
-        margin-right: 10px;
-    }
+   &:hover,
+   .active {
+      color: $textColor;
 
-    .logo {
-        font-family: 'Mochiy Pop P One', sans-serif;
-        font-size: 40px;
-        padding-left: 20px;
-    }
+      &::after,
+      .active {
+         content: '';
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         background-color: $menuUnderlineColor;
+         bottom: -1px;
+         left: 0;
+      }
+   }
+}
 
-    .notDone {
-        color: grey;
-    }
+.logo {
+   font-family: 'Mochiy Pop P One', sans-serif;
+   font-size: 40px;
+}
+
+.notDone {
+   color: $buttonDisabled;  
 }
