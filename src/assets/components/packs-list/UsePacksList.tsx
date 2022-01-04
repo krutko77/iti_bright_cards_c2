@@ -6,15 +6,15 @@ import Table from "../table/Table";
 import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "./../common/bottom-block/BottomBlock";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {ChangeEvent, useEffect, useState} from "react";
 import {getPacksTC, getUserIdAC} from "../../../n1-main/m2-bll/packsReducer";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {RequestStatusType} from "../../../n1-main/m2-bll/appReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
-import NewPackModal from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 import * as React from "react";
+import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 
 
 // стилизация синей кнопки
@@ -56,9 +56,8 @@ export default function PacksList() {
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
-    const packUserId = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
-    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
+    const current_id =  useSelector<AppStoreType, string>(state => state.packs.packUser_id)
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -80,16 +79,18 @@ export default function PacksList() {
         dispatch(getPacksTC())
     }
 
-
     return (
         <>
-            <NewPackModal/>
+            <ModalAddPack/>
             <div className={s.packsList}>
                 <aside className={s.sidebar}>
                     <span className={s.label}>Show packs cards</span>
                     <div className={s.btnBlock}>
-                        <button onClick={onMyHandler} className={`${s.btn} ${s.active}`}>My</button>
-                        <button onClick={onAllHandler} className={s.btn}>All</button>
+                            <button onClick={onMyHandler}
+                                    className={`${s.btn} ${current_id === user_id ? s.active : ''}`}>My
+                            </button>
+                            <button onClick={onAllHandler} className={`${s.btn} ${!current_id ? s.active : ''}`}>All
+                            </button>
                     </div>
                     <UseSlider/>
                 </aside>

@@ -1,19 +1,16 @@
 import s from "./TableRow.module.scss";
 import CellCommon from "../cell-common/CellCommon.jsx";
-import TableButton from "../table-button/TableButton.jsx";
 import {packsStateType, PackType} from "../../../../n1-main/m2-bll/packsReducer";
-import {
-    setClickedCardPackId,
-    showModalDelCardsPackAC,
-    showModalUpdateCardsPackAC
-} from "../../../../n1-main/m2-bll/modalReducer";
-import UpdatePackModal from "../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
-import NewPackModal from "../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
-import DeletePackModal from "../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
 import {useNavigate} from "react-router-dom";
+import { setClickedCardPackId, showModalDelCardsPackAC, showModalUpdateCardsPackAC } from "../../../../n1-main/m2-bll/modalReducer";
+import TableButton from "../table-button/TableButton";
+import ModalDelPack from "../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
+import ModalUpdatePack from "../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
+import ModalAddPack from "../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
+import {CardType} from "../../../../n1-main/m2-bll/cardsReducer";
 
 
 // стилизация кнопки
@@ -48,13 +45,17 @@ export default function TableRow(props:PropsType) {
         navigate(`/learn/${packId}`, {replace: true})
     }
 
+    const editHandler = (packId: string)=>{
+        navigate(`/cardsdesigned/${packId}`)
+    }
+
    return (
        <>
-       <UpdatePackModal/>
-    <NewPackModal/>
-    <DeletePackModal/>
+           <ModalUpdatePack/>
+    <ModalAddPack/>
+    <ModalDelPack/>
       <tr className={s.tr}>         
-         <CellCommon cellData={props.cellData.name} />
+         <CellCommon callback={()=>editHandler(props.cellData._id)} cellData={props.cellData.name} />
          <CellCommon cellData={props.cellData.cardsCount} />
          <CellCommon cellData={props.cellData.updated} />
           <CellCommon cellData={props.cellData.user_name} />
