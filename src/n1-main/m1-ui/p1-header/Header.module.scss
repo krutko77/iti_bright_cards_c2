@@ -1,11 +1,18 @@
 @import '../common/components/styles/variables';
 
 .header {
+   height: 60px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 15px 20px;
+   padding: 0 20px;
    background-color: $bgColorHeader;
+}
+
+.logo {
+   font-family: 'Mochiy Pop P One', sans-serif;
+   font-size: 30px;
+   margin: 0 0 5px 15px;
 }
 
 .list {
@@ -35,11 +42,6 @@ a {
          left: 0;
       }
    }
-}
-
-.logo {
-   font-family: 'Mochiy Pop P One', sans-serif;
-   font-size: 40px;
 }
 
 .notDone {
