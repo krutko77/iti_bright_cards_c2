@@ -17,24 +17,42 @@ export const Header = () => {
     return (
         <div className={s.header}>
             <div className={s.logo}>BrightCards</div>
-            <div className={s.links}>
-                {isLoggedIn
-                    ? <>
-                        <NavLink className={s.item} to={'/profile'}>Profile</NavLink>
-                        <a className={s.link} onClick={onLogout}>Log out</a>
-                    </>
-                    : <>
-                        <NavLink className={s.item} to={'/login'}>Login</NavLink>
-                        <NavLink className={s.item} to={'/registration'}>Registration</NavLink>
-                        <NavLink className={s.item} to={'/passwordrecovery'}>Recovery Password</NavLink>
-                    </>
-                }
-                <NavLink className={s.item} to={'/packs'}>Packs</NavLink>
-                <NavLink className={`${s.item} ${s.notDone}`} to={'/packsdesigned'}>PacksDesigned</NavLink>
-                <NavLink className={`${s.item} ${s.notDone}`} to={'/cardsdesigned'}>CardsDesigned</NavLink>
-                {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
-                {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
-            </div>
-        </div>
-    );
+            <nav className={s.navigation}>
+                <ul className={s.list}>
+                    {isLoggedIn
+                        ? <>
+                            <li>
+                                <NavLink className={s.item} to={'/profile'}>Profile</NavLink>
+                            </li>
+                            <li>
+                                <a className={s.link} onClick={onLogout}>Log out</a>
+                            </li>
+                        </>
+                        : <>
+                            <li>
+                                <NavLink className={s.item} to={'/login'}>Login</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={s.item} to={'/registration'}>Registration</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={s.item} to={'/passwordrecovery'}>Recovery Password</NavLink>
+                            </li>
+                        </>
+                    }
+                    <li>
+                        <NavLink className={s.item} to={'/packs'}>Packs</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className={`${s.item} ${s.notDone}`} to={'/packsdesigned'}>PacksDesigned</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className={`${s.item} ${s.notDone}`} to={'/cardsdesigned'}>CardsDesigned</NavLink>
+                    </li>
+                    {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
+                    {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
+                </ul>
+                </nav>
+</div>
+);
 }

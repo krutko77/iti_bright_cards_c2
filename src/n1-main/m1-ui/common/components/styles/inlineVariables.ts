@@ -1,6 +1,3 @@
-// color for button:
-export const customColor = "#454AA2";
-
 // цвет светло-голубой кнопки
 export const buttonColorTwo = "#D7D8EF";
 // цвет шрифта светло-голубой кнопки
