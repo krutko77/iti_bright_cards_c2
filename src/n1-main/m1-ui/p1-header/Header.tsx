@@ -46,9 +46,7 @@ export const Header = () => {
                     <li>
                         <NavLink className={`${s.item} ${s.notDone}`} to={'/packsdesigned'}>PacksDesigned</NavLink>
                     </li>
-                    <li>
-                        <NavLink className={`${s.item} ${s.notDone}`} to={'/cardsdesigned'}>CardsDesigned</NavLink>
-                    </li>
+
                     {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
                     {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
                 </ul>
