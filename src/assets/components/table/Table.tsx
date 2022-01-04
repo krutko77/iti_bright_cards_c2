@@ -5,10 +5,12 @@ import HeadButtonCell from "./head-button-cell/HeadButtonCell.jsx";
 import {useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {packsStateType} from "../../../n1-main/m2-bll/packsReducer";
+import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
 
 
 export default function Table(props: any) {
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
+    const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
     return (
         <div className={s.tableWrap}>
             <table className={s.table}>
@@ -22,8 +24,8 @@ export default function Table(props: any) {
                 </tr>
                 </thead>
                 <tbody>
-                {cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>
-                )}
+                {cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>)}
+
                 </tbody>
             </table>
         </div>

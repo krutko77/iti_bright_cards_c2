@@ -10,6 +10,7 @@ import TableButton from "../table-button/TableButton";
 import ModalDelPack from "../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
 import ModalUpdatePack from "../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
 import ModalAddPack from "../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
+import {CardType} from "../../../../n1-main/m2-bll/cardsReducer";
 
 
 // стилизация кнопки
@@ -45,7 +46,7 @@ export default function TableRow(props:PropsType) {
     }
 
     const editHandler = (packId: string)=>{
-        navigate(`/cards/${packId}`)
+        navigate(`/cardsdesigned/${packId}`)
     }
 
    return (

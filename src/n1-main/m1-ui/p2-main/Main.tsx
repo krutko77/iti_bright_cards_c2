@@ -18,6 +18,7 @@ import {useSelector} from "react-redux";
 import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
 import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnswer";
+import CardsTable from "../../../assets/components/cards-table/CardsTable";
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
@@ -42,6 +43,7 @@ export const Main = () => {
                     <Route path={'/packs'} element={<Packs/>}/>
                     <Route path={'/cards/:id'} element={<Cards/>}/>
                     <Route path={'/packsdesigned'} element={<PacksList/>}/>
+                    <Route path={'/cardsdesigned/:id'} element={<CardsTable/>}/>
                     <Route path={'/learn/:packid'} element={<LearnQuestionAnswer/>}/>
                     <Route/>
                 </Routes>
