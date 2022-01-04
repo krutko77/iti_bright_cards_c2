@@ -21,7 +21,6 @@ type PropsType = {
     onClick: () => void
     disabled?: boolean
     style?: CSSProperties | undefined
-    // callback?: () => void
 }
 
 
