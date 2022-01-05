@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
 import {setSearchPackNameAC} from "../../../../n1-main/m2-bll/findAndPaginationReducer";
@@ -10,14 +10,18 @@ export const SearchCardsPacksContainer = () => {
     const dispatch = useDispatch()
     const value = useSelector<AppStoreType, string>(state => state.findAndPagination.cardPacks.packName)
 
-    let intervalID: NodeJS.Timeout;
-
+    useEffect( () => {
+        const timeoutId = setTimeout(() => {
+            dispatch(getPacksTC())
+        }, 1000);
+        return ()=>clearTimeout(timeoutId)
+    }, [value])
     const setInputValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchPackNameAC(e.currentTarget.value))
-        if (intervalID) {
-            console.log('intervalID cleared: ', intervalID)
-            clearInterval(intervalID)
-        }
+        // if (intervalID) {
+        //     console.log('intervalID cleared: ', intervalID)
+        //     clearInterval(intervalID)
+        // }
         /*intervalID = setTimeout(() => {
             dispatch(getPacksTC())
         }, 3000);*/
@@ -29,10 +33,10 @@ export const SearchCardsPacksContainer = () => {
 
     const onKeyUpHandler = () => {
         /*if (intervalID) clearInterval(intervalID) */
-        intervalID = setTimeout(() => {
-            dispatch(getPacksTC())
-            console.log('server request')
-        }, 3000);
+        // intervalID = setTimeout(() => {
+        //     dispatch(getPacksTC())
+        //     console.log('server request')
+        // }, 3000);
 
 
     }
