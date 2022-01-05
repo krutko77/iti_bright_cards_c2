@@ -1,10 +1,17 @@
+// == All BrightStyle colors ==:
 $primaryColor: #f5df4e;
 $accentColor: #f0d900;
+$darkAccentColor: #d78e18;
 $bgColorCard: #F9F9FE;
 $bgSecondColor: #fff;
+$lightYellow: #F5EDB9;
+
+// основной цвет шрифта текста, применен для:
+// h1, h2, input, table
+$textColor: #2D2E46;
 
 // цвет основного фона
-$bgColorMain: linear-gradient(#E6D4DE, #9890C7);
+$bgColorMain: linear-gradient($lightYellow, $accentColor) /*linear-gradient(#E6D4DE, #9890C7)*/;
 // цвет фона Header
 $bgColorHeader: #f5df4e;
 // цвет фона карточек
@@ -24,15 +31,16 @@ $bgColorSidebar: #ECECF9;
 // цвет фона блока профиля в MyPacksList
 $bgColorProfileBlock: #D9D9F1;
 
+// == Buttons ==
 // цвет синей кнопки
-$buttonColorOne:#21268F;
+$buttonColorOne: $primaryColor; /*#21268F*/
 // цвет шрифта синей кнопки
-$buttonFontColorOne: #ECECF9;
+$buttonFontColorOne: $textColor /*#ECECF9*/;
 // цвет тени синей кнопки
 $buttonShadowColorOne: rgba(33, 38, 143, 0.35),
 inset 0px 1px 0px rgba(255, 255, 255, 0.3);
 // цвет светло-голубой кнопки
-$buttonColorTwo: #D7D8EF;
+$buttonColorTwo: $lightYellow /*#D7D8EF*/;
 // цвет шрифта светло-голубой кнопки 
 $buttonFontColorTwo: #21268F;
 // цвет красной кнопки
@@ -45,7 +53,7 @@ inset 0px 1px 0px rgba(255, 255, 255, 0.3);
 // цвет белой кнопки
 $buttonColorFour: #FFFFFF;
 // цвет фиолетовой кнопки
-$buttonColorFive: #9A91C8;
+$buttonColorFive: $darkAccentColor /*#9A91C8*/;
 // цвет шрифта кнопки disabled
 $buttonDisabled: #939597;
 
@@ -57,14 +65,12 @@ $inputLabelColorFont: #9393A2;
 // цвет ссылок меню
 $menuItemColor: rgba(45, 46, 70, 0.6);
 // цвет border-bottom ссылок меню
-$menuUnderlineColor: #161fc4;
+$menuUnderlineColor: $darkAccentColor /*#161fc4*/;
 
 // цвет ссылок на формах
-$linkColor: #21268F;
+$linkColor: $accentColor /*#21268F*/;
 
-// основной цвет шрифта текста, применен для:
-// h1, h2, input, table
-$textColor: #2D2E46;
+
 // серый цвет текста в span на карточках
 $textColorLight: rgba(45, 46, 70, 0.5);
 

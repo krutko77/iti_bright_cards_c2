@@ -11,6 +11,7 @@ import {Navigate} from "react-router-dom";
 import React, {ChangeEvent, useRef, useState} from "react";
 import Button from "../../../assets/components/common/button/Button";
 import {UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
+import {buttonCancelColor} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
 // данные для input nickname
 const inputData1 = {
@@ -51,7 +52,7 @@ const inputData3 = {
 
 // стилизация кнопок
 const styleButton1 = {
-    backgroundColor: "#D7D8EF",
+    backgroundColor: buttonCancelColor,
     color: "#21268F",
     width: "124px",
     boxShadow: "none"
