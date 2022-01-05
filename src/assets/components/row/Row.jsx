@@ -1,6 +1,6 @@
 import s from "./Row.module.scss";
 import TitleBlock from "../common/title-block/TitleBlock";
-import Search from "../common/search/Search.jsx";
+import Search from "../common/search/Search.tsx";
 import Table from "../table/Table";
 
 

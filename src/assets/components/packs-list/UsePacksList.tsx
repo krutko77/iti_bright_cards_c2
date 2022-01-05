@@ -1,21 +1,22 @@
 import s from "./PacksList.module.scss";
 import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "../common/button/Button";
-import Search from "./../common/search/Search.jsx";
 import Table from "../table/Table";
 import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "../common/bottom-block/BottomBlock";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {ChangeEvent, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import * as React from "react";
+import {useEffect} from "react";
 import {getPacksTC, getUserIdAC} from "../../../n1-main/m2-bll/packsReducer";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
-import {RequestStatusType} from "../../../n1-main/m2-bll/appReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
-import * as React from "react";
 import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
-
+import Search from "../common/search/Search";
+import {
+    SearchCardsPacksContainer
+} from "../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 
 // стилизация синей кнопки
 const buttonStyle = {
@@ -100,7 +101,8 @@ export default function PacksList() {
                     </div>
                     <div className={s.searchBlock}>
                         <div className={s.search}>
-                            <Search/>
+                            {/*<Search/>*/}
+                            <SearchCardsPacksContainer/>
                         </div>
                         <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}/>
                     </div>

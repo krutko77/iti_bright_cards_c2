@@ -1,6 +1,5 @@
 import TitleBlock from "../common/title-block/TitleBlock";
 import Button from "../common/button/Button";
-import Search from "./../common/search/Search.jsx";
 
 import s from "./CardsTable.module.scss";
 import {useParams} from "react-router-dom";
@@ -25,6 +24,7 @@ import HeadButtonCell from "../table/head-button-cell/HeadButtonCell";
 import CellCommon from "../table/cell-common/CellCommon";
 import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
+import Search from "../common/search/Search";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -106,7 +106,7 @@ export default function CardsTable() {
                 <TitleBlock/>
                 <div className={s.searchBlock}>
                     <div className={s.search}>
-                        <Search/>
+                        {/*<Search/>*/}
                     </div>
                     <Button onClick={showAddCardModalHandler} label="Add new pack" style={styleButton}/>
                 </div>

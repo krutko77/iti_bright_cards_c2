@@ -1,11 +1,15 @@
 import s from "./PacksList.module.scss";
 import Subtitle from "./../common/subtitle/Subtitle.jsx";
 import Button from "../common/button/Button.tsx";
-import Search from "./../common/search/Search.jsx";
 import Table from "../table/Table";
 import PaginationRounded from "../common/pagination/PaginationRounded.jsx";
 import Select from "../common/select/Select.jsx";
 import UseSlider from "../common/use-slider/MySlider.tsx";
+import Search from "../common/search/Search";
+import {
+   SearchCardsPacksContainer
+} from "../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import * as React from "react";
 
 
 // стилизация синей кнопоки
@@ -87,7 +91,8 @@ export default function PacksList() {
                <Subtitle subtitle="Packs list" />
             </div>
             <div className={s.searchBlock}>
-               <Search />
+               {/*<Search />*/}
+               <SearchCardsPacksContainer/>
                <Button label="Add new pack" style={styleButton} />
             </div>
             <Table tableData={tableData} />
