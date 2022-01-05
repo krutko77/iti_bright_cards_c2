@@ -9,11 +9,15 @@ const styleSubtile = {
    marginBottom: 0
 }
 
-export default function TitleBlock() {
+export type PropsType = {
+    title:string
+}
+
+export default function TitleBlock(props:PropsType) {
    return (
       <div className={s.titleBlock}>
-            <NavLink className={s.link} to="./."><img src={icon} alt="arrow" /></NavLink>
-            <Subtitle subtitle="Pack Name" style={styleSubtile} />
+            <NavLink className={s.link} to="/packsdesigned"><img src={icon} alt="arrow" /></NavLink>
+            <Subtitle subtitle={props.title} style={styleSubtile} />
          </div>
 
    )

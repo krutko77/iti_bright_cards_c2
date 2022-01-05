@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {addCardsTC, CardType, getCardsTC} from "../../../n1-main/m2-bll/cardsReducer";
 import {SortCardsType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
-import {RequestStatusType} from "../../../n1-main/m2-bll/appReducer";
 import {useEffect} from "react";
 import {
     setClickedCardId,
@@ -20,11 +19,11 @@ import ModalDelCard from "../../../n2-features/f5-modal/ModalDelCard/ModalDelCar
 import {ModalAddCard} from "../../../n2-features/f5-modal/ModalAddCard/ModalAddCard";
 import * as React from "react";
 import HeadCell from "../table/head-cell/HeadCell";
-import HeadButtonCell from "../table/head-button-cell/HeadButtonCell";
 import CellCommon from "../table/cell-common/CellCommon";
 import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
 import Search from "../common/search/Search";
+import {PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -67,8 +66,6 @@ export default function CardsTable() {
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
-    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
-    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     const dispatch = useDispatch();
 
@@ -97,18 +94,25 @@ export default function CardsTable() {
 
 
 
+    const cardsPacksFromLS = localStorage.getItem('cardsPacks')  // get CardPacks from LS to save it while F5
+    let cardsPacksFromLSParsed = []
+    if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
+    let selectedCardPack: PackType
+    selectedCardPack = cardsPacksFromLSParsed.find((e: PackType) => e._id === id)
+
+
     return (
         <>
             <ModalUpdateCard/>
             <ModalDelCard/>
             <ModalAddCard addCard={addCardHandler}/>
             <div className={s.cardsTable}>
-                <TitleBlock/>
+                <TitleBlock title={selectedCardPack.name}/>
                 <div className={s.searchBlock}>
                     <div className={s.search}>
                         {/*<Search/>*/}
                     </div>
-                    <Button onClick={showAddCardModalHandler} label="Add new pack" style={styleButton}/>
+                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}/>
                 </div>
                 <div className={s.tableWrap}>
                     <table className={s.table}>
@@ -116,7 +120,7 @@ export default function CardsTable() {
                         <tr className={s.tr}>
                             <HeadCell cellStyle={tableStyle.th1} cellData={tableData.title1}/>
                             <HeadCell cellStyle={tableStyle.th2} cellData={tableData.title2}/>
-                            <HeadButtonCell cellStyle={tableStyle.th3} cellData={tableData.title3}/>
+                            <HeadCell cellStyle={tableStyle.th3} cellData={tableData.title3}/>
                             <HeadCell cellStyle={tableStyle.th4} cellData={tableData.title4}/>
                             <HeadCell cellStyle={tableStyle.th5} cellData={tableData.title5}/>
                         </tr>
@@ -127,7 +131,7 @@ export default function CardsTable() {
                             <CellCommon cellData={mp.question} />
                             <CellCommon cellData={mp.answer} />
                             <CellCommon cellData={mp.updated} />
-                            <RatingCell cellData={mp.rating}/>
+                            <RatingCell cellData={mp.grade}/>
                             <td className={s.td}>
                                 <div className={s.btnBlock}>
                                     <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete" />
