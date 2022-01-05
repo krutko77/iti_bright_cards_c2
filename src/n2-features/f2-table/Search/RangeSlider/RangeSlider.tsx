@@ -21,7 +21,7 @@ export const RangeSlider = () => {
         </div>
         <Slider
             getAriaLabel={() => 'Temperature range'}
-            value={[min,max]}
+            value={[min, max]}
             onChange={handleChange}
             valueLabelDisplay="on"
             className={s.slider}
