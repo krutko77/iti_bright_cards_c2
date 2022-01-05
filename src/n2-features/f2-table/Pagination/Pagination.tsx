@@ -3,8 +3,6 @@ import s from './Paginations.module.scss'
 import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import SuperSelect from "../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect";
 import selectStyle from '../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect.module.scss'
-import {useSelector} from "react-redux";
-import {getPacksTC} from "../../../n1-main/m2-bll/packsReducer";
 
 export const Pagination: React.FC<PropsType> = (props) => {
 
@@ -13,7 +11,7 @@ export const Pagination: React.FC<PropsType> = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    const portionSize = 10; // Hom much pagination buttons to how
+    const portionSize = 10; // Hom much pagination buttons to show
     const portionCount = Math.ceil(pagesCount / portionSize) // how much total pagination buttons
 
     const [portion, setPortion] = useState(1)

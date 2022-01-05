@@ -1,5 +1,9 @@
 .bottomBlock {
    display: flex;
+   flex-direction: column;
+   .oldPaginationBlock {
+      display: flex;
+   }
 }
 
 .label1,

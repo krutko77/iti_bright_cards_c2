@@ -4,7 +4,7 @@ import Button from "../common/button/Button";
 import Search from "./../common/search/Search.jsx";
 import Table from "../table/Table";
 import UseSlider from "../common/slider/UseSlider.jsx";
-import BottomBlock from "./../common/bottom-block/BottomBlock";
+import BottomBlock from "../common/bottom-block/BottomBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {ChangeEvent, useEffect, useState} from "react";
