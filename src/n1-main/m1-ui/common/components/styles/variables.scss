@@ -11,7 +11,9 @@ $lightYellow: #F5EDB9;
 $textColor: #2D2E46;
 
 // цвет основного фона
-$bgColorMain: linear-gradient($lightYellow, $accentColor) /*linear-gradient(#E6D4DE, #9890C7)*/;
+$bgColorMain: linear-gradient($lightYellow, #f0e477);
+// $bgColorMain: linear-gradient($lightYellow, $accentColor) 
+/*linear-gradient(#E6D4DE, #9890C7)*/;
 // цвет фона Header
 $bgColorHeader: #f5df4e;
 // цвет фона карточек

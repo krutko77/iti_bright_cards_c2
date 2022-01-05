@@ -12,6 +12,7 @@ import profileIcon from "./../../../assets/img/menu/profile-icon.png";
 import loginIcon from "./../../../assets/img/menu/login-icon.png";
 import forgotPsswordIcon from "./../../../assets/img/menu/forgot-password-icon.png";
 import registrationIcon from "./../../../assets/img/menu/registration-icon.png";
+import logOutIcon from "./../../../assets/img/menu/logout-icon.png";
 
 export const Header = () => {
    const dispatch = useDispatch()
@@ -29,32 +30,32 @@ export const Header = () => {
                {isLoggedIn
                   ? <>
                      <li>
-                        <NavLink className={s.item} to={'/profile'}><MenuItem label="Profile" icon={profileIcon} /></NavLink>
+                        <NavLink className={s.link} to={'/profile'}><MenuItem label="Profile" icon={profileIcon} /></NavLink>
                      </li>
                      <li>
-                        <a className={s.link} onClick={onLogout}><MenuItem label="Log out"/></a>
+                        <a className={s.link} onClick={onLogout}><MenuItem label="Log out" icon={logOutIcon} /></a>
                      </li>
                   </>
                   : <>
                      <li>
-                        <NavLink className={s.item} to={'/login'}><MenuItem label="Login" icon={loginIcon} /></NavLink>
+                        <NavLink className={s.link} to={'/login'}><MenuItem label="Login" icon={loginIcon} /></NavLink>
                      </li>
                      <li>
-                        <NavLink className={s.item} to={'/registration'}><MenuItem label="Registration" icon={registrationIcon} /></NavLink>
+                        <NavLink className={s.link} to={'/registration'}><MenuItem label="Registration" icon={registrationIcon} /></NavLink>
                      </li>
                      <li>
-                        <NavLink className={s.item} to={'/passwordrecovery'}><MenuItem label="Recovery Password" icon={forgotPsswordIcon} /></NavLink>
+                        <NavLink className={s.link} to={'/passwordrecovery'}><MenuItem label="Recovery Password" icon={forgotPsswordIcon} /></NavLink>
                      </li>
                   </>
                }
                <li>
-                  <NavLink className={s.item} to={'/packs'}><MenuItem label="Packs" icon={paksIcon}/></NavLink>
+                  <NavLink className={s.link} to={'/packs'}><MenuItem label="Packs" icon={paksIcon} /></NavLink>
                </li>
                <li>
-                  <NavLink className={`${s.item} ${s.notDone}`} to={'/packsdesigned'}><MenuItem label="PacksDesigned"/></NavLink>
+                  <NavLink className={`${s.link} ${s.notDone}`} to={'/packsdesigned'}><MenuItem label="PacksDesigned" /></NavLink>
                </li>
                <li>
-                  <NavLink className={`${s.item} ${s.notDone}`} to={'/cardsdesigned'}><MenuItem label="CardsDesigned"/></NavLink>
+                  <NavLink className={`${s.link} ${s.notDone}`} to={'/cardsdesigned'}><MenuItem label="CardsDesigned" /></NavLink>
                </li>
                {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
                {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
