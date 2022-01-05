@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import s from './Paginations.module.scss'
-import SuperButton from "../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
 import SuperSelect from "../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect";
 import selectStyle from '../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect.module.scss'
 
@@ -11,7 +10,7 @@ export const Pagination: React.FC<PropsType> = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    const portionSize = 10; // Hom much pagination buttons to show
+    const portionSize = 5; // Hom much pagination buttons to show
     const portionCount = Math.ceil(pagesCount / portionSize) // how much total pagination buttons
 
     const [portion, setPortion] = useState(1)
@@ -36,19 +35,17 @@ export const Pagination: React.FC<PropsType> = (props) => {
 
     return (
         <div className={s.pagination}>
-            <SuperSelect
-                options={props.superSelect.arr}
-                value={props.superSelect.valueForSsSr}
-                onChangeOption={props.superSelect.onChangeOption}
-                onClick={props.onClickSelectHandler}
-                className={`${selectStyle.select} ${s.superSelect}`}
-            />
+            {portion === 1 &&
+                <>
+                  <button className={`${s.btn} ${s.btnLeft} ${s.btnFake}`}>&lt;</button>
+                </>
+            }
             {portion > 1 &&
               <>
-                <SuperButton className={s.btn} onClick={() => {
+                <button className={`${s.btn} ${s.btnLeft}`} onClick={() => {
                     props.currentPageHandler((portionSize * (portion - 2)) + 1)
                     setPortion(portion - 1)
-                }}>&lt;</SuperButton>
+                }}>&lt;</button>
                 <div className={s.item} onClick={onFirstPageClick}>1</div> {/*first page click*/}
                 <div className={s.points}>...</div>
               </>}
@@ -58,7 +55,7 @@ export const Pagination: React.FC<PropsType> = (props) => {
                 .map(q => {
                     return <div
                         key={q}
-                        className={`${s.item} ${props.page === q ? s.select : s.item}`}
+                        className={`${s.item} ${props.page === q ? s.select : ''}`}
                         onClick={() => {
                             props.currentPageHandler(q)
                         }}>
@@ -72,10 +69,22 @@ export const Pagination: React.FC<PropsType> = (props) => {
               </>
             }
             {portionCount > portion &&
-              <SuperButton className={s.btn} onClick={() => {
+              <button className={`${s.btn} ${s.btnRight}`} onClick={() => {
                   setPortion( portion + 1)
                   props.currentPageHandler(portionSize * portion + 1)
-              }}>&gt;</SuperButton>}
+              }}>&gt;</button>}
+            <div className={s.selectBlock}>
+                <span className={s.label1}>Show</span>
+                <SuperSelect
+                    options={props.superSelect.arr}
+                    value={props.superSelect.valueForSsSr}
+                    onChangeOption={props.superSelect.onChangeOption}
+                    onClick={props.onClickSelectHandler}
+                    className={`${selectStyle.select} ${s.superSelect}`}
+                />
+                <span className={s.label2}>Cards per Page</span>
+            </div>
+
 
         </div>
     )

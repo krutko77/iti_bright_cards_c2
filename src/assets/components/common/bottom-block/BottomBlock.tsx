@@ -10,13 +10,13 @@ export default function BottomBlock() {
     return (
         <div className={s.bottomBlock}>
             <div className={s.oldPaginationBlock}>
-                <UsePagination/>
+                {/*<UsePagination/>*/}
                 <div className={s.selectBlock}>
-                    <span className={s.label1}>Show</span>
+                    {/*<span className={s.label1}>Show</span>
                     <div className={s.selectWrap}>
                         <Select/>
                     </div>
-                    <span className={s.label2}>Cards per Page</span>
+                    <span className={s.label2}>Cards per Page</span>*/}
                 </div>
             </div>
             <PaginationPacksContainer/>

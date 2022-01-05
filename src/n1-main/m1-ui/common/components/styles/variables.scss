@@ -85,6 +85,15 @@ sans-serif;
 
 $tempBorder: 1px solid lightgray;
 
+// pagination:
+// цвет квадратика пагинации
+$paginationColor: $primaryColor /*#21268F*/;
+// цвет шрифта пагинации светлый
+$paginationTextColorLight: $textColor /*#FFFFFF*/;
+// цвет шрифта пагинации темный
+$paginationTextColorDark: #2D2E46;
+
+
 //for media query
 $xs: 0px;
 $sm: 600px;
