@@ -3,11 +3,10 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import PropTypes from 'prop-types';
-import { sliderColor } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
-import { sliderTextColor } from "./../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { sliderColor } from "../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { sliderTextColor } from "../../../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
-function ValueLabelComponent(props) {
+/*function ValueLabelComponent(props) {
    const { children, value } = props;
 
    return (
@@ -15,12 +14,12 @@ function ValueLabelComponent(props) {
          {children}
       </Tooltip>
    );
-}
+}*/
 
-ValueLabelComponent.propTypes = {
+/*ValueLabelComponent.propTypes = {
    children: PropTypes.element.isRequired,
    value: PropTypes.number.isRequired,
-};
+};*/
 
 
 const MySlider = styled(Slider)({
@@ -54,29 +53,26 @@ const MySlider = styled(Slider)({
    },
 });
 
-
-
-function valuetext(value) {
+function valuetext(value: string) {
    return `${value}number`;
 }
 
 export default function RangeSlider() {
    const [value, setValue] = React.useState([15, 112]);
 
-   const handleChange = (event, newValue) => {
-      setValue(newValue);
+   const handleChange = (event: Event, newValue: number | number[]) => {
+      setValue(newValue as number[]);
    };
 
    return (
-
       <Box sx={{ width: 195 }}>
          <MySlider
-            max={150}
             getAriaLabel={() => 'Number of cards'}
             value={value}
             onChange={handleChange}
             valueLabelDisplay="on"
-            getAriaValueText={valuetext}
+            min={0}
+            max={200}
          />
       </Box>
    );

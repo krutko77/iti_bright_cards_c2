@@ -1,5 +1,5 @@
 import s from "./UseSlider.Module.scss";
-import MySlider from "./MySlider.jsx";
+import MySlider from "./MySlider.tsx";
 
 export default function UseSlider () {
    return (

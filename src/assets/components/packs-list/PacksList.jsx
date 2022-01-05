@@ -5,7 +5,7 @@ import Search from "./../common/search/Search.jsx";
 import Table from "../table/Table";
 import PaginationRounded from "../common/pagination/PaginationRounded.jsx";
 import Select from "../common/select/Select.jsx";
-import UseSlider from "../common/use-slider/MySlider.jsx";
+import UseSlider from "../common/use-slider/MySlider.tsx";
 
 
 // стилизация синей кнопоки
