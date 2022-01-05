@@ -14,12 +14,10 @@
    margin-right: 20px;
    position: relative;
 
-   &:hover,
-   .active {
+   &:hover {
       opacity: 1;
 
-      &::after,
-      .active {
+      &::after {
          content: '';
          position: absolute;
          width: 100%;
@@ -30,3 +28,4 @@
       }
    }
 }
+

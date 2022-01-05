@@ -29,7 +29,7 @@
 }
 
 .linkSignUp {
-   @include font(16px, 600, 120%, $linkColor)
+   @include font(16px, 600, 120%, $linkColor);   
 }
 
 .error {
