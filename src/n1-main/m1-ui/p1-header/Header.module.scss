@@ -1,47 +1,55 @@
 @import '../common/components/styles/variables';
 
 .header {
+   height: 60px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 15px 20px;
+   padding: 0 20px;
    background-color: $bgColorHeader;
+}
+
+.logo {
+   font-family: 'Mochiy Pop P One', sans-serif;
+   font-size: 30px;
+   margin: 0 0 5px 20px;
 }
 
 .list {
    display: flex;
 }
 
-a {
-   font-family: $titleFontFamily;
-   color: $menuItemColor;
-   text-decoration: none;
-   font-weight: 600;
-   margin-right: 15px;
-   position: relative;
-
-   &:hover,
-   .active {
-      color: $textColor;
-
-      &::after,
-      .active {
-         content: '';
-         position: absolute;
-         width: 100%;
-         height: 2px;
-         background-color: $menuUnderlineColor;
-         bottom: -1px;
-         left: 0;
-      }
-   }
+li {
+   display: flex;
+   align-items: center;
 }
 
-.logo {
-   font-family: 'Mochiy Pop P One', sans-serif;
-   font-size: 40px;
-}
+// a {
+//    font-family: $titleFontFamily;
+//    color: $menuItemColor;
+//    opacity: 0.5;
+//    text-decoration: none;
+//    font-weight: 600;
+//    margin-right: 15px;
+//    position: relative;
+
+//    &:hover,
+//    .active {
+//       opacity: 1;
+
+//       &::after,
+//       .active {
+//          content: '';
+//          position: absolute;
+//          width: 100%;
+//          height: 2px;
+//          background-color: $menuUnderlineColor;
+//          bottom: -1px;
+//          left: 0;
+//       }
+//    }
+// }
 
 .notDone {
-   color: $buttonDisabled;  
+   opacity: 0.5;  
 }

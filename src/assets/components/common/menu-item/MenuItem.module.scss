@@ -1,0 +1,32 @@
+@import './../../../../n1-main/m1-ui/common/components/styles/variables.scss';
+
+.menuItem {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: $titleFontFamily;
+   color: $menuItemColor;
+   font-size: 14px;
+   line-height: 120%;
+   opacity: 0.5;
+   text-decoration: none;
+   font-weight: 600;
+   margin-right: 20px;
+   position: relative;
+
+   &:hover,
+   .active {
+      opacity: 1;
+
+      &::after,
+      .active {
+         content: '';
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         background-color: $menuUnderlineColor;
+         bottom: -1px;
+         left: 0;
+      }
+   }
+}
