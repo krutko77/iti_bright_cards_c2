@@ -4,17 +4,14 @@ import {AppStoreType} from "../../../../n1-main/m2-bll/store";
 import {setSearchPackNameAC} from "../../../../n1-main/m2-bll/findAndPaginationReducer";
 import {getPacksTC} from "../../../../n1-main/m2-bll/packsReducer";
 import Search from "../SearchMain/Search";
+import useDebounce from "../../../../hooks/useDebounce";
 
 export const SearchCardsPacksContainer = () => {
     const dispatch = useDispatch()
     const value = useSelector<AppStoreType, string>(state => state.findAndPagination.cardPacks.packName)
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            dispatch(getPacksTC())
-        }, 1000);
-        return () => clearTimeout(timeoutId)
-    }, [value])
+    const debouncedSearch = useDebounce(() => dispatch(getPacksTC()), 1000)
+
     const setInputValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchPackNameAC(e.currentTarget.value))
     }
@@ -23,11 +20,16 @@ export const SearchCardsPacksContainer = () => {
         dispatch(getPacksTC())
     }
 
+    const onKeyUpHandler = () => {
+        debouncedSearch()
+    }
+
     return <Search
         inputValue={value}
         inputPlaceholder={'Enter Cards Pack name'}
         setInputValueHandler={setInputValueHandler}
         buttonFindHandler={buttonFindHandler}
         buttonText={'Find Cards Packs'}
+        onKeyUp={onKeyUpHandler}
     />
 }

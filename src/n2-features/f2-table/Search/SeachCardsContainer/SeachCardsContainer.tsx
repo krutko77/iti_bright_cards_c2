@@ -18,11 +18,16 @@ export const SearchCardsContainer = () => {
         dispatch(getCardsTC(cardId))
     }
 
+    const onKeyUpHandler = () => {
+
+    }
+
     return <Search
         inputValue={value}
         inputPlaceholder={'Enter question text'}
         setInputValueHandler={setInputValueHandler}
         buttonFindHandler={buttonFindHandler}
         buttonText={'Find Cards'}
+        onKeyUp={onKeyUpHandler}
     />
 }

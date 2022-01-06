@@ -17,6 +17,7 @@ export default function Search(props: PropsType) {
                    value={props.inputValue}
                    placeholder={props.inputPlaceholder}
                    onChange={props.setInputValueHandler}
+                   onKeyUp={props.onKeyUp}
             />
         </div>
     );
@@ -28,4 +29,5 @@ type PropsType = {
     setInputValueHandler: (e: ChangeEvent<HTMLInputElement>) => void
     buttonFindHandler: () => void
     buttonText: string
+    onKeyUp: () => void
 }
