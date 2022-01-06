@@ -24,21 +24,25 @@ li {
    align-items: center;
 }
 
-.active {
-   opacity: 1;
+a[class="active"] {
+   opacity: 1;  
 
-   // &::after {
-   //    content: '';
-   //    position: absolute;
-   //    width: 100%;
-   //    height: 2px;
-   //    background-color: $menuUnderlineColor;
-   //    bottom: -1px;
-   //    left: 0;
-   // }
+   &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $menuUnderlineColor;
+      bottom: -1px;
+      left: 0;
+   }
 }
-
 
 .notDone {
    opacity: 0.5;
 }
+
+
+
+
+

@@ -19,6 +19,7 @@ import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
 import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnswer";
 import CardsTable from "../../../assets/components/cards-table/CardsTable";
+import MainPackName from "../../../assets/components/main-pack-name/MainPackName.jsx";
 
 export const Main = () => {
     const status = useSelector<AppStoreType, RequestStatusType>((state) => state.app.status)
@@ -32,7 +33,7 @@ export const Main = () => {
             <div className='content'>
                 <Routes>
                     <Route path={'/registration'} element={<RegistrationForm/>}/>
-                    <Route path={'/login'} element={<LoginForm/>}/>
+                    <Route path={'/login'} element={<MainPackName/>}/>
                     <Route path={'/profile'} element={<ProfileForm/>}/>
                     <Route path={'/404'} element={<Page404/>}/>
                     <Route path={'/passwordrecovery'} element={<PasswordRecoveryForm/>}/>
