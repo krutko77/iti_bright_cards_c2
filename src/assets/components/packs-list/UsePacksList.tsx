@@ -62,7 +62,11 @@ export default function PacksList() {
             upperSortHandler: () => {dispatch(setSortPacksAC('0updated'))},
             lowerSortHandler: () => {dispatch(setSortPacksAC('1updated'))}
         },
-        title4: "Created by",
+        title4: {
+            value: "Created by",
+            upperSortHandler: () => {dispatch(setSortPacksAC('0user_name'))},
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1user_name'))}
+        },
         title5: "Actions",
 
     }
@@ -137,7 +141,7 @@ export type TableDataType = {
     title1: ExtendedArrayType
     title2: ExtendedArrayType
     title3: ExtendedArrayType
-    title4: string
+    title4: ExtendedArrayType
     title5: string
 }
 

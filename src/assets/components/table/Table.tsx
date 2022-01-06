@@ -36,7 +36,13 @@ export default function Table(props: PropsType) {
                         upCallback={props.tableData.title3.upperSortHandler}
                         downCallback={props.tableData.title3.lowerSortHandler}
                     />
-                    <HeadCell cellStyle={props.style.th4} cellData={props.tableData.title4}/>
+                    {/*<HeadCell cellStyle={props.style.th4} cellData={props.tableData.title4.value}/>*/}
+                    <HeadButtonCell
+                        cellStyle={props.style.th4}
+                        cellData={props.tableData.title4.value}
+                        upCallback={props.tableData.title4.upperSortHandler}
+                        downCallback={props.tableData.title4.lowerSortHandler}
+                    />
                     <HeadCell cellStyle={props.style.th5} cellData={props.tableData.title5}/>
                 </tr>
                 </thead>
