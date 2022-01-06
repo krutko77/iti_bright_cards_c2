@@ -63,12 +63,8 @@ const styleButton2 = {
 }
 
 export default function ProfileForm() {
-    const dispatch = useDispatch()
-    const [error, setError] = useState('')
-
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
     const avatarFromState = useSelector<AppStoreType, string>(state => state.auth.avatar)
-
 
     const {
         name,
@@ -76,6 +72,10 @@ export default function ProfileForm() {
         publicCardPacksCount,
         avatar
     } = useSelector<AppStoreType, AuthResponseType>(state => state.profile)
+
+    const dispatch = useDispatch()
+    const [error, setError] = useState(false)
+    const [newNickname, setNewNickname] = useState<string>(name)
 
     const [isEditMode, setIsEditMode] = useState(false)
     const [width, setWidth] = useState(0)
@@ -88,24 +88,30 @@ export default function ProfileForm() {
 
         const newFile = e.target.files && e.target.files[0];
 
-        reader.readAsDataURL(newFile as Blob);
-
-        reader.onload = () => {
-            image.src = reader.result as string;
-
-            image.onload = () => {
-                setWidth(image.width)
-                console.log('images loaded', image.width, image.height)
-                if (image.width === 96 && image.height === 96) {
-                    setError('')
-                    console.log('load to server')
-                    dispatch(profileUpdateAC(reader.result as string))
-                } else /*console.log('show error')*/ setError('error text')
-            }
-
-        };
-        reader.onerror = (error) => {
+        try {
+            reader.readAsDataURL(newFile as Blob);
         }
+        catch {
+            console.log('error in reader.readAsDataURL')
+        }
+        finally {
+            reader.onload = () => {
+                image.src = reader.result as string;
+
+                image.onload = () => {
+                    setWidth(image.width)
+                    if (image.width === 96 && image.height === 96) {
+                        setError(false)
+                        console.log('load to server')
+                        dispatch(profileUpdateAC(reader.result as string))
+                    } else setError(true)
+                }
+
+            };
+            reader.onerror = (error) => {
+            }
+        }
+
 
     }
 
@@ -121,7 +127,7 @@ export default function ProfileForm() {
 
     const saveEditHandler = () => {
         setIsEditMode(false)
-        dispatch(UpdateProfileTC(avatarFromState))
+        dispatch(UpdateProfileTC(newNickname,avatarFromState))
     }
 
     if (!isLoggedIn) {
@@ -141,7 +147,8 @@ export default function ProfileForm() {
                 <div className={s.contentWrap}>
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
-                        <img src={isEditMode ? avatarFromState : avatar} alt="img" className={s.picture}/>
+                        <img src={isEditMode ? (avatarFromState ? avatarFromState : avatar) : avatar} alt="img"
+                             className={s.picture}/>
 
                         {
                             isEditMode
@@ -149,12 +156,14 @@ export default function ProfileForm() {
                                 <div className={s.icon} onClick={() => inRef && inRef.current && inRef.current.click()}>
                                     <img src={icon} alt="icon"/>
                                 </div>
-                                : <div></div>
+                                : <div> </div>
                         }
                     </div>
-                    {error && <div className={s.error}>Avatar must be 96x96px</div>}
-                    <Input inputData={inputData1} value={name} onChange={() => {
-                    }}/>
+                    {isEditMode && error && <div className={s.error}>Avatar must be 96x96px</div>}
+                    {isEditMode
+                        ? <div className={s.editOn}><Input inputData={inputData1} value={newNickname} onChangeText={setNewNickname}/></div>
+                        : <Input inputData={inputData1} value={name}/>
+                    }
                     <Input inputData={inputData2} value={email} onChange={() => {
                     }}/>
                     <Input inputData={inputData3} value={publicCardPacksCount} onChange={() => {
@@ -163,7 +172,7 @@ export default function ProfileForm() {
                     {isEditMode
                         ? <div className={s.block}>
                             <Button label="Cancel" style={styleButton1} onClick={cancelEditHandler}/>
-                            <Button label="Save" style={styleButton2} onClick={saveEditHandler}/>
+                            <Button label="Save" style={styleButton2} onClick={saveEditHandler} disabled={error}/>
                         </div>
                         : <div className={`${s.block} ${s.onEditMode}`}>
                             <Button label="Edit" style={styleButton2} onClick={goToEditModeHandler}/>

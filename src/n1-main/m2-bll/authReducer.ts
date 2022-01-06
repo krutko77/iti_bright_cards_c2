@@ -85,9 +85,9 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
-export const UpdateProfileTC = (avatar: string): ThunkType =>
+export const UpdateProfileTC = (name: string, avatar: string): ThunkType =>
     (dispatch, getState: () => AppStoreType) => {
-    const name = getState().profile.name
+    // const name = getState().profile.name
     dispatch(setAppStatusAC('loading'))
     authAPI.updateProfile(name, avatar)
         .then(() => {
