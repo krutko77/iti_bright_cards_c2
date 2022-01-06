@@ -13,7 +13,6 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {setSortPacksAC, SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
 import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
-import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
 import {
     SearchCardsPacksContainer
 } from "../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
@@ -48,8 +47,16 @@ const tableStyle: TableStyleType = {
 export default function PacksList() {
 
     const tableData: TableDataType = {
-        title1: "Name",
-        title2: "Cards",
+        title1: {
+            value: "Name",
+            upperSortHandler: () => {dispatch(setSortPacksAC('0name'))},
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1name'))}
+        },
+        title2: {
+            value: "Cards",
+            upperSortHandler: () => {dispatch(setSortPacksAC('0cardsCount'))},
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1cardsCount'))}
+        },
         title3: {
             value: "Last Updated",
             upperSortHandler: () => {dispatch(setSortPacksAC('0updated'))},
@@ -120,14 +127,16 @@ export default function PacksList() {
     );
 }
 
+type ExtendedArrayType = {
+    value: string
+    upperSortHandler: () => void
+    lowerSortHandler: () => void
+}
+
 export type TableDataType = {
-    title1: string
-    title2: string
-    title3: {
-        value: string
-        upperSortHandler: () => void
-        lowerSortHandler: () => void
-    }
+    title1: ExtendedArrayType
+    title2: ExtendedArrayType
+    title3: ExtendedArrayType
     title4: string
     title5: string
 }
