@@ -4,6 +4,7 @@ const accentColor = '#f0d900';
 const bgColorCard = '#F9F9FE';
 const bgSecondColor = '#fff';
 const lightYellow = '#F5EDB9';
+const darkAccentColor = '#d78e18';
 
 // цвет светло-голубой кнопки
 export const buttonColorTwo = lightYellow /*"#D7D8EF"*/;
@@ -33,6 +34,6 @@ export const paginationTextColorLight = "#FFFFFF";
 // цвет шрифта пагинации темный
 export const paginationTextColorDark = "#2D2E46";
 // цвет slider
-export const sliderColor = "#21268F";
+export const sliderColor =  darkAccentColor /*"#21268F"*/;
 // цвет шрифта slider
 export const sliderTextColor = "#FFFFFF";
