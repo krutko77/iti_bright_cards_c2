@@ -64,9 +64,11 @@ const styleButton2 = {
 
 export default function ProfileForm() {
     const dispatch = useDispatch()
+    const [error, setError] = useState('')
 
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
     const avatarFromState = useSelector<AppStoreType, string>(state => state.auth.avatar)
+
 
     const {
         name,
@@ -76,23 +78,38 @@ export default function ProfileForm() {
     } = useSelector<AppStoreType, AuthResponseType>(state => state.profile)
 
     const [isEditMode, setIsEditMode] = useState(false)
+    const [width, setWidth] = useState(0)
 
     const inRef = useRef<HTMLInputElement>(null);
 
     const upload = (e: ChangeEvent<HTMLInputElement>) => {
         let reader = new FileReader();
+        const image = new Image()
 
         const newFile = e.target.files && e.target.files[0];
 
         reader.readAsDataURL(newFile as Blob);
 
         reader.onload = () => {
-            dispatch(UpdateProfileTC(reader.result as string))
+            image.src = reader.result as string;
+
+            image.onload = () => {
+                setWidth(image.width)
+                console.log('images loaded',image.width, image.height)
+                if (image.width === 96 && image.height === 96) {
+                    setError('')
+                    console.log('load to server')
+                }
+                else /*console.log('show error')*/ setError('error text')
+            }
+
         };
         reader.onerror = (error) => {
         }
 
     }
+
+    console.log(error)
 
     const goToEditModeHandler = () => {
         setIsEditMode(true)
@@ -124,6 +141,7 @@ export default function ProfileForm() {
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
                         <img src={avatarFromState ? avatarFromState : avatar} alt="img" className={s.picture}/>
+
                         {
                             isEditMode
                                 ?
@@ -133,6 +151,7 @@ export default function ProfileForm() {
                                 : <div></div>
                         }
                     </div>
+                    {error && <div className={s.error}>Avatar must be 96x96px</div>}
                     <Input inputData={inputData1} value={name} onChange={() => {
                     }}/>
                     <Input inputData={inputData2} value={email} onChange={() => {
