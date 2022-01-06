@@ -1,6 +1,6 @@
 import s from "./Row.module.scss";
 import TitleBlock from "../common/title-block/TitleBlock";
-import Search from "../common/search/Search.tsx";
+import Search from "../../../n2-features/f2-table/Search/SearchMain/Search.tsx";
 import Table from "../table/Table";
 
 

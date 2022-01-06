@@ -2,8 +2,8 @@ import React, {ChangeEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
 import {setSearchQuestionAC} from "../../../../n1-main/m2-bll/findAndPaginationReducer";
-import {Search} from "../SearchMain/Search";
 import {getCardsTC} from "../../../../n1-main/m2-bll/cardsReducer";
+import Search from "../SearchMain/Search";
 
 export const SearchCardsContainer = () => {
     const dispatch = useDispatch()
@@ -24,6 +24,5 @@ export const SearchCardsContainer = () => {
         setInputValueHandler={setInputValueHandler}
         buttonFindHandler={buttonFindHandler}
         buttonText={'Find Cards'}
-        showRange={false}
     />
 }

@@ -13,7 +13,7 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
 import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
-import Search from "../common/search/Search";
+import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
 import {
     SearchCardsPacksContainer
 } from "../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
@@ -101,7 +101,6 @@ export default function PacksList() {
                     </div>
                     <div className={s.searchBlock}>
                         <div className={s.search}>
-                            {/*<Search/>*/}
                             <SearchCardsPacksContainer/>
                         </div>
                         <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}/>

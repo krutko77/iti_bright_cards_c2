@@ -22,7 +22,7 @@ import HeadCell from "../table/head-cell/HeadCell";
 import CellCommon from "../table/cell-common/CellCommon";
 import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
-import Search from "../common/search/Search";
+import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
 import {PackType} from "../../../n1-main/m2-bll/packsReducer";
 
 // стилизация синей кнопки

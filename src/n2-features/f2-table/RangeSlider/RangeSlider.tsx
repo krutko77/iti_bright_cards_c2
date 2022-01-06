@@ -2,8 +2,8 @@ import React from 'react';
 import {Slider, Typography} from "@mui/material";
 import s from './RangeSlider.module.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {AppStoreType} from "../../../../n1-main/m2-bll/store";
-import {setCardsPacksCountAC} from "../../../../n1-main/m2-bll/findAndPaginationReducer";
+import {AppStoreType} from "../../../n1-main/m2-bll/store";
+import {setCardsPacksCountAC} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 
 export const RangeSlider = () => {
     const dispatch = useDispatch()

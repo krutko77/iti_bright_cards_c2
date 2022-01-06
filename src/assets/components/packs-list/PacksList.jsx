@@ -5,7 +5,7 @@ import Table from "../table/Table";
 import PaginationRounded from "../common/pagination/PaginationRounded.jsx";
 import Select from "../common/select/Select.jsx";
 import UseSlider from "../common/use-slider/MySlider.tsx";
-import Search from "../common/search/Search";
+import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
 import {
    SearchCardsPacksContainer
 } from "../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
