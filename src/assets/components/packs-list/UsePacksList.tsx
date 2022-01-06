@@ -28,10 +28,10 @@ const tableStyle: TableStyleType = {
         width: "185px",
     },
     th2: {
-        width: "77px",
+        width: "80px",
     },
     th3: {
-        width: "135px",
+        width: "180px",
     },
     th4: {
         width: "112px",

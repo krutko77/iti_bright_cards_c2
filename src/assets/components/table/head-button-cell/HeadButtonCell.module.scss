@@ -4,6 +4,10 @@
    text-align: left;
 }
 
+.th:first-child {
+   padding-left: 24px;
+}
+
 .btn {
    background-color: transparent;
    border: none;
