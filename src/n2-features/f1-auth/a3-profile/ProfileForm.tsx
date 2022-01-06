@@ -10,7 +10,7 @@ import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
 import React, {ChangeEvent, useRef, useState} from "react";
 import Button from "../../../assets/components/common/button/Button";
-import {UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
+import {profileUpdateAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
 import {buttonCancelColor} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
 
 // данные для input nickname
@@ -95,12 +95,12 @@ export default function ProfileForm() {
 
             image.onload = () => {
                 setWidth(image.width)
-                console.log('images loaded',image.width, image.height)
+                console.log('images loaded', image.width, image.height)
                 if (image.width === 96 && image.height === 96) {
                     setError('')
                     console.log('load to server')
-                }
-                else /*console.log('show error')*/ setError('error text')
+                    dispatch(profileUpdateAC(reader.result as string))
+                } else /*console.log('show error')*/ setError('error text')
             }
 
         };
@@ -121,6 +121,7 @@ export default function ProfileForm() {
 
     const saveEditHandler = () => {
         setIsEditMode(false)
+        dispatch(UpdateProfileTC(avatarFromState))
     }
 
     if (!isLoggedIn) {
@@ -140,7 +141,7 @@ export default function ProfileForm() {
                 <div className={s.contentWrap}>
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
-                        <img src={avatarFromState ? avatarFromState : avatar} alt="img" className={s.picture}/>
+                        <img src={isEditMode ? avatarFromState : avatar} alt="img" className={s.picture}/>
 
                         {
                             isEditMode

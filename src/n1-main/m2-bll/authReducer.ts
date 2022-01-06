@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 import {setProfileAC, SetProfileType} from "./profileReducer";
 import {setAppStatusAC, SetAppStatusAT, setIsInitializeAC} from "./appReducer";
 import {AppStoreType} from "./store";
+import {ThunkAction} from "redux-thunk";
 
 let initialState: InitialStateType = {
     isLoggedIn: false,
@@ -84,12 +85,16 @@ export const LogoutTC = () => (dispatch: Dispatch) => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
-export const UpdateProfileTC = (avatar: string) => (dispatch: Dispatch, getState: () => AppStoreType) => {
+export const UpdateProfileTC = (avatar: string): ThunkType =>
+    (dispatch, getState: () => AppStoreType) => {
     const name = getState().profile.name
     dispatch(setAppStatusAC('loading'))
     authAPI.updateProfile(name, avatar)
         .then(() => {
             dispatch(profileUpdateAC(avatar))
+        })
+        .then(() => {
+            dispatch(InitializeTC())
         })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
@@ -108,4 +113,6 @@ type ActionsType =
     | SetProfileType
     | SetAppStatusAT
     | ReturnType<typeof profileUpdateAC>
+
+type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionsType>
 
