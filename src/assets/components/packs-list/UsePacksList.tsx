@@ -10,7 +10,7 @@ import * as React from "react";
 import {useEffect} from "react";
 import {getPacksTC, getUserIdAC} from "../../../n1-main/m2-bll/packsReducer";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
-import {SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
+import {setSortPacksAC, SortPackType} from "../../../n1-main/m2-bll/findAndPaginationReducer";
 import {showModalAddCardsPackAC} from "../../../n1-main/m2-bll/modalReducer";
 import ModalAddPack from "../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
@@ -24,7 +24,7 @@ const buttonStyle = {
     marginLeft: "24px"
 }
 // стилизация ширины столбцов таблицы
-const tableStyle = {
+const tableStyle: TableStyleType = {
     th1: {
         width: "185px",
     },
@@ -41,17 +41,24 @@ const tableStyle = {
         width: "160px",
     }
 }
-// данные для таблицы
-const tableData = {
-    title1: "Name",
-    title2: "Cards",
-    title3: "Last Updated",
-    title4: "Created by",
-    title5: "Actions",
 
-}
+// данные для таблицы
+
 
 export default function PacksList() {
+
+    const tableData: TableDataType = {
+        title1: "Name",
+        title2: "Cards",
+        title3: {
+            value: "Last Updated",
+            upperSortHandler: () => {dispatch(setSortPacksAC('0updated'))},
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1updated'))}
+        },
+        title4: "Created by",
+        title5: "Actions",
+
+    }
 
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
@@ -113,4 +120,32 @@ export default function PacksList() {
     );
 }
 
+export type TableDataType = {
+    title1: string
+    title2: string
+    title3: {
+        value: string
+        upperSortHandler: () => void
+        lowerSortHandler: () => void
+    }
+    title4: string
+    title5: string
+}
 
+export type TableStyleType = {
+    th1: {
+        width: string
+    },
+    th2: {
+        width: string
+    },
+    th3: {
+        width: string
+    },
+    th4: {
+        width: string
+    },
+    th5: {
+        width: string
+    }
+}

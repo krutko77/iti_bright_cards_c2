@@ -91,7 +91,6 @@ export default function PacksList() {
                <Subtitle subtitle="Packs list" />
             </div>
             <div className={s.searchBlock}>
-               {/*<Search />*/}
                <SearchCardsPacksContainer/>
                <Button label="Add new pack" style={styleButton} />
             </div>
