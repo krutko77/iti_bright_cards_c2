@@ -1,7 +1,7 @@
 import s from "./MainPackName.module.scss";
 import TitleBlock from "../common/title-block/TitleBlock";
-import Search from "../common/search/Search.tsx";
 import Table from "../table/Table";
+import Search from "../../../n2-features/f2-table/Search/SearchMain/Search";
 
 
 
