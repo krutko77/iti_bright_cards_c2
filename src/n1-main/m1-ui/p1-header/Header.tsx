@@ -22,6 +22,8 @@ export const Header = () => {
       dispatch(LogoutTC())
    }
 
+   // в каждый NavLink и a нужно добавить класс activeClassName={s.active}
+
    return (
       <div className={s.header}>
          <div className={s.logo}>BrightCards</div>
@@ -38,7 +40,7 @@ export const Header = () => {
                   </>
                   : <>
                      <li>
-                        <NavLink className={s.link} to={'/login'}><MenuItem label="Login" icon={loginIcon} /></NavLink>
+                        <NavLink className={s.link} to={'/login'}><MenuItem label="Login" icon={loginIcon} /></NavLink>                       
                      </li>
                      <li>
                         <NavLink className={s.link} to={'/registration'}><MenuItem label="Registration" icon={registrationIcon} /></NavLink>
