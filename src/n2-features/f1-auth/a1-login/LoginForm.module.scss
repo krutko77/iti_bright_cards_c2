@@ -32,6 +32,10 @@
    @include font(16px, 600, 120%, $linkColor);   
 }
 
+a:hover {
+   color: $darkAccentColor;
+}
+
 .error {
    color: red;
 }

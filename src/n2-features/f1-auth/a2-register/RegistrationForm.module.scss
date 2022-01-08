@@ -17,6 +17,10 @@
    margin: 85px 0 30px;
 }
 
+a:hover {
+   color: $darkAccentColor;
+}
+
 .error {
    color: red;
 }
