@@ -5,7 +5,6 @@ import Table from "../table/Table";
 import UseSlider from "../common/slider/UseSlider.jsx";
 import BottomBlock from "../common/bottom-block/BottomBlock";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import * as React from "react";
 import {useEffect} from "react";
 import {getPacksTC, getUserIdAC} from "../../../n1-main/m2-bll/packsReducer";
@@ -79,7 +78,6 @@ export default function PacksList() {
     const current_id =  useSelector<AppStoreType, string>(state => state.packs.packUser_id)
 
     const dispatch = useDispatch()
-    let navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getPacksTC())

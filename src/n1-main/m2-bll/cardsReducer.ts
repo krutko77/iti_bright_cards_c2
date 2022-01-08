@@ -9,6 +9,7 @@ import {
 } from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
+import {setErrorAC} from "./passwordRecoveryReducer";
 
 export const initialState: InitialStateType = {
     cards: [],
@@ -48,6 +49,9 @@ export const getCardsTC = (id: string): ThunkType => (dispatch: Dispatch<ActionT
                 dispatch(setSelectedCardIdAC(id))
             }
         })
+        .catch(e => {
+            dispatch(setErrorAC(e.response.data.error))
+        })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
@@ -58,7 +62,9 @@ export const addCardsTC = (id: string, question: string, answer: string): ThunkT
         cardsAPI.addCards(id, question, answer)
             .then((res) => {
                 dispatch(getCardsTC(id))
-            })
+            }).catch(e => {
+            dispatch(setErrorAC(e.response.data.error))
+        })
             .finally(() => {
                 dispatch(setAppStatusAC('succeeded'))
             })
@@ -69,7 +75,9 @@ export const delCardTC = (id: string, packId: string) => (dispatch: ThunkDispatc
     cardsAPI.delCard(id)
         .then(() => {
             dispatch(getCardsTC(packId))
-        })
+        }).catch(e => {
+        dispatch(setErrorAC(e.response.data.error))
+    })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
@@ -79,7 +87,9 @@ export const updateCardTC = (id: string, packId: string, question: string, answe
     cardsAPI.updateCard(id, question, answer)
         .then(() => {
             dispatch(getCardsTC(packId))
-        })
+        }).catch(e => {
+        dispatch(setErrorAC(e.response.data.error))
+    })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
@@ -88,7 +98,9 @@ export const updateGradeTC = (grade: number, card_id: string) => (dispatch: Thun
     dispatch(setAppStatusAC('loading'))
     return cardsAPI.updateGrade(grade, card_id)
         .then(() => {
-            dispatch(updateGradeAC(grade,card_id))
+            dispatch(updateGradeAC(grade, card_id))
+        }).catch(e => {
+            dispatch(setErrorAC(e.response.data.error))
         })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
@@ -101,6 +113,9 @@ type ActionType =
     | SetSelectedCardIdType
     | SetAppStatusAT
     | ReturnType<typeof updateGradeAC>
+    | ReturnType<typeof setErrorAC>
+
+
 type ThunkType = ThunkAction<void, AppStoreType, unknown, ActionType>
 
 export type CardType = {
