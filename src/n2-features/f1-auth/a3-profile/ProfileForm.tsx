@@ -95,6 +95,7 @@ export default function ProfileForm() {
             console.log('error in reader.readAsDataURL')
         }
         finally {
+            console.log('here we go even after catch')
             reader.onload = () => {
                 image.src = reader.result as string;
 
@@ -184,4 +185,5 @@ export default function ProfileForm() {
     );
 }
 
+// todo: fix catch finally logic
 
