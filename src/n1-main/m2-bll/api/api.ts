@@ -153,6 +153,7 @@ export type getPacksType = {
     minCardsCount: number
     page: number // выбранная страница
     pageCount: number // количество элементов на странице
+    error:string
 }
 export type getCardType = {
     cards: CardType[]

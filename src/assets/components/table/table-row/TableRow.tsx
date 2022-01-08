@@ -4,12 +4,13 @@ import {packsStateType, PackType} from "../../../../n1-main/m2-bll/packsReducer"
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { setClickedCardPackId, showModalDelCardsPackAC, showModalUpdateCardsPackAC } from "../../../../n1-main/m2-bll/modalReducer";
 import TableButton from "../table-button/TableButton";
 import ModalDelPack from "../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
 import ModalUpdatePack from "../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
 import ModalAddPack from "../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
+import {CardType} from "../../../../n1-main/m2-bll/cardsReducer";
 
 // стилизация кнопки
 const buttonStyle = {
@@ -23,6 +24,10 @@ export type PropsType = {
 }
 
 export default function TableRow(props:PropsType) {
+
+    // let location = useLocation()
+    // console.log(location.pathname)
+
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -53,7 +58,8 @@ export default function TableRow(props:PropsType) {
            <ModalUpdatePack/>
     <ModalAddPack/>
     <ModalDelPack/>
-      <tr className={s.tr}>         
+      <tr className={s.tr}>
+
          <CellCommon callback={()=>editHandler(props.cellData._id)} cellData={props.cellData.name} />
          <CellCommon cellData={props.cellData.cardsCount} />
          <CellCommon cellData={props.cellData.updated} />
