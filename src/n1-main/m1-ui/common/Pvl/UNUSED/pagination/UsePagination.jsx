@@ -1,9 +1,9 @@
 import s from './UsePagination.module.scss';
 import usePagination from '@mui/material/usePagination';
 import { styled } from '@mui/material/styles';
-import { paginationColor } from "../../styles/inlineVariables";
-import { paginationTextColorDark } from "../../styles/inlineVariables";
-import { paginationTextColorLight } from "../../styles/inlineVariables";
+import { paginationColor } from "../../../styles/inlineVariables";
+import { paginationTextColorDark } from "../../../styles/inlineVariables";
+import { paginationTextColorLight } from "../../../styles/inlineVariables";
 
 const List = styled('ul')({
    listStyle: 'none',

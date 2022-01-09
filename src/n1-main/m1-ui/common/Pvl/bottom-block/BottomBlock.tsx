@@ -1,5 +1,5 @@
 import s from "./BottomBlock.module.scss";
-import UsePagination from "../pagination/UsePagination.jsx";
+import UsePagination from "../UNUSED/pagination/UsePagination.jsx";
 import Select from "../select/Select.jsx";
 import {Pagination} from "../../../../../n2-features/f2-table/Pagination/Pagination";
 import {PaginationPacksContainer} from "../../../../../n2-features/f2-table/Pagination/PaginationPacksContainer";
