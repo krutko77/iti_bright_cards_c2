@@ -1,5 +1,5 @@
-@import '../../../n1-main/m1-ui/common/components/styles/variables';
-@import '../../../n1-main/m1-ui/common/components/styles/mixins';
+@import '../../../n1-main/m1-ui/common/styles/variables';
+@import '../../../n1-main/m1-ui/common/styles/mixins';
 
 .contentWrap {
    display: flex;
@@ -9,6 +9,11 @@
    border-radius: 8px;
    background-color: $bgColorCard;
    caret-color: transparent;
+}
+
+.contentWrapEditOn {
+   user-select: auto;
+   caret-color: auto;
 }
 
 .img {
@@ -37,4 +42,12 @@
 
 .onEditMode {
    justify-content: center;
+}
+
+.error {
+   color: red;
+}
+
+.editOn {
+   border-bottom: 3px solid $accentColor;
 }

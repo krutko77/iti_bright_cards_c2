@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.useSlider {
+
+}
+
+.label {
+   display: inline-block;
+   margin-bottom: 40px;
+   @include font(16px, 600, 120%, $textColor);
+}

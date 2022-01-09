@@ -1,12 +1,33 @@
+@import '../../../../n1-main/m1-ui/common/styles/variables';
+@import '../../../../n1-main/m1-ui/common/styles/mixins';
+
 .search {
-    display: flex;
-    margin: 20px 15px;
+   position: relative;
 
-    .input {
-        height: 40px;
-    }
-
-    .btn {
-        width: 130px;
-    }
+   &::after {
+      content: "";
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      top: 12px;
+      left: 17px;
+      background-image: url("../../../../assets/img/search-icon.svg");
+      opacity: 0.4;
+   }
 }
+
+.inputSearch {
+   height: 36px;
+   width: 100%;
+   padding-left: 40px;
+   background-color: $bgColorSearch;
+   opacity: 0.5;
+   border: 1px solid $borderColorSearch;
+   border-radius: 2px;
+   @include font(14px, 500, 170%, $textColor);
+}
+
+input::placeholder {
+   @include font(14px, 400, 170%, $textColor);
+}
+

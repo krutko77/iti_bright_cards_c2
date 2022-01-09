@@ -5,9 +5,9 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {addPacksTC} from "../../../n1-main/m2-bll/packsReducer";
 import {closeAllModalsAC} from "../../../n1-main/m2-bll/modalReducer";
 import {StyleType} from "../../../types/types";
-import {buttonFontColorTwo} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import {buttonFontColorTwo} from "../../../n1-main/m1-ui/common/styles/inlineVariables";
 import {CommonAddUpdate} from "../CommonAddUpdate/CommonAddUpdate";
-import {buttonColorTwo} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import {buttonColorTwo} from "../../../n1-main/m1-ui/common/styles/inlineVariables";
 
 // стилизация кнопок
 export const styleNPButton1: StyleType = {

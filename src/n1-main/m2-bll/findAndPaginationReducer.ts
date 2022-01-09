@@ -109,5 +109,5 @@ type ActionType =
     | SetSelectedCardIdType
     | ReturnType<typeof setSortCardsAC>
 
-export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated' | null
+export type SortPackType = '0name' | '1name' | '0cardsCount' | '1cardsCount' | '0updated'| '1updated' | '0user_name' | '1user_name' | null
 export type SortCardsType = '0answer' | '1answer' | '0question' | '1question' | '0grade' | '1grade' | '0updated' | '1updated' | null

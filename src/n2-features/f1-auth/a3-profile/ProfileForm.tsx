@@ -1,6 +1,6 @@
 import s from "./ProfileForm.module.scss";
-import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import {Input} from "../../../assets/components/common/input/Input";
+import Subtitle from "../../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import {Input} from "../../../n1-main/m1-ui/common/Pvl/input/Input";
 
 import img from "../../../assets/img/photo-profile.png";
 import icon from "../../../assets/img/photo-icon.svg";
@@ -9,9 +9,9 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
 import React, {ChangeEvent, useRef, useState} from "react";
-import Button from "../../../assets/components/common/button/Button";
-import {UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
-import {buttonCancelColor} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import Button from "../../../n1-main/m1-ui/common/Pvl/button/Button";
+import {profileUpdateAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
+import {buttonCancelColor} from "../../../n1-main/m1-ui/common/styles/inlineVariables";
 
 // данные для input nickname
 const inputData1 = {
@@ -63,8 +63,6 @@ const styleButton2 = {
 }
 
 export default function ProfileForm() {
-    const dispatch = useDispatch()
-
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn)
     const avatarFromState = useSelector<AppStoreType, string>(state => state.auth.avatar)
 
@@ -75,24 +73,48 @@ export default function ProfileForm() {
         avatar
     } = useSelector<AppStoreType, AuthResponseType>(state => state.profile)
 
+    const dispatch = useDispatch()
+    const [error, setError] = useState(false)
+    const [newNickname, setNewNickname] = useState<string>(name)
+
     const [isEditMode, setIsEditMode] = useState(false)
+    const [width, setWidth] = useState(0)
 
     const inRef = useRef<HTMLInputElement>(null);
 
     const upload = (e: ChangeEvent<HTMLInputElement>) => {
         let reader = new FileReader();
+        const image = new Image()
 
         const newFile = e.target.files && e.target.files[0];
 
-        reader.readAsDataURL(newFile as Blob);
+        try {
+            reader.readAsDataURL(newFile as Blob);
+        } catch {
+            console.log('error in reader.readAsDataURL')
+        } finally {
+            console.log('here we go even after catch')
+            reader.onload = () => {
+                image.src = reader.result as string;
 
-        reader.onload = () => {
-            dispatch(UpdateProfileTC(reader.result as string))
-        };
-        reader.onerror = (error) => {
+                image.onload = () => {
+                    setWidth(image.width)
+                    if (image.width === 96 && image.height === 96) {
+                        setError(false)
+                        console.log('load to server')
+                        dispatch(profileUpdateAC(reader.result as string))
+                    } else setError(true)
+                }
+
+            };
+            reader.onerror = (error) => {
+            }
         }
 
+
     }
+
+    console.log(error)
 
     const goToEditModeHandler = () => {
         setIsEditMode(true)
@@ -104,6 +126,7 @@ export default function ProfileForm() {
 
     const saveEditHandler = () => {
         setIsEditMode(false)
+        dispatch(UpdateProfileTC(newNickname, avatarFromState))
     }
 
     if (!isLoggedIn) {
@@ -119,11 +142,13 @@ export default function ProfileForm() {
                 onChange={upload}
             /> {/*for select file dialog*/}
 
-            <div> {/*previously was form*/}
-                <div className={s.contentWrap}>
+            <div>
+                <div className={!isEditMode ? s.contentWrap : `${s.contentWrap} ${s.contentWrapEditOn}`}>
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
-                        <img src={avatarFromState ? avatarFromState : avatar} alt="img" className={s.picture}/>
+                        <img src={isEditMode ? (avatarFromState ? avatarFromState : avatar) : avatar} alt="img"
+                             className={s.picture}/>
+
                         {
                             isEditMode
                                 ?
@@ -133,17 +158,21 @@ export default function ProfileForm() {
                                 : <div></div>
                         }
                     </div>
-                    <Input inputData={inputData1} value={name} onChange={() => {
-                    }}/>
+                    {isEditMode && error && <div className={s.error}>Avatar must be 96x96px</div>}
+                    {isEditMode
+                        ? <div className={s.editOn}><Input inputData={inputData1} value={newNickname}
+                                                           onChangeText={setNewNickname}/></div>
+                        : <Input inputData={inputData1} value={name}/>
+                    }
                     <Input inputData={inputData2} value={email} onChange={() => {
-                    }}/>
+                    }} isHidden={isEditMode}/>
                     <Input inputData={inputData3} value={publicCardPacksCount} onChange={() => {
-                    }}/>
+                    }} isHidden={isEditMode}/>
 
                     {isEditMode
                         ? <div className={s.block}>
                             <Button label="Cancel" style={styleButton1} onClick={cancelEditHandler}/>
-                            <Button label="Save" style={styleButton2} onClick={saveEditHandler}/>
+                            <Button label="Save" style={styleButton2} onClick={saveEditHandler} disabled={error}/>
                         </div>
                         : <div className={`${s.block} ${s.onEditMode}`}>
                             <Button label="Edit" style={styleButton2} onClick={goToEditModeHandler}/>
@@ -155,4 +184,6 @@ export default function ProfileForm() {
     );
 }
 
+// todo: fix catch finally logic
+// todo: input: disable autofill when !isEditMode
 

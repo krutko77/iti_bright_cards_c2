@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+.subtitle {
+   font-family: $titleFontFamily;
+   font-weight: 600;
+   line-height: 150%;
+   font-size: 22px;
+   margin-bottom: 15px;
+}

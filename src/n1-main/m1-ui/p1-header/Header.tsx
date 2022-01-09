@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogoutTC } from "../../m2-bll/authReducer";
 import { AppStoreType } from "../../m2-bll/store";
 import { LinearProgress, Menu } from "@mui/material";
-import MenuItem from '../../../assets/components/common/menu-item/MenuItem';
+import MenuItem from '../common/Pvl/menu-item/MenuItem';
 
 import paksIcon from "./../../../assets/img/menu/paks-icon.png";
 import profileIcon from "./../../../assets/img/menu/profile-icon.png";

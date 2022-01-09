@@ -20,7 +20,6 @@ export const authAPI = {
         return instance.delete('auth/me')
     },
     updateProfile(name: string, avatar: string) {
-        debugger
         return instance.put('auth/me', {name, avatar})
     }
 }
@@ -154,6 +153,7 @@ export type getPacksType = {
     minCardsCount: number
     page: number // выбранная страница
     pageCount: number // количество элементов на странице
+    error:string
 }
 export type getCardType = {
     cards: CardType[]
