@@ -1,14 +1,14 @@
-import s from "./PacksList.module.scss";
-import Subtitle from "../../common/Pvl/subtitle/Subtitle.jsx";
-import Button from "../../common/Pvl/button/Button.tsx";
-import Table from "../table/Table";
-import PaginationRounded from "../../common/Pvl/UNUSED/pagination/PaginationRounded.jsx";
-import Select from "../../common/Pvl/select/Select.jsx";
+import s from "../../packs-list/UsePacksList.module.scss";
+import Subtitle from "../../../common/Pvl/subtitle/Subtitle.jsx";
+import Button from "../../../common/Pvl/button/Button.tsx";
+import Table from "../../table/Table";
+import PaginationRounded from "../../../common/Pvl/UNUSED/pagination/PaginationRounded.jsx";
+import Select from "../../../common/Pvl/select/Select.jsx";
 import UseSlider from "../common/use-slider/MySlider.tsx";
-import Search from "../../../../n2-features/f2-table/Search/SearchMain/Search";
+import Search from "../../../../../n2-features/f2-table/Search/SearchMain/Search";
 import {
     SearchCardsPacksContainer
-} from "../../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+} from "../../../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import * as React from "react";
 
 

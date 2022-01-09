@@ -23,6 +23,7 @@ import CellCommon from "../table/cell-common/CellCommon";
 import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
 import {PackType} from "../../../m2-bll/packsReducer";
+import BottomBlock from "../../common/Pvl/bottom-block/BottomBlock";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -138,6 +139,7 @@ export default function CardsTable() {
                         ))}
                         </tbody>
                     </table>
+                    <BottomBlock type={"cards"}/>
                 </div>
             </div>
         </>

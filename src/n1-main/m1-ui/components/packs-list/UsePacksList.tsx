@@ -1,4 +1,4 @@
-import s from "./PacksList.module.scss";
+import s from "./UsePacksList.module.scss";
 import Subtitle from "../../common/Pvl/subtitle/Subtitle.jsx";
 import Button from "../../common/Pvl/button/Button";
 import Table from "../table/Table";
@@ -122,7 +122,7 @@ export default function PacksList() {
                         <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}/>
                     </div>
                     <Table tableData={tableData} style={tableStyle}/>
-                    <BottomBlock/>
+                    <BottomBlock type={"packs"}/>
                 </main>
             </div>
         </>
