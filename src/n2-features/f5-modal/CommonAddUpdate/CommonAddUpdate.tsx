@@ -1,8 +1,8 @@
 import React from 'react';
 import s from "./CommonAddUpdate.module.scss";
-import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
-import {Input} from "../../../assets/components/common/input/Input";
-import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
+import ModalTitleBlock from "../../../n1-main/m1-ui/common/Pvl/modal-title-block/ModalTitleBlock";
+import {Input} from "../../../n1-main/m1-ui/common/Pvl/input/Input";
+import ModalButtonBlock from "../../../n1-main/m1-ui/common/Pvl/modal-button-block/ModalButtonBlock";
 import {StyleType} from "../../../types/types";
 
 export const CommonAddUpdate = (props: PropsType) => {

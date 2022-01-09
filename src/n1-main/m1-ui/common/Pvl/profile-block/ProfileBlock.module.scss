@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.profileBlock {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: $bgColorProfileBlock;
+   border-radius: 8px 0 8px 8px;
+   padding: 24px 10px 12px
+}
+
+.img {
+   margin-bottom: 4px;
+}
+
+.nameLabel {
+   font-family: "Poppins", sans-serif;
+   font-weight: 600;
+   line-height: 150%;
+   font-size: 18px;
+   margin-bottom: 4px;
+}
+
+.professionLabel {
+   @include font(14px, 400, 120%, $textColorLight);
+   margin-bottom: 8px;
+}
+
+
+
+

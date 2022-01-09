@@ -1,15 +1,15 @@
 import React from 'react'
 import s from "./LoginForm.module.scss";
 import {Navigate, NavLink} from "react-router-dom";
-import Title from "../../../assets/components/common/title/Title.jsx";
-import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import CheckboxLabel from "../../../assets/components/common/checkbox/CheckboxLabel.jsx";
-import {Input} from "../../../assets/components/common/input/Input";
+import Title from "../../../n1-main/m1-ui/common/Pvl/title/Title.jsx";
+import Subtitle from "../../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import CheckboxLabel from "../../../n1-main/m1-ui/common/Pvl/checkbox/CheckboxLabel.jsx";
+import {Input} from "../../../n1-main/m1-ui/common/Pvl/input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useFormik} from "formik";
 import {LoginTC} from "../../../n1-main/m2-bll/authReducer";
-import Button from "../../../assets/components/common/button/Button";
+import Button from "../../../n1-main/m1-ui/common/Pvl/button/Button";
 
 // данные для input email
 const inputData1: inputDataType = {

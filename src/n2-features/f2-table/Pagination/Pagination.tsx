@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './Paginations.module.scss'
-import SuperSelect from "../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect";
-import selectStyle from '../../../n1-main/m1-ui/common/c5-SuperSelect/SuperSelect.module.scss'
+import SuperSelect from "../../../n1-main/m1-ui/common/Ign/c5-SuperSelect/SuperSelect";
+import selectStyle from '../../../n1-main/m1-ui/common/Ign/c5-SuperSelect/SuperSelect.module.scss'
 
 export const Pagination: React.FC<PropsType> = (props) => {
 

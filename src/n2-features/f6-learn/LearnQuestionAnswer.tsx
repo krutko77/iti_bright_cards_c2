@@ -1,7 +1,7 @@
 import s from "./LearnQuestionAnswer.module.scss";
-import Subtitle from "../../assets/components/common/subtitle/Subtitle.jsx";
-import TableButton from "../../assets/components/table/table-button/TableButton";
-import Button from "../../assets/components/common/button/Button";
+import Subtitle from "../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import TableButton from "../../n1-main/m1-ui/components/table/table-button/TableButton";
+import Button from "../../n1-main/m1-ui/common/Pvl/button/Button";
 import {CardType, getCardsTC, updateGradeTC} from "../../n1-main/m2-bll/cardsReducer";
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,7 +10,7 @@ import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 import React, {useEffect, useState} from "react";
 import {PackType} from "../../n1-main/m2-bll/packsReducer";
 import {setCardsPageCountAC} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import { buttonActiveColorBorder } from "./../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { buttonActiveColorBorder } from "../../n1-main/m1-ui/common/styles/inlineVariables";
 
 // стилизация кнопок
 const tableButtonStyle1 = {

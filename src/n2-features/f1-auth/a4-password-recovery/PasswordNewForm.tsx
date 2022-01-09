@@ -1,14 +1,14 @@
 import s from "./PasswordNewForm.module.scss";
-import Title from "../../../assets/components/common/title/Title.jsx";
-import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import {Input} from "../../../assets/components/common/input/Input";
+import Title from "../../../n1-main/m1-ui/common/Pvl/title/Title.jsx";
+import Subtitle from "../../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import {Input} from "../../../n1-main/m1-ui/common/Pvl/input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate,useParams} from "react-router-dom";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {useFormik} from "formik";
 import {setNewPassTC} from "../../../n1-main/m2-bll/passwordRecoveryReducer";
 import React from "react";
-import Button from "../../../assets/components/common/button/Button";
+import Button from "../../../n1-main/m1-ui/common/Pvl/button/Button";
 
 // данные для input password
 const inputData2:inputDataType = {

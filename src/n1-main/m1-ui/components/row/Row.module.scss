@@ -1,0 +1,15 @@
+@import '../../common/styles/variables';
+
+.row {
+   width: 1008px;
+   height: 636px;
+   background-color: $bgColorCard;
+   border-radius: 8px;
+   padding: 19px 24px 24px;
+}
+
+.search {
+   margin-bottom: 24px;  
+}
+
+

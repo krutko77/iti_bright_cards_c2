@@ -1,13 +1,13 @@
 import React from 'react';
 import s from "./CommonDel.module.scss";
-import ModalTitleBlock from "../../../assets/components/common/modal-title-block/ModalTitleBlock";
-import ModalButtonBlock from "../../../assets/components/common/modal-button-block/ModalButtonBlock";
+import ModalTitleBlock from "../../../n1-main/m1-ui/common/Pvl/modal-title-block/ModalTitleBlock";
+import ModalButtonBlock from "../../../n1-main/m1-ui/common/Pvl/modal-button-block/ModalButtonBlock";
 import ReactHtmlParser from 'react-html-parser';
-import { buttonShadowColorThree } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
-import { buttonColorTwo } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
-import { buttonFontColorTwo } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
-import { buttonColorThree } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
-import { buttonFontColorThree } from "./../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import { buttonShadowColorThree } from "../../../n1-main/m1-ui/common/styles/inlineVariables";
+import { buttonColorTwo } from "../../../n1-main/m1-ui/common/styles/inlineVariables";
+import { buttonFontColorTwo } from "../../../n1-main/m1-ui/common/styles/inlineVariables";
+import { buttonColorThree } from "../../../n1-main/m1-ui/common/styles/inlineVariables";
+import { buttonFontColorThree } from "../../../n1-main/m1-ui/common/styles/inlineVariables";
 
 // стилизация кнопок
 const styleDPButton1 = {

@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+.modalTitleBlock {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 15px 24px;
+   border-bottom: 1px solid $lineColorLight;   
+}
+
+.title {
+   font-family: "Poppins", sans-serif;
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 150%;
+}
+
+.icon {
+   cursor: pointer;
+
+   &:active {
+      transform: translate(1px, 2px);
+   }
+}

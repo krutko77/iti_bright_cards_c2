@@ -1,6 +1,6 @@
 import s from "./ProfileForm.module.scss";
-import Subtitle from "../../../assets/components/common/subtitle/Subtitle.jsx";
-import {Input} from "../../../assets/components/common/input/Input";
+import Subtitle from "../../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import {Input} from "../../../n1-main/m1-ui/common/Pvl/input/Input";
 
 import img from "../../../assets/img/photo-profile.png";
 import icon from "../../../assets/img/photo-icon.svg";
@@ -9,9 +9,9 @@ import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
 import {Navigate} from "react-router-dom";
 import React, {ChangeEvent, useRef, useState} from "react";
-import Button from "../../../assets/components/common/button/Button";
+import Button from "../../../n1-main/m1-ui/common/Pvl/button/Button";
 import {profileUpdateAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
-import {buttonCancelColor} from "../../../n1-main/m1-ui/common/components/styles/inlineVariables";
+import {buttonCancelColor} from "../../../n1-main/m1-ui/common/styles/inlineVariables";
 
 // данные для input nickname
 const inputData1 = {

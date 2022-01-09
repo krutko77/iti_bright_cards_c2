@@ -1,5 +1,5 @@
 import React from 'react';
-import SuperButton from "../../../../n1-main/m1-ui/common/c2-SuperButton/SuperButton";
+import SuperButton from "../../../../n1-main/m1-ui/common/Ign/c2-SuperButton/SuperButton";
 import s from "./Sort.module.scss";
 import {useSelector} from "react-redux";
 import {AppStoreType} from "../../../../n1-main/m2-bll/store";
