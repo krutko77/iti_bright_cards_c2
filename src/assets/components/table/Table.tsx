@@ -8,11 +8,18 @@ import {CardType} from "../../../n1-main/m2-bll/cardsReducer";
 import HeadButtonCell from "./head-button-cell/HeadButtonCell";
 import React from "react";
 import {TableDataType, TableStyleType} from "../packs-list/UsePacksList";
+import {useLocation} from "react-router-dom";
 
 
 export default function Table(props: PropsType) {
+
+    // let location = useLocation()
+    // console.log(location.pathname)
+
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
+
+
     return (
         <div className={s.tableWrap}>
             <table className={s.table}>
@@ -48,6 +55,9 @@ export default function Table(props: PropsType) {
                 </thead>
                 <tbody>
                 {cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>)}
+                {/*{location.pathname === 'packsdesigned' ? cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>):*/}
+                {/*cards.map((mp) => <TableRow key={mp._id} cellData={mp}/>)*/}
+                {/*}*/}
 
                 </tbody>
             </table>

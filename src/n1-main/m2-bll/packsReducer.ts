@@ -4,6 +4,7 @@ import {AppStoreType} from "./store";
 import {setCardPacksTotalCountAC, SetCardPacksTotalCountType} from "./findAndPaginationReducer";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {setAppStatusAC, SetAppStatusAT} from "./appReducer";
+import {setErrorAC} from "./passwordRecoveryReducer";
 
 export const initialState: packsStateType = {
     cardPacks: [],
@@ -34,10 +35,12 @@ export const getPacksTC = (): ThunkType => (dispatch: Dispatch<ActionType>, getS
     const user_id = getState().packs.packUser_id
 
     dispatch(setAppStatusAC('loading'))
-    return packsAPI.getPacks(user_id,pageCount, page, min, max, packName, sortPacks)
+    return packsAPI.getPacks(user_id, pageCount, page, min, max, packName, sortPacks)
         .then((res) => {
             dispatch(getPacksAC(res.data.cardPacks))
             dispatch(setCardPacksTotalCountAC(res.data.cardPacksTotalCount))
+        }).catch((e) => {
+            dispatch(setErrorAC(e.response.data.error))
         })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
@@ -50,29 +53,35 @@ export const addPacksTC = (cardPackName: string): ThunkType => (dispatch: ThunkD
         .then((res) => {
             dispatch(addPacksAC(cardPackName))
             dispatch(getPacksTC())
-        })
+        }).catch(e => {
+        dispatch(setErrorAC(e.response.data.error))
+    })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
 
 
-export const delPacksTC = (id:string)=>(dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>)=>{
+export const delPacksTC = (id: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
     dispatch(setAppStatusAC('loading'))
     packsAPI.delPacks(id)
-        .then(()=>{
+        .then(() => {
             dispatch(getPacksTC())
-        })
+        }).catch(e => {
+        dispatch(setErrorAC(e.response.data.error))
+    })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
-export const updatePacksTC = (id:string,name:string)=>(dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>)=>{
+export const updatePacksTC = (id: string, name: string) => (dispatch: ThunkDispatch<AppStoreType, unknown, ActionType>) => {
     dispatch(setAppStatusAC('loading'))
-    packsAPI.updatePacks(id,name)
-        .then(()=>{
+    packsAPI.updatePacks(id, name)
+        .then(() => {
             dispatch(getPacksTC())
-        })
+        }).catch(e => {
+        dispatch(setErrorAC(e.response.data.error))
+    })
         .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
@@ -106,6 +115,7 @@ type ActionType =
     | SetCardPacksTotalCountType
     | ReturnType<typeof addPacksAC>
     | SetAppStatusAT
+    | ReturnType<typeof setErrorAC>
 
 
 //todo: add catch. For example if no internet.

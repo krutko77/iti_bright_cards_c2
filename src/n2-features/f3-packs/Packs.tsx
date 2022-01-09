@@ -66,7 +66,6 @@ export const Packs = () => {
 
     const startLearnHandler = (packId: string) => {
         localStorage.setItem('cardsPacks', JSON.stringify(cardPacks)) // this go to LS, to save it on F5 Learn.
-
         navigate(`/learn/${packId}`, {replace: true})
     }
 

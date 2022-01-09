@@ -10,7 +10,7 @@ const styleSubtile = {
 }
 
 export type PropsType = {
-    title:string
+    title?:string
 }
 
 export default function TitleBlock(props:PropsType) {
