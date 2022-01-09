@@ -90,11 +90,9 @@ export default function ProfileForm() {
 
         try {
             reader.readAsDataURL(newFile as Blob);
-        }
-        catch {
+        } catch {
             console.log('error in reader.readAsDataURL')
-        }
-        finally {
+        } finally {
             console.log('here we go even after catch')
             reader.onload = () => {
                 image.src = reader.result as string;
@@ -128,7 +126,7 @@ export default function ProfileForm() {
 
     const saveEditHandler = () => {
         setIsEditMode(false)
-        dispatch(UpdateProfileTC(newNickname,avatarFromState))
+        dispatch(UpdateProfileTC(newNickname, avatarFromState))
     }
 
     if (!isLoggedIn) {
@@ -144,8 +142,8 @@ export default function ProfileForm() {
                 onChange={upload}
             /> {/*for select file dialog*/}
 
-            <div> {/*previously was form*/}
-                <div className={s.contentWrap}>
+            <div>
+                <div className={!isEditMode ? s.contentWrap : `${s.contentWrap} ${s.contentWrapEditOn}`}>
                     <Subtitle subtitle="Personal Information"/>
                     <div className={s.img}>
                         <img src={isEditMode ? (avatarFromState ? avatarFromState : avatar) : avatar} alt="img"
@@ -157,18 +155,19 @@ export default function ProfileForm() {
                                 <div className={s.icon} onClick={() => inRef && inRef.current && inRef.current.click()}>
                                     <img src={icon} alt="icon"/>
                                 </div>
-                                : <div> </div>
+                                : <div></div>
                         }
                     </div>
                     {isEditMode && error && <div className={s.error}>Avatar must be 96x96px</div>}
                     {isEditMode
-                        ? <div className={s.editOn}><Input inputData={inputData1} value={newNickname} onChangeText={setNewNickname}/></div>
+                        ? <div className={s.editOn}><Input inputData={inputData1} value={newNickname}
+                                                           onChangeText={setNewNickname}/></div>
                         : <Input inputData={inputData1} value={name}/>
                     }
                     <Input inputData={inputData2} value={email} onChange={() => {
-                    }}/>
+                    }} isHidden={isEditMode}/>
                     <Input inputData={inputData3} value={publicCardPacksCount} onChange={() => {
-                    }}/>
+                    }} isHidden={isEditMode}/>
 
                     {isEditMode
                         ? <div className={s.block}>
@@ -186,4 +185,5 @@ export default function ProfileForm() {
 }
 
 // todo: fix catch finally logic
+// todo: input: disable autofill when !isEditMode
 

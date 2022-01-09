@@ -5,7 +5,7 @@ import icon from './../../../img/shape.svg';
 import {inputDataType} from "../../../../n2-features/f1-auth/a1-login/LoginForm";
 
 export const Input: React.FC<PropsType> = (
-    {inputData, value, onChange, onChangeText, ...restProps}
+    {inputData, value, onChange, onChangeText, isHidden, ...restProps}
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange
@@ -28,8 +28,9 @@ export const Input: React.FC<PropsType> = (
              required {...restProps}
              value={value}
              onChange={onChangeCallback}
+             className={isHidden ? s.isHidden : ''}
          />
-         <label className={s.placeholder} htmlFor={inputData.for}>{inputData.label}</label>
+         <label className={isHidden ? `${s.placeholder} ${s.isNone}` : s.placeholder} htmlFor={inputData.for}>{inputData.label}</label>
          <img onClick={changeTypeHandler} className={s.icon} src={icon} alt="image" style={inputData.style} />
       </div>
    );
@@ -42,6 +43,7 @@ type PropsType = DefaultInputPropsType & {
     inputData: inputDataType
     value?: string | number
     onChangeText?: (value: string) => void
+    isHidden?: boolean
 }
 
 
