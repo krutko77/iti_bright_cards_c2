@@ -24,6 +24,7 @@ import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
 import {PackType} from "../../../m2-bll/packsReducer";
 import BottomBlock from "../../common/Pvl/bottom-block/BottomBlock";
+import {SearchCardsContainer} from "../../../../n2-features/f2-table/Search/SeachCardsContainer/SeachCardsContainer";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -108,6 +109,7 @@ export default function CardsTable() {
                 <div className={s.searchBlock}>
                     <div className={s.search}>
                         {/*<Search/>*/}
+                        <SearchCardsContainer />
                     </div>
                     <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}/>
                 </div>

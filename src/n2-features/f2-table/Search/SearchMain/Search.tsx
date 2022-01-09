@@ -27,7 +27,6 @@ type PropsType = {
     inputValue: string
     inputPlaceholder: string
     setInputValueHandler: (e: ChangeEvent<HTMLInputElement>) => void
-    buttonFindHandler: () => void
     buttonText: string
     onKeyUp: () => void
 }

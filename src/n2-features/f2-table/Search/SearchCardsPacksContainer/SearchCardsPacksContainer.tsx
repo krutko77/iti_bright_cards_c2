@@ -16,10 +16,6 @@ export const SearchCardsPacksContainer = () => {
         dispatch(setSearchPackNameAC(e.currentTarget.value))
     }
 
-    const buttonFindHandler = () => {
-        dispatch(getPacksTC())
-    }
-
     const onKeyUpHandler = () => {
         debouncedSearch()
     }
@@ -28,7 +24,6 @@ export const SearchCardsPacksContainer = () => {
         inputValue={value}
         inputPlaceholder={'Enter Cards Pack name'}
         setInputValueHandler={setInputValueHandler}
-        buttonFindHandler={buttonFindHandler}
         buttonText={'Find Cards Packs'}
         onKeyUp={onKeyUpHandler}
     />
