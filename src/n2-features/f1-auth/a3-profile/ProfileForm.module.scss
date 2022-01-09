@@ -8,6 +8,8 @@
    padding: 25px 33px 30px;
    border-radius: 8px;
    background-color: $bgColorCard;
+   user-select: none;
+   caret-color: transparent;
 }
 
 .img {
