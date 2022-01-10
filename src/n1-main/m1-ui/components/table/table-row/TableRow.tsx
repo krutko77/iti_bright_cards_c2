@@ -25,6 +25,8 @@ const buttonStyle = {
 
 export type PropsType = {
     cellData: PackType
+    isDelEditButtonsDisabled: boolean
+    isLearnButtonDisabled: boolean
 }
 
 export default function TableRow(props: PropsType) {
@@ -72,9 +74,11 @@ export default function TableRow(props: PropsType) {
                 <td className={s.td}>
                     <div className={s.btnBlock}>
                         <TableButton onClick={() => showModalDelPackHandler(props.cellData._id)} label="Delete"
-                                     style={buttonStyle}/>
-                        <TableButton onClick={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit"/>
-                        <TableButton onClick={() => startLearnHandler(props.cellData._id)} label="Learn"/>
+                                     style={buttonStyle} disabled={props.isDelEditButtonsDisabled}/>
+                        <TableButton onClick={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit"
+                                     disabled={props.isDelEditButtonsDisabled}/>
+                        <TableButton onClick={() => startLearnHandler(props.cellData._id)} label="Learn"
+                                     disabled={props.isLearnButtonDisabled}/>
                     </div>
                 </td>
             </tr>

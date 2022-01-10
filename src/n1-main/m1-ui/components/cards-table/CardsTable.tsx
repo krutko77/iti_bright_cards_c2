@@ -27,6 +27,7 @@ import BottomBlock from "../../common/Pvl/bottom-block/BottomBlock";
 import {SearchCardsContainer} from "../../../../n2-features/f2-table/Search/SeachCardsContainer/SeachCardsContainer";
 import {TableDataType, TableStyleType} from "../../../../types/types";
 import HeadButtonCell from "../table/head-button-cell/HeadButtonCell";
+import {RequestStatusType} from "../../../m2-bll/appReducer";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -59,29 +60,47 @@ export default function CardsTable() {
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     const dispatch = useDispatch();
 
     const tableData: TableDataType = {
         title1: {
             value: "Question",
-            upperSortHandler: () => {dispatch(setSortCardsAC('0question'))},
-            lowerSortHandler: () => {dispatch(setSortCardsAC('1question'))},
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0question'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1question'))
+            },
         },
         title2: {
             value: "Answer",
-            upperSortHandler: () => {dispatch(setSortCardsAC('0answer'))},
-            lowerSortHandler: () => {dispatch(setSortCardsAC('1answer'))},
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0answer'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1answer'))
+            },
         },
         title3: {
             value: "Last Updated",
-            upperSortHandler: () => {dispatch(setSortCardsAC('0updated'))},
-            lowerSortHandler: () => {dispatch(setSortCardsAC('1updated'))},
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0updated'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1updated'))
+            },
         },
         title4: {
             value: "Grade",
-            upperSortHandler: () => {dispatch(setSortCardsAC('0grade'))},
-            lowerSortHandler: () => {dispatch(setSortCardsAC('1grade'))},
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0grade'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1grade'))
+            },
         },
         title5: "Actions",
     }
@@ -125,9 +144,10 @@ export default function CardsTable() {
                 <div className={s.searchBlock}>
                     <div className={s.search}>
                         {/*<Search/>*/}
-                        <SearchCardsContainer />
+                        <SearchCardsContainer/>
                     </div>
-                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}/>
+                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}
+                            disabled={appStatus === "loading"}/>
                 </div>
                 <div className={s.tableWrap}>
                     <table className={s.table}>
@@ -157,19 +177,21 @@ export default function CardsTable() {
                         </tr>
                         </thead>
                         <tbody>
-                        {cards.map((mp:CardType) => (
-                        <tr key={mp._id} className={s.tr}>
-                            <CellCommon cellData={mp.question} />
-                            <CellCommon cellData={mp.answer} />
-                            <CellCommon cellData={mp.updated} />
-                            <RatingCell cellData={mp.grade}/>
-                            <td className={s.td}>
-                                <div className={s.btnBlock}>
-                                    <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete" />
-                                    <TableButton onClick={() => showUpdateCardModalHandler(mp._id)} label="Edit" />
-                                </div>
-                            </td>
-                        </tr>
+                        {cards.map((mp: CardType) => (
+                            <tr key={mp._id} className={s.tr}>
+                                <CellCommon cellData={mp.question}/>
+                                <CellCommon cellData={mp.answer}/>
+                                <CellCommon cellData={mp.updated}/>
+                                <RatingCell cellData={mp.grade}/>
+                                <td className={s.td}>
+                                    <div className={s.btnBlock}>
+                                        <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete"
+                                                     disabled={user_id !== mp.user_id}/>
+                                        <TableButton onClick={() => showUpdateCardModalHandler(mp._id)} label="Edit"
+                                                     disabled={user_id !== mp.user_id}/>
+                                    </div>
+                                </td>
+                            </tr>
                         ))}
                         </tbody>
                     </table>

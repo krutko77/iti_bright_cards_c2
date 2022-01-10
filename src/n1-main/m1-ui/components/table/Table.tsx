@@ -8,6 +8,7 @@ import {CardType} from "../../../m2-bll/cardsReducer";
 import HeadButtonCell from "./head-button-cell/HeadButtonCell";
 import React from "react";
 import {TableDataType, TableStyleType} from "../../../../types/types";
+import {RequestStatusType} from "../../../m2-bll/appReducer";
 
 
 export default function Table(props: PropsType) {
@@ -17,7 +18,8 @@ export default function Table(props: PropsType) {
 
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
-
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     return (
         <div className={s.tableWrap}>
@@ -50,7 +52,10 @@ export default function Table(props: PropsType) {
                 </tr>
                 </thead>
                 <tbody>
-                {cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>)}
+                {cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}
+                                                 isDelEditButtonsDisabled={appStatus === "loading" || !(user_id === mp.user_id)}
+                                                 isLearnButtonDisabled={appStatus === "loading" || !mp.cardsCount}
+                />)}
                 {/*{location.pathname === 'packsdesigned' ? cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>):*/}
                 {/*cards.map((mp) => <TableRow key={mp._id} cellData={mp}/>)*/}
                 {/*}*/}
