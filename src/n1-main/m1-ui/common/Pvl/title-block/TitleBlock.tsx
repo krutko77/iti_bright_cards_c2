@@ -16,7 +16,7 @@ export type PropsType = {
 export default function TitleBlock(props:PropsType) {
    return (
       <div className={s.titleBlock}>
-            <NavLink className={s.link} to="/packsdesigned"><img src={icon} alt="arrow" /></NavLink>
+            <NavLink className={s.link} to="/packs"><img src={icon} alt="arrow" /></NavLink>
             <Subtitle subtitle={props.title} style={styleSubtile} />
          </div>
 

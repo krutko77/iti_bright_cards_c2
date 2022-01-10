@@ -1,46 +1,99 @@
+import s from "./Packs.module.scss";
+import Subtitle from "../../n1-main/m1-ui/common/Pvl/subtitle/Subtitle.jsx";
+import Button from "../../n1-main/m1-ui/common/Pvl/button/Button";
+import Table from "../../n1-main/m1-ui/components/table/Table";
+import UseSlider from "../../n1-main/m1-ui/common/Pvl/slider/UseSlider.jsx";
+import BottomBlock from "../../n1-main/m1-ui/common/Pvl/bottom-block/BottomBlock";
 import {useDispatch, useSelector} from "react-redux";
+import * as React from "react";
+import {useEffect} from "react";
+import {getPacksTC, getUserIdAC} from "../../n1-main/m2-bll/packsReducer";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import {getPacksTC, getUserIdAC, packsStateType} from "../../n1-main/m2-bll/packsReducer";
-import * as React from 'react';
-import {ChangeEvent, useEffect, useState} from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import {NavLink, useNavigate} from "react-router-dom";
-import {PaginationPacksContainer} from "../f2-table/Pagination/PaginationPacksContainer";
-import {SortCardPacksContainer} from "../f2-table/Sort/SortCardPacksContainer/SortCardPacksContainer";
-import s from './Pack.module.scss'
-import {SearchCardsPacksContainer} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
-import {SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
-import {
-    setClickedCardPackId,
-    showModalAddCardsPackAC,
-    showModalDelCardsPackAC,
-    showModalUpdateCardsPackAC
-} from "../../n1-main/m2-bll/modalReducer";
+import {setSortPacksAC, SortPackType} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import {showModalAddCardsPackAC} from "../../n1-main/m2-bll/modalReducer";
 import ModalAddPack from "../f5-modal/ModalAddPack/ModalAddPack";
-import ModalDelPack from "../f5-modal/ModalDelPack/ModalDelPack";
-import {Checkbox} from "@mui/material";
-import ModalUpdatePack from "../f5-modal/ModalUpdatePack/ModalUpdatePack";
+import {
+    SearchCardsPacksContainer
+} from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import {TableDataType, TableStyleType} from "../../types/types";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
-export const Packs = () => {
-    const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
+// стилизация синей кнопки
+const buttonStyle = {
+    width: "184px",
+    marginLeft: "24px"
+}
+// стилизация ширины столбцов таблицы
+const tableStyle: TableStyleType = {
+    th1: {
+        width: "185px",
+    },
+    th2: {
+        width: "80px",
+    },
+    th3: {
+        width: "180px",
+    },
+    th4: {
+        width: "112px",
+    },
+    th5: {
+        width: "160px",
+    }
+}
+
+
+export default function PacksList() {
+    // данные для таблицы
+    const tableData: TableDataType = {
+        title1: {
+            value: "Name",
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0name'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1name'))
+            },
+        },
+        title2: {
+            value: "Cards",
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0cardsCount'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1cardsCount'))
+            },
+        },
+        title3: {
+            value: "Last Updated",
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0updated'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1updated'))
+            },
+        },
+        title4: {
+            value: "Created by",
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0user_name'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1user_name'))
+            },
+        },
+        title5: "Actions",
+
+    }
+
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
-    const packUserId = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
+    const current_id = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
     const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
-    const [myPacks, setMyPacks] = useState<boolean>(!!packUserId)
-
     const dispatch = useDispatch()
-    let navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getPacksTC())
@@ -50,97 +103,45 @@ export const Packs = () => {
         dispatch(showModalAddCardsPackAC())
     }
 
-    const showModalDelPackHandler = (id: string) => {
-        dispatch(setClickedCardPackId(id))
-        dispatch(showModalDelCardsPackAC())
-    }
-
-    const showModalUpdatePackHandler = (id: string) => {
-        dispatch(setClickedCardPackId(id))
-        dispatch(showModalUpdateCardsPackAC())
-    }
-
-    /*useEffect(() => {
-        dispatch(InitializeTC())
-    }, [])*/
-
-    const startLearnHandler = (packId: string) => {
-        localStorage.setItem('cardsPacks', JSON.stringify(cardPacks)) // this go to LS, to save it on F5 Learn.
-        navigate(`/learn/${packId}`, {replace: true})
-    }
-
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(getUserIdAC(myPacks ? '' : user_id))
+    const onMyHandler = () => {
+        dispatch(getUserIdAC(user_id))
         dispatch(getPacksTC())
-        setMyPacks(e.target.checked)
+    }
+    const onAllHandler = () => {
+        dispatch(getUserIdAC(''))
+        dispatch(getPacksTC())
     }
 
     return (
         <>
-            <ModalUpdatePack/>
             <ModalAddPack/>
-            <ModalDelPack/>
-            <TableContainer className={s.table} component={Paper}>
-                <PaginationPacksContainer/>
-                <SearchCardsPacksContainer/>
-                <Table sx={{minWidth: 650}} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <div className={s.cell}>Name<SortCardPacksContainer upperSort={'0name'}
-                                                                                    lowerCount={'1name'}/></div>
-                            </TableCell>
-                            <TableCell align="center" className={s.cell}>
-                                <div className={s.cell}>Cards Count<SortCardPacksContainer upperSort={'0cardsCount'}
-                                                                                           lowerCount={'1cardsCount'}/>
-                                </div>
-                            </TableCell>
-                            <TableCell align="center">
-                                <div className={s.cell}>Updated<SortCardPacksContainer upperSort={'0updated'}
-                                                                                       lowerCount={'1updated'}/></div>
-
-                            </TableCell>
-                            <TableCell align="center">My Packs <Checkbox onChange={onChangeHandler} checked={myPacks}/></TableCell>
-                            <TableCell align="center">url</TableCell>
-                            <TableCell align='center'>
-                                <button onClick={addPacksHandler} disabled={appStatus === "loading"}>add</button>
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {cardPacks.map((mp) => (
-                            <TableRow
-                                key={mp._id}
-                                sx={{'&:last-child td, &:last-child th': {border: 0}}}>
-                                <TableCell component="th" scope="row">{mp.name}
-                                </TableCell>
-                                <TableCell align="center">{mp.cardsCount}</TableCell>
-                                <TableCell align="center">{mp.updated}</TableCell>
-                                <TableCell align="center"></TableCell>
-                                <TableCell align='center'>
-                                    <button onClick={() => showModalDelPackHandler(mp._id)}
-                                            disabled={appStatus === "loading" || !(user_id === mp.user_id)}>del
-                                    </button>
-                                </TableCell>
-                                <TableCell align='center'>
-                                    <button onClick={() => showModalUpdatePackHandler(mp._id)}
-                                            disabled={appStatus === "loading" || !(user_id === mp.user_id)}>update
-                                    </button>
-                                </TableCell>
-                                <TableCell align='center'>
-                                    <button disabled={!mp.cardsCount || appStatus === "loading"} onClick={
-                                        () => {
-                                            startLearnHandler(mp._id)
-                                        }
-                                    }>learn
-                                    </button>
-                                </TableCell>
-                                <TableCell align="center"> <NavLink to={`/cards/${mp._id}`}>cards</NavLink></TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <div className={s.packsList}>
+                <aside className={s.sidebar}>
+                    <span className={s.label}>Show packs cards</span>
+                    <div className={s.btnBlock}>
+                        <button onClick={onMyHandler}
+                                className={`${s.btn} ${current_id === user_id ? s.active : ''}`}>My
+                        </button>
+                        <button onClick={onAllHandler} className={`${s.btn} ${!current_id ? s.active : ''}`}>All
+                        </button>
+                    </div>
+                    <UseSlider/>
+                </aside>
+                <main className={s.main}>
+                    <div className={s.title}>
+                        <Subtitle subtitle="OldPacks list"/>
+                    </div>
+                    <div className={s.searchBlock}>
+                        <div className={s.search}>
+                            <SearchCardsPacksContainer/>
+                        </div>
+                        <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}
+                                disabled={appStatus === "loading"}/>
+                    </div>
+                    <Table tableData={tableData} style={tableStyle}/>
+                    <BottomBlock type={"packs"}/>
+                </main>
+            </div>
         </>
     );
 }

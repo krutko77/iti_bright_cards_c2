@@ -24,7 +24,7 @@ export const SearchCardsPacksContainer = () => {
         inputValue={value}
         inputPlaceholder={'Enter Cards Pack name'}
         setInputValueHandler={setInputValueHandler}
-        buttonText={'Find Cards Packs'}
+        buttonText={'Find Cards OldPacks'}
         onKeyUp={onKeyUpHandler}
     />
 }

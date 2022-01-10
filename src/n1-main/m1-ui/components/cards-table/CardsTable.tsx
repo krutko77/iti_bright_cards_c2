@@ -196,8 +196,8 @@ export default function CardsTable() {
                         ))}
                         </tbody>
                     </table>
-                    <BottomBlock type={"cards"}/>
                 </div>
+                <BottomBlock type={"cards"}/>
             </div>
         </>
     )
