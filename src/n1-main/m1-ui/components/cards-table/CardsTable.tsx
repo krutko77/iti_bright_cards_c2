@@ -2,6 +2,7 @@ import TitleBlock from "../../common/Pvl/title-block/TitleBlock";
 import Button from "../../common/Pvl/button/Button";
 
 import s from "./CardsTable.module.scss";
+import tableStyles from "./../table/Table.module.scss";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../m2-bll/store";
@@ -149,10 +150,10 @@ export default function CardsTable() {
                     <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}
                             disabled={appStatus === "loading"}/>
                 </div>
-                <div className={s.tableWrap}>
-                    <table className={s.table}>
-                        <thead className={s.thead}>
-                        <tr className={s.tr}>
+                <div className={tableStyles.tableWrap}>
+                    <table className={tableStyles.table}>
+                        <thead className={tableStyles.thead}>
+                        <tr className={tableStyles.tr}>
                             <HeadButtonCell cellStyle={tableStyle.th1}
                                             cellData={tableData.title1.value}
                                             upCallback={tableData.title1.upperSortHandler}
@@ -178,12 +179,12 @@ export default function CardsTable() {
                         </thead>
                         <tbody>
                         {cards.map((mp: CardType) => (
-                            <tr key={mp._id} className={s.tr}>
+                            <tr key={mp._id} className={tableStyles.tr}>
                                 <CellCommon cellData={mp.question}/>
                                 <CellCommon cellData={mp.answer}/>
                                 <CellCommon cellData={mp.updated}/>
                                 <RatingCell cellData={mp.grade}/>
-                                <td className={s.td}>
+                                <td className={tableStyles.td}>
                                     <div className={s.btnBlock}>
                                         <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete"
                                                      disabled={user_id !== mp.user_id}/>
