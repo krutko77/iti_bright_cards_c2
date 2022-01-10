@@ -6,7 +6,8 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../m2-bll/store";
 import {addCardsTC, CardType, getCardsTC} from "../../../m2-bll/cardsReducer";
-import {SortCardsType} from "../../../m2-bll/findAndPaginationReducer";
+import {setSortCardsAC, SortCardsType} from "../../../m2-bll/findAndPaginationReducer";
+import * as React from "react";
 import {useEffect} from "react";
 import {
     setClickedCardId,
@@ -17,12 +18,16 @@ import {
 import {ModalUpdateCard} from "../../../../n2-features/f5-modal/ModalUpdateCard/ModalUpdateCard";
 import ModalDelCard from "../../../../n2-features/f5-modal/ModalDelCard/ModalDelCard";
 import {ModalAddCard} from "../../../../n2-features/f5-modal/ModalAddCard/ModalAddCard";
-import * as React from "react";
 import HeadCell from "../table/head-cell/HeadCell";
 import CellCommon from "../table/cell-common/CellCommon";
 import RatingCell from "../table/rating-cell/RatingCell";
 import TableButton from "../table/table-button/TableButton";
 import {PackType} from "../../../m2-bll/packsReducer";
+import BottomBlock from "../../common/Pvl/bottom-block/BottomBlock";
+import {SearchCardsContainer} from "../../../../n2-features/f2-table/Search/SeachCardsContainer/SeachCardsContainer";
+import {TableDataType, TableStyleType} from "../../../../types/types";
+import HeadButtonCell from "../table/head-button-cell/HeadButtonCell";
+import {RequestStatusType} from "../../../m2-bll/appReducer";
 
 // стилизация синей кнопки
 const styleButton = {
@@ -30,16 +35,7 @@ const styleButton = {
     marginLeft: "24px"
 }
 
-
-const tableData = {
-    title1: "Question",
-    title2: "Answer",
-    title3: "Last Updated",
-    title4: "Grade",
-    title5: "Actions",
-}
-
-const tableStyle = {
+const tableStyle: TableStyleType = {
     th1: {
         width: "251px",
     },
@@ -58,15 +54,56 @@ const tableStyle = {
 }
 
 export default function CardsTable() {
-
     let {id} = useParams()
 
     const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
     const pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.pageCount).toString()
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cards.page)
     const sortCards = useSelector<AppStoreType, SortCardsType>(state => state.findAndPagination.cards.sortCards)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
+    const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     const dispatch = useDispatch();
+
+    const tableData: TableDataType = {
+        title1: {
+            value: "Question",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0question'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1question'))
+            },
+        },
+        title2: {
+            value: "Answer",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0answer'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1answer'))
+            },
+        },
+        title3: {
+            value: "Last Updated",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0updated'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1updated'))
+            },
+        },
+        title4: {
+            value: "Grade",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0grade'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1grade'))
+            },
+        },
+        title5: "Actions",
+    }
 
     useEffect(() => {
         if (id)
@@ -107,37 +144,58 @@ export default function CardsTable() {
                 <div className={s.searchBlock}>
                     <div className={s.search}>
                         {/*<Search/>*/}
+                        <SearchCardsContainer/>
                     </div>
-                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}/>
+                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}
+                            disabled={appStatus === "loading"}/>
                 </div>
                 <div className={s.tableWrap}>
                     <table className={s.table}>
                         <thead className={s.thead}>
                         <tr className={s.tr}>
-                            <HeadCell cellStyle={tableStyle.th1} cellData={tableData.title1}/>
-                            <HeadCell cellStyle={tableStyle.th2} cellData={tableData.title2}/>
-                            <HeadCell cellStyle={tableStyle.th3} cellData={tableData.title3}/>
-                            <HeadCell cellStyle={tableStyle.th4} cellData={tableData.title4}/>
+                            <HeadButtonCell cellStyle={tableStyle.th1}
+                                            cellData={tableData.title1.value}
+                                            upCallback={tableData.title1.upperSortHandler}
+                                            downCallback={tableData.title1.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th2}
+                                            cellData={tableData.title2.value}
+                                            upCallback={tableData.title2.upperSortHandler}
+                                            downCallback={tableData.title2.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th3}
+                                            cellData={tableData.title3.value}
+                                            upCallback={tableData.title3.upperSortHandler}
+                                            downCallback={tableData.title3.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th4}
+                                            cellData={tableData.title4.value}
+                                            upCallback={tableData.title4.upperSortHandler}
+                                            downCallback={tableData.title4.lowerSortHandler}
+                            />
                             <HeadCell cellStyle={tableStyle.th5} cellData={tableData.title5}/>
                         </tr>
                         </thead>
                         <tbody>
-                        {cards.map((mp:CardType) => (
-                        <tr key={mp._id} className={s.tr}>
-                            <CellCommon cellData={mp.question} />
-                            <CellCommon cellData={mp.answer} />
-                            <CellCommon cellData={mp.updated} />
-                            <RatingCell cellData={mp.grade}/>
-                            <td className={s.td}>
-                                <div className={s.btnBlock}>
-                                    <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete" />
-                                    <TableButton onClick={() => showUpdateCardModalHandler(mp._id)} label="Edit" />
-                                </div>
-                            </td>
-                        </tr>
+                        {cards.map((mp: CardType) => (
+                            <tr key={mp._id} className={s.tr}>
+                                <CellCommon cellData={mp.question}/>
+                                <CellCommon cellData={mp.answer}/>
+                                <CellCommon cellData={mp.updated}/>
+                                <RatingCell cellData={mp.grade}/>
+                                <td className={s.td}>
+                                    <div className={s.btnBlock}>
+                                        <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete"
+                                                     disabled={user_id !== mp.user_id}/>
+                                        <TableButton onClick={() => showUpdateCardModalHandler(mp._id)} label="Edit"
+                                                     disabled={user_id !== mp.user_id}/>
+                                    </div>
+                                </td>
+                            </tr>
                         ))}
                         </tbody>
                     </table>
+                    <BottomBlock type={"cards"}/>
                 </div>
             </div>
         </>

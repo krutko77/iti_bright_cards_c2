@@ -1,4 +1,4 @@
-import s from "./PacksList.module.scss";
+import s from "./UsePacksList.module.scss";
 import Subtitle from "../../common/Pvl/subtitle/Subtitle.jsx";
 import Button from "../../common/Pvl/button/Button";
 import Table from "../table/Table";
@@ -15,6 +15,8 @@ import ModalAddPack from "../../../../n2-features/f5-modal/ModalAddPack/ModalAdd
 import {
     SearchCardsPacksContainer
 } from "../../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import {TableDataType, TableStyleType} from "../../../../types/types";
+import {RequestStatusType} from "../../../m2-bll/appReducer";
 
 // стилизация синей кнопки
 const buttonStyle = {
@@ -40,31 +42,45 @@ const tableStyle: TableStyleType = {
     }
 }
 
-// данные для таблицы
-
 
 export default function PacksList() {
-
+    // данные для таблицы
     const tableData: TableDataType = {
         title1: {
             value: "Name",
-            upperSortHandler: () => {dispatch(setSortPacksAC('0name'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1name'))}
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0name'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1name'))
+            },
         },
         title2: {
             value: "Cards",
-            upperSortHandler: () => {dispatch(setSortPacksAC('0cardsCount'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1cardsCount'))}
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0cardsCount'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1cardsCount'))
+            },
         },
         title3: {
             value: "Last Updated",
-            upperSortHandler: () => {dispatch(setSortPacksAC('0updated'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1updated'))}
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0updated'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1updated'))
+            },
         },
         title4: {
             value: "Created by",
-            upperSortHandler: () => {dispatch(setSortPacksAC('0user_name'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1user_name'))}
+            upperSortHandler: () => {
+                dispatch(setSortPacksAC('0user_name'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortPacksAC('1user_name'))
+            },
         },
         title5: "Actions",
 
@@ -74,8 +90,8 @@ export default function PacksList() {
     const page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)
     const sortPacks = useSelector<AppStoreType, SortPackType>(state => state.findAndPagination.cardPacks.sortPacks)
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
-
-    const current_id =  useSelector<AppStoreType, string>(state => state.packs.packUser_id)
+    const current_id = useSelector<AppStoreType, string>(state => state.packs.packUser_id)
+    const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
 
     const dispatch = useDispatch()
 
@@ -103,11 +119,11 @@ export default function PacksList() {
                 <aside className={s.sidebar}>
                     <span className={s.label}>Show packs cards</span>
                     <div className={s.btnBlock}>
-                            <button onClick={onMyHandler}
-                                    className={`${s.btn} ${current_id === user_id ? s.active : ''}`}>My
-                            </button>
-                            <button onClick={onAllHandler} className={`${s.btn} ${!current_id ? s.active : ''}`}>All
-                            </button>
+                        <button onClick={onMyHandler}
+                                className={`${s.btn} ${current_id === user_id ? s.active : ''}`}>My
+                        </button>
+                        <button onClick={onAllHandler} className={`${s.btn} ${!current_id ? s.active : ''}`}>All
+                        </button>
                     </div>
                     <UseSlider/>
                 </aside>
@@ -119,44 +135,13 @@ export default function PacksList() {
                         <div className={s.search}>
                             <SearchCardsPacksContainer/>
                         </div>
-                        <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}/>
+                        <Button onClick={addPacksHandler} label="Add new pack" style={buttonStyle}
+                                disabled={appStatus === "loading"}/>
                     </div>
                     <Table tableData={tableData} style={tableStyle}/>
-                    <BottomBlock/>
+                    <BottomBlock type={"packs"}/>
                 </main>
             </div>
         </>
     );
-}
-
-type ExtendedArrayType = {
-    value: string
-    upperSortHandler: () => void
-    lowerSortHandler: () => void
-}
-
-export type TableDataType = {
-    title1: ExtendedArrayType
-    title2: ExtendedArrayType
-    title3: ExtendedArrayType
-    title4: ExtendedArrayType
-    title5: string
-}
-
-export type TableStyleType = {
-    th1: {
-        width: string
-    },
-    th2: {
-        width: string
-    },
-    th3: {
-        width: string
-    },
-    th4: {
-        width: string
-    },
-    th5: {
-        width: string
-    }
 }

@@ -18,7 +18,6 @@ import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
 import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnswer";
 import CardsTable from "../components/cards-table/CardsTable";
-import MainPackName from "../components/main-pack-name/MainPackName.jsx";
 import LoginForm from "../../../n2-features/f1-auth/a1-login/LoginForm";
 
 export const Main = () => {

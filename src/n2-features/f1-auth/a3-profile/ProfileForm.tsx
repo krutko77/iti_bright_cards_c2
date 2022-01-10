@@ -162,7 +162,7 @@ export default function ProfileForm() {
                     {isEditMode
                         ? <div className={s.editOn}><Input inputData={inputData1} value={newNickname}
                                                            onChangeText={setNewNickname}/></div>
-                        : <Input inputData={inputData1} value={name}/>
+                        : <Input inputData={inputData1} value={name} autoComplete={'off'}/>
                     }
                     <Input inputData={inputData2} value={email} onChange={() => {
                     }} isHidden={isEditMode}/>

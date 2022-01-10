@@ -23,4 +23,3 @@ type PropsType = {
     style?: CSSProperties | undefined
 }
 
-

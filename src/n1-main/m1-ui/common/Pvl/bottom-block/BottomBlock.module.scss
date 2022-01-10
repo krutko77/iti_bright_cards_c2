@@ -1,9 +1,6 @@
 .bottomBlock {
    display: flex;
    flex-direction: column;
-   .oldPaginationBlock {
-      display: flex;
-   }
 }
 
 .label1,
@@ -21,11 +18,6 @@
 
 .label2 {
    margin-top: 5px;
-}
-
-.selectBlock {
-   display: flex;
-   position: relative;
 }
 
 .selectWrap {
