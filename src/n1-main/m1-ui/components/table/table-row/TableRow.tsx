@@ -11,6 +11,7 @@ import {
     showModalUpdateCardsPackAC
 } from "../../../../m2-bll/modalReducer";
 import TableButton from "../table-button/TableButton";
+import TableDeleteButton from "../table-delete-button/TableDeleteButton";
 import ModalDelPack from "../../../../../n2-features/f5-modal/ModalDelPack/ModalDelPack";
 import ModalUpdatePack from "../../../../../n2-features/f5-modal/ModalUpdatePack/ModalUpdatePack";
 import ModalAddPack from "../../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
@@ -73,7 +74,7 @@ export default function TableRow(props: PropsType) {
                 {/*<RatingCell cellData={props.cellData.rating}/>*/}
                 <td className={s.td}>
                     <div className={s.btnBlock}>
-                        <TableButton onClick={() => showModalDelPackHandler(props.cellData._id)} label="Delete"
+                        <TableDeleteButton onClick={() => showModalDelPackHandler(props.cellData._id)} label="Delete"
                                      style={buttonStyle} disabled={props.isDelEditButtonsDisabled}/>
                         <TableButton onClick={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit"
                                      disabled={props.isDelEditButtonsDisabled}/>
