@@ -12,7 +12,7 @@ import {CSSProperties} from "react";
 
 export default function TableDeleteButton(props: PropsType) {
     return (
-        <button className={s.btn} style={props.style} onClick={props.onClick} disabled={props.disabled}>{props.label} </button>
+        <button className={s.btn} onClick={props.onClick} disabled={props.disabled}>{props.label}</button>
     );
 }
 

@@ -17,13 +17,6 @@ import ModalUpdatePack from "../../../../../n2-features/f5-modal/ModalUpdatePack
 import ModalAddPack from "../../../../../n2-features/f5-modal/ModalAddPack/ModalAddPack";
 import {CardType} from "../../../../m2-bll/cardsReducer";
 
-// стилизация кнопки
-const buttonStyle = {
-    backgroundColor: "#F1453D",
-    color: "#FFFFFF",
-    fontWeight: 500
-}
-
 export type PropsType = {
     cellData: PackType
     isDelEditButtonsDisabled: boolean
@@ -75,7 +68,7 @@ export default function TableRow(props: PropsType) {
                 <td className={s.td}>
                     <div className={s.btnBlock}>
                         <TableDeleteButton onClick={() => showModalDelPackHandler(props.cellData._id)} label="Delete"
-                                     style={buttonStyle} disabled={props.isDelEditButtonsDisabled}/>
+                                     disabled={props.isDelEditButtonsDisabled}/>
                         <TableButton onClick={() => showModalUpdatePackHandler(props.cellData._id)} label="Edit"
                                      disabled={props.isDelEditButtonsDisabled}/>
                         <TableButton onClick={() => startLearnHandler(props.cellData._id)} label="Learn"
