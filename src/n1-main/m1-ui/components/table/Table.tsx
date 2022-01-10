@@ -7,8 +7,7 @@ import {packsStateType} from "../../../m2-bll/packsReducer";
 import {CardType} from "../../../m2-bll/cardsReducer";
 import HeadButtonCell from "./head-button-cell/HeadButtonCell";
 import React from "react";
-import {TableDataType, TableStyleType} from "../packs-list/UsePacksList";
-import {useLocation} from "react-router-dom";
+import {TableDataType, TableStyleType} from "../../../../types/types";
 
 
 export default function Table(props: PropsType) {
@@ -25,13 +24,11 @@ export default function Table(props: PropsType) {
             <table className={s.table}>
                 <thead className={s.thead}>
                 <tr className={s.tr}>
-                    {/*<HeadCell cellStyle={props.style.th1} cellData={props.tableData.title1.value}/>*/}
                     <HeadButtonCell cellStyle={props.style.th1}
                                     cellData={props.tableData.title1.value}
                                     upCallback={props.tableData.title1.upperSortHandler}
                                     downCallback={props.tableData.title1.lowerSortHandler}
                     />
-                    {/*<HeadCell cellStyle={props.style.th2} cellData={props.tableData.title2.value}/>*/}
                     <HeadButtonCell cellStyle={props.style.th2}
                                     cellData={props.tableData.title2.value}
                                     upCallback={props.tableData.title2.upperSortHandler}
@@ -43,7 +40,6 @@ export default function Table(props: PropsType) {
                         upCallback={props.tableData.title3.upperSortHandler}
                         downCallback={props.tableData.title3.lowerSortHandler}
                     />
-                    {/*<HeadCell cellStyle={props.style.th4} cellData={props.tableData.title4.value}/>*/}
                     <HeadButtonCell
                         cellStyle={props.style.th4}
                         cellData={props.tableData.title4.value}

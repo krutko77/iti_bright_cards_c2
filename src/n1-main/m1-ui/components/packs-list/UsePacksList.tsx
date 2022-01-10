@@ -15,6 +15,7 @@ import ModalAddPack from "../../../../n2-features/f5-modal/ModalAddPack/ModalAdd
 import {
     SearchCardsPacksContainer
 } from "../../../../n2-features/f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
+import {TableDataType, TableStyleType} from "../../../../types/types";
 
 // стилизация синей кнопки
 const buttonStyle = {
@@ -40,31 +41,30 @@ const tableStyle: TableStyleType = {
     }
 }
 
-// данные для таблицы
 
 
 export default function PacksList() {
-
+    // данные для таблицы
     const tableData: TableDataType = {
         title1: {
             value: "Name",
             upperSortHandler: () => {dispatch(setSortPacksAC('0name'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1name'))}
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1name'))},
         },
         title2: {
             value: "Cards",
             upperSortHandler: () => {dispatch(setSortPacksAC('0cardsCount'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1cardsCount'))}
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1cardsCount'))},
         },
         title3: {
             value: "Last Updated",
             upperSortHandler: () => {dispatch(setSortPacksAC('0updated'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1updated'))}
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1updated'))},
         },
         title4: {
             value: "Created by",
             upperSortHandler: () => {dispatch(setSortPacksAC('0user_name'))},
-            lowerSortHandler: () => {dispatch(setSortPacksAC('1user_name'))}
+            lowerSortHandler: () => {dispatch(setSortPacksAC('1user_name'))},
         },
         title5: "Actions",
 
@@ -127,36 +127,4 @@ export default function PacksList() {
             </div>
         </>
     );
-}
-
-type ExtendedArrayType = {
-    value: string
-    upperSortHandler: () => void
-    lowerSortHandler: () => void
-}
-
-export type TableDataType = {
-    title1: ExtendedArrayType
-    title2: ExtendedArrayType
-    title3: ExtendedArrayType
-    title4: ExtendedArrayType
-    title5: string
-}
-
-export type TableStyleType = {
-    th1: {
-        width: string
-    },
-    th2: {
-        width: string
-    },
-    th3: {
-        width: string
-    },
-    th4: {
-        width: string
-    },
-    th5: {
-        width: string
-    }
 }
