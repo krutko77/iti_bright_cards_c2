@@ -90,10 +90,6 @@ export default function ProfileForm() {
 
         try {
             reader.readAsDataURL(newFile as Blob);
-        } catch {
-            console.log('error in reader.readAsDataURL')
-        } finally {
-            console.log('here we go even after catch')
             reader.onload = () => {
                 image.src = reader.result as string;
 
@@ -101,7 +97,6 @@ export default function ProfileForm() {
                     setWidth(image.width)
                     if (image.width === 96 && image.height === 96) {
                         setError(false)
-                        console.log('load to server')
                         dispatch(profileUpdateAC(reader.result as string))
                     } else setError(true)
                 }
@@ -109,12 +104,11 @@ export default function ProfileForm() {
             };
             reader.onerror = (error) => {
             }
+        } catch {
+            console.log('error in reader.readAsDataURL')
         }
 
-
     }
-
-    console.log(error)
 
     const goToEditModeHandler = () => {
         setIsEditMode(true)
