@@ -43,7 +43,7 @@ const inputData3 = {
     type: "text",
     name: "publicCardPacksCount",
     for: "publicCardPacksCount",
-    label: "Cards packs count",
+    label: "OldCards packs count",
     style: {
         display: "none"
     }

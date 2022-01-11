@@ -13,9 +13,6 @@ import {RequestStatusType} from "../../../m2-bll/appReducer";
 
 export default function Table(props: PropsType) {
 
-    // let location = useLocation()
-    // console.log(location.pathname)
-
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
     const appStatus = useSelector<AppStoreType, RequestStatusType>(state => state.app.status)
@@ -56,10 +53,6 @@ export default function Table(props: PropsType) {
                                                  isDelEditButtonsDisabled={appStatus === "loading" || !(user_id === mp.user_id)}
                                                  isLearnButtonDisabled={appStatus === "loading" || !mp.cardsCount}
                 />)}
-                {/*{location.pathname === 'packsdesigned' ? cardPacks.map((mp) => <TableRow key={mp._id} cellData={mp}/>):*/}
-                {/*cards.map((mp) => <TableRow key={mp._id} cellData={mp}/>)*/}
-                {/*}*/}
-
                 </tbody>
             </table>
         </div>

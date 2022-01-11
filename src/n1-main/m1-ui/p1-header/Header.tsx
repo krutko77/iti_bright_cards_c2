@@ -4,7 +4,6 @@ import s from './Header.module.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { LogoutTC } from "../../m2-bll/authReducer";
 import { AppStoreType } from "../../m2-bll/store";
-import { LinearProgress, Menu } from "@mui/material";
 import MenuItem from '../common/Pvl/menu-item/MenuItem';
 
 import paksIcon from "./../../../assets/img/menu/paks-icon.png";
@@ -23,7 +22,6 @@ export const Header = () => {
    }
 
    // в каждый NavLink и a нужно добавить класс activeClassName={s.active}
-
    return (
       <div className={s.header}>
          <div className={s.logo}>BrightCards</div>
@@ -53,11 +51,6 @@ export const Header = () => {
                <li>
                   <NavLink className={s.link} to={'/packs'}><MenuItem label="Packs" icon={paksIcon} /></NavLink>
                </li>
-               {/*<li>*/}
-               {/*   <NavLink className={`${s.link} ${s.notDone}`} to={'/packsdesigned'}><MenuItem label="PacksDesigned" /></NavLink>*/}
-               {/*</li>*/}
-               {/*<NavLink className={s.item} to={'/cards'}>Cards</NavLink>*/}
-               {/*<NavLink className={s.item} to={'/tests'}>Tests</NavLink>*/} {/*type /test to see*/}
             </ul>
          </nav>
       </div>

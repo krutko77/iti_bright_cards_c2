@@ -129,7 +129,7 @@ export default function PacksList() {
                 </aside>
                 <main className={s.main}>
                     <div className={s.title}>
-                        <Subtitle subtitle="OldPacks list"/>
+                        <Subtitle subtitle="Packs list"/>
                     </div>
                     <div className={s.searchBlock}>
                         <div className={s.search}>
