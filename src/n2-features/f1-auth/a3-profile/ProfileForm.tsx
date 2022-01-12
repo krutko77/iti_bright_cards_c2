@@ -7,7 +7,7 @@ import icon from "../../../assets/img/photo-icon.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../../n1-main/m2-bll/store";
 import {AuthResponseType} from "../../../n1-main/m2-bll/api/api";
-import {Navigate} from "react-router-dom";
+import {Navigate, NavigateOptions} from "react-router-dom";
 import React, {ChangeEvent, useRef, useState} from "react";
 import Button from "../../../n1-main/m1-ui/common/Pvl/button/Button";
 import {profileUpdateAC, UpdateProfileTC} from "../../../n1-main/m2-bll/authReducer";
@@ -177,3 +177,4 @@ export default function ProfileForm() {
         </>
     );
 }
+

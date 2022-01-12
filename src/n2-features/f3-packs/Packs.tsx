@@ -156,3 +156,8 @@ export default function PacksList() {
         </>
     );
 }
+
+export type profileDataType = {
+    name: string
+    img: string
+}
