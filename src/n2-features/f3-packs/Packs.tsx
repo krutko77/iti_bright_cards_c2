@@ -17,6 +17,7 @@ import {
 } from "../f2-table/Search/SearchCardsPacksContainer/SearchCardsPacksContainer";
 import {TableDataType, TableStyleType} from "../../types/types";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
+import ProfileBlock from "../../n1-main/m1-ui/common/Pvl/profile-block/ProfileBlock";
 
 // стилизация синей кнопки
 const buttonStyle = {
@@ -117,6 +118,7 @@ export default function PacksList() {
             <ModalAddPack/>
             <div className={s.packsList}>
                 <aside className={s.sidebar}>
+                   <ProfileBlock />
                     <span className={s.label}>Show packs cards</span>
                     <div className={s.btnBlock}>
                         <button onClick={onMyHandler}
