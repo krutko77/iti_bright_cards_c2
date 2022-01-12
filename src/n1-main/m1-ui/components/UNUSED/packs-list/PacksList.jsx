@@ -1,4 +1,4 @@
-import s from "../../packs-list/UsePacksList.module.scss";
+import s from "../../../../../n2-features/f3-packs/Packs.module.scss";
 import Subtitle from "../../../common/Pvl/subtitle/Subtitle.jsx";
 import Button from "../../../common/Pvl/button/Button.tsx";
 import Table from "../../table/Table";
@@ -51,7 +51,7 @@ export default function PacksList() {
         </aside>
         <main className={s.main}>
             <div className={s.title}>
-                <Subtitle subtitle="Packs list"/>
+                <Subtitle subtitle="OldPacks list"/>
             </div>
             <div className={s.searchBlock}>
                 <SearchCardsPacksContainer/>

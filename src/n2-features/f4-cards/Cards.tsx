@@ -1,58 +1,60 @@
+import TitleBlock from "../../n1-main/m1-ui/common/Pvl/title-block/TitleBlock";
+import Button from "../../n1-main/m1-ui/common/Pvl/button/Button";
+
+import s from "./Cards.module.scss";
+import tableStyles from "../../n1-main/m1-ui/components/table/Table.module.scss";
+import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "../../n1-main/m2-bll/store";
-import * as React from 'react';
-import {useEffect} from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import {addCardsTC, CardType, getCardsTC} from "../../n1-main/m2-bll/cardsReducer";
-import {useParams} from "react-router-dom";
-import {PaginationCardsContainer} from "../f2-table/Pagination/PaginationCardsContainer";
-import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
-import s from './Cards.module.scss'
-import {SortCardsContainer} from "../f2-table/Sort/SortCardsContainer/SortCardsContainer";
-import {SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import {setSortCardsAC, SortCardsType} from "../../n1-main/m2-bll/findAndPaginationReducer";
+import * as React from "react";
+import {useEffect} from "react";
 import {
     setClickedCardId,
     showModalAddCardAC,
     showModalDelCardAC,
     showModalUpdateCardAC
 } from "../../n1-main/m2-bll/modalReducer";
+import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
 import ModalDelCard from "../f5-modal/ModalDelCard/ModalDelCard";
 import {ModalAddCard} from "../f5-modal/ModalAddCard/ModalAddCard";
-import {ModalUpdateCard} from "../f5-modal/ModalUpdateCard/ModalUpdateCard";
+import HeadCell from "../../n1-main/m1-ui/components/table/head-cell/HeadCell";
+import CellCommon from "../../n1-main/m1-ui/components/table/cell-common/CellCommon";
+import RatingCell from "../../n1-main/m1-ui/components/table/rating-cell/RatingCell";
+import TableButton from "../../n1-main/m1-ui/components/table/table-button/TableButton";
+import {PackType} from "../../n1-main/m2-bll/packsReducer";
+import BottomBlock from "../../n1-main/m1-ui/common/Pvl/bottom-block/BottomBlock";
+import {SearchCardsContainer} from "../f2-table/Search/SeachCardsContainer/SeachCardsContainer";
+import {TableDataType, TableStyleType} from "../../types/types";
+import HeadButtonCell from "../../n1-main/m1-ui/components/table/head-button-cell/HeadButtonCell";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 
-// data for inputs
-const inputNPData1 = {
-    id: "text",
-    type: "text",
-    name: "text",
-    for: "text",
-    label: "New question",
-    style: {
-        display: "none"
+// стилизация синей кнопки
+const styleButton = {
+    width: "184px",
+    marginLeft: "24px"
+}
+
+const tableStyle: TableStyleType = {
+    th1: {
+        width: "251px",
+    },
+    th2: {
+        width: "307px",
+    },
+    th3: {
+        width: "133px",
+    },
+    th4: {
+        width: "156px",
+    },
+    th5: {
+        width: "113px",
     }
 }
 
-// data for inputs
-const inputNPData2 = {
-    id: "text",
-    type: "text",
-    name: "text",
-    for: "text",
-    label: "Name answer",
-    style: {
-        display: "none"
-    }
-}
-
-export const Cards = () => {
-
+export default function Cards() {
     let {id} = useParams()
 
     const cards = useSelector<AppStoreType, CardType[]>(state => state.cards.cards)
@@ -63,6 +65,46 @@ export const Cards = () => {
     const user_id = useSelector<AppStoreType, string>(state => state.profile._id)
 
     const dispatch = useDispatch();
+
+    const tableData: TableDataType = {
+        title1: {
+            value: "Question",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0question'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1question'))
+            },
+        },
+        title2: {
+            value: "Answer",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0answer'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1answer'))
+            },
+        },
+        title3: {
+            value: "Last Updated",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0updated'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1updated'))
+            },
+        },
+        title4: {
+            value: "Grade",
+            upperSortHandler: () => {
+                dispatch(setSortCardsAC('0grade'))
+            },
+            lowerSortHandler: () => {
+                dispatch(setSortCardsAC('1grade'))
+            },
+        },
+        title5: "Actions",
+    }
 
     useEffect(() => {
         if (id)
@@ -87,77 +129,78 @@ export const Cards = () => {
         dispatch(setClickedCardId(id))
     }
 
+    const cardsPacksFromLS = localStorage.getItem('cardsPacks')  // get CardPacks from LS to save it while F5
+    let cardsPacksFromLSParsed = []
+    if (cardsPacksFromLS) cardsPacksFromLSParsed = JSON.parse(cardsPacksFromLS)
+    let selectedCardPack: PackType
+    selectedCardPack = cardsPacksFromLSParsed.find((e: PackType) => e._id === id)
+
     return (
         <>
             <ModalUpdateCard/>
             <ModalDelCard/>
             <ModalAddCard addCard={addCardHandler}/>
-            <TableContainer component={Paper}>
-                <PaginationCardsContainer/>
-                <SearchCardsContainer/>
-                <Table sx={{minWidth: 650}} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <div className={s.cell}>Question<SortCardsContainer upperSort={'0question'}
-                                                                                    lowerCount={'1question'}/>
-                                </div>
-                            </TableCell>
-                            <TableCell align="center">
-                                <div className={s.cell}>answer<SortCardsContainer upperSort={'0answer'}
-                                                                                  lowerCount={'1answer'}/>
-                                </div>
-                            </TableCell>
-                            <TableCell align="center">
-                                <div className={s.cell}>Grade<SortCardsContainer upperSort={'0grade'}
-                                                                                 lowerCount={'1grade'}/>
-                                </div>
-                            </TableCell>
-                            <TableCell align="center">
-                                <div className={s.cell}>updated<SortCardsContainer upperSort={'0updated'}
-                                                                                   lowerCount={'1updated'}/>
-                                </div>
-                            </TableCell>
-                            <TableCell align="center">url</TableCell>
-                            <TableCell align="center">
-                                <button onClick={showAddCardModalHandler} disabled={appStatus === "loading"}>add
-                                </button>
-                            </TableCell>
-
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {cards.map((card: CardType) => (
-                            <TableRow
-                                key={card.cardsPack_id}
-                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {card.question}
-                                </TableCell>
-                                <TableCell align="center">{card.answer}</TableCell>
-                                <TableCell align="center">{card.grade}</TableCell>
-                                <TableCell align="center">{card.updated}</TableCell>
-                                <TableCell align='center'>
-                                    <button onClick={() => {
-                                        showDelCardModalHandler(card._id)
-                                    }} disabled={appStatus === "loading" || user_id !== card.user_id}>del
-                                    </button>
-                                </TableCell>
-                                <TableCell align='center'>
-                                    <button onClick={() => {
-                                        showUpdateCardModalHandler(card._id)
-                                    }} disabled={appStatus === "loading" || user_id !== card.user_id}>update
-                                    </button>
-                                </TableCell>
-
-                            </TableRow>
+            <div className={s.cardsTable}>
+                <TitleBlock title={selectedCardPack.name}/>
+                <div className={s.searchBlock}>
+                    <div className={s.search}>
+                        {/*<Search/>*/}
+                        <SearchCardsContainer/>
+                    </div>
+                    <Button onClick={showAddCardModalHandler} label="Add new card" style={styleButton}
+                            disabled={appStatus === "loading"}/>
+                </div>
+                <div className={tableStyles.tableWrap}>
+                    <table className={tableStyles.table}>
+                        <thead className={tableStyles.thead}>
+                        <tr className={tableStyles.tr}>
+                            <HeadButtonCell cellStyle={tableStyle.th1}
+                                            cellData={tableData.title1.value}
+                                            upCallback={tableData.title1.upperSortHandler}
+                                            downCallback={tableData.title1.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th2}
+                                            cellData={tableData.title2.value}
+                                            upCallback={tableData.title2.upperSortHandler}
+                                            downCallback={tableData.title2.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th3}
+                                            cellData={tableData.title3.value}
+                                            upCallback={tableData.title3.upperSortHandler}
+                                            downCallback={tableData.title3.lowerSortHandler}
+                            />
+                            <HeadButtonCell cellStyle={tableStyle.th4}
+                                            cellData={tableData.title4.value}
+                                            upCallback={tableData.title4.upperSortHandler}
+                                            downCallback={tableData.title4.lowerSortHandler}
+                            />
+                            <HeadCell cellStyle={tableStyle.th5} cellData={tableData.title5}/>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {cards.map((mp: CardType) => (
+                            <tr key={mp._id} className={tableStyles.tr}>
+                                <CellCommon cellData={mp.question}/>
+                                <CellCommon cellData={mp.answer}/>
+                                <CellCommon cellData={mp.updated}/>
+                                <RatingCell cellData={mp.grade}/>
+                                <td className={tableStyles.td}>
+                                    <div className={s.btnBlock}>
+                                        <TableButton onClick={() => showDelCardModalHandler(mp._id)} label="Delete"
+                                                     disabled={user_id !== mp.user_id}/>
+                                        <TableButton onClick={() => showUpdateCardModalHandler(mp._id)} label="Edit"
+                                                     disabled={user_id !== mp.user_id}/>
+                                    </div>
+                                </td>
+                            </tr>
                         ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </tbody>
+                    </table>
+                </div>
+                <BottomBlock type={"cards"}/>
+            </div>
         </>
-    );
+    )
 }
 
 

@@ -25,9 +25,6 @@ export type PropsType = {
 
 export default function TableRow(props: PropsType) {
 
-    // let location = useLocation()
-    // console.log(location.pathname)
-
     const {cardPacks} = useSelector<AppStoreType, packsStateType>(state => state.packs)
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -50,7 +47,7 @@ export default function TableRow(props: PropsType) {
 
     const editHandler = (packId: string) => {
         localStorage.setItem('cardsPacks', JSON.stringify(cardPacks))
-        navigate(`/cardsdesigned/${packId}`,)
+        navigate(`/cards/${packId}`,)
     }
 
     return (

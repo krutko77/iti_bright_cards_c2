@@ -30,7 +30,7 @@ export const findAndPaginationReducer = (state = initialState, action: ActionTyp
         case "FIND-AND-PAGINATION/SET-SORT-PACKS":
             return {...state, cardPacks: {...state.cardPacks, ...action.payload}}
 
-        // for Cards
+        // for OldCards
         case "FIND-AND-PAGINATION/SET-CARDS-TOTAL-COUNT":
         case "FIND-AND-PAGINATION/SET-CARDS-PAGE-COUNT":
         case 'FIND-AND-PAGINATION/SET-CARDS-CURRENT-PAGE':
@@ -77,7 +77,7 @@ export const setSearchPackNameAC = (packName: string) =>
 export const setSortPacksAC = (sortPacks: SortPackType) =>
     ({type: 'FIND-AND-PAGINATION/SET-SORT-PACKS', payload: {sortPacks}} as const)
 
-//AC for Cards:
+//AC for OldCards:
 export const setCardsTotalCountAC = (totalCount: number) =>
     ({type: 'FIND-AND-PAGINATION/SET-CARDS-TOTAL-COUNT', payload: {totalCount}} as const)
 export const setCardsPageCountAC = (pageCount: number) =>

@@ -5,19 +5,17 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import {Page404} from "../../../n2-features/f1-auth/Page404";
 import {Examples} from "../../../n2-features/f0-test/Examples/Examples";
 import RegistrationForm from "../../../n2-features/f1-auth/a2-register/RegistrationForm";
-import {Packs} from '../../../n2-features/f3-packs/Packs';
-import {Cards} from '../../../n2-features/f4-cards/Cards';
 import ProfileForm from "../../../n2-features/f1-auth/a3-profile/ProfileForm";
 import PasswordRecoveryForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordRecoveryForm";
 import PasswordNewForm from "../../../n2-features/f1-auth/a4-password-recovery/PasswordNewForm";
-import PacksList from "../components/packs-list/UsePacksList";
+import Packs from "../../../n2-features/f3-packs/Packs";
 import ModalUp from "../../../n2-features/f5-modal/ModalUp/ModalUp";
 import {LinearProgress} from "@mui/material";
 import {useSelector} from "react-redux";
 import {AppStoreType} from "../../m2-bll/store";
 import {RequestStatusType} from "../../m2-bll/appReducer";
 import LearnQuestionAnswer from "../../../n2-features/f6-learn/LearnQuestionAnswer";
-import CardsTable from "../components/cards-table/CardsTable";
+import Cards from "../../../n2-features/f4-cards/Cards";
 import LoginForm from "../../../n2-features/f1-auth/a1-login/LoginForm";
 
 export const Main = () => {
@@ -41,8 +39,6 @@ export const Main = () => {
                     <Route path="*" element={<Navigate to="/404"/>}/>
                     <Route path={'/packs'} element={<Packs/>}/>
                     <Route path={'/cards/:id'} element={<Cards/>}/>
-                    <Route path={'/packsdesigned'} element={<PacksList/>}/>
-                    <Route path={'/cardsdesigned/:id'} element={<CardsTable/>}/>
                     <Route path={'/learn/:packid'} element={<LearnQuestionAnswer/>}/>
                     <Route/>
                 </Routes>

@@ -9,7 +9,7 @@ export const PaginationPacksContainer = () => {
 
     // count of elements at one page
     let pageCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.pageCount)
-    // count of Card Packs
+    // count of Card OldPacks
     let cardPacksTotalCount = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.totalCount)
     // selected page
     let page = useSelector<AppStoreType, number>(state => state.findAndPagination.cardPacks.page)

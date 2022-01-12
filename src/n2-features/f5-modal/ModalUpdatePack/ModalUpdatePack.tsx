@@ -39,7 +39,7 @@ export default function ModalUpdatePack() {
     return (
         <CommonBackground modalShowHide={modalUpdateCardsPackShowHide}>
             <CommonAddUpdate
-                title={'Update Cards pack'}
+                title={'Update OldCards pack'}
                 closeHandler={onCloseHandler}
                 yesButtonText={'Save'}
                 yesButtonHandler={() => {buttonHandler(clickedCardPackId)}}

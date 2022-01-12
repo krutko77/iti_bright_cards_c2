@@ -22,9 +22,9 @@ export const SearchCardsPacksContainer = () => {
 
     return <Search
         inputValue={value}
-        inputPlaceholder={'Enter Cards Pack name'}
+        inputPlaceholder={'Enter OldCards Pack name'}
         setInputValueHandler={setInputValueHandler}
-        buttonText={'Find Cards Packs'}
+        buttonText={'Find OldCards OldPacks'}
         onKeyUp={onKeyUpHandler}
     />
 }
