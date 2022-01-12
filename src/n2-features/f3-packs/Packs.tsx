@@ -19,6 +19,8 @@ import {TableDataType, TableStyleType} from "../../types/types";
 import {RequestStatusType} from "../../n1-main/m2-bll/appReducer";
 import ProfileBlock from "../../n1-main/m1-ui/common/Pvl/profile-block/ProfileBlock";
 
+import img from "./../../assets/img/photo-profile.png";
+
 // стилизация синей кнопки
 const buttonStyle = {
     width: "184px",
@@ -43,6 +45,11 @@ const tableStyle: TableStyleType = {
     }
 }
 
+// данные для ProfileBlock
+const profileData = {
+   name: "Petr Ivanov",
+   img: img
+}
 
 export default function PacksList() {
     // данные для таблицы
@@ -118,7 +125,9 @@ export default function PacksList() {
             <ModalAddPack/>
             <div className={s.packsList}>
                 <aside className={s.sidebar}>
-                   <ProfileBlock />
+                   <div className={s.profileBlock}>
+                     <ProfileBlock data={profileData} />
+                   </div>                   
                     <span className={s.label}>Show packs cards</span>
                     <div className={s.btnBlock}>
                         <button onClick={onMyHandler}
